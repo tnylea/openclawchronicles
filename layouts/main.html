@@ -1,0 +1,338 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{title}</title>
+    <link rel="icon" type="image/x-icon" href="./favicon.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Inter:wght@300..700&family=Manufacturing+Consent&display=swap"
+      rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <script>
+      (function () {
+        var t = localStorage.getItem("theme") || "system";
+        if (
+          t === "dark" ||
+          (t === "system" &&
+            window.matchMedia("(prefers-color-scheme: dark)").matches)
+        ) {
+          document.documentElement.classList.add("dark");
+        }
+      })();
+    </script>
+    <script>
+      document.addEventListener("alpine:init", () => {
+        Alpine.store("theme", {
+          mode: localStorage.getItem("theme") || "system",
+          init() {
+            this.apply();
+            window
+              .matchMedia("(prefers-color-scheme: dark)")
+              .addEventListener("change", () => {
+                if (this.mode === "system") this.apply();
+              });
+          },
+          set(t) {
+            this.mode = t;
+            localStorage.setItem("theme", t);
+            this.apply();
+          },
+          apply() {
+            const isDark =
+              this.mode === "dark" ||
+              (this.mode === "system" &&
+                window.matchMedia("(prefers-color-scheme: dark)").matches);
+            document.documentElement.classList.toggle("dark", isDark);
+          },
+        });
+      });
+    </script>
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <style type="text/tailwindcss">
+      :root {
+        --t-surface: #ffffff;
+        --t-surface-raised: #ffffff;
+        --t-surface-alt: #f5f5f4;
+        --t-surface-subtle: rgba(28, 25, 23, 0.04);
+        --t-ink: #1c1917;
+        --t-ink-strong: #44403c;
+        --t-ink-body: #57534e;
+        --t-ink-muted: #78716c;
+        --t-ink-faint: #a8a29e;
+        --t-ink-subtle: #d6d3d1;
+        --t-ink-ghost: #e7e5e4;
+        --t-border: rgba(28, 25, 23, 0.06);
+        --t-border-strong: rgba(28, 25, 23, 0.12);
+        --t-img-outline: rgba(0, 0, 0, 0.06);
+        --t-nav-scrolled: rgba(255, 255, 255, 0.95);
+        --t-switcher: #e7e5e4;
+        --t-switcher-active: #ffffff;
+        --t-switcher-icon: #78716c;
+        --t-switcher-icon-active: #1c1917;
+        --t-bar-bg: #1c1917;
+        --t-bar-text: #e8e8e8;
+        --t-bar-text-muted: #a3a3a3;
+        --t-bar-border: rgba(255, 255, 255, 0.08);
+      }
+
+      .dark {
+        --t-surface: #0c0c0c;
+        --t-surface-raised: #141414;
+        --t-surface-alt: #1c1917;
+        --t-surface-subtle: rgba(255, 255, 255, 0.05);
+        --t-ink: #e8e8e8;
+        --t-ink-strong: #d4d4d4;
+        --t-ink-body: #a3a3a3;
+        --t-ink-muted: #737373;
+        --t-ink-faint: #525252;
+        --t-ink-subtle: #404040;
+        --t-ink-ghost: #262626;
+        --t-border: rgba(255, 255, 255, 0.05);
+        --t-border-strong: rgba(255, 255, 255, 0.1);
+        --t-img-outline: rgba(255, 255, 255, 0.1);
+        --t-nav-scrolled: rgba(12, 12, 12, 0.95);
+        --t-switcher: #252525;
+        --t-switcher-active: #3b3f4a;
+        --t-switcher-icon: #9ca3af;
+        --t-switcher-icon-active: #ffffff;
+        --t-bar-bg: #ffffff;
+        --t-bar-text: #1c1917;
+        --t-bar-text-muted: #78716c;
+        --t-bar-border: rgba(28, 25, 23, 0.08);
+      }
+
+      @theme {
+        --font-display: "Playfair Display", serif;
+        --font-logo: "Manufacturing Consent", serif;
+        --font-body: "Newsreader", serif;
+        --font-sans: "Inter", sans-serif;
+        --font-mono: "JetBrains Mono", "IBM Plex Mono", monospace;
+        --color-surface: var(--t-surface);
+        --color-surface-raised: var(--t-surface-raised);
+        --color-surface-alt: var(--t-surface-alt);
+        --color-surface-subtle: var(--t-surface-subtle);
+        --color-ink: var(--t-ink);
+        --color-ink-strong: var(--t-ink-strong);
+        --color-ink-body: var(--t-ink-body);
+        --color-ink-muted: var(--t-ink-muted);
+        --color-ink-faint: var(--t-ink-faint);
+        --color-ink-subtle: var(--t-ink-subtle);
+        --color-ink-ghost: var(--t-ink-ghost);
+        --color-border: var(--t-border);
+        --color-border-strong: var(--t-border-strong);
+        --color-img-outline: var(--t-img-outline);
+        --color-nav-scrolled: var(--t-nav-scrolled);
+        --color-switcher: var(--t-switcher);
+        --color-switcher-active: var(--t-switcher-active);
+        --color-switcher-icon: var(--t-switcher-icon);
+        --color-switcher-icon-active: var(--t-switcher-icon-active);
+        --color-bar: var(--t-bar-bg);
+        --color-bar-text: var(--t-bar-text);
+        --color-bar-text-muted: var(--t-bar-text-muted);
+        --color-bar-border: var(--t-bar-border);
+        --color-red-accent: #dc2626;
+        --color-red-vibrant: #ef4444;
+      }
+
+      [x-cloak] {
+        display: none !important;
+      }
+      .drop-cap::first-letter {
+        float: left;
+        font-family: "Playfair Display", serif;
+        font-size: 4.5rem;
+        line-height: 0.75;
+        padding-right: 0.75rem;
+        padding-top: 0.15rem;
+        font-weight: 600;
+        color: var(--color-red-accent);
+      }
+      @keyframes ticker {
+        0% {
+          transform: translateX(0);
+        }
+        100% {
+          transform: translateX(-50%);
+        }
+      }
+      .ticker-animate {
+        animation: ticker 30s linear infinite;
+      }
+      .ticker-animate:hover {
+        animation-play-state: paused;
+      }
+      @keyframes slide-in-left {
+        from {
+          opacity: 0;
+          transform: translateX(-1.5rem);
+        }
+        to {
+          opacity: 1;
+          transform: translateX(0);
+        }
+      }
+      @keyframes slide-out-left {
+        from {
+          opacity: 1;
+          transform: translateX(0);
+        }
+        to {
+          opacity: 0;
+          transform: translateX(-1.5rem);
+        }
+      }
+      .masthead-enter {
+        animation: slide-in-left 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+      }
+      .masthead-leave {
+        animation: slide-out-left 0.25s cubic-bezier(0.4, 0, 1, 1) forwards;
+      }
+
+      /* Article content typography */
+      .article-content > * + * {
+        margin-top: 1.25em;
+      }
+      .article-content h1 {
+        font-family: var(--font-display);
+        font-size: 2.25rem;
+        font-weight: 700;
+        line-height: 1.2;
+        margin-top: 2.5em;
+        color: var(--color-ink);
+      }
+      .article-content h2 {
+        font-family: var(--font-display);
+        font-size: 1.75rem;
+        font-weight: 600;
+        line-height: 1.3;
+        margin-top: 2em;
+        color: var(--color-ink);
+      }
+      .article-content h3 {
+        font-family: var(--font-display);
+        font-size: 1.375rem;
+        font-weight: 600;
+        line-height: 1.4;
+        margin-top: 1.75em;
+        color: var(--color-ink);
+      }
+      .article-content p {
+        font-size: 1.125rem;
+        line-height: 1.8;
+        color: var(--color-ink-body);
+      }
+      .article-content a {
+        color: var(--color-red-accent);
+        text-decoration: underline;
+      }
+      .article-content a:hover {
+        color: var(--color-red-vibrant);
+      }
+      .article-content strong {
+        font-weight: 600;
+        color: var(--color-ink);
+      }
+      .article-content blockquote {
+        border-left: 3px solid var(--color-red-accent);
+        padding-left: 1.5em;
+        font-style: italic;
+        color: var(--color-ink-muted);
+      }
+      .article-content code {
+        font-family: var(--font-mono);
+        font-size: 0.875em;
+        background: var(--color-surface-subtle);
+        padding: 0.125em 0.375em;
+        border-radius: 0.25em;
+      }
+      .article-content pre {
+        background: var(--color-surface-alt);
+        padding: 1.25em;
+        border-radius: 0.375em;
+        overflow-x: auto;
+      }
+      .article-content pre code {
+        background: none;
+        padding: 0;
+        font-size: 0.875rem;
+      }
+      .article-content ul {
+        list-style: disc;
+        padding-left: 1.5em;
+      }
+      .article-content ol {
+        list-style: decimal;
+        padding-left: 1.5em;
+      }
+      .article-content li {
+        margin-top: 0.5em;
+        font-size: 1.125rem;
+        line-height: 1.8;
+        color: var(--color-ink-body);
+      }
+      .article-content img {
+        max-width: 100%;
+        height: auto;
+        border-radius: 0.375em;
+      }
+      .article-content hr {
+        border: none;
+        border-top: 1px solid var(--color-border-strong);
+        margin: 2.5em 0;
+      }
+    </style>
+  </head>
+  <body
+    class="bg-surface font-body text-ink antialiased"
+    x-data="{
+      location: { city: '', state: '', temp: '', condition: '' },
+      async fetchWeather() {
+        try {
+          const pos = await new Promise((resolve, reject) =>
+            navigator.geolocation.getCurrentPosition(resolve, reject, { timeout: 5000 })
+          );
+          const { latitude: lat, longitude: lon } = pos.coords;
+          const [geoRes, weatherRes] = await Promise.all([
+            fetch(`https://nominatim.openstreetmap.org/reverse?lat=${lat}&lon=${lon}&format=json`),
+            fetch(`https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&current=temperature_2m,weather_code&temperature_unit=fahrenheit`)
+          ]);
+          const geo = await geoRes.json();
+          const weather = await weatherRes.json();
+          const addr = geo.address || {};
+          this.location.city = addr.city || addr.town || addr.village || addr.county || '';
+          this.location.state = addr.state ? this.abbrState(addr.state) : '';
+          this.location.temp = Math.round(weather.current?.temperature_2m || 0);
+          this.location.condition = this.weatherLabel(weather.current?.weather_code);
+        } catch {
+          this.location = { city: '', state: '', temp: '', condition: '' };
+        }
+      },
+      abbrState(name) {
+        const map = {Alabama:'AL',Alaska:'AK',Arizona:'AZ',Arkansas:'AR',California:'CA',Colorado:'CO',Connecticut:'CT',Delaware:'DE',Florida:'FL',Georgia:'GA',Hawaii:'HI',Idaho:'ID',Illinois:'IL',Indiana:'IN',Iowa:'IA',Kansas:'KS',Kentucky:'KY',Louisiana:'LA',Maine:'ME',Maryland:'MD',Massachusetts:'MA',Michigan:'MI',Minnesota:'MN',Mississippi:'MS',Missouri:'MO',Montana:'MT',Nebraska:'NE',Nevada:'NV','New Hampshire':'NH','New Jersey':'NJ','New Mexico':'NM','New York':'NY','North Carolina':'NC','North Dakota':'ND',Ohio:'OH',Oklahoma:'OK',Oregon:'OR',Pennsylvania:'PA','Rhode Island':'RI','South Carolina':'SC','South Dakota':'SD',Tennessee:'TN',Texas:'TX',Utah:'UT',Vermont:'VT',Virginia:'VA',Washington:'WA','West Virginia':'WV',Wisconsin:'WI',Wyoming:'WY'};
+        return map[name] || name;
+      },
+      weatherLabel(code) {
+        if (code == null) return '';
+        if (code === 0) return 'Clear';
+        if (code <= 3) return 'Partly Cloudy';
+        if (code <= 48) return 'Foggy';
+        if (code <= 67) return 'Rainy';
+        if (code <= 77) return 'Snowy';
+        if (code <= 82) return 'Showers';
+        if (code <= 86) return 'Snow Showers';
+        return 'Stormy';
+      }
+    }"
+    x-init="fetchWeather()">
+    <div class="isolate">
+      {slot}
+      <include src="footer.html"></include>
+    </div>
+    <script src="/assets/js/main.js"></script>
+  </body>
+</html>

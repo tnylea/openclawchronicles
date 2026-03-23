@@ -1,0 +1,462 @@
+<layout title="OpenClaw Chronicles · Home" src="main.html">
+
+    <include src="top-bar.html"></include>
+
+    <main>
+        <include src="header-home.html"></include>
+
+        <!-- ================================================================ -->
+        <!-- HERO — THREE-COLUMN FRONT PAGE -->
+        <!-- ================================================================ -->
+        <section class="mx-auto max-w-7xl px-4 pt-8 pb-12 sm:px-6 lg:px-8 lg:pt-10 lg:pb-16">
+            <div class="grid gap-8 lg:grid-cols-12 lg:gap-0">
+                <ForEach content="posts" as="post" orderBy="date" count="3">
+
+                    <If condition="loop == 1">
+                        <!-- CENTER COLUMN (featured) -->
+                        <div class="lg:col-span-6 lg:px-6 lg:order-2">
+                            <article>
+                                <a href="{post.link}" class="group">
+                                    <figure>
+                                        <div class="overflow-hidden rounded-[min(0.5vw,6px)]">
+                                            <img
+                                                src="{post.coverImage}"
+                                                alt="{post.title}"
+                                                class="outline-img-outline aspect-16/10 w-full object-cover outline-1 -outline-offset-1" />
+                                        </div>
+                                        <figcaption class="mt-2 flex items-baseline gap-2">
+                                            <span class="text-ink-faint font-mono text-[0.5625rem] tracking-wider uppercase">Photo</span>
+                                            <span class="font-body text-ink-faint text-[0.8125rem] italic">Cover image for {post.title}</span>
+                                        </figcaption>
+                                    </figure>
+                                    <h2 class="font-display group-hover:text-red-accent text-ink mt-5 text-3xl font-semibold tracking-tight text-balance sm:text-4xl lg:text-[2.75rem]">
+                                        {post.title}
+                                    </h2>
+                                    <p class="font-body text-ink-body mt-3 text-lg text-pretty sm:text-base">
+                                        {post.excerpt}
+                                    </p>
+                                    <div class="mt-4 flex items-center gap-3">
+                                        <img src="{post.authorPicture}" class="size-8 rounded-full" alt="{post.authorName}" />
+                                        <span class="text-ink-strong font-sans text-[0.8125rem] font-semibold">By {post.authorName}</span>
+                                        <span class="text-ink-faint font-mono text-[0.625rem] tracking-wider uppercase">{post.dateFormatted}</span>
+                                    </div>
+                                </a>
+                            </article>
+                        </div>
+                    </If>
+
+                    <If condition="loop == 2">
+                        <!-- LEFT COLUMN -->
+                        <div class="lg:border-border lg:col-span-3 lg:border-r lg:pr-6 lg:order-1">
+                            <article>
+                                <a href="{post.link}" class="group">
+                                    <span class="text-red-accent font-mono text-[0.625rem] font-semibold tracking-wider uppercase">Latest</span>
+                                    <h3 class="font-display group-hover:text-red-accent text-ink mt-1.5 text-xl font-semibold tracking-tight text-balance sm:text-lg">
+                                        {post.title}
+                                    </h3>
+                                    <p class="font-body text-ink-body mt-2 text-[0.9375rem] text-pretty">
+                                        {post.excerpt}
+                                    </p>
+                                    <div class="mt-3 flex items-center gap-2">
+                                        <img src="{post.authorPicture}" class="size-6 rounded-full" alt="{post.authorName}" />
+                                        <span class="text-ink-faint font-mono text-[0.625rem] tracking-wider uppercase">{post.dateFormatted}</span>
+                                    </div>
+                                </a>
+                            </article>
+                        </div>
+                    </If>
+
+                    <If condition="loop == 3">
+                        <!-- RIGHT COLUMN -->
+                        <div class="lg:border-border lg:col-span-3 lg:border-l lg:pl-6 lg:order-3">
+                            <article>
+                                <a href="{post.link}" class="group">
+                                    <div class="flex items-center gap-2">
+                                        <span class="relative flex size-2">
+                                            <span class="bg-red-accent absolute inline-flex size-full animate-ping rounded-full opacity-75"></span>
+                                            <span class="bg-red-accent relative inline-flex size-2 rounded-full"></span>
+                                        </span>
+                                        <span class="text-red-accent font-mono text-[0.625rem] font-semibold tracking-wider uppercase">Recent</span>
+                                    </div>
+                                    <h3 class="font-display group-hover:text-red-accent text-ink mt-2 text-xl font-semibold tracking-tight sm:text-lg">
+                                        {post.title}
+                                    </h3>
+                                    <p class="font-body text-ink-body mt-2 text-[0.9375rem] text-pretty">
+                                        {post.excerpt}
+                                    </p>
+                                    <div class="mt-3 flex items-center gap-2">
+                                        <img src="{post.authorPicture}" class="size-6 rounded-full" alt="{post.authorName}" />
+                                        <span class="text-ink-faint font-mono text-[0.625rem] tracking-wider uppercase">{post.dateFormatted}</span>
+                                    </div>
+                                </a>
+                            </article>
+                        </div>
+                    </If>
+
+                </ForEach>
+            </div>
+        </section>
+
+        <!-- ================================================================ -->
+        <!-- ARTICLE STRIP -->
+        <!-- ================================================================ -->
+        <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8" aria-hidden="true">
+            <div class="bg-border-strong h-px"></div>
+        </div>
+
+        <section class="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8">
+            <div class="lg:divide-border grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 lg:gap-0 lg:divide-x">
+                <ForEach content="posts" as="post" orderBy="date" count="3">
+                    <If condition="loop == 1">
+                        <article class="lg:pr-5">
+                            <a href="{post.link}" class="group flex gap-4 lg:flex-col lg:gap-0">
+                                <div class="shrink-0 sm:shrink">
+                                    <img
+                                        src="{post.coverImage}"
+                                        alt="{post.title}"
+                                        class="outline-img-outline size-20 rounded-[min(0.3vw,4px)] object-cover outline-1 -outline-offset-1 sm:aspect-3/2 sm:size-auto sm:w-full lg:aspect-3/2 lg:w-full" />
+                                </div>
+                                <div class="lg:mt-3">
+                                    <h3 class="font-display group-hover:text-red-accent text-ink text-base font-semibold tracking-tight sm:text-[0.9375rem]">
+                                        {post.title}
+                                    </h3>
+                                    <p class="text-ink-faint mt-1 font-mono text-[0.625rem] tracking-wider uppercase">{post.dateFormatted}</p>
+                                </div>
+                            </a>
+                        </article>
+                    </If>
+                    <If condition="loop == 2">
+                        <article class="lg:px-5">
+                            <a href="{post.link}" class="group flex gap-4 lg:flex-col lg:gap-0">
+                                <div class="shrink-0 sm:shrink">
+                                    <img
+                                        src="{post.coverImage}"
+                                        alt="{post.title}"
+                                        class="outline-img-outline size-20 rounded-[min(0.3vw,4px)] object-cover outline-1 -outline-offset-1 sm:aspect-3/2 sm:size-auto sm:w-full lg:aspect-3/2 lg:w-full" />
+                                </div>
+                                <div class="lg:mt-3">
+                                    <h3 class="font-display group-hover:text-red-accent text-ink text-base font-semibold tracking-tight sm:text-[0.9375rem]">
+                                        {post.title}
+                                    </h3>
+                                    <p class="text-ink-faint mt-1 font-mono text-[0.625rem] tracking-wider uppercase">{post.dateFormatted}</p>
+                                </div>
+                            </a>
+                        </article>
+                    </If>
+                    <If condition="loop == 3">
+                        <article class="lg:pl-5">
+                            <a href="{post.link}" class="group flex gap-4 lg:flex-col lg:gap-0">
+                                <div class="shrink-0 sm:shrink">
+                                    <img
+                                        src="{post.coverImage}"
+                                        alt="{post.title}"
+                                        class="outline-img-outline size-20 rounded-[min(0.3vw,4px)] object-cover outline-1 -outline-offset-1 sm:aspect-3/2 sm:size-auto sm:w-full lg:aspect-3/2 lg:w-full" />
+                                </div>
+                                <div class="lg:mt-3">
+                                    <h3 class="font-display group-hover:text-red-accent text-ink text-base font-semibold tracking-tight sm:text-[0.9375rem]">
+                                        {post.title}
+                                    </h3>
+                                    <p class="text-ink-faint mt-1 font-mono text-[0.625rem] tracking-wider uppercase">{post.dateFormatted}</p>
+                                </div>
+                            </a>
+                        </article>
+                    </If>
+                </ForEach>
+            </div>
+        </section>
+
+        <!-- ================================================================ -->
+        <!-- MAIN CONTENT: ARTICLES + OPINION SIDEBAR -->
+        <!-- ================================================================ -->
+        <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8" aria-hidden="true">
+            <div class="bg-border-strong h-px"></div>
+        </div>
+
+        <section class="mx-auto max-w-7xl px-4 py-10 sm:px-6 lg:px-8 lg:py-14">
+            <div class="grid gap-10 lg:grid-cols-12 lg:gap-0">
+                <!-- MAIN ARTICLES -->
+                <div class="lg:border-border lg:col-span-8 lg:border-r lg:pr-8">
+                    <div class="flex items-center gap-3">
+                        <h2 class="text-ink font-mono text-[0.6875rem] font-semibold tracking-widest uppercase">All Posts</h2>
+                        <div class="bg-border-strong h-px flex-1" aria-hidden="true"></div>
+                    </div>
+
+                    <ForEach content="posts" as="post" orderBy="date">
+                        <article class="mt-8">
+                            <a href="{post.link}" class="group grid gap-6 sm:grid-cols-2">
+                                <div>
+                                    <img
+                                        src="{post.coverImage}"
+                                        alt="{post.title}"
+                                        class="outline-img-outline aspect-4/3 w-full rounded-[min(0.3vw,4px)] object-cover outline-1 -outline-offset-1" />
+                                </div>
+                                <div class="flex flex-col justify-center">
+                                    <span class="text-red-accent font-mono text-[0.625rem] font-semibold tracking-wider uppercase">Article</span>
+                                    <h3 class="font-display group-hover:text-red-accent text-ink mt-2 text-2xl font-semibold tracking-tight text-balance sm:text-xl">
+                                        {post.title}
+                                    </h3>
+                                    <p class="text-ink-body mt-3 text-[0.9375rem] text-pretty">
+                                        {post.excerpt}
+                                    </p>
+                                    <div class="mt-4 flex items-center gap-3">
+                                        <img src="{post.authorPicture}" class="size-8 rounded-full" alt="{post.authorName}" />
+                                        <span class="text-ink-strong font-sans text-[0.8125rem] font-semibold">{post.authorName}</span>
+                                        <span class="text-ink-faint font-mono text-[0.625rem] tracking-wider uppercase">{post.dateFormatted}</span>
+                                    </div>
+                                </div>
+                            </a>
+                        </article>
+                        <div class="bg-border my-8 h-px" aria-hidden="true"></div>
+                    </ForEach>
+                </div>
+
+                <!-- SIDEBAR -->
+                <div class="lg:col-span-4 lg:pl-8">
+                    <div class="flex items-center gap-3">
+                        <h2 class="text-red-accent font-mono text-[0.6875rem] font-semibold tracking-widest uppercase">Opinion</h2>
+                        <div class="bg-border-strong h-px flex-1" aria-hidden="true"></div>
+                    </div>
+
+                    <article class="mt-6">
+                        <a href="#" class="group">
+                            <div class="flex items-start gap-4">
+                                <img src="https://assets.ui.sh/avatars/1.webp" alt class="outline-img-outline size-12 shrink-0 rounded-full outline-1 -outline-offset-1" />
+                                <div>
+                                    <span class="text-ink-faint font-mono text-[0.625rem] tracking-wider uppercase">The Editorial Board</span>
+                                    <h3 class="font-display group-hover:text-red-accent text-ink mt-1 text-lg font-semibold tracking-tight sm:text-base">
+                                        It's Time to Treat Open Source Like Public Infrastructure
+                                    </h3>
+                                </div>
+                            </div>
+                        </a>
+                    </article>
+
+                    <div class="bg-border my-5 h-px" aria-hidden="true"></div>
+
+                    <article>
+                        <a href="#" class="group">
+                            <div class="flex items-start gap-4">
+                                <img src="https://assets.ui.sh/avatars/2.webp" alt class="outline-img-outline size-12 shrink-0 rounded-full outline-1 -outline-offset-1" />
+                                <div>
+                                    <span class="text-ink-faint font-mono text-[0.625rem] tracking-wider uppercase">Guest Column</span>
+                                    <h3 class="font-display group-hover:text-red-accent text-ink mt-1 text-lg font-semibold tracking-tight sm:text-base">
+                                        Copilot Didn't Kill Programming. It Killed Mediocre Programming.
+                                    </h3>
+                                </div>
+                            </div>
+                        </a>
+                    </article>
+
+                    <div class="bg-border my-5 h-px" aria-hidden="true"></div>
+
+                    <article>
+                        <a href="#" class="group">
+                            <div class="flex items-start gap-4">
+                                <img src="https://assets.ui.sh/avatars/3.webp" alt class="outline-img-outline size-12 shrink-0 rounded-full outline-1 -outline-offset-1" />
+                                <div>
+                                    <span class="text-ink-faint font-mono text-[0.625rem] tracking-wider uppercase">Letter from the Editor</span>
+                                    <h3 class="font-display group-hover:text-red-accent text-ink mt-1 text-lg font-semibold tracking-tight sm:text-base">
+                                        Why We're Going Open Source Ourselves
+                                    </h3>
+                                </div>
+                            </div>
+                        </a>
+                    </article>
+
+                    <!-- Most Read -->
+                    <div class="mt-10 flex items-center gap-3">
+                        <h2 class="text-ink font-mono text-[0.6875rem] font-semibold tracking-widest uppercase">Most Read</h2>
+                        <div class="bg-border-strong h-px flex-1" aria-hidden="true"></div>
+                    </div>
+
+                    <ol class="mt-5 flex flex-col gap-4" role="list">
+                        <li>
+                            <a href="#" class="group flex items-start gap-4">
+                                <span class="font-display text-ink-ghost text-3xl font-semibold sm:text-2xl">01</span>
+                                <h3 class="font-display group-hover:text-red-accent text-ink-strong text-base font-semibold tracking-tight sm:text-[0.9375rem]">
+                                    The xz Backdoor Was Just the Beginning: Three More Supply Chain Attacks Discovered
+                                </h3>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="group flex items-start gap-4">
+                                <span class="font-display text-ink-ghost text-3xl font-semibold sm:text-2xl">02</span>
+                                <h3 class="font-display group-hover:text-red-accent text-ink-strong text-base font-semibold tracking-tight sm:text-[0.9375rem]">
+                                    Docker's Comeback: How the Container Pioneer Reinvented Itself
+                                </h3>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="group flex items-start gap-4">
+                                <span class="font-display text-ink-ghost text-3xl font-semibold sm:text-2xl">03</span>
+                                <h3 class="font-display group-hover:text-red-accent text-ink-strong text-base font-semibold tracking-tight sm:text-[0.9375rem]">
+                                    Why Every Senior Engineer Should Contribute to Open Source in 2026
+                                </h3>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="group flex items-start gap-4">
+                                <span class="font-display text-ink-ghost text-3xl font-semibold sm:text-2xl">04</span>
+                                <h3 class="font-display group-hover:text-red-accent text-ink-strong text-base font-semibold tracking-tight sm:text-[0.9375rem]">
+                                    The Surprising Database That's Replacing Redis at Scale
+                                </h3>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="group flex items-start gap-4">
+                                <span class="font-display text-ink-ghost text-3xl font-semibold sm:text-2xl">05</span>
+                                <h3 class="font-display group-hover:text-red-accent text-ink-strong text-base font-semibold tracking-tight sm:text-[0.9375rem]">
+                                    WebAssembly on the Server: The Technology Nobody Asked for That Everyone Needs
+                                </h3>
+                            </a>
+                        </li>
+                    </ol>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================================================================ -->
+        <!-- NEWSLETTER SIGNUP CTA -->
+        <!-- ================================================================ -->
+        <include src="newsletter.html"></include>
+
+        <!-- ================================================================ -->
+        <!-- LATEST FROM SECTIONS — TABBED CONTENT -->
+        <!-- ================================================================ -->
+        <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8" aria-hidden="true">
+            <div class="bg-border h-px"></div>
+        </div>
+
+        <section class="mx-auto max-w-7xl px-4 py-10 sm:px-6 lg:px-8 lg:py-14" x-data="{ tab: 'technology' }">
+            <div class="border-border flex flex-wrap items-center gap-x-6 gap-y-2 border-b pb-3">
+                <h2 class="text-ink font-mono text-[0.6875rem] font-semibold tracking-widest uppercase">Latest From</h2>
+                <button type="button" @click="tab = 'technology'"
+                    :class="tab === 'technology' ? 'text-red-accent' : 'text-ink-muted hover:text-ink'"
+                    class="font-sans text-sm font-semibold">Technology</button>
+                <button type="button" @click="tab = 'opensource'"
+                    :class="tab === 'opensource' ? 'text-red-accent' : 'text-ink-muted hover:text-ink'"
+                    class="font-sans text-sm font-semibold">Open Source</button>
+                <button type="button" @click="tab = 'security'"
+                    :class="tab === 'security' ? 'text-red-accent' : 'text-ink-muted hover:text-ink'"
+                    class="font-sans text-sm font-semibold">Security</button>
+                <button type="button" @click="tab = 'ai'"
+                    :class="tab === 'ai' ? 'text-red-accent' : 'text-ink-muted hover:text-ink'"
+                    class="font-sans text-sm font-semibold">AI &amp; ML</button>
+            </div>
+
+            <!-- Technology tab -->
+            <div x-show="tab === 'technology'" class="mt-6 grid gap-6 sm:grid-cols-2 lg:grid-cols-3 lg:gap-8">
+                <article>
+                    <a href="#" class="group">
+                        <img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?q=80&w=600&auto=format&fit=crop" alt class="outline-img-outline aspect-3/2 w-full rounded-[min(0.3vw,4px)] object-cover outline-1 -outline-offset-1" />
+                        <span class="text-ink-faint mt-3 font-mono text-[0.625rem] tracking-wider uppercase">Cloud</span>
+                        <h3 class="font-display group-hover:text-red-accent text-ink mt-1 text-lg font-semibold tracking-tight sm:text-base">The Multi-Cloud Myth: Why Most Companies Should Pick One and Commit</h3>
+                        <p class="text-ink-faint mt-2 font-mono text-[0.625rem] tracking-wider uppercase">5 min read</p>
+                    </a>
+                </article>
+                <article>
+                    <a href="#" class="group">
+                        <img src="https://images.unsplash.com/photo-1573164713714-d95e436ab8d6?q=80&w=600&auto=format&fit=crop" alt class="outline-img-outline aspect-3/2 w-full rounded-[min(0.3vw,4px)] object-cover outline-1 -outline-offset-1" />
+                        <span class="text-ink-faint mt-3 font-mono text-[0.625rem] tracking-wider uppercase">Hardware</span>
+                        <h3 class="font-display group-hover:text-red-accent text-ink mt-1 text-lg font-semibold tracking-tight sm:text-base">ARM's Server Revolution Is No Longer a Prediction. It's a Fact.</h3>
+                        <p class="text-ink-faint mt-2 font-mono text-[0.625rem] tracking-wider uppercase">7 min read</p>
+                    </a>
+                </article>
+                <article>
+                    <a href="#" class="group">
+                        <img src="https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?q=80&w=600&auto=format&fit=crop" alt class="outline-img-outline aspect-3/2 w-full rounded-[min(0.3vw,4px)] object-cover outline-1 -outline-offset-1" />
+                        <span class="text-ink-faint mt-3 font-mono text-[0.625rem] tracking-wider uppercase">Programming</span>
+                        <h3 class="font-display group-hover:text-red-accent text-ink mt-1 text-lg font-semibold tracking-tight sm:text-base">Zig, Mojo, and Carbon: The New Languages Challenging C++ Supremacy</h3>
+                        <p class="text-ink-faint mt-2 font-mono text-[0.625rem] tracking-wider uppercase">10 min read</p>
+                    </a>
+                </article>
+            </div>
+
+            <!-- Open Source tab -->
+            <div x-show="tab === 'opensource'" x-cloak class="mt-6 grid gap-6 sm:grid-cols-2 lg:grid-cols-3 lg:gap-8">
+                <article>
+                    <a href="#" class="group">
+                        <img src="https://images.unsplash.com/photo-1556075798-4825dfaaf498?q=80&w=600&auto=format&fit=crop" alt class="outline-img-outline aspect-3/2 w-full rounded-[min(0.3vw,4px)] object-cover outline-1 -outline-offset-1" />
+                        <span class="text-ink-faint mt-3 font-mono text-[0.625rem] tracking-wider uppercase">Community</span>
+                        <h3 class="font-display group-hover:text-red-accent text-ink mt-1 text-lg font-semibold tracking-tight sm:text-base">How a Solo Maintainer's Burnout Led to a New Model for Sustainable Open Source</h3>
+                        <p class="text-ink-faint mt-2 font-mono text-[0.625rem] tracking-wider uppercase">8 min read</p>
+                    </a>
+                </article>
+                <article>
+                    <a href="#" class="group">
+                        <img src="https://images.unsplash.com/photo-1618401471353-b98afee0b2eb?q=80&w=600&auto=format&fit=crop" alt class="outline-img-outline aspect-3/2 w-full rounded-[min(0.3vw,4px)] object-cover outline-1 -outline-offset-1" />
+                        <span class="text-ink-faint mt-3 font-mono text-[0.625rem] tracking-wider uppercase">Licensing</span>
+                        <h3 class="font-display group-hover:text-red-accent text-ink mt-1 text-lg font-semibold tracking-tight sm:text-base">The License Wars: BSL, SSPL, and the Fight for Open Source's Soul</h3>
+                        <p class="text-ink-faint mt-2 font-mono text-[0.625rem] tracking-wider uppercase">12 min read</p>
+                    </a>
+                </article>
+                <article>
+                    <a href="#" class="group">
+                        <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=600&auto=format&fit=crop" alt class="outline-img-outline aspect-3/2 w-full rounded-[min(0.3vw,4px)] object-cover outline-1 -outline-offset-1" />
+                        <span class="text-ink-faint mt-3 font-mono text-[0.625rem] tracking-wider uppercase">Governance</span>
+                        <h3 class="font-display group-hover:text-red-accent text-ink mt-1 text-lg font-semibold tracking-tight sm:text-base">The New Foundation Model: How Projects Are Governing Themselves in 2026</h3>
+                        <p class="text-ink-faint mt-2 font-mono text-[0.625rem] tracking-wider uppercase">6 min read</p>
+                    </a>
+                </article>
+            </div>
+
+            <!-- Security tab -->
+            <div x-show="tab === 'security'" x-cloak class="mt-6 grid gap-6 sm:grid-cols-2 lg:grid-cols-3 lg:gap-8">
+                <article>
+                    <a href="#" class="group">
+                        <img src="https://images.unsplash.com/photo-1614064641938-3bbee52942c7?q=80&w=600&auto=format&fit=crop" alt class="outline-img-outline aspect-3/2 w-full rounded-[min(0.3vw,4px)] object-cover outline-1 -outline-offset-1" />
+                        <span class="text-ink-faint mt-3 font-mono text-[0.625rem] tracking-wider uppercase">Threats</span>
+                        <h3 class="font-display group-hover:text-red-accent text-ink mt-1 text-lg font-semibold tracking-tight sm:text-base">Quantum Computing and Cryptography: The Five-Year Countdown Begins</h3>
+                        <p class="text-ink-faint mt-2 font-mono text-[0.625rem] tracking-wider uppercase">9 min read</p>
+                    </a>
+                </article>
+                <article>
+                    <a href="#" class="group">
+                        <img src="https://images.unsplash.com/photo-1563986768494-4dee2763ff3f?q=80&w=600&auto=format&fit=crop" alt class="outline-img-outline aspect-3/2 w-full rounded-[min(0.3vw,4px)] object-cover outline-1 -outline-offset-1" />
+                        <span class="text-ink-faint mt-3 font-mono text-[0.625rem] tracking-wider uppercase">Compliance</span>
+                        <h3 class="font-display group-hover:text-red-accent text-ink mt-1 text-lg font-semibold tracking-tight sm:text-base">SBOM Mandates Go Global: What Every Developer Needs to Know</h3>
+                        <p class="text-ink-faint mt-2 font-mono text-[0.625rem] tracking-wider uppercase">7 min read</p>
+                    </a>
+                </article>
+                <article>
+                    <a href="#" class="group">
+                        <img src="https://images.unsplash.com/photo-1510511459019-5dda7724fd87?q=80&w=600&auto=format&fit=crop" alt class="outline-img-outline aspect-3/2 w-full rounded-[min(0.3vw,4px)] object-cover outline-1 -outline-offset-1" />
+                        <span class="text-ink-faint mt-3 font-mono text-[0.625rem] tracking-wider uppercase">DevSecOps</span>
+                        <h3 class="font-display group-hover:text-red-accent text-ink mt-1 text-lg font-semibold tracking-tight sm:text-base">Shift Left Is Dead. Long Live Shift Everywhere.</h3>
+                        <p class="text-ink-faint mt-2 font-mono text-[0.625rem] tracking-wider uppercase">5 min read</p>
+                    </a>
+                </article>
+            </div>
+
+            <!-- AI tab -->
+            <div x-show="tab === 'ai'" x-cloak class="mt-6 grid gap-6 sm:grid-cols-2 lg:grid-cols-3 lg:gap-8">
+                <article>
+                    <a href="#" class="group">
+                        <img src="https://images.unsplash.com/photo-1620712943543-bcc4688e7485?q=80&w=600&auto=format&fit=crop" alt class="outline-img-outline aspect-3/2 w-full rounded-[min(0.3vw,4px)] object-cover outline-1 -outline-offset-1" />
+                        <span class="text-ink-faint mt-3 font-mono text-[0.625rem] tracking-wider uppercase">Research</span>
+                        <h3 class="font-display group-hover:text-red-accent text-ink mt-1 text-lg font-semibold tracking-tight sm:text-base">The Surprising Return of Symbolic AI: Why Neural Nets Aren't Enough</h3>
+                        <p class="text-ink-faint mt-2 font-mono text-[0.625rem] tracking-wider uppercase">11 min read</p>
+                    </a>
+                </article>
+                <article>
+                    <a href="#" class="group">
+                        <img src="https://images.unsplash.com/photo-1555255707-c07966088b7b?q=80&w=600&auto=format&fit=crop" alt class="outline-img-outline aspect-3/2 w-full rounded-[min(0.3vw,4px)] object-cover outline-1 -outline-offset-1" />
+                        <span class="text-ink-faint mt-3 font-mono text-[0.625rem] tracking-wider uppercase">Tools</span>
+                        <h3 class="font-display group-hover:text-red-accent text-ink mt-1 text-lg font-semibold tracking-tight sm:text-base">Beyond Code Completion: How AI Agents Are Writing Entire Test Suites</h3>
+                        <p class="text-ink-faint mt-2 font-mono text-[0.625rem] tracking-wider uppercase">8 min read</p>
+                    </a>
+                </article>
+                <article>
+                    <a href="#" class="group">
+                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=600&auto=format&fit=crop" alt class="outline-img-outline aspect-3/2 w-full rounded-[min(0.3vw,4px)] object-cover outline-1 -outline-offset-1" />
+                        <span class="text-ink-faint mt-3 font-mono text-[0.625rem] tracking-wider uppercase">Ethics</span>
+                        <h3 class="font-display group-hover:text-red-accent text-ink mt-1 text-lg font-semibold tracking-tight sm:text-base">Open-Source AI Models Are Catching Up. The Ethics Debate Is Just Starting.</h3>
+                        <p class="text-ink-faint mt-2 font-mono text-[0.625rem] tracking-wider uppercase">6 min read</p>
+                    </a>
+                </article>
+            </div>
+        </section>
+
+    </main>
+
+</layout>

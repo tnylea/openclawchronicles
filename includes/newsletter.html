@@ -1,0 +1,30 @@
+<!-- NEWSLETTER SIGNUP CTA -->
+<div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8" aria-hidden="true">
+  <div class="bg-border-strong h-px"></div>
+</div>
+
+<section class="mx-auto max-w-7xl px-4 py-14 sm:px-6 lg:px-8 lg:py-20">
+  <div class="bg-surface-alt px-6 py-14 text-center sm:px-12 sm:py-20">
+    <span class="text-red-accent font-mono text-[0.625rem] font-semibold tracking-widest uppercase">Daily Briefing</span>
+    <h2 class="font-display text-ink mt-4 text-3xl font-semibold tracking-tight text-balance sm:text-4xl lg:text-5xl">
+      Get the Open-Source Briefing
+    </h2>
+    <p class="text-ink-body mx-auto mt-4 max-w-[50ch] text-base text-pretty sm:text-[0.9375rem]">
+      The stories that matter, delivered to your inbox every morning. Free, no spam, unsubscribe anytime.
+    </p>
+    <form class="mx-auto mt-8 flex max-w-xs flex-col gap-3 sm:max-w-md sm:flex-row" @submit.prevent>
+      <input
+        type="email"
+        name="email"
+        aria-label="Email address"
+        placeholder="your@email.com"
+        class="bg-surface-subtle focus:ring-red-accent placeholder:text-ink-faint ring-border-strong text-ink flex-1 px-4 py-3 font-sans text-sm ring-1 focus:ring-2 focus:outline-none max-sm:text-base" />
+      <button type="submit" class="bg-red-accent hover:bg-red-vibrant px-4 py-3 font-sans text-sm font-semibold text-white">
+        Subscribe
+      </button>
+    </form>
+    <p class="text-ink-faint mt-4 font-mono text-[0.625rem]">
+      Join 45,000+ developers. No spam. Unsubscribe anytime.
+    </p>
+  </div>
+</section>

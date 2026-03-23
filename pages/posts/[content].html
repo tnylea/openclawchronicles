@@ -1,0 +1,64 @@
+<layout title="{frontmatter.title} · OpenClaw Chronicles" src="main.html">
+
+    <include src="top-bar.html"></include>
+    <include src="header.html"></include>
+
+    <main>
+        <!-- Breadcrumb -->
+        <div class="mx-auto max-w-4xl px-4 pt-6 pb-2 sm:px-6 lg:px-8">
+            <nav class="flex items-center gap-2 font-mono text-[0.625rem] tracking-wider uppercase">
+                <a href="/" class="text-ink-muted hover:text-red-accent">Home</a>
+                <span class="text-ink-faint">/</span>
+                <a href="/posts" class="text-ink-muted hover:text-red-accent">Posts</a>
+                <span class="text-ink-faint">/</span>
+                <span class="text-ink-strong truncate max-w-[20ch]">{frontmatter.title}</span>
+            </nav>
+        </div>
+
+        <!-- Article Header -->
+        <div class="mx-auto max-w-4xl px-4 pt-8 sm:px-6 lg:px-8">
+            <span class="text-red-accent font-mono text-[0.625rem] font-semibold tracking-wider uppercase">Article</span>
+            <h1 class="font-display text-ink mt-3 text-4xl font-semibold tracking-tight text-balance sm:text-5xl lg:text-6xl">
+                {frontmatter.title}
+            </h1>
+            <p class="font-body text-ink-muted mt-4 text-lg italic">{frontmatter.excerpt}</p>
+
+            <!-- Author & Date -->
+            <div class="border-border mt-8 flex items-center gap-4 border-t pt-6">
+                <img src="{frontmatter.authorPicture}" class="size-12 rounded-full" alt="{frontmatter.authorName}" />
+                <div>
+                    <div class="text-ink-strong font-sans text-sm font-semibold">{frontmatter.authorName}</div>
+                    <time datetime="{frontmatter.date}" class="text-ink-faint font-mono text-[0.625rem] tracking-wider uppercase">{frontmatter.dateFormatted}</time>
+                </div>
+            </div>
+        </div>
+
+        <!-- Cover Image -->
+        <div class="mx-auto max-w-5xl px-4 pt-8 sm:px-6 lg:px-8">
+            <div class="overflow-hidden rounded-[min(0.5vw,6px)]">
+                <img
+                    src="{frontmatter.coverImage}"
+                    alt="{frontmatter.title}"
+                    class="outline-img-outline aspect-16/9 w-full object-cover outline-1 -outline-offset-1" />
+            </div>
+        </div>
+
+        <!-- Article Content -->
+        <article class="article-content mx-auto max-w-3xl px-4 py-12 sm:px-6 lg:px-8">
+            {content}
+        </article>
+
+        <!-- Back to Posts -->
+        <div class="mx-auto max-w-3xl px-4 pb-12 sm:px-6 lg:px-8">
+            <div class="border-border-strong border-t pt-8">
+                <a href="/posts" class="hover:text-red-vibrant text-red-accent font-sans text-sm font-medium">
+                    &larr; Back to all posts
+                </a>
+            </div>
+        </div>
+
+        <!-- Newsletter -->
+        <include src="newsletter.html"></include>
+    </main>
+
+</layout>

@@ -1,0 +1,59 @@
+<layout title="OpenClaw Chronicles · All Posts" src="main.html">
+
+    <include src="top-bar.html"></include>
+    <include src="header.html"></include>
+
+    <main>
+        <!-- Breadcrumb -->
+        <div class="mx-auto max-w-7xl px-4 pt-6 pb-2 sm:px-6 lg:px-8">
+            <nav class="flex items-center gap-2 font-mono text-[0.625rem] tracking-wider uppercase">
+                <a href="/" class="text-ink-muted hover:text-red-accent">Home</a>
+                <span class="text-ink-faint">/</span>
+                <span class="text-ink-strong">Posts</span>
+            </nav>
+        </div>
+
+        <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+            <div class="border-border-strong border-b pb-6 pt-4">
+                <h1 class="font-display text-ink text-4xl font-semibold tracking-tight sm:text-5xl">All Posts</h1>
+                <p class="font-body text-ink-muted mt-2 text-base italic">Every dispatch from the open-source frontier.</p>
+            </div>
+        </div>
+
+        <!-- Posts Grid -->
+        <section class="mx-auto max-w-7xl px-4 py-10 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
+                <ForEach content="posts" as="post" orderBy="date">
+                    <article>
+                        <a href="{post.link}" class="group">
+                            <div class="overflow-hidden rounded-[min(0.3vw,4px)]">
+                                <img
+                                    src="{post.coverImage}"
+                                    alt="{post.title}"
+                                    class="outline-img-outline aspect-3/2 w-full object-cover outline-1 -outline-offset-1 transition-transform duration-300 group-hover:scale-105" />
+                            </div>
+                            <div class="mt-4">
+                                <span class="text-red-accent font-mono text-[0.625rem] font-semibold tracking-wider uppercase">Article</span>
+                                <h3 class="font-display group-hover:text-red-accent text-ink mt-1 text-xl font-semibold tracking-tight text-balance">
+                                    {post.title}
+                                </h3>
+                                <p class="font-body text-ink-body mt-2 text-[0.9375rem] text-pretty">
+                                    {post.excerpt}
+                                </p>
+                                <div class="mt-4 flex items-center gap-3">
+                                    <img src="{post.authorPicture}" class="size-8 rounded-full" alt="{post.authorName}" />
+                                    <span class="text-ink-strong font-sans text-[0.8125rem] font-semibold">{post.authorName}</span>
+                                    <span class="text-ink-faint font-mono text-[0.625rem] tracking-wider uppercase">{post.dateFormatted}</span>
+                                </div>
+                            </div>
+                        </a>
+                    </article>
+                </ForEach>
+            </div>
+        </section>
+
+        <!-- Newsletter -->
+        <include src="newsletter.html"></include>
+    </main>
+
+</layout>

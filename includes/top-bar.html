@@ -1,0 +1,62 @@
+<!-- DATELINE BAR -->
+<div class="bg-bar border-bar-border border-b">
+  <div class="mx-auto flex max-w-7xl items-center justify-between px-4 py-2 sm:px-6 lg:px-8">
+    <div class="flex items-center gap-4">
+      <span class="text-bar-text font-mono text-[0.6875rem]">Sunday, March 22, 2026</span>
+      <template x-if="location.city">
+        <span class="text-bar-text-muted flex items-center gap-1.5 font-mono text-[0.6875rem] max-sm:hidden">
+          <span class="bg-red-accent/20 text-red-accent inline-flex size-1.5 rounded-full"></span>
+          <span x-text="location.city + (location.state ? ', ' + location.state : '')"></span>
+          <span>&middot;</span>
+          <span x-text="location.temp + '°F'"></span>
+          <span>&middot;</span>
+          <span x-text="location.condition"></span>
+        </span>
+      </template>
+      <template x-if="!location.city">
+        <span class="text-bar-text-muted font-mono text-[0.6875rem] max-sm:hidden">Location unavailable</span>
+      </template>
+    </div>
+    <div class="flex items-center gap-6">
+      <a href="#" class="hover:text-bar-text text-bar-text-muted font-sans text-[0.6875rem] font-medium">Subscribe</a>
+      <a href="#" class="hover:text-bar-text text-bar-text-muted font-sans text-[0.6875rem] font-medium">Sign In</a>
+    </div>
+  </div>
+</div>
+
+<!-- TOP VIBRANT RED BAR -->
+<div class="bg-red-accent">
+  <div class="mx-auto flex max-w-7xl items-center gap-4 px-4 py-1.5 sm:px-6 lg:px-8">
+    <div class="flex items-center gap-2">
+      <span class="relative flex size-2">
+        <span class="absolute inline-flex size-full animate-ping rounded-full bg-white opacity-75"></span>
+        <span class="relative inline-flex size-2 rounded-full bg-white"></span>
+      </span>
+      <span class="font-mono text-[0.625rem] font-semibold tracking-wider text-white uppercase">Breaking</span>
+    </div>
+    <div class="min-w-0 flex-1 overflow-hidden">
+      <div class="ticker-animate flex w-max gap-12">
+        <span class="font-sans text-[0.75rem] whitespace-nowrap text-white/90">Linux Foundation announces $500M open-source infrastructure fund</span>
+        <span class="whitespace-nowrap text-white/50">&triangleright;</span>
+        <span class="font-sans text-[0.75rem] whitespace-nowrap text-white/90">Rust 2.0 release candidate now available for testing</span>
+        <span class="whitespace-nowrap text-white/50">&triangleright;</span>
+        <span class="font-sans text-[0.75rem] whitespace-nowrap text-white/90">GitHub reports 200 million repositories milestone</span>
+        <span class="whitespace-nowrap text-white/50">&triangleright;</span>
+        <span class="font-sans text-[0.75rem] whitespace-nowrap text-white/90">EU passes landmark open-source sovereignty legislation</span>
+        <span class="whitespace-nowrap text-white/50">&triangleright;</span>
+        <span class="font-sans text-[0.75rem] whitespace-nowrap text-white/90">OpenClaw AI orchestration framework passes 50K GitHub stars</span>
+        <span class="whitespace-nowrap text-white/50">&triangleright;</span>
+        <!-- Duplicate for seamless loop -->
+        <span class="font-sans text-[0.75rem] whitespace-nowrap text-white/90">Linux Foundation announces $500M open-source infrastructure fund</span>
+        <span class="whitespace-nowrap text-white/50">&triangleright;</span>
+        <span class="font-sans text-[0.75rem] whitespace-nowrap text-white/90">Rust 2.0 release candidate now available for testing</span>
+        <span class="whitespace-nowrap text-white/50">&triangleright;</span>
+        <span class="font-sans text-[0.75rem] whitespace-nowrap text-white/90">GitHub reports 200 million repositories milestone</span>
+        <span class="whitespace-nowrap text-white/50">&triangleright;</span>
+        <span class="font-sans text-[0.75rem] whitespace-nowrap text-white/90">EU passes landmark open-source sovereignty legislation</span>
+        <span class="whitespace-nowrap text-white/50">&triangleright;</span>
+        <span class="font-sans text-[0.75rem] whitespace-nowrap text-white/90">OpenClaw AI orchestration framework passes 50K GitHub stars</span>
+      </div>
+    </div>
+  </div>
+</div>
