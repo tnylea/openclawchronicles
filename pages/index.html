@@ -10,7 +10,7 @@
         <!-- ================================================================ -->
         <section class="mx-auto max-w-7xl px-4 pt-8 pb-12 sm:px-6 lg:px-8 lg:pt-10 lg:pb-16">
             <div class="grid gap-8 lg:grid-cols-12 lg:gap-0">
-                <ForEach content="posts" as="post" orderBy="date" count="3">
+                <ForEach content="posts" as="post" orderBy="date, desc" count="3">
 
                     <If condition="loop == 1">
                         <!-- CENTER COLUMN (featured) -->
@@ -106,7 +106,7 @@
 
         <section class="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8">
             <div class="lg:divide-border grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 lg:gap-0 lg:divide-x">
-                <ForEach content="posts" as="post" orderBy="date" count="3">
+                <ForEach content="posts" as="post" orderBy="date, desc" count="3">
                     <If condition="loop == 1">
                         <article class="lg:pr-5">
                             <a href="{post.link}" class="group flex gap-4 lg:flex-col lg:gap-0">
@@ -181,7 +181,7 @@
                         <div class="bg-border-strong h-px flex-1" aria-hidden="true"></div>
                     </div>
 
-                    <ForEach content="posts" as="post" orderBy="date">
+                    <ForEach content="posts" as="post" orderBy="date, desc">
                         <article class="mt-8">
                             <a href="{post.link}" class="group grid gap-6 sm:grid-cols-2">
                                 <div>
