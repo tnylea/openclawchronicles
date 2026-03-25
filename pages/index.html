@@ -212,105 +212,29 @@
 
                 <!-- SIDEBAR -->
                 <div class="lg:col-span-4 lg:pl-8">
-                    <div class="flex items-center gap-3">
-                        <h2 class="text-red-accent font-mono text-[0.6875rem] font-semibold tracking-widest uppercase">Opinion</h2>
-                        <div class="bg-border-strong h-px flex-1" aria-hidden="true"></div>
-                    </div>
-
-                    <article class="mt-6">
-                        <a href="#" class="group">
-                            <div class="flex items-start gap-4">
-                                <img src="https://assets.ui.sh/avatars/1.webp" alt class="outline-img-outline size-12 shrink-0 rounded-full outline-1 -outline-offset-1" />
-                                <div>
-                                    <span class="text-ink-faint font-mono text-[0.625rem] tracking-wider uppercase">The Editorial Board</span>
-                                    <h3 class="font-display group-hover:text-red-accent text-ink mt-1 text-lg font-semibold tracking-tight sm:text-base">
-                                        It's Time to Treat Open Source Like Public Infrastructure
-                                    </h3>
-                                </div>
-                            </div>
-                        </a>
-                    </article>
-
-                    <div class="bg-border my-5 h-px" aria-hidden="true"></div>
-
-                    <article>
-                        <a href="#" class="group">
-                            <div class="flex items-start gap-4">
-                                <img src="https://assets.ui.sh/avatars/2.webp" alt class="outline-img-outline size-12 shrink-0 rounded-full outline-1 -outline-offset-1" />
-                                <div>
-                                    <span class="text-ink-faint font-mono text-[0.625rem] tracking-wider uppercase">Guest Column</span>
-                                    <h3 class="font-display group-hover:text-red-accent text-ink mt-1 text-lg font-semibold tracking-tight sm:text-base">
-                                        Copilot Didn't Kill Programming. It Killed Mediocre Programming.
-                                    </h3>
-                                </div>
-                            </div>
-                        </a>
-                    </article>
-
-                    <div class="bg-border my-5 h-px" aria-hidden="true"></div>
-
-                    <article>
-                        <a href="#" class="group">
-                            <div class="flex items-start gap-4">
-                                <img src="https://assets.ui.sh/avatars/3.webp" alt class="outline-img-outline size-12 shrink-0 rounded-full outline-1 -outline-offset-1" />
-                                <div>
-                                    <span class="text-ink-faint font-mono text-[0.625rem] tracking-wider uppercase">Letter from the Editor</span>
-                                    <h3 class="font-display group-hover:text-red-accent text-ink mt-1 text-lg font-semibold tracking-tight sm:text-base">
-                                        Why We're Going Open Source Ourselves
-                                    </h3>
-                                </div>
-                            </div>
-                        </a>
-                    </article>
-
                     <!-- Most Read -->
-                    <div class="mt-10 flex items-center gap-3">
+                    <div class="flex items-center gap-3">
                         <h2 class="text-ink font-mono text-[0.6875rem] font-semibold tracking-widest uppercase">Most Read</h2>
                         <div class="bg-border-strong h-px flex-1" aria-hidden="true"></div>
                     </div>
 
-                    <ol class="mt-5 flex flex-col gap-4" role="list">
-                        <li>
-                            <a href="#" class="group flex items-start gap-4">
-                                <span class="font-display text-ink-ghost text-3xl font-semibold sm:text-2xl">01</span>
-                                <h3 class="font-display group-hover:text-red-accent text-ink-strong text-base font-semibold tracking-tight sm:text-[0.9375rem]">
-                                    The xz Backdoor Was Just the Beginning: Three More Supply Chain Attacks Discovered
-                                </h3>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#" class="group flex items-start gap-4">
-                                <span class="font-display text-ink-ghost text-3xl font-semibold sm:text-2xl">02</span>
-                                <h3 class="font-display group-hover:text-red-accent text-ink-strong text-base font-semibold tracking-tight sm:text-[0.9375rem]">
-                                    Docker's Comeback: How the Container Pioneer Reinvented Itself
-                                </h3>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#" class="group flex items-start gap-4">
-                                <span class="font-display text-ink-ghost text-3xl font-semibold sm:text-2xl">03</span>
-                                <h3 class="font-display group-hover:text-red-accent text-ink-strong text-base font-semibold tracking-tight sm:text-[0.9375rem]">
-                                    Why Every Senior Engineer Should Contribute to Open Source in 2026
-                                </h3>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#" class="group flex items-start gap-4">
-                                <span class="font-display text-ink-ghost text-3xl font-semibold sm:text-2xl">04</span>
-                                <h3 class="font-display group-hover:text-red-accent text-ink-strong text-base font-semibold tracking-tight sm:text-[0.9375rem]">
-                                    The Surprising Database That's Replacing Redis at Scale
-                                </h3>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#" class="group flex items-start gap-4">
-                                <span class="font-display text-ink-ghost text-3xl font-semibold sm:text-2xl">05</span>
-                                <h3 class="font-display group-hover:text-red-accent text-ink-strong text-base font-semibold tracking-tight sm:text-[0.9375rem]">
-                                    WebAssembly on the Server: The Technology Nobody Asked for That Everyone Needs
-                                </h3>
-                            </a>
-                        </li>
+                    <ol class="most-read-list mt-5 flex flex-col gap-4" role="list" style="counter-reset: most-read;">
+                        <ForEach content="posts" as="post" orderBy="random" count="5">
+                            <li style="counter-increment: most-read;">
+                                <a href="{post.link}" class="group flex items-start gap-4">
+                                    <span class="most-read-num font-display text-ink-ghost text-3xl font-semibold sm:text-2xl" aria-hidden="true"></span>
+                                    <h3 class="font-display group-hover:text-red-accent text-ink-strong text-base font-semibold tracking-tight sm:text-[0.9375rem]">
+                                        {post.title}
+                                    </h3>
+                                </a>
+                            </li>
+                        </ForEach>
                     </ol>
+                    <style>
+                        .most-read-num::before {
+                            content: "0" counter(most-read);
+                        }
+                    </style>
                 </div>
             </div>
         </section>
