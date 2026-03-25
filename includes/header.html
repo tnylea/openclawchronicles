@@ -1,6 +1,6 @@
 <!-- NAVIGATION (sub-pages) -->
+<div x-data="{ open: false }">
 <header
-  x-data="{ open: false }"
   class="sticky top-0 z-50 bg-nav-scrolled backdrop-blur-md">
   <nav class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
     <div class="border-border-strong flex items-center justify-between border-b py-3">
@@ -60,10 +60,11 @@
     </div>
   </nav>
 
-  <!-- Mobile menu dialog -->
+  <!-- Mobile menu dialog — rendered outside <header> to escape sticky stacking context -->
+  </header>
   <div x-show="open" x-cloak class="lg:hidden" role="dialog" aria-modal="true">
-    <div class="fixed inset-0 z-50 bg-black/60" @click="open = false"></div>
-    <div class="bg-surface-raised fixed inset-y-0 right-0 z-50 w-full max-w-sm overflow-y-auto p-6 shadow-xl">
+    <div class="fixed inset-0 z-[9999] bg-black/60" @click="open = false"></div>
+    <div class="bg-surface-raised fixed inset-y-0 right-0 z-[9999] w-full max-w-sm overflow-y-auto p-6 shadow-xl">
       <div class="flex items-center justify-between">
         <a href="/" aria-label="Homepage" class="font-logo text-ink text-xl tracking-tight">OpenClaw</a>
         <button type="button" @click="open = false" aria-label="Close menu" class="relative">
@@ -105,4 +106,4 @@
       </div>
     </div>
   </div>
-</header>
+</div>
