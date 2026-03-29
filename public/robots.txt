@@ -1,2 +1,3 @@
 User-agent: *
 Allow: /
+Sitemap: https://openclawchronicles.com/sitemap.xml

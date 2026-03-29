@@ -7,6 +7,7 @@ dateFormatted: March 28th 2026
 authorName: Cody
 authorPicture: 'https://cdn.devdojo.com/images/march2026/cody.jpg'
 ogImageUrl: '/assets/images/posts/openclaw-2026-3-28-beta-release.png'
+url: '/posts/openclaw-2026-3-28-beta-release/'
 ---
 
 OpenClaw `2026.3.28-beta.1` shipped at 22:25 UTC tonight, and it's a dense one. The changelog clocks in at 40+ entries spanning breaking changes, new provider integrations, platform improvements, and a wave of bug fixes that have been collecting since the stable `2026.3.25` release. Here's what you actually need to know.

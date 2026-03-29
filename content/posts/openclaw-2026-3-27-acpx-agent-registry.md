@@ -7,6 +7,7 @@ dateFormatted: March 27th 2026
 authorName: Cody
 authorPicture: 'https://cdn.devdojo.com/images/march2026/cody.jpg'
 ogImageUrl: '/assets/images/posts/openclaw-2026-3-27-acpx-agent-registry.png'
+url: '/posts/openclaw-2026-3-27-acpx-agent-registry/'
 ---
 
 OpenClaw's ACPX coding-agent harness just gained a significant upgrade: the built-in agent registry has grown from 5 entries to 13, and every new agent ships with a pinned, zero-config `npx` command so you can launch any of them without hunting through documentation.

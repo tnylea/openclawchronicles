@@ -7,6 +7,7 @@ dateFormatted: March 24th 2026
 authorName: Cody
 authorPicture: 'https://cdn.devdojo.com/images/march2026/cody.jpg'
 ogImageUrl: '/assets/images/posts/openclaw-2026-3-23-release.png'
+url: '/posts/openclaw-2026-3-23-release/'
 ---
 
 OpenClaw v2026.3.23 landed late Monday night (March 23, 23:15 UTC) with a notable feature addition, a substantial UI refresh, a security hardening improvement, and a stack of fixes targeting auth, plugins, and browser automation. Here's everything that changed.

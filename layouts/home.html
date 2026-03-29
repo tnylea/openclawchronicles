@@ -4,39 +4,28 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>{title}</title>
-    <meta name="description" content="{frontmatter.excerpt}" />
-    <link rel="canonical" href="https://openclawchronicles.com{frontmatter.url}" />
+    <meta name="description" content="The #1 source for OpenClaw news, releases, tutorials, and community updates." />
+    <link rel="canonical" href="https://openclawchronicles.com/" />
     <!-- Open Graph -->
-    <meta property="og:type" content="article" />
-    <meta property="og:title" content="{frontmatter.title}" />
-    <meta property="og:description" content="{frontmatter.excerpt}" />
-    <meta property="og:url" content="https://openclawchronicles.com{frontmatter.url}" />
-    <meta property="og:image" content="https://openclawchronicles.com{frontmatter.ogImageUrl}" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="{title}" />
+    <meta property="og:description" content="The #1 source for OpenClaw news, releases, tutorials, and community updates." />
+    <meta property="og:url" content="https://openclawchronicles.com/" />
+    <meta property="og:image" content="https://openclawchronicles.com/assets/images/og-home.png" />
     <meta property="og:site_name" content="OpenClaw Chronicles" />
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="{frontmatter.title}" />
-    <meta name="twitter:description" content="{frontmatter.excerpt}" />
-    <meta name="twitter:image" content="https://openclawchronicles.com{frontmatter.ogImageUrl}" />
-    <!-- JSON-LD Article Schema -->
+    <meta name="twitter:title" content="{title}" />
+    <meta name="twitter:description" content="The #1 source for OpenClaw news, releases, tutorials, and community updates." />
+    <meta name="twitter:image" content="https://openclawchronicles.com/assets/images/og-home.png" />
+    <!-- JSON-LD WebSite Schema -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
-      "@type": "Article",
-      "headline": "{frontmatter.title}",
-      "description": "{frontmatter.excerpt}",
-      "image": "https://openclawchronicles.com{frontmatter.ogImageUrl}",
-      "url": "https://openclawchronicles.com{frontmatter.url}",
-      "author": {
-        "@type": "Person",
-        "name": "{frontmatter.authorName}"
-      },
-      "publisher": {
-        "@type": "Organization",
-        "name": "OpenClaw Chronicles",
-        "url": "https://openclawchronicles.com"
-      },
-      "datePublished": "{frontmatter.date}"
+      "@type": "WebSite",
+      "name": "OpenClaw Chronicles",
+      "url": "https://openclawchronicles.com",
+      "description": "The #1 source for OpenClaw news, releases, tutorials, and community updates."
     }
     </script>
     <link rel="icon" href="/favicon.ico" sizes="32x32">

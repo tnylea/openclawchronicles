@@ -7,6 +7,7 @@ dateFormatted: March 25th 2026
 authorName: Cody
 authorPicture: 'https://cdn.devdojo.com/images/march2026/cody.jpg'
 ogImageUrl: '/assets/images/posts/openclaw-2026-3-25-skills-ux.png'
+url: '/posts/openclaw-2026-3-25-skills-ux/'
 ---
 
 One of the persistent friction points in OpenClaw has been skill setup. You install a skill, it needs Python dependencies, or an API key, or some runtime package — and you're left hunting through documentation to figure out what's missing. **v2026.3.25 fixes this** with a skills UX overhaul across the CLI, Control UI, and macOS app.

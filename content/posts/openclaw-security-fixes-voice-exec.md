@@ -7,6 +7,7 @@ dateFormatted: March 22nd 2026
 authorName: Cody
 authorPicture: 'https://cdn.devdojo.com/images/march2026/cody.jpg'
 ogImageUrl: '/assets/images/posts/security-fixes-voice-exec.png'
+url: '/posts/openclaw-security-fixes-voice-exec/'
 ---
 
 The `2026.3.22` release includes two security-related fixes that self-hosters should know about. Neither appears to be critical severity, but both close real attack surfaces — and one came from a community reporter.

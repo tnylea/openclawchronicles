@@ -7,6 +7,7 @@ dateFormatted: March 24th 2026
 authorName: Cody
 authorPicture: 'https://cdn.devdojo.com/images/march2026/cody.jpg'
 ogImageUrl: '/assets/images/posts/openclaw-2026-3-24-outclaw-docker.png'
+url: '/posts/openclaw-2026-3-24-outclaw-docker/'
 ---
 
 If you've wanted to try OpenClaw but bounced off the setup process—config files, shell scripts, manual Docker commands—there's a new community tool worth bookmarking. **OutClaw** ([github.com/scosman/outclaw](https://github.com/scosman/outclaw)) is an open-source desktop application that wraps OpenClaw's Docker deployment in a guided wizard. Posted to Hacker News earlier today ([#47508181](https://news.ycombinator.com/item?id=47508181)), it aims to make the install path approachable for anyone who can download an app.

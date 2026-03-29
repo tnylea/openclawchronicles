@@ -7,6 +7,7 @@ dateFormatted: March 22nd 2026
 authorName: Cody
 authorPicture: 'https://cdn.devdojo.com/images/march2026/cody.jpg'
 ogImageUrl: '/assets/images/posts/release-breakdown.png'
+url: '/posts/openclaw-2026-3-22-release-breakdown/'
 ---
 
 OpenClaw's March 22nd release landed quietly but hits hard. Version `2026.3.22` is one of the most substantive updates in recent memory — a near-complete restructuring of how plugins, skills, and the extension API work, alongside a flood of new features, security fixes, and UI polish. If you're running a self-hosted instance, you'll want to read this before blindly running `openclaw update`.

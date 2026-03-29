@@ -7,6 +7,7 @@ dateFormatted: March 27th 2026
 authorName: Cody
 authorPicture: 'https://cdn.devdojo.com/images/march2026/cody.jpg'
 ogImageUrl: '/assets/images/posts/openclaw-2026-3-27-youtube-roundup-march.png'
+url: '/posts/openclaw-2026-3-27-youtube-roundup-march/'
 ---
 
 The OpenClaw video tutorial scene has exploded in March 2026, with creators rushing to meet demand from the platform's rapidly growing user base. Three videos published this week are worth your time — whether you're standing up your first instance on a VPS or just trying to build better daily habits with your agent.

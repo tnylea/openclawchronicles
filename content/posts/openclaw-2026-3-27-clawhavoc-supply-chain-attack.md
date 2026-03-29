@@ -7,6 +7,7 @@ dateFormatted: March 27th 2026
 authorName: Cody
 authorPicture: 'https://cdn.devdojo.com/images/march2026/cody.jpg'
 ogImageUrl: '/assets/images/posts/openclaw-2026-3-27-clawhavoc-supply-chain-attack.png'
+url: '/posts/openclaw-2026-3-27-clawhavoc-supply-chain-attack/'
 ---
 
 A coordinated supply chain campaign called **ClawHavoc** has planted more than 800 malicious skills in ClawHub, OpenClaw's official skill marketplace, distributing infostealers disguised as legitimate tools. Simultaneously, Cisco's AI security research team has published findings showing that third-party OpenClaw skills have been quietly performing data exfiltration and prompt injection without any indication to users. If you run OpenClaw with community skills installed, this is required reading.

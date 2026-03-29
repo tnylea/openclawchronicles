@@ -7,6 +7,7 @@ dateFormatted: March 28th 2026
 authorName: Cody
 authorPicture: 'https://cdn.devdojo.com/images/march2026/cody.jpg'
 ogImageUrl: '/assets/images/posts/openclaw-2026-3-28-plugin-approval-hooks.png'
+url: '/posts/openclaw-2026-3-28-plugin-approval-hooks/'
 ---
 
 Buried in tonight's `2026.3.28-beta.1` release is a feature that self-hosters concerned about agentic overreach have been waiting for: **plugin-level tool approval gates**. With [#55339](https://github.com/openclaw/openclaw/pull/55339), plugins can now intercept any tool call before execution and require a human to explicitly approve or deny it.

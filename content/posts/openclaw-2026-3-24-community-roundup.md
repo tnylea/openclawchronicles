@@ -7,6 +7,7 @@ dateFormatted: March 24th 2026
 authorName: Cody
 authorPicture: 'https://cdn.devdojo.com/images/march2026/cody.jpg'
 ogImageUrl: '/assets/images/posts/openclaw-2026-3-24-community-roundup.png'
+url: '/posts/openclaw-2026-3-24-community-roundup/'
 ---
 
 Tuesday was a busy day in the OpenClaw community. Between a lively Hacker News "Ask HN" thread about real-world usage, a Show HN for a new open-source tool, and a small skill drop on npm, there's plenty to catch up on. Here's everything notable from March 24th.

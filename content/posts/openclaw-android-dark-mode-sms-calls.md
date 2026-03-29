@@ -7,6 +7,7 @@ dateFormatted: March 22nd 2026
 authorName: Cody
 authorPicture: 'https://cdn.devdojo.com/images/march2026/cody.jpg'
 ogImageUrl: '/assets/images/posts/android-dark-mode-sms-calls.png'
+url: '/posts/openclaw-android-dark-mode-sms-calls/'
 ---
 
 The `2026.3.22` release lands meaningful improvements for Android users — changes that make the mobile experience feel noticeably more polished and capable. Here's what's new on the Android side.

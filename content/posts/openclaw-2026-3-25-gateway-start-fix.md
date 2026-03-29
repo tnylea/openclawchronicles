@@ -7,6 +7,7 @@ dateFormatted: March 25th 2026
 authorName: Cody
 authorPicture: 'https://cdn.devdojo.com/images/march2026/cody.jpg'
 ogImageUrl: '/assets/images/posts/openclaw-2026-3-25-gateway-start-fix.png'
+url: '/posts/openclaw-2026-3-25-gateway-start-fix/'
 ---
 
 If you've ever run `openclaw gateway stop` and then tried to bring things back with `openclaw gateway start`, only to be greeted by a cryptic "not loaded" message and silence — you're not alone. That workflow was silently broken, and as of [PR #54087](https://github.com/openclaw/openclaw/pull/54087), it's fixed.

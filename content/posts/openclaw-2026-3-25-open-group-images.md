@@ -7,6 +7,7 @@ dateFormatted: March 25th 2026
 authorName: Cody
 authorPicture: 'https://cdn.devdojo.com/images/march2026/cody.jpg'
 ogImageUrl: '/assets/images/posts/openclaw-2026-3-25-open-group-images.png'
+url: '/posts/openclaw-2026-3-25-open-group-images/'
 ---
 
 If you've configured a group channel with `groupPolicy: open` and wondered why OpenClaw was ignoring images, GIFs, or file uploads — [PR #54058](https://github.com/openclaw/openclaw/pull/54058) explains why, and fixes it.

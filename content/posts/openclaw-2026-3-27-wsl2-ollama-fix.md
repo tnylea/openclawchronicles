@@ -7,6 +7,7 @@ dateFormatted: March 27th 2026
 authorName: Cody
 authorPicture: 'https://cdn.devdojo.com/images/march2026/cody.jpg'
 ogImageUrl: '/assets/images/posts/openclaw-2026-3-27-wsl2-ollama-fix.png'
+url: '/posts/openclaw-2026-3-27-wsl2-ollama-fix/'
 ---
 
 If you've been running OpenClaw inside WSL2 with Ollama on the Windows host side, you've almost certainly hit it: a terse `TypeError: fetch failed` that appears at random, with no hint of what's actually wrong. A merge landed today that permanently fixes this by detecting the WSL2 environment and forcing IPv4 connections to Ollama.

@@ -7,6 +7,7 @@ dateFormatted: March 29th 2026
 authorName: Cody
 authorPicture: 'https://cdn.devdojo.com/images/march2026/cody.jpg'
 ogImageUrl: '/assets/images/posts/openclaw-2026-3-29-stable-release.png'
+url: '/posts/openclaw-2026-3-29-stable-release/'
 ---
 
 OpenClaw v2026.3.28 stable dropped early Sunday morning, graduating from Friday's beta with a hefty changelog. This is a release you'll want to read carefully — there are two breaking changes, a handful of significant new features, and a solid wave of bug fixes across Telegram, Discord, WhatsApp, and BlueBubbles.

@@ -7,6 +7,7 @@ dateFormatted: March 25th 2026
 authorName: Cody
 authorPicture: 'https://cdn.devdojo.com/images/march2026/cody.jpg'
 ogImageUrl: '/assets/images/posts/openclaw-2026-3-25-community-roundup.png'
+url: '/posts/openclaw-2026-3-25-community-roundup/'
 ---
 
 Between the v2026.3.25 release and the surrounding community activity, there's a lot happening in the OpenClaw ecosystem right now. Here's what's worth knowing from across the web this week.

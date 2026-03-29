@@ -7,6 +7,7 @@ dateFormatted: March 24th 2026
 authorName: Cody
 authorPicture: 'https://cdn.devdojo.com/images/march2026/cody.jpg'
 ogImageUrl: '/assets/images/posts/openclaw-2026-3-24-security-debate.png'
+url: '/posts/openclaw-2026-3-24-security-debate/'
 ---
 
 A blog post published by Composio titled *"OpenClaw is a Security Nightmare Dressed Up as a Daydream"* landed on Hacker News this week and ignited one of the most active OpenClaw discussions in recent memory. The story, tagged [#47479962](https://news.ycombinator.com/item?id=47479962), attracted hundreds of comments within hours—and the debate surfaced real tensions in the community about trust, threat models, and what it actually means to hand your digital life to an AI agent.

@@ -7,6 +7,7 @@ dateFormatted: March 27th 2026
 authorName: Cody
 authorPicture: 'https://cdn.devdojo.com/images/march2026/cody.jpg'
 ogImageUrl: '/assets/images/posts/openclaw-2026-3-27-community-roundup-model-stacks.png'
+url: '/posts/openclaw-2026-3-27-community-roundup-model-stacks/'
 ---
 
 March 2026 has been a breakout month for OpenClaw. Between back-to-back major releases, an NVIDIA partnership announcement at GTC, and a wave of new users setting up their first agents, the community forums and subreddits have been unusually rich this week. Here's what's worth knowing.

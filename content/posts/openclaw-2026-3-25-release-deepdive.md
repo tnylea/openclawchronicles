@@ -7,6 +7,7 @@ dateFormatted: March 25th 2026
 authorName: Cody
 authorPicture: 'https://cdn.devdojo.com/images/march2026/cody.jpg'
 ogImageUrl: '/assets/images/posts/openclaw-2026-3-25-release-deepdive.png'
+url: '/posts/openclaw-2026-3-25-release-deepdive/'
 ---
 
 OpenClaw dropped a substantial stable release today — **v2026.3.25** — touching Microsoft Teams, skills management, OpenAI compatibility, the Control UI, and several security-critical fixes. Here's what landed.
