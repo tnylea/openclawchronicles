@@ -175,13 +175,33 @@
         <section class="mx-auto max-w-7xl px-4 py-10 sm:px-6 lg:px-8 lg:py-14">
             <div class="grid gap-10 lg:grid-cols-12 lg:gap-0">
                 <!-- MAIN ARTICLES -->
-                <div class="lg:border-border lg:col-span-8 lg:border-r lg:pr-8">
+                <div class="lg:border-border lg:col-span-8 lg:border-r lg:pr-8"
+                     x-data="{
+                        perPage: 15,
+                        currentPage: 1,
+                        get articles() { return Array.from(this.$refs.articleList.querySelectorAll('[data-article]')); },
+                        get totalPages() { return Math.ceil(this.articles.length / this.perPage); },
+                        get startIndex() { return (this.currentPage - 1) * this.perPage; },
+                        get endIndex() { return this.startIndex + this.perPage; },
+                        showPage(n) {
+                            this.currentPage = n;
+                            this.articles.forEach((el, i) => {
+                                el.style.display = (i >= this.startIndex && i < this.endIndex) ? '' : 'none';
+                            });
+                            window.scrollTo({ top: this.$el.offsetTop - 80, behavior: 'smooth' });
+                        },
+                        init() {
+                            this.$nextTick(() => { this.showPage(1); });
+                        }
+                     }">
                     <div class="flex items-center gap-3">
                         <h2 class="text-ink font-mono text-[0.6875rem] font-semibold tracking-widest uppercase">All Posts</h2>
                         <div class="bg-border-strong h-px flex-1" aria-hidden="true"></div>
                     </div>
 
+                    <div x-ref="articleList">
                     <ForEach content="posts" as="post" orderBy="date, desc">
+                        <div data-article>
                         <article class="mt-8">
                             <a href="{post.link}" class="group grid gap-6 sm:grid-cols-2">
                                 <div>
@@ -207,7 +227,41 @@
                             </a>
                         </article>
                         <div class="bg-border my-8 h-px" aria-hidden="true"></div>
+                        </div>
                     </ForEach>
+                    </div>
+
+                    <!-- Pagination controls -->
+                    <div class="mt-4 flex items-center justify-between gap-4" x-show="totalPages > 1">
+                        <button
+                            @click="showPage(currentPage - 1)"
+                            :disabled="currentPage === 1"
+                            class="inline-flex items-center gap-1.5 font-mono text-[0.625rem] font-semibold tracking-wider uppercase text-ink-muted hover:text-ink disabled:opacity-30 disabled:cursor-not-allowed transition-colors">
+                            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>
+                            Prev
+                        </button>
+
+                        <div class="flex items-center gap-1">
+                            <template x-for="n in totalPages" :key="n">
+                                <button
+                                    @click="showPage(n)"
+                                    :class="currentPage === n
+                                        ? 'bg-red-accent text-white'
+                                        : 'text-ink-muted hover:text-ink'"
+                                    class="min-w-[1.75rem] h-7 px-1.5 rounded font-mono text-[0.625rem] font-semibold tracking-wider transition-colors">
+                                    <span x-text="n"></span>
+                                </button>
+                            </template>
+                        </div>
+
+                        <button
+                            @click="showPage(currentPage + 1)"
+                            :disabled="currentPage === totalPages"
+                            class="inline-flex items-center gap-1.5 font-mono text-[0.625rem] font-semibold tracking-wider uppercase text-ink-muted hover:text-ink disabled:opacity-30 disabled:cursor-not-allowed transition-colors">
+                            Next
+                            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+                        </button>
+                    </div>
                 </div>
 
                 <!-- SIDEBAR -->
