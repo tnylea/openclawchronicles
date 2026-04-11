@@ -5,7 +5,7 @@
     "author": "Your Name",
     "license": "ISC",
     "scripts": {
-        "build": "npx @devdojo/static build && node scripts/generate-sitemap.js"
+        "build": "npx @devdojo/static build && node scripts/generate-sitemap.js && node scripts/generate-rss.js"
     },
     "devDependencies": {
         "@tailwindcss/typography": "^0.5.10"

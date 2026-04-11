@@ -18,6 +18,7 @@
     <meta name="twitter:title" content="{title}" />
     <meta name="twitter:description" content="The #1 source for OpenClaw news, releases, tutorials, and community updates." />
     <meta name="twitter:image" content="https://openclawchronicles.com/assets/images/og-home.png" />
+    <meta name="twitter:site" content="@openclawchronicles" />
     <!-- JSON-LD WebSite Schema -->
     <script type="application/ld+json">
     {
@@ -25,7 +26,15 @@
       "@type": "WebSite",
       "name": "OpenClaw Chronicles",
       "url": "https://openclawchronicles.com",
-      "description": "The #1 source for OpenClaw news, releases, tutorials, and community updates."
+      "description": "The #1 source for OpenClaw news, releases, tutorials, and community updates.",
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": {
+          "@type": "EntryPoint",
+          "urlTemplate": "https://openclawchronicles.com/posts/?q={search_term_string}"
+        },
+        "query-input": "required name=search_term_string"
+      }
     }
     </script>
     <!-- Google Analytics -->
@@ -36,6 +45,7 @@
       gtag('js', new Date());
       gtag('config', 'G-7016K8GHP7');
     </script>
+    <link rel="alternate" type="application/rss+xml" title="OpenClaw Chronicles" href="https://openclawchronicles.com/feed.xml" />
     <link rel="icon" href="/favicon.ico" sizes="32x32">
     <link rel="icon" href="/icon.svg" type="image/svg+xml">
     <link rel="apple-touch-icon" href="/apple-touch-icon.png">
