@@ -48,12 +48,39 @@
             {content}
         </article>
 
+        <section class="mx-auto max-w-3xl px-4 pb-10 sm:px-6 lg:px-8">
+            <div class="border-border-strong border-t pt-8">
+                <div class="flex items-center gap-3">
+                    <h2 class="text-ink font-mono text-[0.6875rem] font-semibold tracking-widest uppercase">Continue Reading</h2>
+                    <div class="bg-border-strong h-px flex-1" aria-hidden="true"></div>
+                </div>
+                <div class="mt-6 grid gap-4 sm:grid-cols-2">
+                    <ForEach content="posts" as="post" orderBy="date, desc" count="2">
+                        <article class="border-border rounded-[min(0.3vw,4px)] border p-4">
+                            <a href="{post.link}" class="group block">
+                                <span class="text-red-accent font-mono text-[0.625rem] font-semibold tracking-wider uppercase">Latest Coverage</span>
+                                <h3 class="font-display group-hover:text-red-accent text-ink mt-2 text-xl font-semibold tracking-tight text-balance sm:text-lg">
+                                    {post.title}
+                                </h3>
+                                <p class="text-ink-body mt-2 text-[0.9375rem] text-pretty">{post.excerpt}</p>
+                            </a>
+                        </article>
+                    </ForEach>
+                </div>
+            </div>
+        </section>
+
         <!-- Back to Posts -->
         <div class="mx-auto max-w-3xl px-4 pb-12 sm:px-6 lg:px-8">
             <div class="border-border-strong border-t pt-8">
-                <a href="/posts" class="hover:text-red-vibrant text-red-accent font-sans text-sm font-medium">
-                    &larr; Back to all posts
-                </a>
+                <div class="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+                    <a href="/posts" class="hover:text-red-vibrant text-red-accent font-sans text-sm font-medium">
+                        &larr; Back to all posts
+                    </a>
+                    <a href="/feed.xml" class="text-ink-muted hover:text-red-accent font-sans text-sm font-medium">
+                        Follow via RSS
+                    </a>
+                </div>
             </div>
         </div>
 

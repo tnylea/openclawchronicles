@@ -3,22 +3,10 @@
   <div class="mx-auto flex max-w-7xl items-center justify-between px-4 py-2 sm:px-6 lg:px-8">
     <div class="flex items-center gap-4">
       <span class="text-bar-text font-mono text-[0.6875rem]">Sunday, March 22, 2026</span>
-      <template x-if="location.city">
-        <span class="text-bar-text-muted flex items-center gap-1.5 font-mono text-[0.6875rem] max-sm:hidden">
-          <span class="bg-red-accent/20 text-red-accent inline-flex size-1.5 rounded-full"></span>
-          <span x-text="location.city + (location.state ? ', ' + location.state : '')"></span>
-          <span>&middot;</span>
-          <span x-text="location.temp + '°F'"></span>
-          <span>&middot;</span>
-          <span x-text="location.condition"></span>
-        </span>
-      </template>
-      <template x-if="!location.city">
-        <span class="text-bar-text-muted font-mono text-[0.6875rem] max-sm:hidden">Location unavailable</span>
-      </template>
+      <span class="text-bar-text-muted font-mono text-[0.6875rem] max-sm:hidden">Independent OpenClaw reporting, releases, guides, and community coverage</span>
     </div>
     <div class="flex items-center gap-6">
-      <a href="#" class="hover:text-bar-text text-bar-text-muted font-sans text-[0.6875rem] font-medium">Subscribe</a>
+      <a href="/feed.xml" class="hover:text-bar-text text-bar-text-muted font-sans text-[0.6875rem] font-medium">RSS</a>
       <a href="/about" class="hover:text-bar-text text-bar-text-muted font-sans text-[0.6875rem] font-medium">About</a>
     </div>
   </div>

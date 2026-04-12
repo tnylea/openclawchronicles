@@ -12,6 +12,7 @@ const BASE_URL = 'https://openclawchronicles.com';
 const POSTS_DIR = path.join(__dirname, '../content/posts');
 const SITE_DIR = path.join(__dirname, '../_site');
 const OUTPUT = path.join(SITE_DIR, 'sitemap.xml');
+const POSTS_PER_PAGE = 15;
 
 // Parse the first `key: value` frontmatter field from a markdown string
 function getFrontmatterField(content, key) {
@@ -28,6 +29,9 @@ urls.push({ loc: `${BASE_URL}/`, changefreq: 'daily', priority: '1.0' });
 // Posts index
 urls.push({ loc: `${BASE_URL}/posts/`, changefreq: 'daily', priority: '0.8' });
 
+// About page
+urls.push({ loc: `${BASE_URL}/about/`, changefreq: 'monthly', priority: '0.6' });
+
 // Individual posts — sorted by date desc
 const postFiles = fs.readdirSync(POSTS_DIR)
   .filter(f => f.endsWith('.md'))
@@ -38,6 +42,16 @@ const postFiles = fs.readdirSync(POSTS_DIR)
     return { slug, date };
   })
   .sort((a, b) => (b.date || '').localeCompare(a.date || ''));
+
+const totalArchivePages = Math.max(1, Math.ceil(postFiles.length / POSTS_PER_PAGE));
+
+for (let page = 2; page <= totalArchivePages; page++) {
+  urls.push({
+    loc: `${BASE_URL}/posts/${page}/`,
+    changefreq: 'weekly',
+    priority: '0.5',
+  });
+}
 
 for (const post of postFiles) {
   urls.push({
