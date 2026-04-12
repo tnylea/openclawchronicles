@@ -183,15 +183,17 @@
                         get totalPages() { return Math.ceil(this.articles.length / this.perPage); },
                         get startIndex() { return (this.currentPage - 1) * this.perPage; },
                         get endIndex() { return this.startIndex + this.perPage; },
-                        showPage(n) {
+                        showPage(n, shouldScroll = true) {
                             this.currentPage = n;
                             this.articles.forEach((el, i) => {
                                 el.style.display = (i >= this.startIndex && i < this.endIndex) ? '' : 'none';
                             });
-                            window.scrollTo({ top: this.$el.offsetTop - 80, behavior: 'smooth' });
+                            if (shouldScroll) {
+                                window.scrollTo({ top: this.$el.offsetTop - 80, behavior: 'smooth' });
+                            }
                         },
                         init() {
-                            this.$nextTick(() => { this.showPage(1); });
+                            this.$nextTick(() => { this.showPage(1, false); });
                         }
                      }">
                     <div class="flex items-center gap-3">
@@ -234,7 +236,7 @@
                     <!-- Pagination controls -->
                     <div class="mt-4 flex items-center justify-between gap-4" x-show="totalPages > 1">
                         <button
-                            @click="showPage(currentPage - 1)"
+                            @click="showPage(currentPage - 1, true)"
                             :disabled="currentPage === 1"
                             class="inline-flex items-center gap-1.5 font-mono text-[0.625rem] font-semibold tracking-wider uppercase text-ink-muted hover:text-ink disabled:opacity-30 disabled:cursor-not-allowed transition-colors">
                             <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>
@@ -244,7 +246,7 @@
                         <div class="flex items-center gap-1">
                             <template x-for="n in totalPages" :key="n">
                                 <button
-                                    @click="showPage(n)"
+                                    @click="showPage(n, true)"
                                     :class="currentPage === n
                                         ? 'bg-red-accent text-white'
                                         : 'text-ink-muted hover:text-ink'"
@@ -255,7 +257,7 @@
                         </div>
 
                         <button
-                            @click="showPage(currentPage + 1)"
+                            @click="showPage(currentPage + 1, true)"
                             :disabled="currentPage === totalPages"
                             class="inline-flex items-center gap-1.5 font-mono text-[0.625rem] font-semibold tracking-wider uppercase text-ink-muted hover:text-ink disabled:opacity-30 disabled:cursor-not-allowed transition-colors">
                             Next
