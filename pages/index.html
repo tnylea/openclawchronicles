@@ -235,34 +235,31 @@
 
                     <!-- Pagination controls -->
                     <div class="mt-4 flex items-center justify-between gap-4" x-show="totalPages > 1">
-                        <button
-                            @click="showPage(currentPage - 1, true)"
-                            :disabled="currentPage === 1"
-                            class="inline-flex items-center gap-1.5 font-mono text-[0.625rem] font-semibold tracking-wider uppercase text-ink-muted hover:text-ink disabled:opacity-30 disabled:cursor-not-allowed transition-colors">
+                        <span class="inline-flex items-center gap-1.5 font-mono text-[0.625rem] font-semibold tracking-wider uppercase text-ink-muted opacity-30">
                             <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>
                             Prev
-                        </button>
+                        </span>
 
                         <div class="flex items-center gap-1">
                             <template x-for="n in totalPages" :key="n">
-                                <button
-                                    @click="showPage(n, true)"
-                                    :class="currentPage === n
+                                <a
+                                    :href="n === 1 ? '/posts/' : `/posts/${n}/`"
+                                    :class="n === 1
                                         ? 'bg-red-accent text-white'
                                         : 'text-ink-muted hover:text-ink'"
-                                    class="min-w-[1.75rem] h-7 px-1.5 rounded font-mono text-[0.625rem] font-semibold tracking-wider transition-colors">
+                                    class="min-w-[1.75rem] h-7 px-1.5 rounded font-mono text-[0.625rem] font-semibold tracking-wider transition-colors inline-flex items-center justify-center">
                                     <span x-text="n"></span>
-                                </button>
+                                </a>
                             </template>
                         </div>
 
-                        <button
-                            @click="showPage(currentPage + 1, true)"
-                            :disabled="currentPage === totalPages"
-                            class="inline-flex items-center gap-1.5 font-mono text-[0.625rem] font-semibold tracking-wider uppercase text-ink-muted hover:text-ink disabled:opacity-30 disabled:cursor-not-allowed transition-colors">
+                        <a
+                            href="/posts/2/"
+                            x-show="totalPages > 1"
+                            class="inline-flex items-center gap-1.5 font-mono text-[0.625rem] font-semibold tracking-wider uppercase text-ink-muted hover:text-ink transition-colors">
                             Next
                             <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
-                        </button>
+                        </a>
                     </div>
                 </div>
 
