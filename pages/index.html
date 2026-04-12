@@ -16,7 +16,7 @@
                         <!-- CENTER COLUMN (featured) -->
                         <div class="lg:col-span-6 lg:px-6 lg:order-2">
                             <article>
-                                <a href="{post.link}" class="group">
+                                <a href="{post.link}" class="group" data-post-date="{post.date}">
                                     <figure>
                                         <div class="overflow-hidden rounded-[min(0.5vw,6px)]">
                                             <img
@@ -49,7 +49,7 @@
                         <!-- LEFT COLUMN -->
                         <div class="lg:border-border lg:col-span-3 lg:border-r lg:pr-6 lg:order-1">
                             <article>
-                                <a href="{post.link}" class="group">
+                                <a href="{post.link}" class="group" data-post-date="{post.date}">
                                     <span class="text-red-accent font-mono text-[0.625rem] font-semibold tracking-wider uppercase">Latest</span>
                                     <h3 class="font-display group-hover:text-red-accent text-ink mt-1.5 text-xl font-semibold tracking-tight text-balance sm:text-lg">
                                         {post.title}
@@ -70,7 +70,7 @@
                         <!-- RIGHT COLUMN -->
                         <div class="lg:border-border lg:col-span-3 lg:border-l lg:pl-6 lg:order-3">
                             <article>
-                                <a href="{post.link}" class="group">
+                                <a href="{post.link}" class="group" data-post-date="{post.date}">
                                     <div class="flex items-center gap-2">
                                         <span class="relative flex size-2">
                                             <span class="bg-red-accent absolute inline-flex size-full animate-ping rounded-full opacity-75"></span>
@@ -109,7 +109,7 @@
                 <ForEach content="posts" as="post" orderBy="date, desc" count="3">
                     <If condition="loop == 1">
                         <article class="lg:pr-5">
-                            <a href="{post.link}" class="group flex gap-4 lg:flex-col lg:gap-0">
+                            <a href="{post.link}" class="group flex gap-4 lg:flex-col lg:gap-0" data-post-date="{post.date}">
                                 <div class="shrink-0 sm:shrink">
                                     <img
                                         src="{post.coverImage}"
@@ -127,7 +127,7 @@
                     </If>
                     <If condition="loop == 2">
                         <article class="lg:px-5">
-                            <a href="{post.link}" class="group flex gap-4 lg:flex-col lg:gap-0">
+                            <a href="{post.link}" class="group flex gap-4 lg:flex-col lg:gap-0" data-post-date="{post.date}">
                                 <div class="shrink-0 sm:shrink">
                                     <img
                                         src="{post.coverImage}"
@@ -145,7 +145,7 @@
                     </If>
                     <If condition="loop == 3">
                         <article class="lg:pl-5">
-                            <a href="{post.link}" class="group flex gap-4 lg:flex-col lg:gap-0">
+                            <a href="{post.link}" class="group flex gap-4 lg:flex-col lg:gap-0" data-post-date="{post.date}">
                                 <div class="shrink-0 sm:shrink">
                                     <img
                                         src="{post.coverImage}"
@@ -205,7 +205,7 @@
                     <ForEach content="posts" as="post" orderBy="date, desc">
                         <div data-article>
                         <article class="mt-8">
-                            <a href="{post.link}" class="group grid gap-6 sm:grid-cols-2">
+                            <a href="{post.link}" class="group grid gap-6 sm:grid-cols-2" data-post-date="{post.date}">
                                 <div>
                                     <img
                                         src="{post.coverImage}"

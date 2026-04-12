@@ -1,8 +1,38 @@
 <!-- MASTHEAD -->
-<div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+<div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8"
+     x-data="{
+        estYear: 2026,
+        currentYear: new Date().getFullYear(),
+        issueNumber: '001',
+        roman(n) {
+          const nums = [
+            ['M',1000],['CM',900],['D',500],['CD',400],['C',100],['XC',90],['L',50],['XL',40],['X',10],['IX',9],['V',5],['IV',4],['I',1]
+          ];
+          let out = '';
+          for (const [sym,val] of nums) {
+            while (n >= val) { out += sym; n -= val; }
+          }
+          return out;
+        },
+        init() {
+          const items = Array.from(document.querySelectorAll('[data-post-date]'));
+          const years = items
+            .map(el => el.getAttribute('data-post-date'))
+            .filter(Boolean)
+            .map(date => new Date(date).getFullYear())
+            .filter(Boolean)
+            .sort((a,b) => a-b);
+          if (years.length) this.estYear = years[0];
+          const currentYearPosts = items.filter(el => {
+            const d = el.getAttribute('data-post-date');
+            return d && new Date(d).getFullYear() === this.currentYear;
+          }).length;
+          this.issueNumber = String(Math.max(currentYearPosts, 1)).padStart(3, '0');
+        }
+     }">
   <div class="border-border-strong flex items-center justify-between border-b py-2">
-    <span class="text-ink-strong font-mono text-[0.625rem] tracking-widest uppercase">Est. 2026</span>
-    <span class="text-ink-strong font-mono text-[0.625rem] tracking-widest uppercase">Vol. I &middot; Issue 1</span>
+    <span class="text-ink-strong font-mono text-[0.625rem] tracking-widest uppercase">Est. <span x-text="estYear"></span></span>
+    <span class="text-ink-strong font-mono text-[0.625rem] tracking-widest uppercase">Vol. <span x-text="roman((currentYear - estYear) + 1)"></span> &middot; Issue <span x-text="issueNumber"></span></span>
     <span class="text-ink-strong font-mono text-[0.625rem] tracking-widest uppercase">openclawchronicles.com</span>
   </div>
 
