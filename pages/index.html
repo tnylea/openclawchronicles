@@ -298,138 +298,50 @@
         <include src="newsletter.html"></include>
 
         <!-- ================================================================ -->
-        <!-- LATEST FROM SECTIONS — TABBED CONTENT -->
+        <!-- COVERAGE TRACKS -->
         <!-- ================================================================ -->
         <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8" aria-hidden="true">
             <div class="bg-border h-px"></div>
         </div>
 
-        <section class="mx-auto max-w-7xl px-4 py-10 sm:px-6 lg:px-8 lg:py-14" x-data="{ tab: 'technology' }">
-            <div class="border-border flex flex-wrap items-center gap-x-6 gap-y-2 border-b pb-3">
-                <h2 class="text-ink font-mono text-[0.6875rem] font-semibold tracking-widest uppercase">Latest From</h2>
-                <button type="button" @click="tab = 'technology'"
-                    :class="tab === 'technology' ? 'text-red-accent' : 'text-ink-muted hover:text-ink'"
-                    class="font-sans text-sm font-semibold">Technology</button>
-                <button type="button" @click="tab = 'opensource'"
-                    :class="tab === 'opensource' ? 'text-red-accent' : 'text-ink-muted hover:text-ink'"
-                    class="font-sans text-sm font-semibold">Open Source</button>
-                <button type="button" @click="tab = 'security'"
-                    :class="tab === 'security' ? 'text-red-accent' : 'text-ink-muted hover:text-ink'"
-                    class="font-sans text-sm font-semibold">Security</button>
-                <button type="button" @click="tab = 'ai'"
-                    :class="tab === 'ai' ? 'text-red-accent' : 'text-ink-muted hover:text-ink'"
-                    class="font-sans text-sm font-semibold">AI &amp; ML</button>
+        <section class="mx-auto max-w-7xl px-4 py-10 sm:px-6 lg:px-8 lg:py-14">
+            <div class="border-border flex items-center gap-3 border-b pb-3">
+                <h2 class="text-ink font-mono text-[0.6875rem] font-semibold tracking-widest uppercase">Coverage Tracks</h2>
+                <div class="bg-border h-px flex-1" aria-hidden="true"></div>
             </div>
 
-            <!-- Technology tab -->
-            <div x-show="tab === 'technology'" class="mt-6 grid gap-6 sm:grid-cols-2 lg:grid-cols-3 lg:gap-8">
-                <article>
-                    <a href="#" class="group">
-                        <img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?q=80&w=600&auto=format&fit=crop" alt class="outline-img-outline aspect-3/2 w-full rounded-[min(0.3vw,4px)] object-cover outline-1 -outline-offset-1" />
-                        <span class="text-ink-faint mt-3 font-mono text-[0.625rem] tracking-wider uppercase">Cloud</span>
-                        <h3 class="font-display group-hover:text-red-accent text-ink mt-1 text-lg font-semibold tracking-tight sm:text-base">The Multi-Cloud Myth: Why Most Companies Should Pick One and Commit</h3>
-                        <p class="text-ink-faint mt-2 font-mono text-[0.625rem] tracking-wider uppercase">5 min read</p>
-                    </a>
+            <div class="mt-8 grid gap-6 lg:grid-cols-3 lg:gap-8">
+                <article class="border-border rounded-[min(0.4vw,6px)] border p-6">
+                    <span class="text-red-accent font-mono text-[0.625rem] font-semibold tracking-wider uppercase">OpenClaw Releases</span>
+                    <h3 class="font-display text-ink mt-2 text-2xl font-semibold tracking-tight text-balance sm:text-xl">Track every OpenClaw release, beta, and hotfix</h3>
+                    <p class="text-ink-body mt-3 text-[0.9375rem] text-pretty">Follow version launches, changelog breakdowns, and post-release fixes so readers can quickly understand what shipped and whether they should upgrade.</p>
+                    <ul class="mt-5 space-y-3">
+                        <li><a href="/posts/openclaw-2026-4-12-release-v2026-4-11/" class="text-ink-strong hover:text-red-accent font-sans text-sm font-medium">OpenClaw v2026.4.11 Lands Plugin Setup and Better Web Chat</a></li>
+                        <li><a href="/posts/openclaw-2026-4-11-beta-memory-palace-embeds/" class="text-ink-strong hover:text-red-accent font-sans text-sm font-medium">OpenClaw v2026.4.11-beta.1 Adds Memory Palace and Embeds</a></li>
+                        <li><a href="/posts/openclaw-2026-4-8-v2026-4-8-hotfix/" class="text-ink-strong hover:text-red-accent font-sans text-sm font-medium">OpenClaw v2026.4.8: Hotfix for Bundled Channel Startup and Slack Proxy Support</a></li>
+                    </ul>
                 </article>
-                <article>
-                    <a href="#" class="group">
-                        <img src="https://images.unsplash.com/photo-1573164713714-d95e436ab8d6?q=80&w=600&auto=format&fit=crop" alt class="outline-img-outline aspect-3/2 w-full rounded-[min(0.3vw,4px)] object-cover outline-1 -outline-offset-1" />
-                        <span class="text-ink-faint mt-3 font-mono text-[0.625rem] tracking-wider uppercase">Hardware</span>
-                        <h3 class="font-display group-hover:text-red-accent text-ink mt-1 text-lg font-semibold tracking-tight sm:text-base">ARM's Server Revolution Is No Longer a Prediction. It's a Fact.</h3>
-                        <p class="text-ink-faint mt-2 font-mono text-[0.625rem] tracking-wider uppercase">7 min read</p>
-                    </a>
-                </article>
-                <article>
-                    <a href="#" class="group">
-                        <img src="https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?q=80&w=600&auto=format&fit=crop" alt class="outline-img-outline aspect-3/2 w-full rounded-[min(0.3vw,4px)] object-cover outline-1 -outline-offset-1" />
-                        <span class="text-ink-faint mt-3 font-mono text-[0.625rem] tracking-wider uppercase">Programming</span>
-                        <h3 class="font-display group-hover:text-red-accent text-ink mt-1 text-lg font-semibold tracking-tight sm:text-base">Zig, Mojo, and Carbon: The New Languages Challenging C++ Supremacy</h3>
-                        <p class="text-ink-faint mt-2 font-mono text-[0.625rem] tracking-wider uppercase">10 min read</p>
-                    </a>
-                </article>
-            </div>
 
-            <!-- Open Source tab -->
-            <div x-show="tab === 'opensource'" x-cloak class="mt-6 grid gap-6 sm:grid-cols-2 lg:grid-cols-3 lg:gap-8">
-                <article>
-                    <a href="#" class="group">
-                        <img src="https://images.unsplash.com/photo-1556075798-4825dfaaf498?q=80&w=600&auto=format&fit=crop" alt class="outline-img-outline aspect-3/2 w-full rounded-[min(0.3vw,4px)] object-cover outline-1 -outline-offset-1" />
-                        <span class="text-ink-faint mt-3 font-mono text-[0.625rem] tracking-wider uppercase">Community</span>
-                        <h3 class="font-display group-hover:text-red-accent text-ink mt-1 text-lg font-semibold tracking-tight sm:text-base">How a Solo Maintainer's Burnout Led to a New Model for Sustainable Open Source</h3>
-                        <p class="text-ink-faint mt-2 font-mono text-[0.625rem] tracking-wider uppercase">8 min read</p>
-                    </a>
+                <article class="border-border rounded-[min(0.4vw,6px)] border p-6">
+                    <span class="text-red-accent font-mono text-[0.625rem] font-semibold tracking-wider uppercase">Security Coverage</span>
+                    <h3 class="font-display text-ink mt-2 text-2xl font-semibold tracking-tight text-balance sm:text-xl">Security advisories, patches, and self-hosting hardening</h3>
+                    <p class="text-ink-body mt-3 text-[0.9375rem] text-pretty">This track clusters OpenClaw security alerts, CVEs, exploit response, and configuration hardening for self-hosters who need actionable guidance fast.</p>
+                    <ul class="mt-5 space-y-3">
+                        <li><a href="/posts/openclaw-2026-4-11-security-hardening/" class="text-ink-strong hover:text-red-accent font-sans text-sm font-medium">OpenClaw v2026.4.10 Security Hardening: What Changed and Why It Matters</a></li>
+                        <li><a href="/posts/openclaw-2026-4-6-privilege-escalation-cve/" class="text-ink-strong hover:text-red-accent font-sans text-sm font-medium">OpenClaw Privilege Escalation CVE: What You Need to Know</a></li>
+                        <li><a href="/posts/openclaw-2026-3-30-security-exposed-instances/" class="text-ink-strong hover:text-red-accent font-sans text-sm font-medium">OpenClaw Security Crisis: 42,000 Exposed Instances and What to Do</a></li>
+                    </ul>
                 </article>
-                <article>
-                    <a href="#" class="group">
-                        <img src="https://images.unsplash.com/photo-1618401471353-b98afee0b2eb?q=80&w=600&auto=format&fit=crop" alt class="outline-img-outline aspect-3/2 w-full rounded-[min(0.3vw,4px)] object-cover outline-1 -outline-offset-1" />
-                        <span class="text-ink-faint mt-3 font-mono text-[0.625rem] tracking-wider uppercase">Licensing</span>
-                        <h3 class="font-display group-hover:text-red-accent text-ink mt-1 text-lg font-semibold tracking-tight sm:text-base">The License Wars: BSL, SSPL, and the Fight for Open Source's Soul</h3>
-                        <p class="text-ink-faint mt-2 font-mono text-[0.625rem] tracking-wider uppercase">12 min read</p>
-                    </a>
-                </article>
-                <article>
-                    <a href="#" class="group">
-                        <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=600&auto=format&fit=crop" alt class="outline-img-outline aspect-3/2 w-full rounded-[min(0.3vw,4px)] object-cover outline-1 -outline-offset-1" />
-                        <span class="text-ink-faint mt-3 font-mono text-[0.625rem] tracking-wider uppercase">Governance</span>
-                        <h3 class="font-display group-hover:text-red-accent text-ink mt-1 text-lg font-semibold tracking-tight sm:text-base">The New Foundation Model: How Projects Are Governing Themselves in 2026</h3>
-                        <p class="text-ink-faint mt-2 font-mono text-[0.625rem] tracking-wider uppercase">6 min read</p>
-                    </a>
-                </article>
-            </div>
 
-            <!-- Security tab -->
-            <div x-show="tab === 'security'" x-cloak class="mt-6 grid gap-6 sm:grid-cols-2 lg:grid-cols-3 lg:gap-8">
-                <article>
-                    <a href="#" class="group">
-                        <img src="https://images.unsplash.com/photo-1614064641938-3bbee52942c7?q=80&w=600&auto=format&fit=crop" alt class="outline-img-outline aspect-3/2 w-full rounded-[min(0.3vw,4px)] object-cover outline-1 -outline-offset-1" />
-                        <span class="text-ink-faint mt-3 font-mono text-[0.625rem] tracking-wider uppercase">Threats</span>
-                        <h3 class="font-display group-hover:text-red-accent text-ink mt-1 text-lg font-semibold tracking-tight sm:text-base">Quantum Computing and Cryptography: The Five-Year Countdown Begins</h3>
-                        <p class="text-ink-faint mt-2 font-mono text-[0.625rem] tracking-wider uppercase">9 min read</p>
-                    </a>
-                </article>
-                <article>
-                    <a href="#" class="group">
-                        <img src="https://images.unsplash.com/photo-1563986768494-4dee2763ff3f?q=80&w=600&auto=format&fit=crop" alt class="outline-img-outline aspect-3/2 w-full rounded-[min(0.3vw,4px)] object-cover outline-1 -outline-offset-1" />
-                        <span class="text-ink-faint mt-3 font-mono text-[0.625rem] tracking-wider uppercase">Compliance</span>
-                        <h3 class="font-display group-hover:text-red-accent text-ink mt-1 text-lg font-semibold tracking-tight sm:text-base">SBOM Mandates Go Global: What Every Developer Needs to Know</h3>
-                        <p class="text-ink-faint mt-2 font-mono text-[0.625rem] tracking-wider uppercase">7 min read</p>
-                    </a>
-                </article>
-                <article>
-                    <a href="#" class="group">
-                        <img src="https://images.unsplash.com/photo-1510511459019-5dda7724fd87?q=80&w=600&auto=format&fit=crop" alt class="outline-img-outline aspect-3/2 w-full rounded-[min(0.3vw,4px)] object-cover outline-1 -outline-offset-1" />
-                        <span class="text-ink-faint mt-3 font-mono text-[0.625rem] tracking-wider uppercase">DevSecOps</span>
-                        <h3 class="font-display group-hover:text-red-accent text-ink mt-1 text-lg font-semibold tracking-tight sm:text-base">Shift Left Is Dead. Long Live Shift Everywhere.</h3>
-                        <p class="text-ink-faint mt-2 font-mono text-[0.625rem] tracking-wider uppercase">5 min read</p>
-                    </a>
-                </article>
-            </div>
-
-            <!-- AI tab -->
-            <div x-show="tab === 'ai'" x-cloak class="mt-6 grid gap-6 sm:grid-cols-2 lg:grid-cols-3 lg:gap-8">
-                <article>
-                    <a href="#" class="group">
-                        <img src="https://images.unsplash.com/photo-1620712943543-bcc4688e7485?q=80&w=600&auto=format&fit=crop" alt class="outline-img-outline aspect-3/2 w-full rounded-[min(0.3vw,4px)] object-cover outline-1 -outline-offset-1" />
-                        <span class="text-ink-faint mt-3 font-mono text-[0.625rem] tracking-wider uppercase">Research</span>
-                        <h3 class="font-display group-hover:text-red-accent text-ink mt-1 text-lg font-semibold tracking-tight sm:text-base">The Surprising Return of Symbolic AI: Why Neural Nets Aren't Enough</h3>
-                        <p class="text-ink-faint mt-2 font-mono text-[0.625rem] tracking-wider uppercase">11 min read</p>
-                    </a>
-                </article>
-                <article>
-                    <a href="#" class="group">
-                        <img src="https://images.unsplash.com/photo-1555255707-c07966088b7b?q=80&w=600&auto=format&fit=crop" alt class="outline-img-outline aspect-3/2 w-full rounded-[min(0.3vw,4px)] object-cover outline-1 -outline-offset-1" />
-                        <span class="text-ink-faint mt-3 font-mono text-[0.625rem] tracking-wider uppercase">Tools</span>
-                        <h3 class="font-display group-hover:text-red-accent text-ink mt-1 text-lg font-semibold tracking-tight sm:text-base">Beyond Code Completion: How AI Agents Are Writing Entire Test Suites</h3>
-                        <p class="text-ink-faint mt-2 font-mono text-[0.625rem] tracking-wider uppercase">8 min read</p>
-                    </a>
-                </article>
-                <article>
-                    <a href="#" class="group">
-                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=600&auto=format&fit=crop" alt class="outline-img-outline aspect-3/2 w-full rounded-[min(0.3vw,4px)] object-cover outline-1 -outline-offset-1" />
-                        <span class="text-ink-faint mt-3 font-mono text-[0.625rem] tracking-wider uppercase">Ethics</span>
-                        <h3 class="font-display group-hover:text-red-accent text-ink mt-1 text-lg font-semibold tracking-tight sm:text-base">Open-Source AI Models Are Catching Up. The Ethics Debate Is Just Starting.</h3>
-                        <p class="text-ink-faint mt-2 font-mono text-[0.625rem] tracking-wider uppercase">6 min read</p>
-                    </a>
+                <article class="border-border rounded-[min(0.4vw,6px)] border p-6">
+                    <span class="text-red-accent font-mono text-[0.625rem] font-semibold tracking-wider uppercase">Guides and Tutorials</span>
+                    <h3 class="font-display text-ink mt-2 text-2xl font-semibold tracking-tight text-balance sm:text-xl">Setup guides, migrations, and practical OpenClaw workflows</h3>
+                    <p class="text-ink-body mt-3 text-[0.9375rem] text-pretty">Evergreen how-tos help the site rank for recurring OpenClaw search intent, from migrations and setup paths to persistent memory and local model workflows.</p>
+                    <ul class="mt-5 space-y-3">
+                        <li><a href="/posts/openclaw-2026-4-11-active-memory-guide/" class="text-ink-strong hover:text-red-accent font-sans text-sm font-medium">OpenClaw Active Memory: Make Your Agent Remember Automatically</a></li>
+                        <li><a href="/posts/openclaw-2026-4-4-migrate-anthropic-oauth-to-claude-cli/" class="text-ink-strong hover:text-red-accent font-sans text-sm font-medium">How to Migrate OpenClaw from Anthropic OAuth to Claude CLI</a></li>
+                        <li><a href="/posts/openclaw-2026-4-5-gemma4-turboquant-local-agent/" class="text-ink-strong hover:text-red-accent font-sans text-sm font-medium">Run OpenClaw Locally with Gemma 4 TurboQuant on a MacBook Air</a></li>
+                    </ul>
                 </article>
             </div>
         </section>
