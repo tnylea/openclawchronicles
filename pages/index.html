@@ -175,34 +175,14 @@
         <section class="mx-auto max-w-7xl px-4 py-10 sm:px-6 lg:px-8 lg:py-14">
             <div class="grid gap-10 lg:grid-cols-12 lg:gap-0">
                 <!-- MAIN ARTICLES -->
-                <div class="lg:border-border lg:col-span-8 lg:border-r lg:pr-8"
-                     x-data="{
-                        perPage: 15,
-                        currentPage: 1,
-                        get articles() { return Array.from(this.$refs.articleList.querySelectorAll('[data-article]')); },
-                        get totalPages() { return Math.ceil(this.articles.length / this.perPage); },
-                        get startIndex() { return (this.currentPage - 1) * this.perPage; },
-                        get endIndex() { return this.startIndex + this.perPage; },
-                        showPage(n, shouldScroll = true) {
-                            this.currentPage = n;
-                            this.articles.forEach((el, i) => {
-                                el.style.display = (i >= this.startIndex && i < this.endIndex) ? '' : 'none';
-                            });
-                            if (shouldScroll) {
-                                window.scrollTo({ top: this.$el.offsetTop - 80, behavior: 'smooth' });
-                            }
-                        },
-                        init() {
-                            this.$nextTick(() => { this.showPage(1, false); });
-                        }
-                     }">
+                <div class="lg:border-border lg:col-span-8 lg:border-r lg:pr-8">
                     <div class="flex items-center gap-3">
                         <h2 class="text-ink font-mono text-[0.6875rem] font-semibold tracking-widest uppercase">All Posts</h2>
                         <div class="bg-border-strong h-px flex-1" aria-hidden="true"></div>
                     </div>
 
-                    <div x-ref="articleList">
-                    <ForEach content="posts" as="post" orderBy="date, desc">
+                    <div>
+                    <ForEach content="posts" as="post" orderBy="date, desc" count="12">
                         <div data-article>
                         <article class="mt-8">
                             <a href="{post.link}" class="group grid gap-6 sm:grid-cols-2" data-post-date="{post.date}">
@@ -233,32 +213,15 @@
                     </ForEach>
                     </div>
 
-                    <!-- Pagination controls -->
-                    <div class="mt-4 flex items-center justify-between gap-4" x-show="totalPages > 1">
-                        <span class="inline-flex items-center gap-1.5 font-mono text-[0.625rem] font-semibold tracking-wider uppercase text-ink-muted opacity-30">
-                            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>
-                            Prev
-                        </span>
-
-                        <div class="flex items-center gap-1">
-                            <template x-for="n in totalPages" :key="n">
-                                <a
-                                    :href="n === 1 ? '/posts/' : `/posts/${n}/`"
-                                    :class="n === 1
-                                        ? 'bg-red-accent text-white'
-                                        : 'text-ink-muted hover:text-ink'"
-                                    class="min-w-[1.75rem] h-7 px-1.5 rounded font-mono text-[0.625rem] font-semibold tracking-wider transition-colors inline-flex items-center justify-center">
-                                    <span x-text="n"></span>
-                                </a>
-                            </template>
-                        </div>
-
+                    <div class="mt-6 flex flex-col gap-3 border-t border-border pt-6 sm:flex-row sm:items-center sm:justify-between">
+                        <p class="text-ink-muted font-sans text-sm">
+                            Browse the latest 12 stories here, then continue into the full archive for older releases, security alerts, and tutorials.
+                        </p>
                         <a
-                            href="/posts/2/"
-                            x-show="totalPages > 1"
-                            class="inline-flex items-center gap-1.5 font-mono text-[0.625rem] font-semibold tracking-wider uppercase text-ink-muted hover:text-ink transition-colors">
-                            Next
-                            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+                            href="/posts/"
+                            class="inline-flex items-center gap-1.5 font-mono text-[0.625rem] font-semibold tracking-wider uppercase text-red-accent hover:text-red-vibrant transition-colors">
+                            View full archive
+                            <svg class="h-3.5 w-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
                         </a>
                     </div>
                 </div>
@@ -311,7 +274,7 @@
             </div>
 
             <div class="mt-8 grid gap-6 lg:grid-cols-3 lg:gap-8">
-                <article class="border-border rounded-[min(0.4vw,6px)] border p-6">
+                <article id="releases-coverage" class="border-border rounded-[min(0.4vw,6px)] border p-6 scroll-mt-28">
                     <span class="text-red-accent font-mono text-[0.625rem] font-semibold tracking-wider uppercase">OpenClaw Releases</span>
                     <h3 class="font-display text-ink mt-2 text-2xl font-semibold tracking-tight text-balance sm:text-xl">Track every OpenClaw release, beta, and hotfix</h3>
                     <p class="text-ink-body mt-3 text-[0.9375rem] text-pretty">Follow version launches, changelog breakdowns, and post-release fixes so readers can quickly understand what shipped and whether they should upgrade.</p>
@@ -322,7 +285,7 @@
                     </ul>
                 </article>
 
-                <article class="border-border rounded-[min(0.4vw,6px)] border p-6">
+                <article id="security-coverage" class="border-border rounded-[min(0.4vw,6px)] border p-6 scroll-mt-28">
                     <span class="text-red-accent font-mono text-[0.625rem] font-semibold tracking-wider uppercase">Security Coverage</span>
                     <h3 class="font-display text-ink mt-2 text-2xl font-semibold tracking-tight text-balance sm:text-xl">Security advisories, patches, and self-hosting hardening</h3>
                     <p class="text-ink-body mt-3 text-[0.9375rem] text-pretty">This track clusters OpenClaw security alerts, CVEs, exploit response, and configuration hardening for self-hosters who need actionable guidance fast.</p>
@@ -333,7 +296,7 @@
                     </ul>
                 </article>
 
-                <article class="border-border rounded-[min(0.4vw,6px)] border p-6">
+                <article id="guides-coverage" class="border-border rounded-[min(0.4vw,6px)] border p-6 scroll-mt-28">
                     <span class="text-red-accent font-mono text-[0.625rem] font-semibold tracking-wider uppercase">Guides and Tutorials</span>
                     <h3 class="font-display text-ink mt-2 text-2xl font-semibold tracking-tight text-balance sm:text-xl">Setup guides, migrations, and practical OpenClaw workflows</h3>
                     <p class="text-ink-body mt-3 text-[0.9375rem] text-pretty">Evergreen how-tos help the site rank for recurring OpenClaw search intent, from migrations and setup paths to persistent memory and local model workflows.</p>
