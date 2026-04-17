@@ -22,6 +22,8 @@
                                             <img
                                                 src="{post.coverImage}"
                                                 alt="{post.title}"
+                                                width="1600"
+                                                height="1000"
                                                 class="outline-img-outline aspect-16/10 w-full object-cover outline-1 -outline-offset-1" />
                                         </div>
                                         <figcaption class="mt-2 flex items-baseline gap-2">
@@ -114,6 +116,8 @@
                                     <img
                                         src="{post.coverImage}"
                                         alt="{post.title}"
+                                        width="1200"
+                                        height="800"
                                         class="outline-img-outline size-20 rounded-[min(0.3vw,4px)] object-cover outline-1 -outline-offset-1 sm:aspect-3/2 sm:size-auto sm:w-full lg:aspect-3/2 lg:w-full" />
                                 </div>
                                 <div class="lg:mt-3">
@@ -132,6 +136,8 @@
                                     <img
                                         src="{post.coverImage}"
                                         alt="{post.title}"
+                                        width="1200"
+                                        height="800"
                                         class="outline-img-outline size-20 rounded-[min(0.3vw,4px)] object-cover outline-1 -outline-offset-1 sm:aspect-3/2 sm:size-auto sm:w-full lg:aspect-3/2 lg:w-full" />
                                 </div>
                                 <div class="lg:mt-3">
@@ -150,6 +156,8 @@
                                     <img
                                         src="{post.coverImage}"
                                         alt="{post.title}"
+                                        width="1200"
+                                        height="800"
                                         class="outline-img-outline size-20 rounded-[min(0.3vw,4px)] object-cover outline-1 -outline-offset-1 sm:aspect-3/2 sm:size-auto sm:w-full lg:aspect-3/2 lg:w-full" />
                                 </div>
                                 <div class="lg:mt-3">
@@ -162,6 +170,15 @@
                         </article>
                     </If>
                 </ForEach>
+            </div>
+
+            <div class="mt-6 border-t border-border pt-5">
+                <a
+                    href="/posts/"
+                    class="inline-flex items-center gap-1.5 font-mono text-[0.625rem] font-semibold tracking-wider uppercase text-red-accent transition-colors hover:text-red-vibrant">
+                    Explore the full OpenClaw archive
+                    <svg class="h-3.5 w-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+                </a>
             </div>
         </section>
 
@@ -190,6 +207,8 @@
                                     <img
                                         src="{post.coverImage}"
                                         alt="{post.title}"
+                                        width="1200"
+                                        height="900"
                                         class="outline-img-outline aspect-4/3 w-full rounded-[min(0.3vw,4px)] object-cover outline-1 -outline-offset-1" />
                                 </div>
                                 <div class="flex flex-col justify-center">
@@ -228,29 +247,34 @@
 
                 <!-- SIDEBAR -->
                 <div class="lg:col-span-4 lg:pl-8">
-                    <!-- Most Read -->
+                    <!-- Recommended Paths -->
                     <div class="flex items-center gap-3">
-                        <h2 class="text-ink font-mono text-[0.6875rem] font-semibold tracking-widest uppercase">Most Read</h2>
+                        <h2 class="text-ink font-mono text-[0.6875rem] font-semibold tracking-widest uppercase">Recommended Paths</h2>
                         <div class="bg-border-strong h-px flex-1" aria-hidden="true"></div>
                     </div>
 
-                    <ol class="most-read-list mt-5 flex flex-col gap-4" role="list" style="counter-reset: most-read;">
-                        <ForEach content="posts" as="post" orderBy="random" count="5">
-                            <li style="counter-increment: most-read;">
-                                <a href="{post.link}" class="group flex items-start gap-4">
-                                    <span class="most-read-num font-display text-ink-ghost text-3xl font-semibold sm:text-2xl" aria-hidden="true"></span>
-                                    <h3 class="font-display group-hover:text-red-accent text-ink-strong text-base font-semibold tracking-tight sm:text-[0.9375rem]">
-                                        {post.title}
-                                    </h3>
-                                </a>
-                            </li>
-                        </ForEach>
-                    </ol>
-                    <style>
-                        .most-read-num::before {
-                            content: "0" counter(most-read);
-                        }
-                    </style>
+                    <div class="mt-5 space-y-6">
+                        <article class="border-border rounded-[min(0.3vw,4px)] border p-4">
+                            <span class="text-red-accent font-mono text-[0.625rem] font-semibold tracking-wider uppercase">Start here</span>
+                            <h3 class="font-display text-ink mt-2 text-xl font-semibold tracking-tight">Understand OpenClaw fast</h3>
+                            <p class="text-ink-body mt-2 text-[0.9375rem] text-pretty">Follow the strongest entry points for releases, security fixes, and practical setup coverage.</p>
+                            <ul class="mt-4 space-y-3">
+                                <li><a href="/#releases-coverage" class="text-ink-strong hover:text-red-accent font-sans text-sm font-medium">Latest release coverage</a></li>
+                                <li><a href="/#security-coverage" class="text-ink-strong hover:text-red-accent font-sans text-sm font-medium">Security alerts and hardening</a></li>
+                                <li><a href="/#guides-coverage" class="text-ink-strong hover:text-red-accent font-sans text-sm font-medium">Guides and migration tutorials</a></li>
+                            </ul>
+                        </article>
+
+                        <article class="border-border rounded-[min(0.3vw,4px)] border p-4">
+                            <span class="text-red-accent font-mono text-[0.625rem] font-semibold tracking-wider uppercase">Evergreen links</span>
+                            <ul class="mt-3 space-y-3">
+                                <li><a href="/posts/openclaw-2026-4-11-active-memory-guide/" class="text-ink-strong hover:text-red-accent font-sans text-sm font-medium">OpenClaw Active Memory guide</a></li>
+                                <li><a href="/posts/openclaw-2026-4-4-migrate-anthropic-oauth-to-claude-cli/" class="text-ink-strong hover:text-red-accent font-sans text-sm font-medium">Anthropic OAuth to Claude CLI migration</a></li>
+                                <li><a href="/posts/openclaw-2026-3-30-security-exposed-instances/" class="text-ink-strong hover:text-red-accent font-sans text-sm font-medium">Exposed instances security response</a></li>
+                                <li><a href="/about/" class="text-ink-strong hover:text-red-accent font-sans text-sm font-medium">How OpenClaw Chronicles is researched and published</a></li>
+                            </ul>
+                        </article>
+                    </div>
                 </div>
             </div>
         </section>

@@ -39,6 +39,8 @@
                 <img
                     src="{frontmatter.coverImage}"
                     alt="{frontmatter.title}"
+                    width="1600"
+                    height="900"
                     class="outline-img-outline aspect-16/9 w-full object-cover outline-1 -outline-offset-1" />
             </div>
         </div>
@@ -48,10 +50,10 @@
             {content}
         </article>
 
-        <section class="mx-auto max-w-3xl px-4 pb-10 sm:px-6 lg:px-8">
+        <section class="mx-auto max-w-3xl px-4 pb-10 sm:px-6 lg:px-8" aria-labelledby="continue-reading-heading">
             <div class="border-border-strong border-t pt-8">
                 <div class="flex items-center gap-3">
-                    <h2 class="text-ink font-mono text-[0.6875rem] font-semibold tracking-widest uppercase">Continue Reading</h2>
+                    <h2 id="continue-reading-heading" class="text-ink font-mono text-[0.6875rem] font-semibold tracking-widest uppercase">Continue Reading</h2>
                     <div class="bg-border-strong h-px flex-1" aria-hidden="true"></div>
                 </div>
                 <div class="mt-6 grid gap-4 sm:grid-cols-2">

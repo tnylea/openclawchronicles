@@ -9,6 +9,7 @@
     <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)" />
     <meta name="theme-color" content="#0c0c0c" media="(prefers-color-scheme: dark)" />
     <link rel="canonical" href="https://openclawchronicles.com{frontmatter.url}" />
+    <meta name="author" content="{frontmatter.authorName}" />
     <!-- Open Graph -->
     <meta property="og:type" content="article" />
     <meta property="og:title" content="{frontmatter.title}" />
@@ -40,10 +41,27 @@
       "publisher": {
         "@type": "Organization",
         "name": "OpenClaw Chronicles",
-        "url": "https://openclawchronicles.com"
+        "url": "https://openclawchronicles.com",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://openclawchronicles.com/icon-512.png"
+        }
       },
       "datePublished": "{frontmatter.date}",
       "dateModified": "{frontmatter.date}"
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "OpenClaw Chronicles",
+      "url": "https://openclawchronicles.com",
+      "logo": "https://openclawchronicles.com/icon-512.png",
+      "sameAs": [
+        "https://x.com/openclawai",
+        "https://github.com/tnylea/openclawchronicles"
+      ]
     }
     </script>
     <!-- Breadcrumb Schema -->
@@ -89,7 +107,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Inter:wght@300..700&family=Manufacturing+Consent&display=swap"
+      href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Newsreader:ital,wght@0,400;0,600;1,400&family=Playfair+Display:wght@400;600;700&family=Inter:wght@400;500;600;700&family=Manufacturing+Consent&display=swap"
       rel="stylesheet" />
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <script>

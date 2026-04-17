@@ -21,6 +21,8 @@ function postCard(post) {
                                 <img
                                     src="${post.coverImage}"
                                     alt="${post.title}"
+                                    width="1200"
+                                    height="800"
                                     class="outline-img-outline aspect-3/2 w-full object-cover outline-1 -outline-offset-1 transition-transform duration-300 group-hover:scale-105" />
                             </div>
                             <div class="mt-4">
