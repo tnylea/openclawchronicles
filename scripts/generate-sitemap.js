@@ -20,6 +20,12 @@ function getFrontmatterField(content, key) {
   return match ? match[1].trim() : null;
 }
 
+function absoluteAssetUrl(assetPath) {
+  if (!assetPath) return null;
+  if (/^https?:\/\//i.test(assetPath)) return assetPath;
+  return `${BASE_URL}${assetPath.startsWith('/') ? '' : '/'}${assetPath}`;
+}
+
 // Build URL entries
 const urls = [];
 
@@ -39,7 +45,8 @@ const postFiles = fs.readdirSync(POSTS_DIR)
     const content = fs.readFileSync(path.join(POSTS_DIR, file), 'utf8');
     const slug = path.basename(file, '.md');
     const date = getFrontmatterField(content, 'date');
-    return { slug, date };
+    const coverImage = getFrontmatterField(content, 'coverImage');
+    return { slug, date, coverImage };
   })
   .sort((a, b) => (b.date || '').localeCompare(a.date || ''));
 
@@ -59,21 +66,27 @@ for (const post of postFiles) {
     lastmod: post.date ? post.date.split('T')[0] : undefined,
     changefreq: 'monthly',
     priority: '0.7',
+    image: absoluteAssetUrl(post.coverImage),
   });
 }
 
 // Build XML
-const entries = urls.map(({ loc, lastmod, changefreq, priority }) => {
+const entries = urls.map(({ loc, lastmod, changefreq, priority, image }) => {
   const lines = [`  <url>`, `    <loc>${loc}</loc>`];
   if (lastmod) lines.push(`    <lastmod>${lastmod}</lastmod>`);
   if (changefreq) lines.push(`    <changefreq>${changefreq}</changefreq>`);
   if (priority) lines.push(`    <priority>${priority}</priority>`);
+  if (image) {
+    lines.push('    <image:image>');
+    lines.push(`      <image:loc>${image}</image:loc>`);
+    lines.push('    </image:image>');
+  }
   lines.push(`  </url>`);
   return lines.join('\n');
 }).join('\n');
 
 const xml = `<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
 ${entries}
 </urlset>
 `;
