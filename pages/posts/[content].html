@@ -3,7 +3,7 @@
     <include src="top-bar.html"></include>
     <include src="header.html"></include>
 
-    <main>
+    <main id="main-content">
         <!-- Breadcrumb -->
         <div class="mx-auto max-w-4xl px-4 pt-6 pb-2 sm:px-6 lg:px-8">
             <nav class="flex items-center gap-2 font-mono text-[0.625rem] tracking-wider uppercase">
@@ -50,24 +50,49 @@
             {content}
         </article>
 
-        <section class="mx-auto max-w-3xl px-4 pb-10 sm:px-6 lg:px-8" aria-labelledby="continue-reading-heading">
+        <section class="defer-render mx-auto max-w-3xl px-4 pb-10 sm:px-6 lg:px-8" aria-labelledby="continue-reading-heading">
             <div class="border-border-strong border-t pt-8">
                 <div class="flex items-center gap-3">
                     <h2 id="continue-reading-heading" class="text-ink font-mono text-[0.6875rem] font-semibold tracking-widest uppercase">Continue Reading</h2>
                     <div class="bg-border-strong h-px flex-1" aria-hidden="true"></div>
                 </div>
                 <div class="mt-6 grid gap-4 sm:grid-cols-2">
-                    <ForEach content="posts" as="post" orderBy="date, desc" count="2">
-                        <article class="border-border rounded-[min(0.3vw,4px)] border p-4">
-                            <a href="{post.link}" class="group block">
-                                <span class="text-red-accent font-mono text-[0.625rem] font-semibold tracking-wider uppercase">Latest Coverage</span>
-                                <h3 class="font-display group-hover:text-red-accent text-ink mt-2 text-xl font-semibold tracking-tight text-balance sm:text-lg">
-                                    {post.title}
-                                </h3>
-                                <p class="text-ink-body mt-2 text-[0.9375rem] text-pretty">{post.excerpt}</p>
-                            </a>
-                        </article>
-                    </ForEach>
+                    <article class="border-border rounded-[min(0.3vw,4px)] border p-4">
+                        <a href="/#releases-coverage" class="group block">
+                            <span class="text-red-accent font-mono text-[0.625rem] font-semibold tracking-wider uppercase">Coverage Hub</span>
+                            <h3 class="font-display group-hover:text-red-accent text-ink mt-2 text-xl font-semibold tracking-tight text-balance sm:text-lg">
+                                OpenClaw release coverage
+                            </h3>
+                            <p class="text-ink-body mt-2 text-[0.9375rem] text-pretty">Jump into stable releases, beta builds, hotfixes, and changelog breakdowns from one crawlable hub.</p>
+                        </a>
+                    </article>
+                    <article class="border-border rounded-[min(0.3vw,4px)] border p-4">
+                        <a href="/#security-coverage" class="group block">
+                            <span class="text-red-accent font-mono text-[0.625rem] font-semibold tracking-wider uppercase">Coverage Hub</span>
+                            <h3 class="font-display group-hover:text-red-accent text-ink mt-2 text-xl font-semibold tracking-tight text-balance sm:text-lg">
+                                Security alerts and hardening guides
+                            </h3>
+                            <p class="text-ink-body mt-2 text-[0.9375rem] text-pretty">Browse OpenClaw security fixes, self-hosting hardening steps, and incident explainers.</p>
+                        </a>
+                    </article>
+                    <article class="border-border rounded-[min(0.3vw,4px)] border p-4">
+                        <a href="/#guides-coverage" class="group block">
+                            <span class="text-red-accent font-mono text-[0.625rem] font-semibold tracking-wider uppercase">Coverage Hub</span>
+                            <h3 class="font-display group-hover:text-red-accent text-ink mt-2 text-xl font-semibold tracking-tight text-balance sm:text-lg">
+                                OpenClaw setup and migration guides
+                            </h3>
+                            <p class="text-ink-body mt-2 text-[0.9375rem] text-pretty">Find tutorials for local models, provider migrations, and practical OpenClaw workflows.</p>
+                        </a>
+                    </article>
+                    <article class="border-border rounded-[min(0.3vw,4px)] border p-4">
+                        <a href="/posts/" class="group block">
+                            <span class="text-red-accent font-mono text-[0.625rem] font-semibold tracking-wider uppercase">Archive</span>
+                            <h3 class="font-display group-hover:text-red-accent text-ink mt-2 text-xl font-semibold tracking-tight text-balance sm:text-lg">
+                                Browse the full OpenClaw archive
+                            </h3>
+                            <p class="text-ink-body mt-2 text-[0.9375rem] text-pretty">Keep exploring older releases, tutorials, and ecosystem updates through the full post index.</p>
+                        </a>
+                    </article>
                 </div>
             </div>
         </section>

@@ -17,6 +17,8 @@
     <meta property="og:url" content="https://openclawchronicles.com{frontmatter.url}" />
     <meta property="og:image" content="https://openclawchronicles.com{frontmatter.ogImageUrl}" />
     <meta property="og:image:alt" content="Cover image for {frontmatter.title}" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
     <meta property="og:site_name" content="OpenClaw Chronicles" />
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image" />
@@ -25,6 +27,7 @@
     <meta name="twitter:image" content="https://openclawchronicles.com{frontmatter.ogImageUrl}" />
     <meta name="twitter:image:alt" content="Cover image for {frontmatter.title}" />
     <meta name="twitter:site" content="@openclawchronicles" />
+    <meta name="twitter:creator" content="@openclawchronicles" />
     <!-- JSON-LD Article Schema -->
     <script type="application/ld+json">
     {
@@ -32,8 +35,19 @@
       "@type": "Article",
       "headline": "{frontmatter.title}",
       "description": "{frontmatter.excerpt}",
-      "image": "https://openclawchronicles.com{frontmatter.ogImageUrl}",
+      "image": {
+        "@type": "ImageObject",
+        "url": "https://openclawchronicles.com{frontmatter.ogImageUrl}",
+        "width": 1200,
+        "height": 630
+      },
       "url": "https://openclawchronicles.com{frontmatter.url}",
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://openclawchronicles.com{frontmatter.url}"
+      },
+      "articleSection": "OpenClaw News",
+      "keywords": ["OpenClaw", "OpenClaw news", "OpenClaw releases", "OpenClaw security", "OpenClaw guides"],
       "author": {
         "@type": "Person",
         "name": "{frontmatter.authorName}"
@@ -44,7 +58,9 @@
         "url": "https://openclawchronicles.com",
         "logo": {
           "@type": "ImageObject",
-          "url": "https://openclawchronicles.com/icon-512.png"
+          "url": "https://openclawchronicles.com/icon-512.png",
+          "width": 512,
+          "height": 512
         }
       },
       "datePublished": "{frontmatter.date}",
@@ -384,9 +400,31 @@
         border-top: 1px solid var(--color-border-strong);
         margin: 2.5em 0;
       }
+      .defer-render {
+        content-visibility: auto;
+        contain-intrinsic-size: 1px 1200px;
+      }
+      .skip-link {
+        position: absolute;
+        left: 1rem;
+        top: 1rem;
+        z-index: 100;
+        transform: translateY(-200%);
+        border-radius: 0.375rem;
+        background: var(--color-red-accent);
+        color: white;
+        padding: 0.75rem 1rem;
+        font-family: var(--font-sans);
+        font-size: 0.875rem;
+        font-weight: 600;
+      }
+      .skip-link:focus {
+        transform: translateY(0);
+      }
     </style>
   </head>
   <body class="bg-surface font-body text-ink antialiased">
+    <a href="#main-content" class="skip-link">Skip to content</a>
     <div class="isolate">
       {slot}
       <include src="footer.html"></include>

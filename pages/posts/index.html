@@ -3,7 +3,7 @@
     <include src="top-bar.html"></include>
     <include src="header.html"></include>
 
-    <main>
+    <main id="main-content">
         <!-- Breadcrumb -->
         <div class="mx-auto max-w-7xl px-4 pt-6 pb-2 sm:px-6 lg:px-8">
             <nav class="flex items-center gap-2 font-mono text-[0.625rem] tracking-wider uppercase">
@@ -21,7 +21,7 @@
         </div>
 
         <!-- POSTS_PAGINATION_START -->
-        <section class="mx-auto max-w-7xl px-4 py-10 sm:px-6 lg:px-8">
+        <section class="defer-render mx-auto max-w-7xl px-4 py-10 sm:px-6 lg:px-8">
             <div class="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
                 <ForEach content="posts" as="post" orderBy="date, desc">
                     <article>
