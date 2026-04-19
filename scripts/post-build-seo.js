@@ -3,6 +3,9 @@ const path = require('path');
 
 const siteDir = path.join(__dirname, '..', '_site');
 const siteUrl = 'https://openclawchronicles.com';
+const collectionPath = path.join(__dirname, '..', 'collections', 'content', 'posts.json');
+const allPosts = JSON.parse(fs.readFileSync(collectionPath, 'utf8'))
+  .sort((a, b) => new Date(b.date) - new Date(a.date));
 
 function walk(dir) {
   const entries = fs.readdirSync(dir, { withFileTypes: true });
@@ -88,6 +91,85 @@ function fixAboutPageMetadata(html, canonicalUrl) {
   return html;
 }
 
+function fixPostsArchiveMetadata(html, canonicalUrl) {
+  if (!/^https:\/\/openclawchronicles\.com\/posts\/(\d+\/)?$/.test(canonicalUrl)) return html;
+
+  const pageMatch = canonicalUrl.match(/\/posts\/(\d+)\/$/);
+  const pageNumber = pageMatch ? Number(pageMatch[1]) : 1;
+  const title = pageNumber === 1
+    ? 'OpenClaw Chronicles Archive, OpenClaw News, Releases, Security, and Guides'
+    : `OpenClaw Chronicles Archive, Page ${pageNumber}`;
+  const description = pageNumber === 1
+    ? 'Browse the OpenClaw Chronicles archive for OpenClaw release coverage, security alerts, migration guides, tutorials, and ecosystem reporting.'
+    : `Browse page ${pageNumber} of the OpenClaw Chronicles archive for older OpenClaw releases, guides, and security coverage.`;
+  const ogImage = `${siteUrl}/assets/images/about-banner.jpg`;
+
+  html = html.replace(/<title>[^<]*<\/title>/i, `<title>${title}</title>`);
+  html = html.replace(/<meta name="description" content="[^"]*"\s*\/?\s*>/i, `<meta name="description" content="${description}" />`);
+  html = html.replace(/<meta name="author" content="[^"]*"\s*\/?\s*>/i, '<meta name="author" content="Cody" />');
+  html = html.replace(/<meta property="og:type" content="[^"]*"\s*\/?\s*>/i, '<meta property="og:type" content="website" />');
+  html = html.replace(/<meta property="og:title" content="[^"]*"\s*\/?\s*>/i, `<meta property="og:title" content="${title}" />`);
+  html = html.replace(/<meta property="og:description" content="[^"]*"\s*\/?\s*>/i, `<meta property="og:description" content="${description}" />`);
+  html = html.replace(/<meta property="og:image" content="[^"]*"\s*\/?\s*>/i, `<meta property="og:image" content="${ogImage}" />`);
+  html = html.replace(/<meta property="og:image:alt" content="[^"]*"\s*\/?\s*>/i, '<meta property="og:image:alt" content="OpenClaw Chronicles archive page" />');
+  html = html.replace(/<meta name="twitter:title" content="[^"]*"\s*\/?\s*>/i, `<meta name="twitter:title" content="${title}" />`);
+  html = html.replace(/<meta name="twitter:description" content="[^"]*"\s*\/?\s*>/i, `<meta name="twitter:description" content="${description}" />`);
+  html = html.replace(/<meta name="twitter:image" content="[^"]*"\s*\/?\s*>/i, `<meta name="twitter:image" content="${ogImage}" />`);
+  html = html.replace(/<meta name="twitter:image:alt" content="[^"]*"\s*\/?\s*>/i, '<meta name="twitter:image:alt" content="OpenClaw Chronicles archive page" />');
+
+  const topPosts = allPosts.slice((pageNumber - 1) * 15, (pageNumber - 1) * 15 + 10);
+  const itemList = topPosts.map((post, index) => ({
+    '@type': 'ListItem',
+    position: index + 1,
+    url: `${siteUrl}${post.url}`,
+    name: post.title,
+  }));
+
+  html = html.replace(
+    /<!-- JSON-LD WebSite Schema -->[\s\S]*?<!-- Google Analytics -->/i,
+    `<!-- JSON-LD WebSite Schema -->\n    <script type="application/ld+json">\n    {\n      "@context": "https://schema.org",\n      "@type": "CollectionPage",\n      "name": "${title.replace(/"/g, '&quot;')}",\n      "url": "${canonicalUrl}",\n      "description": "${description}",\n      "isPartOf": {\n        "@type": "WebSite",\n        "name": "OpenClaw Chronicles",\n        "url": "${siteUrl}"\n      },\n      "mainEntity": {\n        "@type": "ItemList",\n        "itemListElement": ${JSON.stringify(itemList, null, 8)}\n      }\n    }\n    </script>\n    <script type="application/ld+json">\n    {\n      "@context": "https://schema.org",\n      "@type": "BreadcrumbList",\n      "itemListElement": [\n        {\n          "@type": "ListItem",\n          "position": 1,\n          "name": "Home",\n          "item": "${siteUrl}/"\n        },\n        {\n          "@type": "ListItem",\n          "position": 2,\n          "name": "Posts",\n          "item": "${siteUrl}/posts/"\n        }${pageNumber > 1 ? `,\n        {\n          "@type": "ListItem",\n          "position": 3,\n          "name": "Page ${pageNumber}",\n          "item": "${canonicalUrl}"\n        }` : ''}\n      ]\n    }\n    </script>\n    <!-- Google Analytics -->`
+  );
+
+  return html;
+}
+
+function injectRelatedPosts(html, canonicalUrl) {
+  const match = canonicalUrl.match(/\/posts\/([^/]+)\/$/);
+  if (!match) return html;
+
+  const currentSlug = match[1];
+  const related = allPosts
+    .filter((post) => post && typeof post.url === 'string' && !post.url.includes(`/${currentSlug}/`))
+    .slice(0, 3);
+
+  if (related.length === 0 || html.includes('related-posts-heading')) return html;
+
+  const cards = related.map((post) => `
+                    <article class="border-border rounded-[min(0.3vw,4px)] border p-4">
+                        <a href="${post.url}" class="group block">
+                            <span class="text-red-accent font-mono text-[0.625rem] font-semibold tracking-wider uppercase">Recent story</span>
+                            <h3 class="font-display group-hover:text-red-accent text-ink mt-2 text-xl font-semibold tracking-tight text-balance sm:text-lg">
+                                ${post.title}
+                            </h3>
+                            <p class="text-ink-body mt-2 text-[0.9375rem] text-pretty">${post.excerpt}</p>
+                        </a>
+                    </article>`).join('');
+
+  const section = `
+        <section class="defer-render mx-auto max-w-3xl px-4 pb-10 sm:px-6 lg:px-8" aria-labelledby="related-posts-heading">
+            <div class="border-border-strong border-t pt-8">
+                <div class="flex items-center gap-3">
+                    <h2 id="related-posts-heading" class="text-ink font-mono text-[0.6875rem] font-semibold tracking-widest uppercase">Recent OpenClaw coverage</h2>
+                    <div class="bg-border-strong h-px flex-1" aria-hidden="true"></div>
+                </div>
+                <div class="mt-6 grid gap-4 sm:grid-cols-3">${cards}
+                </div>
+            </div>
+        </section>`;
+
+  return html.replace(/<section class="defer-render mx-auto max-w-3xl px-4 pb-10 sm:px-6 lg:px-8" aria-labelledby="continue-reading-heading">/, `${section}\n\n        <section class="defer-render mx-auto max-w-3xl px-4 pb-10 sm:px-6 lg:px-8" aria-labelledby="continue-reading-heading">`);
+}
+
 function optimizeImages(html) {
   let seenContentImage = false;
 
@@ -121,6 +203,7 @@ for (const file of walk(siteDir)) {
 
   html = updateCanonicalAndUrls(html, canonicalUrl);
   html = fixAboutPageMetadata(html, canonicalUrl);
+  html = fixPostsArchiveMetadata(html, canonicalUrl);
 
   const paginatedMatch = file.match(/_site\/posts\/(\d+)\/index\.html$/);
   if (paginatedMatch) {
@@ -139,6 +222,7 @@ for (const file of walk(siteDir)) {
     }
   }
 
+  html = injectRelatedPosts(html, canonicalUrl);
   html = optimizeImages(html);
   fs.writeFileSync(file, html);
 }
