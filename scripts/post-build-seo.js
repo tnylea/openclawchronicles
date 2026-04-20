@@ -195,6 +195,62 @@ function fixHomepageMetadata(html, canonicalUrl) {
   return html;
 }
 
+function fixTopicHubMetadata(html, canonicalUrl) {
+  const hubs = {
+    [`${siteUrl}/releases/`]: {
+      title: 'OpenClaw Releases, Stable Builds, Betas, and Hotfixes',
+      description: 'Browse OpenClaw Chronicles release coverage for stable builds, beta launches, hotfixes, and changelog breakdowns.',
+      label: 'Releases',
+    },
+    [`${siteUrl}/security/`]: {
+      title: 'OpenClaw Security News, CVEs, and Hardening Guides',
+      description: 'Track OpenClaw security advisories, CVEs, incident response, and self-hosting hardening coverage in one archive.',
+      label: 'Security',
+    },
+    [`${siteUrl}/guides/`]: {
+      title: 'OpenClaw Guides, Migrations, and Tutorials',
+      description: 'Find OpenClaw setup guides, migration walkthroughs, local model tutorials, and practical how-tos.',
+      label: 'Guides',
+    },
+  };
+
+  const hub = hubs[canonicalUrl];
+  if (!hub) return html;
+
+  const ogImage = `${siteUrl}/assets/images/about-banner.jpg`;
+  html = html.replace(/<title>[^<]*<\/title>/i, `<title>${hub.title}</title>`);
+  html = html.replace(/<meta name="description" content="[^"]*"\s*\/?\s*>/i, `<meta name="description" content="${hub.description}" />`);
+  html = html.replace(/<meta name="author" content="[^"]*"\s*\/?\s*>/i, '<meta name="author" content="Cody" />');
+  html = html.replace(/<meta property="og:type" content="[^"]*"\s*\/?\s*>/i, '<meta property="og:type" content="website" />');
+  html = html.replace(/<meta property="og:title" content="[^"]*"\s*\/?\s*>/i, `<meta property="og:title" content="${hub.title}" />`);
+  html = html.replace(/<meta property="og:description" content="[^"]*"\s*\/?\s*>/i, `<meta property="og:description" content="${hub.description}" />`);
+  html = html.replace(/<meta property="og:image" content="[^"]*"\s*\/?\s*>/i, `<meta property="og:image" content="${ogImage}" />`);
+  html = html.replace(/<meta property="og:image:alt" content="[^"]*"\s*\/?\s*>/i, `<meta property="og:image:alt" content="OpenClaw Chronicles ${hub.label.toLowerCase()} hub" />`);
+  html = html.replace(/<meta name="twitter:title" content="[^"]*"\s*\/?\s*>/i, `<meta name="twitter:title" content="${hub.title}" />`);
+  html = html.replace(/<meta name="twitter:description" content="[^"]*"\s*\/?\s*>/i, `<meta name="twitter:description" content="${hub.description}" />`);
+  html = html.replace(/<meta name="twitter:image" content="[^"]*"\s*\/?\s*>/i, `<meta name="twitter:image" content="${ogImage}" />`);
+  html = html.replace(/<meta name="twitter:image:alt" content="[^"]*"\s*\/?\s*>/i, `<meta name="twitter:image:alt" content="OpenClaw Chronicles ${hub.label.toLowerCase()} hub" />`);
+
+  const hubPosts = allPosts.filter((post) => {
+    const haystack = `${post.title} ${post.excerpt} ${post.content}`.toLowerCase();
+    if (hub.label === 'Releases') return /release|beta|hotfix|stable/.test(haystack);
+    if (hub.label === 'Security') return /security|cve|hardening|ssrf|redos|exploit|vulnerability/.test(haystack);
+    return /guide|tutorial|migrate|migration|setup|how to|locally/.test(haystack);
+  }).slice(0, 10).map((post, index) => ({
+    '@type': 'ListItem',
+    position: index + 1,
+    url: `${siteUrl}${post.url}`,
+    name: post.title,
+  }));
+
+  html = html.replace(
+    /<!-- JSON-LD WebSite Schema -->[\s\S]*?<!-- Google Analytics -->/i,
+    `<!-- JSON-LD WebSite Schema -->\n    <script type="application/ld+json">\n    {\n      "@context": "https://schema.org",\n      "@type": "CollectionPage",\n      "name": ${JSON.stringify(hub.title)},\n      "url": ${JSON.stringify(canonicalUrl)},\n      "description": ${JSON.stringify(hub.description)},\n      "isPartOf": {\n        "@type": "WebSite",\n        "name": "OpenClaw Chronicles",\n        "url": ${JSON.stringify(siteUrl)}\n      },\n      "mainEntity": {\n        "@type": "ItemList",\n        "itemListElement": ${JSON.stringify(hubPosts, null, 8)}\n      }\n    }\n    </script>\n    <script type="application/ld+json">\n    {\n      "@context": "https://schema.org",\n      "@type": "BreadcrumbList",\n      "itemListElement": [\n        {\n          "@type": "ListItem",\n          "position": 1,\n          "name": "Home",\n          "item": ${JSON.stringify(`${siteUrl}/`)}\n        },\n        {\n          "@type": "ListItem",\n          "position": 2,\n          "name": ${JSON.stringify(hub.label)},\n          "item": ${JSON.stringify(canonicalUrl)}\n        }\n      ]\n    }\n    </script>\n    <!-- Google Analytics -->`
+  );
+
+  return html;
+}
+
 function tokenize(text) {
   return String(text || '')
     .toLowerCase()
@@ -337,6 +393,7 @@ for (const file of walk(siteDir)) {
   html = fixHomepageMetadata(html, canonicalUrl);
   html = fixAboutPageMetadata(html, canonicalUrl);
   html = fixPostsArchiveMetadata(html, canonicalUrl);
+  html = fixTopicHubMetadata(html, canonicalUrl);
 
   const paginatedMatch = file.match(/_site\/posts\/(\d+)\/index\.html$/);
   if (paginatedMatch) {

@@ -35,8 +35,11 @@ urls.push({ loc: `${BASE_URL}/`, changefreq: 'daily', priority: '1.0' });
 // Posts index
 urls.push({ loc: `${BASE_URL}/posts/`, changefreq: 'daily', priority: '0.8' });
 
-// About page
+// Static pages
 urls.push({ loc: `${BASE_URL}/about/`, changefreq: 'monthly', priority: '0.6' });
+urls.push({ loc: `${BASE_URL}/releases/`, changefreq: 'weekly', priority: '0.8' });
+urls.push({ loc: `${BASE_URL}/security/`, changefreq: 'weekly', priority: '0.8' });
+urls.push({ loc: `${BASE_URL}/guides/`, changefreq: 'weekly', priority: '0.8' });
 
 // Individual posts — sorted by date desc
 const postFiles = fs.readdirSync(POSTS_DIR)
