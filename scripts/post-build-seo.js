@@ -3,9 +3,37 @@ const path = require('path');
 
 const siteDir = path.join(__dirname, '..', '_site');
 const siteUrl = 'https://openclawchronicles.com';
-const collectionPath = path.join(__dirname, '..', 'collections', 'content', 'posts.json');
-const allPosts = JSON.parse(fs.readFileSync(collectionPath, 'utf8'))
+const postsDir = path.join(__dirname, '..', 'content', 'posts');
+
+function parseFrontmatter(file) {
+  const raw = fs.readFileSync(file, 'utf8');
+  const match = raw.match(/^---\n([\s\S]*?)\n---\n([\s\S]*)$/);
+  if (!match) return null;
+
+  const meta = {};
+  for (const line of match[1].split('\n')) {
+    const parts = line.match(/^([A-Za-z0-9_]+):\s*(.*)$/);
+    if (!parts) continue;
+    const [, key, value] = parts;
+    meta[key] = value.trim().replace(/^['"]|['"]$/g, '');
+  }
+
+  const slug = path.basename(file, '.md');
+  return {
+    ...meta,
+    content: match[2].trim(),
+    url: meta.url || `/posts/${slug}/`,
+    link: meta.link || `/posts/${slug}`,
+  };
+}
+
+const allPosts = fs.readdirSync(postsDir)
+  .filter((file) => file.endsWith('.md'))
+  .map((file) => parseFrontmatter(path.join(postsDir, file)))
+  .filter(Boolean)
   .sort((a, b) => new Date(b.date) - new Date(a.date));
+const stopWords = new Set(['the', 'and', 'for', 'with', 'that', 'this', 'from', 'into', 'your', 'what', 'when', 'where', 'will', 'have', 'been', 'more', 'than', 'they', 'them', 'their', 'about', 'after', 'before', 'over', 'under', 'just', 'here', 'also', 'only', 'through', 'because', 'while', 'which', 'using', 'used', 'into', 'openclaw', 'chronicles']);
+const postBySlug = new Map(allPosts.map((post) => [post.url.split('/').filter(Boolean).pop(), post]));
 
 function walk(dir) {
   const entries = fs.readdirSync(dir, { withFileTypes: true });
@@ -167,21 +195,63 @@ function fixHomepageMetadata(html, canonicalUrl) {
   return html;
 }
 
+function tokenize(text) {
+  return String(text || '')
+    .toLowerCase()
+    .replace(/[^a-z0-9\s]/g, ' ')
+    .split(/\s+/)
+    .filter((token) => token.length > 2 && !stopWords.has(token));
+}
+
+function inferSection(post) {
+  const haystack = `${post.title} ${post.excerpt} ${post.content}`.toLowerCase();
+  if (/security|cve|hardening|ssrf|redos|vulnerability|exploit/.test(haystack)) return 'Security';
+  if (/guide|tutorial|migrate|migration|setup|install|how to/.test(haystack)) return 'Guides';
+  if (/release|beta|hotfix|changelog|shipped|stable/.test(haystack)) return 'Releases';
+  return 'OpenClaw News';
+}
+
+function scoreRelatedPosts(currentPost, candidatePost) {
+  const currentTokens = tokenize(`${currentPost.title} ${currentPost.excerpt} ${currentPost.content}`);
+  const candidateTokens = new Set(tokenize(`${candidatePost.title} ${candidatePost.excerpt} ${candidatePost.content}`));
+  const currentSection = inferSection(currentPost);
+  const candidateSection = inferSection(candidatePost);
+
+  let score = 0;
+  for (const token of currentTokens) {
+    if (candidateTokens.has(token)) score += token.length > 6 ? 3 : 2;
+  }
+  if (currentSection === candidateSection) score += 8;
+
+  const ageDays = Math.abs(new Date(currentPost.date) - new Date(candidatePost.date)) / 86400000;
+  if (ageDays <= 7) score += 3;
+  else if (ageDays <= 30) score += 2;
+  else if (ageDays <= 90) score += 1;
+
+  return score;
+}
+
 function injectRelatedPosts(html, canonicalUrl) {
   const match = canonicalUrl.match(/\/posts\/([^/]+)\/$/);
   if (!match) return html;
 
   const currentSlug = match[1];
+  const currentPost = postBySlug.get(currentSlug);
+  if (!currentPost) return html;
+
   const related = allPosts
     .filter((post) => post && typeof post.url === 'string' && !post.url.includes(`/${currentSlug}/`))
-    .slice(0, 3);
+    .map((post) => ({ post, score: scoreRelatedPosts(currentPost, post) }))
+    .sort((a, b) => b.score - a.score || new Date(b.post.date) - new Date(a.post.date))
+    .slice(0, 3)
+    .map(({ post }) => post);
 
   if (related.length === 0 || html.includes('related-posts-heading')) return html;
 
   const cards = related.map((post) => `
                     <article class="border-border rounded-[min(0.3vw,4px)] border p-4">
                         <a href="${post.url}" class="group block">
-                            <span class="text-red-accent font-mono text-[0.625rem] font-semibold tracking-wider uppercase">Recent story</span>
+                            <span class="text-red-accent font-mono text-[0.625rem] font-semibold tracking-wider uppercase">${inferSection(post)}</span>
                             <h3 class="font-display group-hover:text-red-accent text-ink mt-2 text-xl font-semibold tracking-tight text-balance sm:text-lg">
                                 ${post.title}
                             </h3>
@@ -193,15 +263,43 @@ function injectRelatedPosts(html, canonicalUrl) {
         <section class="defer-render mx-auto max-w-3xl px-4 pb-10 sm:px-6 lg:px-8" aria-labelledby="related-posts-heading">
             <div class="border-border-strong border-t pt-8">
                 <div class="flex items-center gap-3">
-                    <h2 id="related-posts-heading" class="text-ink font-mono text-[0.6875rem] font-semibold tracking-widest uppercase">Recent OpenClaw coverage</h2>
+                    <h2 id="related-posts-heading" class="text-ink font-mono text-[0.6875rem] font-semibold tracking-widest uppercase">Related OpenClaw coverage</h2>
                     <div class="bg-border-strong h-px flex-1" aria-hidden="true"></div>
                 </div>
+                <p class="text-ink-muted mt-3 max-w-2xl text-sm">Keep exploring the same topic cluster with nearby release notes, security context, and practical follow-up coverage.</p>
                 <div class="mt-6 grid gap-4 sm:grid-cols-3">${cards}
                 </div>
             </div>
         </section>`;
 
-  return html.replace(/<section class="defer-render mx-auto max-w-3xl px-4 pb-10 sm:px-6 lg:px-8" aria-labelledby="continue-reading-heading">/, `${section}\n\n        <section class="defer-render mx-auto max-w-3xl px-4 pb-10 sm:px-6 lg:px-8" aria-labelledby="continue-reading-heading">`);
+  return html.replace(/\s*<section[^>]*aria-labelledby="continue-reading-heading"[^>]*>/i, `\n${section}\n\n        <section class="defer-render mx-auto max-w-3xl px-4 pb-10 sm:px-6 lg:px-8" aria-labelledby="continue-reading-heading">`);
+}
+
+function fixArticleMetadata(html, canonicalUrl) {
+  const match = canonicalUrl.match(/\/posts\/([^/]+)\/$/);
+  if (!match) return html;
+
+  const post = postBySlug.get(match[1]);
+  if (!post) return html;
+
+  const section = inferSection(post);
+  const words = String(post.content || '').replace(/[`*_>#\-\[\]\(\)]/g, ' ').split(/\s+/).filter(Boolean);
+  const wordCount = words.length;
+  const keywords = [...new Set(tokenize(`${post.title} ${post.excerpt}`))].slice(0, 8);
+  const timeRequired = Math.max(1, Math.ceil(wordCount / 220));
+  const schemaType = section === 'Releases' ? 'TechArticle' : 'NewsArticle';
+
+  html = html.replace(/<meta property="og:type" content="[^\"]*"\s*\/?\s*>/i, '<meta property="og:type" content="article" />');
+  html = html.replace(
+    /<meta property="og:site_name" content="OpenClaw Chronicles"\s*\/?\s*>/i,
+    `<meta property="og:site_name" content="OpenClaw Chronicles" />\n    <meta property="article:published_time" content="${post.date}" />\n    <meta property="article:modified_time" content="${post.date}" />\n    <meta property="article:section" content="${section}" />`
+  );
+
+  const articleSchema = `<!-- JSON-LD Article Schema -->\n    <script type="application/ld+json">\n    {\n      "@context": "https://schema.org",\n      "@type": "${schemaType}",\n      "headline": ${JSON.stringify(post.title)},\n      "description": ${JSON.stringify(post.excerpt)},\n      "image": {\n        "@type": "ImageObject",\n        "url": ${JSON.stringify(`${siteUrl}${post.ogImageUrl}`)},\n        "width": 1200,\n        "height": 630\n      },\n      "url": ${JSON.stringify(canonicalUrl)},\n      "mainEntityOfPage": {\n        "@type": "WebPage",\n        "@id": ${JSON.stringify(canonicalUrl)}\n      },\n      "articleSection": ${JSON.stringify(section)},\n      "keywords": ${JSON.stringify(keywords)},\n      "wordCount": ${wordCount},\n      "timeRequired": "PT${timeRequired}M",\n      "author": {\n        "@type": "Person",\n        "name": ${JSON.stringify(post.authorName)}\n      },\n      "publisher": {\n        "@type": "Organization",\n        "name": "OpenClaw Chronicles",\n        "url": ${JSON.stringify(siteUrl)},\n        "logo": {\n          "@type": "ImageObject",\n          "url": ${JSON.stringify(`${siteUrl}/icon-512.png`)},\n          "width": 512,\n          "height": 512\n        }\n      },\n      "datePublished": ${JSON.stringify(post.date)},\n      "dateModified": ${JSON.stringify(post.date)}\n    }\n    </script>`;
+
+  html = html.replace(/<!-- JSON-LD Article Schema -->[\s\S]*?<script type="application\/ld\+json">[\s\S]*?<\/script>/i, articleSchema);
+
+  return html;
 }
 
 function optimizeImages(html) {
@@ -257,6 +355,7 @@ for (const file of walk(siteDir)) {
     }
   }
 
+  html = fixArticleMetadata(html, canonicalUrl);
   html = injectRelatedPosts(html, canonicalUrl);
   html = optimizeImages(html);
   fs.writeFileSync(file, html);

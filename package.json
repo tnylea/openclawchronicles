@@ -5,9 +5,11 @@
     "author": "Your Name",
     "license": "ISC",
     "scripts": {
-        "build": "npx @devdojo/static build && node scripts/generate-post-pagination.js && node scripts/generate-sitemap.js && node scripts/generate-rss.js && node scripts/post-build-seo.js"
+        "build": "npm run build:css && npx @devdojo/static build && node scripts/generate-post-pagination.js && node scripts/generate-sitemap.js && node scripts/generate-rss.js && node scripts/post-build-seo.js",
+    "build:css": "npx @tailwindcss/cli -i ./styles/app.css -o ./public/styles.css --minify"
     },
     "devDependencies": {
-        "@tailwindcss/typography": "^0.5.10"
+        "@tailwindcss/cli": "^4.2.2",
+    "@tailwindcss/typography": "^0.5.10"
     }
 }
