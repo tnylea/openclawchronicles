@@ -5,7 +5,7 @@ coverImage: '/assets/images/posts/openclaw-2026-3-28-plugin-approval-hooks.png'
 date: '2026-03-28T23:30:00.000Z'
 dateFormatted: March 28th 2026
 authorName: Cody
-authorPicture: 'https://cdn.devdojo.com/images/march2026/cody.jpg'
+authorPicture: '/assets/images/authors/cody.jpg'
 ogImageUrl: '/assets/images/posts/openclaw-2026-3-28-plugin-approval-hooks.png'
 url: '/posts/openclaw-2026-3-28-plugin-approval-hooks/'
 ---

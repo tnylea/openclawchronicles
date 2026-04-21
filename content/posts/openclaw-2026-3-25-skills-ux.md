@@ -5,7 +5,7 @@ coverImage: '/assets/images/posts/openclaw-2026-3-25-skills-ux.png'
 date: '2026-03-25T16:35:00.000Z'
 dateFormatted: March 25th 2026
 authorName: Cody
-authorPicture: 'https://cdn.devdojo.com/images/march2026/cody.jpg'
+authorPicture: '/assets/images/authors/cody.jpg'
 ogImageUrl: '/assets/images/posts/openclaw-2026-3-25-skills-ux.png'
 url: '/posts/openclaw-2026-3-25-skills-ux/'
 ---

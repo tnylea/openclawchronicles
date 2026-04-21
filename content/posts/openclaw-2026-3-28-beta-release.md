@@ -5,7 +5,7 @@ coverImage: '/assets/images/posts/openclaw-2026-3-28-beta-release.png'
 date: '2026-03-28T23:00:00.000Z'
 dateFormatted: March 28th 2026
 authorName: Cody
-authorPicture: 'https://cdn.devdojo.com/images/march2026/cody.jpg'
+authorPicture: '/assets/images/authors/cody.jpg'
 ogImageUrl: '/assets/images/posts/openclaw-2026-3-28-beta-release.png'
 url: '/posts/openclaw-2026-3-28-beta-release/'
 ---

@@ -42,6 +42,30 @@
             </div>
         </section>
 
+        <section class="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8" aria-labelledby="release-intents-heading">
+            <div class="flex items-center gap-3">
+                <h2 id="release-intents-heading" class="text-ink font-mono text-[0.6875rem] font-semibold tracking-widest uppercase">Browse by release intent</h2>
+                <div class="bg-border-strong h-px flex-1" aria-hidden="true"></div>
+            </div>
+            <div class="mt-8 grid gap-6 lg:grid-cols-3">
+                <article class="border-border rounded-[min(0.3vw,4px)] border p-5">
+                    <span class="text-red-accent font-mono text-[0.625rem] font-semibold tracking-wider uppercase">Latest stable</span>
+                    <p class="text-ink-body mt-3 text-[0.9375rem] text-pretty">Start with the newest stable build if you want the safest overview of what shipped and what changed for most OpenClaw users.</p>
+                    <a href="/posts/openclaw-2026-4-12-release-v2026-4-11/" class="text-ink-strong hover:text-red-accent mt-4 inline-flex font-sans text-sm font-medium">Read the latest stable release</a>
+                </article>
+                <article class="border-border rounded-[min(0.3vw,4px)] border p-5">
+                    <span class="text-red-accent font-mono text-[0.625rem] font-semibold tracking-wider uppercase">Beta tracking</span>
+                    <p class="text-ink-body mt-3 text-[0.9375rem] text-pretty">Use beta coverage to spot upcoming features, breaking changes, and experiments before they roll into stable.</p>
+                    <a href="/posts/openclaw-2026-4-15-beta-features/" class="text-ink-strong hover:text-red-accent mt-4 inline-flex font-sans text-sm font-medium">See a recent beta breakdown</a>
+                </article>
+                <article class="border-border rounded-[min(0.3vw,4px)] border p-5">
+                    <span class="text-red-accent font-mono text-[0.625rem] font-semibold tracking-wider uppercase">Upgrade risk</span>
+                    <p class="text-ink-body mt-3 text-[0.9375rem] text-pretty">Pair release posts with hardening coverage when you need to judge urgency, security impact, or whether to wait before upgrading.</p>
+                    <a href="/security/" class="text-ink-strong hover:text-red-accent mt-4 inline-flex font-sans text-sm font-medium">Compare with security coverage</a>
+                </article>
+            </div>
+        </section>
+
         <section class="defer-render mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8" aria-labelledby="release-archive-heading">
             <div class="flex items-center gap-3">
                 <h2 id="release-archive-heading" class="text-ink font-mono text-[0.6875rem] font-semibold tracking-widest uppercase">Release archive</h2>
@@ -72,6 +96,27 @@
                         </article>
                     </If>
                 </ForEach>
+            </div>
+        </section>
+
+        <section class="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8" aria-labelledby="release-faq-heading">
+            <div class="flex items-center gap-3">
+                <h2 id="release-faq-heading" class="text-ink font-mono text-[0.6875rem] font-semibold tracking-widest uppercase">Release FAQ</h2>
+                <div class="bg-border-strong h-px flex-1" aria-hidden="true"></div>
+            </div>
+            <div class="mt-8 grid gap-6 lg:grid-cols-3">
+                <article class="border-border rounded-[min(0.3vw,4px)] border p-5">
+                    <h3 class="font-display text-ink text-2xl font-semibold tracking-tight">Where should I start with OpenClaw release notes?</h3>
+                    <p class="text-ink-body mt-3 text-[0.9375rem] text-pretty">Start with the latest stable release, then skim the previous beta if you want extra detail on experiments, migrations, or fixes that landed earlier in the cycle.</p>
+                </article>
+                <article class="border-border rounded-[min(0.3vw,4px)] border p-5">
+                    <h3 class="font-display text-ink text-2xl font-semibold tracking-tight">How do I know whether a release is urgent?</h3>
+                    <p class="text-ink-body mt-3 text-[0.9375rem] text-pretty">Urgent upgrades usually pair release notes with security fixes, auth changes, or broken workflows. Cross-check this hub with the security archive before upgrading production systems.</p>
+                </article>
+                <article class="border-border rounded-[min(0.3vw,4px)] border p-5">
+                    <h3 class="font-display text-ink text-2xl font-semibold tracking-tight">Do beta posts matter if I only use stable builds?</h3>
+                    <p class="text-ink-body mt-3 text-[0.9375rem] text-pretty">Yes. Beta coverage helps you see upcoming defaults, likely breaking changes, and features worth testing before they ship broadly.</p>
+                </article>
             </div>
         </section>
 

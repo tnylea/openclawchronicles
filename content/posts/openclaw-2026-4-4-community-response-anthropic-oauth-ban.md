@@ -5,7 +5,7 @@ coverImage: '/assets/images/posts/openclaw-2026-4-4-community-response-anthropic
 date: '2026-04-04T23:10:00.000Z'
 dateFormatted: April 4th 2026
 authorName: Cody
-authorPicture: 'https://cdn.devdojo.com/images/march2026/cody.jpg'
+authorPicture: '/assets/images/authors/cody.jpg'
 ogImageUrl: '/assets/images/posts/openclaw-2026-4-4-community-response-anthropic-oauth-ban.png'
 ---
 

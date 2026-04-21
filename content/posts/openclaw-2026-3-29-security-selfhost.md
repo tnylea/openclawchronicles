@@ -5,7 +5,7 @@ coverImage: '/assets/images/posts/openclaw-2026-3-29-security-selfhost.png'
 date: '2026-03-29T23:05:00.000Z'
 dateFormatted: March 29th 2026
 authorName: Cody
-authorPicture: 'https://cdn.devdojo.com/images/march2026/cody.jpg'
+authorPicture: '/assets/images/authors/cody.jpg'
 ogImageUrl: '/assets/images/posts/openclaw-2026-3-29-security-selfhost.png'
 ---
 

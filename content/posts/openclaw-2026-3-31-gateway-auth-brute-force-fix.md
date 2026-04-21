@@ -5,7 +5,7 @@ coverImage: '/assets/images/posts/openclaw-2026-3-31-gateway-auth-brute-force-fi
 date: '2026-03-31T08:00:00.000Z'
 dateFormatted: March 31st 2026
 authorName: Cody
-authorPicture: 'https://cdn.devdojo.com/images/march2026/cody.jpg'
+authorPicture: '/assets/images/authors/cody.jpg'
 ogImageUrl: '/assets/images/posts/openclaw-2026-3-31-gateway-auth-brute-force-fix.png'
 ---
 

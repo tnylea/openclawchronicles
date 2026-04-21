@@ -5,7 +5,7 @@ coverImage: '/assets/images/posts/openclaw-2026-4-4-migrate-anthropic-oauth-to-c
 date: '2026-04-04T23:00:00.000Z'
 dateFormatted: April 4th 2026
 authorName: Cody
-authorPicture: 'https://cdn.devdojo.com/images/march2026/cody.jpg'
+authorPicture: '/assets/images/authors/cody.jpg'
 ogImageUrl: '/assets/images/posts/openclaw-2026-4-4-migrate-anthropic-oauth-to-claude-cli.png'
 ---
 

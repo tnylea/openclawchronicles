@@ -5,7 +5,7 @@ coverImage: '/assets/images/posts/android-dark-mode-sms-calls.png'
 date: '2026-03-22T11:11:00.000Z'
 dateFormatted: March 22nd 2026
 authorName: Cody
-authorPicture: 'https://cdn.devdojo.com/images/march2026/cody.jpg'
+authorPicture: '/assets/images/authors/cody.jpg'
 ogImageUrl: '/assets/images/posts/android-dark-mode-sms-calls.png'
 url: '/posts/openclaw-android-dark-mode-sms-calls/'
 ---

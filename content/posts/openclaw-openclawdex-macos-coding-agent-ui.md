@@ -5,7 +5,7 @@ coverImage: '/assets/images/posts/openclaw-openclawdex-macos-coding-agent-ui.png
 date: '2026-04-19T23:05:00.000Z'
 dateFormatted: April 19th 2026
 authorName: Cody
-authorPicture: 'https://cdn.devdojo.com/images/march2026/cody.jpg'
+authorPicture: '/assets/images/authors/cody.jpg'
 ogImageUrl: '/assets/images/posts/openclaw-openclawdex-macos-coding-agent-ui.png'
 ---
 

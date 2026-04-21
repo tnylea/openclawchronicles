@@ -42,6 +42,30 @@
             </div>
         </section>
 
+        <section class="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8" aria-labelledby="security-intents-heading">
+            <div class="flex items-center gap-3">
+                <h2 id="security-intents-heading" class="text-ink font-mono text-[0.6875rem] font-semibold tracking-widest uppercase">Browse by security intent</h2>
+                <div class="bg-border-strong h-px flex-1" aria-hidden="true"></div>
+            </div>
+            <div class="mt-8 grid gap-6 lg:grid-cols-3">
+                <article class="border-border rounded-[min(0.3vw,4px)] border p-5">
+                    <span class="text-red-accent font-mono text-[0.625rem] font-semibold tracking-wider uppercase">Urgent patches</span>
+                    <p class="text-ink-body mt-3 text-[0.9375rem] text-pretty">Start here if you need to know whether to upgrade immediately because a new OpenClaw vulnerability, exploit path, or hardening patch landed.</p>
+                    <a href="/posts/openclaw-2026-4-9-security-patches/" class="text-ink-strong hover:text-red-accent mt-4 inline-flex font-sans text-sm font-medium">See the major patch batch</a>
+                </article>
+                <article class="border-border rounded-[min(0.3vw,4px)] border p-5">
+                    <span class="text-red-accent font-mono text-[0.625rem] font-semibold tracking-wider uppercase">Self-hosting risk</span>
+                    <p class="text-ink-body mt-3 text-[0.9375rem] text-pretty">These stories are best for operators evaluating exposed instances, configuration mistakes, and practical hardening decisions before rollout.</p>
+                    <a href="/posts/openclaw-2026-3-29-security-selfhost/" class="text-ink-strong hover:text-red-accent mt-4 inline-flex font-sans text-sm font-medium">Review self-hosting risk coverage</a>
+                </article>
+                <article class="border-border rounded-[min(0.3vw,4px)] border p-5">
+                    <span class="text-red-accent font-mono text-[0.625rem] font-semibold tracking-wider uppercase">Incident response</span>
+                    <p class="text-ink-body mt-3 text-[0.9375rem] text-pretty">Use these posts to understand what happened, who is affected, and what mitigation steps matter when a security incident is already in motion.</p>
+                    <a href="/posts/openclaw-2026-3-30-security-exposed-instances/" class="text-ink-strong hover:text-red-accent mt-4 inline-flex font-sans text-sm font-medium">Read the exposed instances response</a>
+                </article>
+            </div>
+        </section>
+
         <section class="defer-render mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8" aria-labelledby="security-archive-heading">
             <div class="flex items-center gap-3">
                 <h2 id="security-archive-heading" class="text-ink font-mono text-[0.6875rem] font-semibold tracking-widest uppercase">Security archive</h2>
@@ -72,6 +96,27 @@
                         </article>
                     </If>
                 </ForEach>
+            </div>
+        </section>
+
+        <section class="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8" aria-labelledby="security-faq-heading">
+            <div class="flex items-center gap-3">
+                <h2 id="security-faq-heading" class="text-ink font-mono text-[0.6875rem] font-semibold tracking-widest uppercase">Security FAQ</h2>
+                <div class="bg-border-strong h-px flex-1" aria-hidden="true"></div>
+            </div>
+            <div class="mt-8 grid gap-6 lg:grid-cols-3">
+                <article class="border-border rounded-[min(0.3vw,4px)] border p-5">
+                    <h3 class="font-display text-ink text-2xl font-semibold tracking-tight">Where do I check for OpenClaw vulnerabilities first?</h3>
+                    <p class="text-ink-body mt-3 text-[0.9375rem] text-pretty">Start with this security hub, then open the newest hardening or CVE article to confirm affected versions, severity, and recommended mitigations.</p>
+                </article>
+                <article class="border-border rounded-[min(0.3vw,4px)] border p-5">
+                    <h3 class="font-display text-ink text-2xl font-semibold tracking-tight">Is OpenClaw safe to self-host?</h3>
+                    <p class="text-ink-body mt-3 text-[0.9375rem] text-pretty">It can be, but only with deliberate hardening. The biggest risks come from exposed gateways, default credentials, weak pairing practices, and delayed updates.</p>
+                </article>
+                <article class="border-border rounded-[min(0.3vw,4px)] border p-5">
+                    <h3 class="font-display text-ink text-2xl font-semibold tracking-tight">What should I do after a new OpenClaw security advisory drops?</h3>
+                    <p class="text-ink-body mt-3 text-[0.9375rem] text-pretty">Check your version, confirm whether the issue affects your channels or plugins, apply the patch, and review the linked hardening guidance before reopening access.</p>
+                </article>
             </div>
         </section>
 

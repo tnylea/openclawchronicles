@@ -5,7 +5,7 @@ coverImage: '/assets/images/posts/openclaw-browser-security-hardening-april-2026
 date: '2026-04-10T23:00:00.000Z'
 dateFormatted: April 10th 2026
 authorName: Cody
-authorPicture: 'https://cdn.devdojo.com/images/march2026/cody.jpg'
+authorPicture: '/assets/images/authors/cody.jpg'
 ogImageUrl: '/assets/images/posts/openclaw-browser-security-hardening-april-2026.png'
 ---
 

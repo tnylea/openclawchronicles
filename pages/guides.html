@@ -42,6 +42,30 @@
             </div>
         </section>
 
+        <section class="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8" aria-labelledby="guides-intents-heading">
+            <div class="flex items-center gap-3">
+                <h2 id="guides-intents-heading" class="text-ink font-mono text-[0.6875rem] font-semibold tracking-widest uppercase">Browse by setup intent</h2>
+                <div class="bg-border-strong h-px flex-1" aria-hidden="true"></div>
+            </div>
+            <div class="mt-8 grid gap-6 lg:grid-cols-3">
+                <article class="border-border rounded-[min(0.3vw,4px)] border p-5">
+                    <span class="text-red-accent font-mono text-[0.625rem] font-semibold tracking-wider uppercase">Memory setup</span>
+                    <p class="text-ink-body mt-3 text-[0.9375rem] text-pretty">These guides answer how OpenClaw memory works, when recall triggers, and how to make your assistant remember context automatically.</p>
+                    <a href="/posts/openclaw-2026-4-11-active-memory-guide/" class="text-ink-strong hover:text-red-accent mt-4 inline-flex font-sans text-sm font-medium">Read the Active Memory guide</a>
+                </article>
+                <article class="border-border rounded-[min(0.3vw,4px)] border p-5">
+                    <span class="text-red-accent font-mono text-[0.625rem] font-semibold tracking-wider uppercase">Migration help</span>
+                    <p class="text-ink-body mt-3 text-[0.9375rem] text-pretty">Use these walkthroughs when provider policies change, auth flows break, or you need to move an existing setup onto a new OpenClaw path.</p>
+                    <a href="/posts/openclaw-2026-4-4-migrate-anthropic-oauth-to-claude-cli/" class="text-ink-strong hover:text-red-accent mt-4 inline-flex font-sans text-sm font-medium">See a migration walkthrough</a>
+                </article>
+                <article class="border-border rounded-[min(0.3vw,4px)] border p-5">
+                    <span class="text-red-accent font-mono text-[0.625rem] font-semibold tracking-wider uppercase">Local-first workflows</span>
+                    <p class="text-ink-body mt-3 text-[0.9375rem] text-pretty">Explore local model tutorials, MacBook Air setups, and privacy-focused installs if you want to run more of OpenClaw on your own hardware.</p>
+                    <a href="/posts/openclaw-2026-4-5-gemma4-turboquant-local-agent/" class="text-ink-strong hover:text-red-accent mt-4 inline-flex font-sans text-sm font-medium">Start with the local Mac guide</a>
+                </article>
+            </div>
+        </section>
+
         <section class="defer-render mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8" aria-labelledby="guides-archive-heading">
             <div class="flex items-center gap-3">
                 <h2 id="guides-archive-heading" class="text-ink font-mono text-[0.6875rem] font-semibold tracking-widest uppercase">Guides archive</h2>
@@ -72,6 +96,27 @@
                         </article>
                     </If>
                 </ForEach>
+            </div>
+        </section>
+
+        <section class="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8" aria-labelledby="guides-faq-heading">
+            <div class="flex items-center gap-3">
+                <h2 id="guides-faq-heading" class="text-ink font-mono text-[0.6875rem] font-semibold tracking-widest uppercase">Guides FAQ</h2>
+                <div class="bg-border-strong h-px flex-1" aria-hidden="true"></div>
+            </div>
+            <div class="mt-8 grid gap-6 lg:grid-cols-3">
+                <article class="border-border rounded-[min(0.3vw,4px)] border p-5">
+                    <h3 class="font-display text-ink text-2xl font-semibold tracking-tight">What OpenClaw guide should beginners read first?</h3>
+                    <p class="text-ink-body mt-3 text-[0.9375rem] text-pretty">Most beginners should start with a setup or migration guide, then move to memory or local-model coverage once the core install is working.</p>
+                </article>
+                <article class="border-border rounded-[min(0.3vw,4px)] border p-5">
+                    <h3 class="font-display text-ink text-2xl font-semibold tracking-tight">Can I run OpenClaw locally without a big workstation?</h3>
+                    <p class="text-ink-body mt-3 text-[0.9375rem] text-pretty">Yes. Several guides here cover lightweight local setups, including MacBook Air workflows that trade some model power for privacy and lower operating cost.</p>
+                </article>
+                <article class="border-border rounded-[min(0.3vw,4px)] border p-5">
+                    <h3 class="font-display text-ink text-2xl font-semibold tracking-tight">Where do I look when an OpenClaw auth flow changes?</h3>
+                    <p class="text-ink-body mt-3 text-[0.9375rem] text-pretty">Check the migration and troubleshooting guides first. Those pages are the fastest route to provider-specific fixes and updated setup steps.</p>
+                </article>
             </div>
         </section>
 

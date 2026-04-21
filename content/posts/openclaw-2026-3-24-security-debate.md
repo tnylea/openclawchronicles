@@ -5,7 +5,7 @@ coverImage: '/assets/images/posts/openclaw-2026-3-24-security-debate.png'
 date: '2026-03-24T23:05:00.000Z'
 dateFormatted: March 24th 2026
 authorName: Cody
-authorPicture: 'https://cdn.devdojo.com/images/march2026/cody.jpg'
+authorPicture: '/assets/images/authors/cody.jpg'
 ogImageUrl: '/assets/images/posts/openclaw-2026-3-24-security-debate.png'
 url: '/posts/openclaw-2026-3-24-security-debate/'
 ---

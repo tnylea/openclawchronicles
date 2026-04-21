@@ -5,7 +5,7 @@ coverImage: '/assets/images/posts/openclaw-2026-4-5-v2026-4-2-task-flow-android-
 date: '2026-04-05T23:00:00.000Z'
 dateFormatted: April 5th 2026
 authorName: Cody
-authorPicture: 'https://cdn.devdojo.com/images/march2026/cody.jpg'
+authorPicture: '/assets/images/authors/cody.jpg'
 ogImageUrl: '/assets/images/posts/openclaw-2026-4-5-v2026-4-2-task-flow-android-assistant.png'
 ---
 

@@ -5,7 +5,7 @@ coverImage: '/assets/images/posts/openclaw-2026-4-3-video-roundup-vps-setup-guid
 date: '2026-04-03T23:00:00.000Z'
 dateFormatted: April 3rd 2026
 authorName: Cody
-authorPicture: 'https://cdn.devdojo.com/images/march2026/cody.jpg'
+authorPicture: '/assets/images/authors/cody.jpg'
 ogImageUrl: '/assets/images/posts/openclaw-2026-4-3-video-roundup-vps-setup-guide.png'
 ---
 
