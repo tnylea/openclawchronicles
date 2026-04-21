@@ -331,6 +331,38 @@ function injectRelatedPosts(html, canonicalUrl) {
   return html.replace(/\s*<section[^>]*aria-labelledby="continue-reading-heading"[^>]*>/i, `\n${section}\n\n        <section class="defer-render mx-auto max-w-3xl px-4 pb-10 sm:px-6 lg:px-8" aria-labelledby="continue-reading-heading">`);
 }
 
+function injectArticlePagination(html, canonicalUrl) {
+  const match = canonicalUrl.match(/\/posts\/([^/]+)\/$/);
+  if (!match) return html;
+
+  const currentIndex = allPosts.findIndex((post) => post && post.url === `/posts/${match[1]}/`);
+  if (currentIndex === -1) return html;
+
+  const newerPost = currentIndex > 0 ? allPosts[currentIndex - 1] : null;
+  const olderPost = currentIndex < allPosts.length - 1 ? allPosts[currentIndex + 1] : null;
+
+  if (!html.includes('<div id="story-pagination"')) return html;
+
+  const card = (post, direction, label) => {
+    if (!post) {
+      return `<div class="border-border rounded-[min(0.3vw,4px)] border p-4 opacity-60">
+                    <span class="text-ink-faint font-mono text-[0.625rem] font-semibold tracking-wider uppercase">${label}</span>
+                    <p class="text-ink-muted mt-2 text-sm">No ${direction} story available yet.</p>
+                </div>`;
+    }
+
+    return `<a href="${post.url}" class="group border-border rounded-[min(0.3vw,4px)] border p-4 transition-colors hover:border-red-accent/40">
+                <span class="text-red-accent font-mono text-[0.625rem] font-semibold tracking-wider uppercase">${label}</span>
+                <h3 class="font-display group-hover:text-red-accent text-ink mt-2 text-xl font-semibold tracking-tight text-balance sm:text-lg">${post.title}</h3>
+                <p class="text-ink-body mt-2 text-[0.9375rem] text-pretty">${post.excerpt}</p>
+                <p class="text-ink-faint mt-3 font-mono text-[0.625rem] tracking-wider uppercase">${post.dateFormatted || ''}</p>
+            </a>`;
+  };
+
+  const markup = `${card(newerPost, 'newer', 'Newer story')}${card(olderPost, 'older', 'Older story')}`;
+  return html.replace('<div id="story-pagination" class="mt-6 grid gap-4 sm:grid-cols-2"></div>', `<div id="story-pagination" class="mt-6 grid gap-4 sm:grid-cols-2">${markup}</div>`);
+}
+
 function fixArticleMetadata(html, canonicalUrl) {
   const match = canonicalUrl.match(/\/posts\/([^/]+)\/$/);
   if (!match) return html;
@@ -414,6 +446,7 @@ for (const file of walk(siteDir)) {
 
   html = fixArticleMetadata(html, canonicalUrl);
   html = injectRelatedPosts(html, canonicalUrl);
+  html = injectArticlePagination(html, canonicalUrl);
   html = optimizeImages(html);
   fs.writeFileSync(file, html);
 }
