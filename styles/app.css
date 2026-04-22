@@ -86,7 +86,7 @@
   --color-bar-text: var(--t-bar-text);
   --color-bar-text-muted: var(--t-bar-text-muted);
   --color-bar-border: var(--t-bar-border);
-  --color-red-accent: #dc2626;
+  --color-red-accent: #e20c00;
   --color-red-vibrant: #ef4444;
 }
 
@@ -112,7 +112,7 @@
   }
 }
 .ticker-animate {
-  animation: ticker 30s linear infinite;
+  animation: ticker 60s linear infinite;
 }
 .ticker-animate:hover {
   animation-play-state: paused;
