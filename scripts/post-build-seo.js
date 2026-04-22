@@ -195,6 +195,36 @@ function fixHomepageMetadata(html, canonicalUrl) {
   return html;
 }
 
+function extractFaqEntries(html, sectionId) {
+  const sectionMatch = html.match(new RegExp(`<section[^>]*aria-labelledby="${sectionId}"[^>]*>([\\s\\S]*?)<\\/section>`, 'i'));
+  if (!sectionMatch) return [];
+
+  const entries = [];
+  const cardRegex = /<article[\s\S]*?<h3[^>]*>([\s\S]*?)<\/h3>[\s\S]*?<p[^>]*>([\s\S]*?)<\/p>[\s\S]*?<\/article>/gi;
+  let match;
+
+  while ((match = cardRegex.exec(sectionMatch[1])) !== null) {
+    const question = match[1].replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').trim();
+    const answer = match[2].replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').trim();
+    if (question && answer) entries.push({ question, answer });
+  }
+
+  return entries;
+}
+
+function buildFaqSchema(entries) {
+  if (!entries.length) return '';
+
+  return `\n    <script type="application/ld+json">\n    {\n      "@context": "https://schema.org",\n      "@type": "FAQPage",\n      "mainEntity": ${JSON.stringify(entries.map((entry) => ({
+        '@type': 'Question',
+        name: entry.question,
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: entry.answer,
+        },
+      })), null, 8)}\n    }\n    </script>`;
+}
+
 function fixTopicHubMetadata(html, canonicalUrl) {
   const hubs = {
     [`${siteUrl}/releases/`]: {
@@ -231,6 +261,13 @@ function fixTopicHubMetadata(html, canonicalUrl) {
   html = html.replace(/<meta name="twitter:image" content="[^"]*"\s*\/?\s*>/i, `<meta name="twitter:image" content="${ogImage}" />`);
   html = html.replace(/<meta name="twitter:image:alt" content="[^"]*"\s*\/?\s*>/i, `<meta name="twitter:image:alt" content="OpenClaw Chronicles ${hub.label.toLowerCase()} hub" />`);
 
+  const faqSectionId = hub.label === 'Releases'
+    ? 'release-faq-heading'
+    : hub.label === 'Security'
+      ? 'security-faq-heading'
+      : 'guides-faq-heading';
+  const faqSchema = buildFaqSchema(extractFaqEntries(html, faqSectionId));
+
   const hubPosts = allPosts.filter((post) => {
     const haystack = `${post.title} ${post.excerpt} ${post.content}`.toLowerCase();
     if (hub.label === 'Releases') return /release|beta|hotfix|stable/.test(haystack);
@@ -245,7 +282,7 @@ function fixTopicHubMetadata(html, canonicalUrl) {
 
   html = html.replace(
     /<!-- JSON-LD WebSite Schema -->[\s\S]*?<!-- Google Analytics -->/i,
-    `<!-- JSON-LD WebSite Schema -->\n    <script type="application/ld+json">\n    {\n      "@context": "https://schema.org",\n      "@type": "CollectionPage",\n      "name": ${JSON.stringify(hub.title)},\n      "url": ${JSON.stringify(canonicalUrl)},\n      "description": ${JSON.stringify(hub.description)},\n      "isPartOf": {\n        "@type": "WebSite",\n        "name": "OpenClaw Chronicles",\n        "url": ${JSON.stringify(siteUrl)}\n      },\n      "mainEntity": {\n        "@type": "ItemList",\n        "itemListElement": ${JSON.stringify(hubPosts, null, 8)}\n      }\n    }\n    </script>\n    <script type="application/ld+json">\n    {\n      "@context": "https://schema.org",\n      "@type": "BreadcrumbList",\n      "itemListElement": [\n        {\n          "@type": "ListItem",\n          "position": 1,\n          "name": "Home",\n          "item": ${JSON.stringify(`${siteUrl}/`)}\n        },\n        {\n          "@type": "ListItem",\n          "position": 2,\n          "name": ${JSON.stringify(hub.label)},\n          "item": ${JSON.stringify(canonicalUrl)}\n        }\n      ]\n    }\n    </script>\n    <!-- Google Analytics -->`
+    `<!-- JSON-LD WebSite Schema -->\n    <script type="application/ld+json">\n    {\n      "@context": "https://schema.org",\n      "@type": "CollectionPage",\n      "name": ${JSON.stringify(hub.title)},\n      "url": ${JSON.stringify(canonicalUrl)},\n      "description": ${JSON.stringify(hub.description)},\n      "isPartOf": {\n        "@type": "WebSite",\n        "name": "OpenClaw Chronicles",\n        "url": ${JSON.stringify(siteUrl)}\n      },\n      "mainEntity": {\n        "@type": "ItemList",\n        "itemListElement": ${JSON.stringify(hubPosts, null, 8)}\n      }\n    }\n    </script>\n    <script type="application/ld+json">\n    {\n      "@context": "https://schema.org",\n      "@type": "BreadcrumbList",\n      "itemListElement": [\n        {\n          "@type": "ListItem",\n          "position": 1,\n          "name": "Home",\n          "item": ${JSON.stringify(`${siteUrl}/`)}\n        },\n        {\n          "@type": "ListItem",\n          "position": 2,\n          "name": ${JSON.stringify(hub.label)},\n          "item": ${JSON.stringify(canonicalUrl)}\n        }\n      ]\n    }\n    </script>${faqSchema}\n    <!-- Google Analytics -->`
   );
 
   return html;
