@@ -108,12 +108,26 @@
     }
     </script>
     <!-- Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-7016K8GHP7"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-7016K8GHP7');
+
+      window.__loadAnalytics = function () {
+        if (window.__analyticsLoaded) return;
+        window.__analyticsLoaded = true;
+        var script = document.createElement('script');
+        script.async = true;
+        script.src = 'https://www.googletagmanager.com/gtag/js?id=G-7016K8GHP7';
+        document.head.appendChild(script);
+        gtag('js', new Date());
+        gtag('config', 'G-7016K8GHP7');
+      };
+
+      if ('requestIdleCallback' in window) {
+        requestIdleCallback(window.__loadAnalytics, { timeout: 3000 });
+      } else {
+        window.addEventListener('load', window.__loadAnalytics, { once: true });
+      }
     </script>
     <link rel="alternate" type="application/rss+xml" title="OpenClaw Chronicles" href="https://openclawchronicles.com/feed.xml" />
     <link rel="icon" href="/favicon.ico" sizes="32x32">
@@ -122,6 +136,8 @@
     <link rel="manifest" href="/manifest.webmanifest">
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin />
+    <link rel="dns-prefetch" href="https://cdn.jsdelivr.net" />
     <link
       href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Newsreader:ital,wght@0,400;0,600;1,400&family=Playfair+Display:wght@400;600;700&family=Inter:wght@400;500;600;700&family=Manufacturing+Consent&display=swap"
       rel="stylesheet"

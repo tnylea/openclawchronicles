@@ -20,6 +20,14 @@ function getFrontmatterField(content, key) {
   return match ? match[1].trim() : null;
 }
 
+function inferSection(content = '') {
+  const haystack = content.toLowerCase();
+  if (/security|cve|hardening|vulnerability|exploit/.test(haystack)) return 'security';
+  if (/guide|tutorial|migrate|migration|setup|how to|locally/.test(haystack)) return 'guides';
+  if (/release|beta|hotfix|stable|changelog/.test(haystack)) return 'releases';
+  return 'news';
+}
+
 function absoluteAssetUrl(assetPath) {
   if (!assetPath) return null;
   if (/^https?:\/\//i.test(assetPath)) return assetPath;
@@ -29,18 +37,6 @@ function absoluteAssetUrl(assetPath) {
 // Build URL entries
 const urls = [];
 
-// Homepage
-urls.push({ loc: `${BASE_URL}/`, changefreq: 'daily', priority: '1.0' });
-
-// Posts index
-urls.push({ loc: `${BASE_URL}/posts/`, changefreq: 'daily', priority: '0.8' });
-
-// Static pages
-urls.push({ loc: `${BASE_URL}/about/`, changefreq: 'monthly', priority: '0.6' });
-urls.push({ loc: `${BASE_URL}/releases/`, changefreq: 'weekly', priority: '0.8' });
-urls.push({ loc: `${BASE_URL}/security/`, changefreq: 'weekly', priority: '0.8' });
-urls.push({ loc: `${BASE_URL}/guides/`, changefreq: 'weekly', priority: '0.8' });
-
 // Individual posts — sorted by date desc
 const postFiles = fs.readdirSync(POSTS_DIR)
   .filter(f => f.endsWith('.md'))
@@ -49,15 +45,35 @@ const postFiles = fs.readdirSync(POSTS_DIR)
     const slug = path.basename(file, '.md');
     const date = getFrontmatterField(content, 'date');
     const coverImage = getFrontmatterField(content, 'coverImage');
-    return { slug, date, coverImage };
+    const title = getFrontmatterField(content, 'title');
+    const excerpt = getFrontmatterField(content, 'excerpt');
+    const section = inferSection(content);
+    return { slug, date, coverImage, title, excerpt, section };
   })
   .sort((a, b) => (b.date || '').localeCompare(a.date || ''));
+
+const latestPostDate = postFiles[0]?.date?.split('T')[0];
+const latestSectionDate = (section) => postFiles.find((post) => post.section === section)?.date?.split('T')[0] || latestPostDate;
+
+// Homepage
+urls.push({ loc: `${BASE_URL}/`, lastmod: latestPostDate, changefreq: 'daily', priority: '1.0' });
+
+// Posts index
+urls.push({ loc: `${BASE_URL}/posts/`, lastmod: latestPostDate, changefreq: 'daily', priority: '0.8' });
+
+// Static pages
+urls.push({ loc: `${BASE_URL}/about/`, lastmod: latestPostDate, changefreq: 'monthly', priority: '0.6' });
+urls.push({ loc: `${BASE_URL}/releases/`, lastmod: latestSectionDate('releases'), changefreq: 'weekly', priority: '0.8' });
+urls.push({ loc: `${BASE_URL}/security/`, lastmod: latestSectionDate('security'), changefreq: 'weekly', priority: '0.8' });
+urls.push({ loc: `${BASE_URL}/guides/`, lastmod: latestSectionDate('guides'), changefreq: 'weekly', priority: '0.8' });
 
 const totalArchivePages = Math.max(1, Math.ceil(postFiles.length / POSTS_PER_PAGE));
 
 for (let page = 2; page <= totalArchivePages; page++) {
+  const pagePosts = postFiles.slice((page - 1) * POSTS_PER_PAGE, page * POSTS_PER_PAGE);
   urls.push({
     loc: `${BASE_URL}/posts/${page}/`,
+    lastmod: pagePosts[0]?.date?.split('T')[0] || latestPostDate,
     changefreq: 'weekly',
     priority: '0.5',
   });
@@ -70,18 +86,29 @@ for (const post of postFiles) {
     changefreq: 'monthly',
     priority: '0.7',
     image: absoluteAssetUrl(post.coverImage),
+    imageTitle: post.title,
+    imageCaption: post.excerpt,
   });
 }
 
 // Build XML
-const entries = urls.map(({ loc, lastmod, changefreq, priority, image }) => {
-  const lines = [`  <url>`, `    <loc>${loc}</loc>`];
-  if (lastmod) lines.push(`    <lastmod>${lastmod}</lastmod>`);
-  if (changefreq) lines.push(`    <changefreq>${changefreq}</changefreq>`);
-  if (priority) lines.push(`    <priority>${priority}</priority>`);
+const escapeXml = (value) => String(value)
+  .replace(/&/g, '&amp;')
+  .replace(/</g, '&lt;')
+  .replace(/>/g, '&gt;')
+  .replace(/"/g, '&quot;')
+  .replace(/'/g, '&apos;');
+
+const entries = urls.map(({ loc, lastmod, changefreq, priority, image, imageTitle, imageCaption }) => {
+  const lines = [`  <url>`, `    <loc>${escapeXml(loc)}</loc>`];
+  if (lastmod) lines.push(`    <lastmod>${escapeXml(lastmod)}</lastmod>`);
+  if (changefreq) lines.push(`    <changefreq>${escapeXml(changefreq)}</changefreq>`);
+  if (priority) lines.push(`    <priority>${escapeXml(priority)}</priority>`);
   if (image) {
     lines.push('    <image:image>');
-    lines.push(`      <image:loc>${image}</image:loc>`);
+    lines.push(`      <image:loc>${escapeXml(image)}</image:loc>`);
+    if (imageTitle) lines.push(`      <image:title>${escapeXml(imageTitle)}</image:title>`);
+    if (imageCaption) lines.push(`      <image:caption>${escapeXml(imageCaption)}</image:caption>`);
     lines.push('    </image:image>');
   }
   lines.push(`  </url>`);
