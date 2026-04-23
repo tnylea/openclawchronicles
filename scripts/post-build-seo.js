@@ -98,6 +98,7 @@ function fixAboutPageMetadata(html, canonicalUrl) {
 
   const description = 'Learn how OpenClaw Chronicles covers OpenClaw releases, security updates, tutorials, and ecosystem news with a human-AI editorial workflow.';
   const ogImage = `${siteUrl}/assets/images/about-banner.jpg`;
+  const faqSchema = buildFaqSchema(extractFaqEntries(html, 'about-faq-heading'));
 
   html = html.replace(/<meta name="description" content="[^"]*"\s*\/?\s*>/i, `<meta name="description" content="${description}" />`);
   html = html.replace(/<meta name="author" content="[^"]*"\s*\/?\s*>/i, '<meta name="author" content="Cody" />');
@@ -113,7 +114,7 @@ function fixAboutPageMetadata(html, canonicalUrl) {
 
   html = html.replace(
     /<!-- JSON-LD Article Schema -->[\s\S]*?<!-- Google Analytics -->/i,
-    `<!-- JSON-LD Article Schema -->\n    <script type="application/ld+json">\n    {\n      "@context": "https://schema.org",\n      "@type": "AboutPage",\n      "name": "About OpenClaw Chronicles",\n      "url": "${canonicalUrl}",\n      "description": "${description}",\n      "mainEntity": {\n        "@type": "Organization",\n        "name": "OpenClaw Chronicles",\n        "url": "${siteUrl}",\n        "logo": "${siteUrl}/icon-512.png",\n        "sameAs": [\n          "https://x.com/openclawai",\n          "https://github.com/tnylea/openclawchronicles"\n        ]\n      }\n    }\n    </script>\n    <script type="application/ld+json">\n    {\n      "@context": "https://schema.org",\n      "@type": "BreadcrumbList",\n      "itemListElement": [\n        {\n          "@type": "ListItem",\n          "position": 1,\n          "name": "Home",\n          "item": "${siteUrl}/"\n        },\n        {\n          "@type": "ListItem",\n          "position": 2,\n          "name": "About",\n          "item": "${canonicalUrl}"\n        }\n      ]\n    }\n    </script>\n    <!-- Google Analytics -->`
+    `<!-- JSON-LD Article Schema -->\n    <script type="application/ld+json">\n    {\n      "@context": "https://schema.org",\n      "@type": "AboutPage",\n      "name": "About OpenClaw Chronicles",\n      "url": "${canonicalUrl}",\n      "description": "${description}",\n      "mainEntity": {\n        "@type": "Organization",\n        "name": "OpenClaw Chronicles",\n        "url": "${siteUrl}",\n        "logo": "${siteUrl}/icon-512.png",\n        "sameAs": [\n          "https://x.com/openclawai",\n          "https://github.com/tnylea/openclawchronicles"\n        ]\n      }\n    }\n    </script>\n    <script type="application/ld+json">\n    {\n      "@context": "https://schema.org",\n      "@type": "BreadcrumbList",\n      "itemListElement": [\n        {\n          "@type": "ListItem",\n          "position": 1,\n          "name": "Home",\n          "item": "${siteUrl}/"\n        },\n        {\n          "@type": "ListItem",\n          "position": 2,\n          "name": "About",\n          "item": "${canonicalUrl}"\n        }\n      ]\n    }\n    </script>${faqSchema}\n    <!-- Google Analytics -->`
   );
 
   return html;
@@ -223,6 +224,17 @@ function buildFaqSchema(entries) {
           text: entry.answer,
         },
       })), null, 8)}\n    }\n    </script>`;
+}
+
+function sectionMeta(section) {
+  const map = {
+    Releases: { href: `${siteUrl}/releases/`, label: 'Releases' },
+    Security: { href: `${siteUrl}/security/`, label: 'Security' },
+    Guides: { href: `${siteUrl}/guides/`, label: 'Guides' },
+    'OpenClaw News': { href: `${siteUrl}/posts/`, label: 'Posts' },
+  };
+
+  return map[section] || map['OpenClaw News'];
 }
 
 function fixTopicHubMetadata(html, canonicalUrl) {
@@ -417,6 +429,7 @@ function fixArticleMetadata(html, canonicalUrl) {
   if (!post) return html;
 
   const section = inferSection(post);
+  const sectionInfo = sectionMeta(section);
   const words = String(post.content || '').replace(/[`*_>#\-\[\]\(\)]/g, ' ').split(/\s+/).filter(Boolean);
   const wordCount = words.length;
   const keywords = [...new Set(tokenize(`${post.title} ${post.excerpt}`))].slice(0, 8);
@@ -427,6 +440,16 @@ function fixArticleMetadata(html, canonicalUrl) {
   html = html.replace(
     /<meta property="og:site_name" content="OpenClaw Chronicles"\s*\/?\s*>/i,
     `<meta property="og:site_name" content="OpenClaw Chronicles" />\n    <meta property="article:published_time" content="${post.date}" />\n    <meta property="article:modified_time" content="${post.date}" />\n    <meta property="article:section" content="${section}" />`
+  );
+
+  html = html.replace(
+    /<nav class="flex items-center gap-2 font-mono text-\[0\.625rem\] tracking-wider uppercase">[\s\S]*?<\/nav>/i,
+    `<nav class="flex items-center gap-2 font-mono text-[0.625rem] tracking-wider uppercase">\n                <a href="/" class="text-ink-muted hover:text-red-accent">Home</a>\n                <span class="text-ink-faint">/</span>\n                <a href="${sectionInfo.href.replace(siteUrl, '')}" class="text-ink-muted hover:text-red-accent">${sectionInfo.label}</a>\n                <span class="text-ink-faint">/</span>\n                <span class="text-ink-strong truncate max-w-[20ch]">${post.title}</span>\n            </nav>`
+  );
+
+  html = html.replace(
+    /<span class="text-red-accent font-mono text-\[0\.625rem\] font-semibold tracking-wider uppercase">Article<\/span>/i,
+    `<span class="text-red-accent font-mono text-[0.625rem] font-semibold tracking-wider uppercase">${section}</span>`
   );
 
   const articleSchema = `<!-- JSON-LD Article Schema -->\n    <script type="application/ld+json">\n    {\n      "@context": "https://schema.org",\n      "@type": "${schemaType}",\n      "headline": ${JSON.stringify(post.title)},\n      "description": ${JSON.stringify(post.excerpt)},\n      "image": {\n        "@type": "ImageObject",\n        "url": ${JSON.stringify(`${siteUrl}${post.ogImageUrl}`)},\n        "width": 1200,\n        "height": 630\n      },\n      "url": ${JSON.stringify(canonicalUrl)},\n      "mainEntityOfPage": {\n        "@type": "WebPage",\n        "@id": ${JSON.stringify(canonicalUrl)}\n      },\n      "articleSection": ${JSON.stringify(section)},\n      "keywords": ${JSON.stringify(keywords)},\n      "wordCount": ${wordCount},\n      "timeRequired": "PT${timeRequired}M",\n      "author": {\n        "@type": "Person",\n        "name": ${JSON.stringify(post.authorName)}\n      },\n      "publisher": {\n        "@type": "Organization",\n        "name": "OpenClaw Chronicles",\n        "url": ${JSON.stringify(siteUrl)},\n        "logo": {\n          "@type": "ImageObject",\n          "url": ${JSON.stringify(`${siteUrl}/icon-512.png`)},\n          "width": 512,\n          "height": 512\n        }\n      },\n      "datePublished": ${JSON.stringify(post.date)},\n      "dateModified": ${JSON.stringify(post.date)}\n    }\n    </script>`;

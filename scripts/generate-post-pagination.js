@@ -34,7 +34,7 @@ function postCard(post) {
                                     ${post.excerpt}
                                 </p>
                                 <div class="mt-4 flex items-center gap-3">
-                                    <img src="${post.authorPicture}" class="size-8 rounded-full" alt="${post.authorName}" />
+                                    <img src="${post.authorPicture}" class="size-8 rounded-full" alt="${post.authorName}" width="32" height="32" loading="lazy" decoding="async" />
                                     <span class="text-ink-strong font-sans text-[0.8125rem] font-semibold">${post.authorName}</span>
                                     <span class="text-ink-faint font-mono text-[0.625rem] tracking-wider uppercase">${post.dateFormatted}</span>
                                 </div>
@@ -63,19 +63,21 @@ function pagination(page) {
     .join('\n                            ');
 
   return `
-            <div class="mt-10 flex items-center justify-between gap-4 border-border border-t pt-8">
-                ${prevDisabled
-                  ? `<span class="inline-flex items-center gap-1.5 font-mono text-[0.625rem] font-semibold tracking-wider uppercase text-ink-muted opacity-30">Prev</span>`
-                  : `<a href="${prevHref}" class="inline-flex items-center gap-1.5 font-mono text-[0.625rem] font-semibold tracking-wider uppercase text-ink-muted hover:text-ink transition-colors">Prev</a>`}
+            <nav class="mt-10 border-border border-t pt-8" aria-label="Archive pagination">
+                <div class="flex items-center justify-between gap-4">
+                    ${prevDisabled
+                      ? `<span class="inline-flex items-center gap-1.5 font-mono text-[0.625rem] font-semibold tracking-wider uppercase text-ink-muted opacity-30">Prev</span>`
+                      : `<a href="${prevHref}" rel="prev" aria-label="Go to archive page ${page - 1}" class="inline-flex items-center gap-1.5 font-mono text-[0.625rem] font-semibold tracking-wider uppercase text-ink-muted hover:text-ink transition-colors">Prev</a>`}
 
-                <div class="flex items-center gap-1">
-                            ${numbers}
+                    <div class="flex items-center gap-1" aria-label="Archive page numbers">
+                                ${numbers}
+                    </div>
+
+                    ${nextDisabled
+                      ? `<span class="inline-flex items-center gap-1.5 font-mono text-[0.625rem] font-semibold tracking-wider uppercase text-ink-muted opacity-30">Next</span>`
+                      : `<a href="${nextHref}" rel="next" aria-label="Go to archive page ${page + 1}" class="inline-flex items-center gap-1.5 font-mono text-[0.625rem] font-semibold tracking-wider uppercase text-ink-muted hover:text-ink transition-colors">Next</a>`}
                 </div>
-
-                ${nextDisabled
-                  ? `<span class="inline-flex items-center gap-1.5 font-mono text-[0.625rem] font-semibold tracking-wider uppercase text-ink-muted opacity-30">Next</span>`
-                  : `<a href="${nextHref}" class="inline-flex items-center gap-1.5 font-mono text-[0.625rem] font-semibold tracking-wider uppercase text-ink-muted hover:text-ink transition-colors">Next</a>`}
-            </div>`;
+            </nav>`;
 }
 
 function buildSection(page) {
