@@ -189,7 +189,7 @@ function fixHomepageMetadata(html, canonicalUrl) {
 
   html = html.replace(
     /<!-- JSON-LD WebSite Schema -->[\s\S]*?<!-- Google Analytics -->/i,
-    `<!-- JSON-LD WebSite Schema -->\n    <script type="application/ld+json">\n    {\n      "@context": "https://schema.org",\n      "@type": "WebSite",\n      "name": "OpenClaw Chronicles",\n      "url": "${canonicalUrl}",\n      "description": "${description}",\n      "publisher": {\n        "@type": "Organization",\n        "name": "OpenClaw Chronicles",\n        "url": "${siteUrl}",\n        "logo": {\n          "@type": "ImageObject",\n          "url": "${siteUrl}/icon-512.png",\n          "width": 512,\n          "height": 512\n        }\n      }\n    }\n    </script>\n    <script type="application/ld+json">\n    {\n      "@context": "https://schema.org",\n      "@type": "CollectionPage",\n      "name": "OpenClaw Chronicles homepage",\n      "url": "${canonicalUrl}",\n      "description": "${description}",\n      "mainEntity": {\n        "@type": "ItemList",\n        "itemListElement": ${JSON.stringify(topPosts, null, 8)}\n      }\n    }\n    </script>\n    <!-- Google Analytics -->`
+    `<!-- JSON-LD WebSite Schema -->\n    <script type="application/ld+json">\n    {\n      "@context": "https://schema.org",\n      "@type": "WebSite",\n      "name": "OpenClaw Chronicles",\n      "url": "${canonicalUrl}",\n      "description": "${description}",\n      "potentialAction": {\n        "@type": "SearchAction",\n        "target": "${siteUrl}/posts/?q={search_term_string}",\n        "query-input": "required name=search_term_string"\n      },\n      "publisher": {\n        "@type": "Organization",\n        "name": "OpenClaw Chronicles",\n        "url": "${siteUrl}",\n        "logo": {\n          "@type": "ImageObject",\n          "url": "${siteUrl}/icon-512.png",\n          "width": 512,\n          "height": 512\n        }\n      }\n    }\n    </script>\n    <script type="application/ld+json">\n    {\n      "@context": "https://schema.org",\n      "@type": "CollectionPage",\n      "name": "OpenClaw Chronicles homepage",\n      "url": "${canonicalUrl}",\n      "description": "${description}",\n      "mainEntity": {\n        "@type": "ItemList",\n        "itemListElement": ${JSON.stringify(topPosts, null, 8)}\n      }\n    }\n    </script>\n    <!-- Google Analytics -->`
   );
 
   return html;
@@ -377,6 +377,15 @@ function injectArticlePagination(html, canonicalUrl) {
 
   const newerPost = currentIndex > 0 ? allPosts[currentIndex - 1] : null;
   const olderPost = currentIndex < allPosts.length - 1 ? allPosts[currentIndex + 1] : null;
+
+  html = html.replace(/\s*<link rel="prev" href="[^"]*"\s*\/?>/gi, '');
+  html = html.replace(/\s*<link rel="next" href="[^"]*"\s*\/?>/gi, '');
+
+  const canonicalTag = `<link rel="canonical" href="${canonicalUrl}" />`;
+  let linkTags = canonicalTag;
+  if (newerPost) linkTags += `\n    <link rel="prev" href="${siteUrl}${newerPost.url}" />`;
+  if (olderPost) linkTags += `\n    <link rel="next" href="${siteUrl}${olderPost.url}" />`;
+  html = html.replace(canonicalTag, linkTags);
 
   if (!html.includes('<div id="story-pagination"')) return html;
 
