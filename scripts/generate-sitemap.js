@@ -66,6 +66,8 @@ urls.push({ loc: `${BASE_URL}/about/`, lastmod: latestPostDate, changefreq: 'mon
 urls.push({ loc: `${BASE_URL}/releases/`, lastmod: latestSectionDate('releases'), changefreq: 'weekly', priority: '0.8' });
 urls.push({ loc: `${BASE_URL}/security/`, lastmod: latestSectionDate('security'), changefreq: 'weekly', priority: '0.8' });
 urls.push({ loc: `${BASE_URL}/guides/`, lastmod: latestSectionDate('guides'), changefreq: 'weekly', priority: '0.8' });
+urls.push({ loc: `${BASE_URL}/feed.xml`, lastmod: latestPostDate, changefreq: 'daily', priority: '0.4' });
+urls.push({ loc: `${BASE_URL}/feed.json`, lastmod: latestPostDate, changefreq: 'daily', priority: '0.4' });
 
 const totalArchivePages = Math.max(1, Math.ceil(postFiles.length / POSTS_PER_PAGE));
 

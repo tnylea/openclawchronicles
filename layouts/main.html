@@ -171,51 +171,7 @@
         }
       })();
     </script>
-    <script>
-      document.addEventListener("alpine:init", () => {
-        Alpine.store("theme", {
-          mode: localStorage.getItem("theme") || "system",
-          init() {
-            this.apply();
-            window
-              .matchMedia("(prefers-color-scheme: dark)")
-              .addEventListener("change", () => {
-                if (this.mode === "system") this.apply();
-              });
-          },
-          set(t) {
-            this.mode = t;
-            localStorage.setItem("theme", t);
-            this.apply();
-          },
-          apply() {
-            const isDark =
-              this.mode === "dark" ||
-              (this.mode === "system" &&
-                window.matchMedia("(prefers-color-scheme: dark)").matches);
-            document.documentElement.classList.toggle("dark", isDark);
-          },
-        });
-      });
-    </script>
-    <script>
-      (function () {
-        var loadAlpine = function () {
-          if (window.__alpineRequested) return;
-          window.__alpineRequested = true;
-          var script = document.createElement('script');
-          script.defer = true;
-          script.src = 'https://cdn.jsdelivr.net/npm/alpinejs@3.14.8/dist/cdn.min.js';
-          document.head.appendChild(script);
-        };
-
-        if ('requestIdleCallback' in window) {
-          requestIdleCallback(loadAlpine, { timeout: 2000 });
-        } else {
-          window.addEventListener('load', loadAlpine, { once: true });
-        }
-      })();
-    </script>
+    <script defer src="/assets/js/main.js"></script>
   </head>
   <body class="bg-surface font-body text-ink antialiased">
     <a href="#main-content" class="skip-link">Skip to content</a>

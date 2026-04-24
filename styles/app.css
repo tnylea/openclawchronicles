@@ -90,7 +90,8 @@
   --color-red-vibrant: #ef4444;
 }
 
-[x-cloak] {
+[x-cloak],
+[hidden] {
   display: none !important;
 }
 .drop-cap::first-letter {
