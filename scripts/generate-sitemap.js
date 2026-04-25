@@ -13,6 +13,7 @@ const POSTS_DIR = path.join(__dirname, '../content/posts');
 const SITE_DIR = path.join(__dirname, '../_site');
 const OUTPUT = path.join(SITE_DIR, 'sitemap.xml');
 const POSTS_PER_PAGE = 15;
+const PAGES_DIR = path.join(__dirname, '../pages');
 
 // Parse the first `key: value` frontmatter field from a markdown string
 function getFrontmatterField(content, key) {
@@ -32,6 +33,14 @@ function absoluteAssetUrl(assetPath) {
   if (!assetPath) return null;
   if (/^https?:\/\//i.test(assetPath)) return assetPath;
   return `${BASE_URL}${assetPath.startsWith('/') ? '' : '/'}${assetPath}`;
+}
+
+function fileDateOrFallback(filePath, fallback) {
+  try {
+    return fs.statSync(filePath).mtime.toISOString().split('T')[0];
+  } catch {
+    return fallback;
+  }
 }
 
 // Build URL entries
@@ -56,16 +65,16 @@ const latestPostDate = postFiles[0]?.date?.split('T')[0];
 const latestSectionDate = (section) => postFiles.find((post) => post.section === section)?.date?.split('T')[0] || latestPostDate;
 
 // Homepage
-urls.push({ loc: `${BASE_URL}/`, lastmod: latestPostDate, changefreq: 'daily', priority: '1.0' });
+urls.push({ loc: `${BASE_URL}/`, lastmod: fileDateOrFallback(path.join(PAGES_DIR, 'index.html'), latestPostDate), changefreq: 'daily', priority: '1.0' });
 
 // Posts index
 urls.push({ loc: `${BASE_URL}/posts/`, lastmod: latestPostDate, changefreq: 'daily', priority: '0.8' });
 
 // Static pages
-urls.push({ loc: `${BASE_URL}/about/`, lastmod: latestPostDate, changefreq: 'monthly', priority: '0.6' });
-urls.push({ loc: `${BASE_URL}/releases/`, lastmod: latestSectionDate('releases'), changefreq: 'weekly', priority: '0.8' });
-urls.push({ loc: `${BASE_URL}/security/`, lastmod: latestSectionDate('security'), changefreq: 'weekly', priority: '0.8' });
-urls.push({ loc: `${BASE_URL}/guides/`, lastmod: latestSectionDate('guides'), changefreq: 'weekly', priority: '0.8' });
+urls.push({ loc: `${BASE_URL}/about/`, lastmod: fileDateOrFallback(path.join(PAGES_DIR, 'about.html'), latestPostDate), changefreq: 'monthly', priority: '0.6' });
+urls.push({ loc: `${BASE_URL}/releases/`, lastmod: fileDateOrFallback(path.join(PAGES_DIR, 'releases.html'), latestSectionDate('releases')), changefreq: 'weekly', priority: '0.8' });
+urls.push({ loc: `${BASE_URL}/security/`, lastmod: fileDateOrFallback(path.join(PAGES_DIR, 'security.html'), latestSectionDate('security')), changefreq: 'weekly', priority: '0.8' });
+urls.push({ loc: `${BASE_URL}/guides/`, lastmod: fileDateOrFallback(path.join(PAGES_DIR, 'guides.html'), latestSectionDate('guides')), changefreq: 'weekly', priority: '0.8' });
 urls.push({ loc: `${BASE_URL}/feed.xml`, lastmod: latestPostDate, changefreq: 'daily', priority: '0.4' });
 urls.push({ loc: `${BASE_URL}/feed.json`, lastmod: latestPostDate, changefreq: 'daily', priority: '0.4' });
 
