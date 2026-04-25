@@ -339,20 +339,20 @@ function scoreRelatedPosts(currentPost, candidatePost) {
 
 function injectRelatedPosts(html, canonicalUrl) {
   const match = canonicalUrl.match(/\/posts\/([^/]+)\/$/);
-  if (!match) return html;
+  if (!match || html.includes('related-posts-heading')) return html;
 
   const currentSlug = match[1];
   const currentPost = postBySlug.get(currentSlug);
   if (!currentPost) return html;
 
   const related = allPosts
-    .filter((post) => post && typeof post.url === 'string' && !post.url.includes(`/${currentSlug}/`))
+    .filter((post) => post && typeof post.url === 'string' && post.url !== currentPost.url)
     .map((post) => ({ post, score: scoreRelatedPosts(currentPost, post) }))
     .sort((a, b) => b.score - a.score || new Date(b.post.date) - new Date(a.post.date))
     .slice(0, 3)
     .map(({ post }) => post);
 
-  if (related.length === 0 || html.includes('related-posts-heading')) return html;
+  if (related.length === 0) return html;
 
   const cards = related.map((post) => `
                     <article class="border-border rounded-[min(0.3vw,4px)] border p-4">
@@ -378,14 +378,17 @@ function injectRelatedPosts(html, canonicalUrl) {
             </div>
         </section>`;
 
-  return html.replace(/\s*<section[^>]*aria-labelledby="continue-reading-heading"[^>]*>/i, `\n${section}\n\n        <section class="defer-render mx-auto max-w-3xl px-4 pb-10 sm:px-6 lg:px-8" aria-labelledby="continue-reading-heading">`);
+  return html.replace(/\n\s*<section[^>]*aria-labelledby="continue-reading-heading"[^>]*>/i, `${section}\n\n        <section class="defer-render mx-auto max-w-3xl px-4 pb-10 sm:px-6 lg:px-8" aria-labelledby="continue-reading-heading">`);
 }
 
 function injectArticlePagination(html, canonicalUrl) {
   const match = canonicalUrl.match(/\/posts\/([^/]+)\/$/);
   if (!match) return html;
 
-  const currentIndex = allPosts.findIndex((post) => post && post.url === `/posts/${match[1]}/`);
+  const currentPost = postBySlug.get(match[1]);
+  if (!currentPost) return html;
+
+  const currentIndex = allPosts.findIndex((post) => post && post.url === currentPost.url);
   if (currentIndex === -1) return html;
 
   const newerPost = currentIndex > 0 ? allPosts[currentIndex - 1] : null;
@@ -400,7 +403,8 @@ function injectArticlePagination(html, canonicalUrl) {
   if (olderPost) linkTags += `\n    <link rel="next" href="${siteUrl}${olderPost.url}" />`;
   html = html.replace(canonicalTag, linkTags);
 
-  if (!html.includes('<div id="story-pagination"')) return html;
+  const paginationRegex = /<div id="story-pagination" class="mt-6 grid gap-4 sm:grid-cols-2">[\s\S]*?<\/div>/i;
+  if (!paginationRegex.test(html)) return html;
 
   const card = (post, direction, label) => {
     if (!post) {
@@ -419,7 +423,7 @@ function injectArticlePagination(html, canonicalUrl) {
   };
 
   const markup = `${card(newerPost, 'newer', 'Newer story')}${card(olderPost, 'older', 'Older story')}`;
-  return html.replace('<div id="story-pagination" class="mt-6 grid gap-4 sm:grid-cols-2"></div>', `<div id="story-pagination" class="mt-6 grid gap-4 sm:grid-cols-2">${markup}</div>`);
+  return html.replace(paginationRegex, `<div id="story-pagination" class="mt-6 grid gap-4 sm:grid-cols-2">${markup}</div>`);
 }
 
 function fixArticleMetadata(html, canonicalUrl) {

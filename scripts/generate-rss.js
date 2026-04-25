@@ -81,6 +81,15 @@ function inferCategory(post) {
   return 'OpenClaw News';
 }
 
+function imageMimeType(url) {
+  const extension = (url.split('.').pop() || '').toLowerCase();
+  if (extension === 'jpg' || extension === 'jpeg') return 'image/jpeg';
+  if (extension === 'webp') return 'image/webp';
+  if (extension === 'gif') return 'image/gif';
+  if (extension === 'svg') return 'image/svg+xml';
+  return 'image/png';
+}
+
 const files = fs.readdirSync(postsDir).filter((f) => f.endsWith('.md'));
 const posts = [];
 
@@ -108,7 +117,7 @@ const items = latest.map((post) => {
   const link = `${siteUrl}${post.url}`;
   const category = inferCategory(post);
   const enclosure = post.ogImageUrl
-    ? `\n    <enclosure url="${escapeXml(siteUrl + post.ogImageUrl)}" type="image/png" length="0" />`
+    ? `\n    <enclosure url="${escapeXml(siteUrl + post.ogImageUrl)}" type="${imageMimeType(post.ogImageUrl)}" length="0" />`
     : '';
   const contentEncoded = `\n    <content:encoded><![CDATA[${markdownToHtml(post.body)}]]></content:encoded>`;
 

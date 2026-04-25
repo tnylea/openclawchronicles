@@ -28,6 +28,33 @@ function parsePost(content) {
   };
 }
 
+function markdownToHtml(markdown) {
+  return markdown
+    .replace(/^###\s+(.*)$/gm, '<h3>$1</h3>')
+    .replace(/^##\s+(.*)$/gm, '<h2>$1</h2>')
+    .replace(/^#\s+(.*)$/gm, '<h1>$1</h1>')
+    .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+    .replace(/\*(.*?)\*/g, '<em>$1</em>')
+    .replace(/`([^`]+)`/g, '<code>$1</code>')
+    .replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2">$1</a>')
+    .split(/\n{2,}/)
+    .map((block) => {
+      const trimmed = block.trim();
+      if (!trimmed) return '';
+      if (/^<h[1-3]>/.test(trimmed)) return trimmed;
+      if (/^-\s+/m.test(trimmed)) {
+        const items = trimmed.split('\n').map((line) => line.replace(/^-\s+/, '').trim()).filter(Boolean);
+        return `<ul>${items.map((item) => `<li>${item}</li>`).join('')}</ul>`;
+      }
+      if (/^\d+\.\s+/m.test(trimmed)) {
+        const items = trimmed.split('\n').map((line) => line.replace(/^\d+\.\s+/, '').trim()).filter(Boolean);
+        return `<ol>${items.map((item) => `<li>${item}</li>`).join('')}</ol>`;
+      }
+      return `<p>${trimmed.replace(/\n/g, '<br />')}</p>`;
+    })
+    .join('');
+}
+
 function inferTags(post) {
   const haystack = `${post.title} ${post.summary} ${post.content_text}`.toLowerCase();
   const tags = ['OpenClaw'];
@@ -57,6 +84,7 @@ for (const file of files) {
     title: parsed.frontmatter.title || '',
     summary: parsed.frontmatter.excerpt || '',
     content_text: parsed.body,
+    content_html: markdownToHtml(parsed.body),
     date_published: parsed.frontmatter.date,
     date_modified: parsed.frontmatter.date,
     authors: [
