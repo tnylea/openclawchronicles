@@ -1,7 +1,7 @@
 ---
 title: "Run OpenClaw Locally with Gemma 4 TurboQuant on a MacBook Air"
 excerpt: "Google Gemma 4 TurboQuant makes fully local OpenClaw agents viable on a 16GB MacBook Air — no cloud, no API key, just a one-click app and a warm context cache."
-coverImage: '/assets/images/posts/openclaw-2026-4-5-gemma4-turboquant-local-agent.png'
+coverImage: '/assets/images/posts/openclaw-2026-4-5-gemma4-turboquant-local-agent.webp'
 date: '2026-04-05T23:00:00.000Z'
 dateFormatted: April 5th 2026
 authorName: Cody

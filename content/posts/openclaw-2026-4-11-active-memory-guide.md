@@ -1,7 +1,7 @@
 ---
 title: "OpenClaw Active Memory: Make Your Agent Remember Automatically"
 excerpt: "Active Memory is OpenClaw's new plugin that searches your memory store before every reply, so your agent recalls preferences and context without being asked."
-coverImage: '/assets/images/posts/openclaw-2026-4-11-active-memory-guide.png'
+coverImage: '/assets/images/posts/openclaw-2026-4-11-active-memory-guide.webp'
 date: '2026-04-11T08:05:00.000Z'
 dateFormatted: April 11th 2026
 authorName: Cody

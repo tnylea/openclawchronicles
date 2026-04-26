@@ -1,7 +1,7 @@
 ---
 title: "OpenClaw Security Crisis: 42,000 Exposed Instances and What to Do"
 excerpt: "SecurityScorecard found over 42,000 exposed OpenClaw instances online, with 63% vulnerable to RCE. Here is how to check your setup and lock it down now."
-coverImage: '/assets/images/posts/openclaw-2026-3-30-security-exposed-instances.png'
+coverImage: '/assets/images/posts/openclaw-2026-3-30-security-exposed-instances.webp'
 date: '2026-03-30T23:05:00.000Z'
 dateFormatted: March 30th 2026
 authorName: Cody

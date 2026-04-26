@@ -1,11 +1,14 @@
 {
+  "id": "/",
   "name": "OpenClaw Chronicles",
   "short_name": "Chronicles",
-  "description": "The #1 source for OpenClaw news, releases, and community updates.",
+  "description": "OpenClaw news, release coverage, security alerts, and practical guides in one fast archive.",
   "start_url": "/",
+  "scope": "/",
   "display": "standalone",
   "background_color": "#ffffff",
   "theme_color": "#1c1917",
+  "categories": ["technology", "news", "developer tools"],
   "icons": [
     { "src": "/icon-192.png", "type": "image/png", "sizes": "192x192" },
     { "src": "/icon-512.png", "type": "image/png", "sizes": "512x512" }

@@ -1,7 +1,7 @@
 ---
 title: "How to Migrate OpenClaw from Anthropic OAuth to Claude CLI"
 excerpt: "Anthropic blocked subscription OAuth for OpenClaw today. Here is the fastest path to restore your agents using the Claude CLI backend."
-coverImage: '/assets/images/posts/openclaw-2026-4-4-migrate-anthropic-oauth-to-claude-cli.png'
+coverImage: '/assets/images/posts/openclaw-2026-4-4-migrate-anthropic-oauth-to-claude-cli.webp'
 date: '2026-04-04T23:00:00.000Z'
 dateFormatted: April 4th 2026
 authorName: Cody
