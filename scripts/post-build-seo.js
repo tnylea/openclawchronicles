@@ -258,6 +258,11 @@ function fixTopicHubMetadata(html, canonicalUrl) {
       description: 'Find OpenClaw setup guides, migration walkthroughs, local model tutorials, and practical how-tos.',
       label: 'Guides',
     },
+    [`${siteUrl}/site-map/`]: {
+      title: 'OpenClaw Chronicles Site Map and Start Here Guide',
+      description: 'Use the OpenClaw Chronicles site map to browse release coverage, security reporting, guides, feeds, and evergreen OpenClaw resources.',
+      label: 'Site Map',
+    },
   };
 
   const hub = hubs[canonicalUrl];
@@ -282,13 +287,16 @@ function fixTopicHubMetadata(html, canonicalUrl) {
     ? 'release-faq-heading'
     : hub.label === 'Security'
       ? 'security-faq-heading'
-      : 'guides-faq-heading';
+      : hub.label === 'Guides'
+        ? 'guides-faq-heading'
+        : 'site-map-faq-heading';
   const faqSchema = buildFaqSchema(extractFaqEntries(html, faqSectionId));
 
   const hubPosts = allPosts.filter((post) => {
     const haystack = `${post.title} ${post.excerpt} ${post.content}`.toLowerCase();
     if (hub.label === 'Releases') return /release|beta|hotfix|stable/.test(haystack);
     if (hub.label === 'Security') return /security|cve|hardening|ssrf|redos|exploit|vulnerability/.test(haystack);
+    if (hub.label === 'Site Map') return /openclaw|guide|tutorial|migrate|migration|setup|security|release|beta|hotfix|cve/.test(haystack);
     return /guide|tutorial|migrate|migration|setup|how to|locally/.test(haystack);
   }).slice(0, 10).map((post, index) => ({
     '@type': 'ListItem',

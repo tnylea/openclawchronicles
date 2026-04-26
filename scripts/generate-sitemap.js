@@ -72,6 +72,7 @@ urls.push({ loc: `${BASE_URL}/posts/`, lastmod: latestPostDate, changefreq: 'dai
 
 // Static pages
 urls.push({ loc: `${BASE_URL}/about/`, lastmod: fileDateOrFallback(path.join(PAGES_DIR, 'about.html'), latestPostDate), changefreq: 'monthly', priority: '0.6' });
+urls.push({ loc: `${BASE_URL}/site-map/`, lastmod: fileDateOrFallback(path.join(PAGES_DIR, 'site-map.html'), latestPostDate), changefreq: 'weekly', priority: '0.7' });
 urls.push({ loc: `${BASE_URL}/releases/`, lastmod: fileDateOrFallback(path.join(PAGES_DIR, 'releases.html'), latestSectionDate('releases')), changefreq: 'weekly', priority: '0.8' });
 urls.push({ loc: `${BASE_URL}/security/`, lastmod: fileDateOrFallback(path.join(PAGES_DIR, 'security.html'), latestSectionDate('security')), changefreq: 'weekly', priority: '0.8' });
 urls.push({ loc: `${BASE_URL}/guides/`, lastmod: fileDateOrFallback(path.join(PAGES_DIR, 'guides.html'), latestSectionDate('guides')), changefreq: 'weekly', priority: '0.8' });

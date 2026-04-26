@@ -58,7 +58,7 @@ function pagination(page) {
   const numbers = Array.from({ length: totalPages }, (_, i) => i + 1)
     .map((n) => {
       const active = n === page;
-      return `<a href="${pageHref(n)}" class="min-w-[1.75rem] h-7 px-1.5 rounded font-mono text-[0.625rem] font-semibold tracking-wider transition-colors inline-flex items-center justify-center ${active ? 'bg-red-accent text-white' : 'text-ink-muted hover:text-ink'}">${n}</a>`;
+      return `<a href="${pageHref(n)}" ${active ? 'aria-current="page"' : ''} aria-label="Archive page ${n}" class="min-w-[1.75rem] h-7 px-1.5 rounded font-mono text-[0.625rem] font-semibold tracking-wider transition-colors inline-flex items-center justify-center ${active ? 'bg-red-accent text-white' : 'text-ink-muted hover:text-ink'}">${n}</a>`;
     })
     .join('\n                            ');
 
@@ -87,6 +87,13 @@ function buildSection(page) {
 
   return `<!-- POSTS_PAGINATION_START -->
         <section class="mx-auto max-w-7xl px-4 py-10 sm:px-6 lg:px-8">
+            <div class="mb-6 flex flex-col gap-3 border-b border-border pb-5 sm:flex-row sm:items-end sm:justify-between">
+                <div>
+                    <p class="text-red-accent font-mono text-[0.625rem] font-semibold tracking-wider uppercase">Archive navigation</p>
+                    <p class="text-ink-muted mt-2 max-w-2xl text-sm">Page ${page} of ${totalPages}. Browse older OpenClaw releases, security advisories, tutorials, and ecosystem coverage through the full archive.</p>
+                </div>
+                <a href="/site-map/" class="inline-flex items-center gap-1.5 font-mono text-[0.625rem] font-semibold tracking-wider uppercase text-red-accent transition-colors hover:text-red-vibrant">Browse topic hubs and evergreen links</a>
+            </div>
             <div class="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
 ${cards}
             </div>
