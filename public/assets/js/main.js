@@ -128,11 +128,49 @@
     if (romanNode) romanNode.textContent = romanize((currentYear - estYear) + 1);
   }
 
+  function bindCurrentDate() {
+    var nodes = document.querySelectorAll('[data-current-date]');
+    if (!nodes.length) return;
+
+    var now = new Date();
+    var iso = now.toISOString().split('T')[0];
+    var label = new Intl.DateTimeFormat('en-US', {
+      weekday: 'long',
+      month: 'long',
+      day: 'numeric',
+      year: 'numeric'
+    }).format(now);
+
+    nodes.forEach(function (node) {
+      node.textContent = label;
+      node.setAttribute('datetime', iso);
+    });
+  }
+
+  function bindActiveNav() {
+    var currentPath = window.location.pathname.replace(/index\.html$/, '');
+    if (currentPath.length > 1 && currentPath.endsWith('/')) currentPath = currentPath.slice(0, -1);
+
+    document.querySelectorAll('a[href^="/"]').forEach(function (link) {
+      var href = link.getAttribute('href');
+      if (!href || href === '/') return;
+
+      var normalizedHref = href.replace(/index\.html$/, '');
+      if (normalizedHref.length > 1 && normalizedHref.endsWith('/')) normalizedHref = normalizedHref.slice(0, -1);
+
+      if (normalizedHref === currentPath) {
+        link.setAttribute('aria-current', 'page');
+      }
+    });
+  }
+
   document.addEventListener('DOMContentLoaded', function () {
     bindThemeButtons();
     bindMobileMenus();
     bindHomeHeader();
     bindMastheadMeta();
+    bindCurrentDate();
+    bindActiveNav();
   });
 
   darkModeQuery.addEventListener('change', function () {
