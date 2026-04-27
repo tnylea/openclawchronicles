@@ -241,6 +241,10 @@ function sectionMeta(section) {
   return map[section] || map['OpenClaw News'];
 }
 
+function postKeywords(post, limit = 4) {
+  return [...new Set(tokenize(`${post.title} ${post.excerpt}`))].slice(0, limit);
+}
+
 function fixTopicHubMetadata(html, canonicalUrl) {
   const hubs = {
     [`${siteUrl}/releases/`]: {
@@ -450,6 +454,7 @@ function fixArticleMetadata(html, canonicalUrl) {
   const words = String(post.content || '').replace(/[`*_>#\-\[\]\(\)]/g, ' ').split(/\s+/).filter(Boolean);
   const wordCount = words.length;
   const keywords = [...new Set(tokenize(`${post.title} ${post.excerpt}`))].slice(0, 8);
+  const topKeywords = postKeywords(post, 3);
   const timeRequired = Math.max(1, Math.ceil(wordCount / 220));
   const schemaType = section === 'Releases' ? 'TechArticle' : 'NewsArticle';
 
@@ -467,6 +472,17 @@ function fixArticleMetadata(html, canonicalUrl) {
   html = html.replace(
     /<span class="text-red-accent font-mono text-\[0\.625rem\] font-semibold tracking-wider uppercase">Article<\/span>/i,
     `<span class="text-red-accent font-mono text-[0.625rem] font-semibold tracking-wider uppercase">${section}</span>`
+  );
+
+  const topicChipMarkup = `
+            <div class="mt-5 flex flex-wrap gap-2" aria-label="Filed under">
+                <a href="${sectionInfo.href.replace(siteUrl, '')}" class="border-border text-ink-strong hover:text-red-accent rounded-full border px-3 py-1.5 font-sans text-xs font-medium">Filed under ${sectionInfo.label}</a>
+                ${topKeywords.map((keyword) => `<a href="${sectionInfo.href.replace(siteUrl, '')}" class="border-border text-ink-muted hover:text-red-accent rounded-full border px-3 py-1.5 font-sans text-xs font-medium">${keyword}</a>`).join('')}
+            </div>`;
+
+  html = html.replace(
+    /(<p class="font-body text-ink-muted mt-4 text-lg italic">[\s\S]*?<\/p>)/i,
+    `$1${topicChipMarkup}`
   );
 
   const articleSchema = `<!-- JSON-LD Article Schema -->\n    <script type="application/ld+json">\n    {\n      "@context": "https://schema.org",\n      "@type": "${schemaType}",\n      "headline": ${JSON.stringify(post.title)},\n      "description": ${JSON.stringify(post.excerpt)},\n      "image": {\n        "@type": "ImageObject",\n        "url": ${JSON.stringify(`${siteUrl}${post.ogImageUrl}`)},\n        "width": 1200,\n        "height": 630\n      },\n      "url": ${JSON.stringify(canonicalUrl)},\n      "mainEntityOfPage": {\n        "@type": "WebPage",\n        "@id": ${JSON.stringify(canonicalUrl)}\n      },\n      "articleSection": ${JSON.stringify(section)},\n      "keywords": ${JSON.stringify(keywords)},\n      "wordCount": ${wordCount},\n      "timeRequired": "PT${timeRequired}M",\n      "author": {\n        "@type": "Person",\n        "name": ${JSON.stringify(post.authorName)}\n      },\n      "publisher": {\n        "@type": "Organization",\n        "name": "OpenClaw Chronicles",\n        "url": ${JSON.stringify(siteUrl)},\n        "logo": {\n          "@type": "ImageObject",\n          "url": ${JSON.stringify(`${siteUrl}/icon-512.png`)},\n          "width": 512,\n          "height": 512\n        }\n      },\n      "datePublished": ${JSON.stringify(post.date)},\n      "dateModified": ${JSON.stringify(post.date)}\n    }\n    </script>`;
