@@ -325,6 +325,16 @@ function tokenize(text) {
     .filter((token) => token.length > 2 && !stopWords.has(token));
 }
 
+function slugify(text) {
+  return String(text || '')
+    .toLowerCase()
+    .replace(/&[a-z]+;/g, ' ')
+    .replace(/[^a-z0-9\s-]/g, '')
+    .trim()
+    .replace(/\s+/g, '-')
+    .replace(/-+/g, '-') || 'section';
+}
+
 function inferSection(post) {
   const haystack = `${post.title} ${post.excerpt} ${post.content}`.toLowerCase();
   if (/security|cve|hardening|ssrf|redos|vulnerability|exploit/.test(haystack)) return 'Security';
@@ -351,6 +361,112 @@ function scoreRelatedPosts(currentPost, candidatePost) {
   else if (ageDays <= 90) score += 1;
 
   return score;
+}
+
+function injectLatestTopicSections(html, canonicalUrl) {
+  const targets = new Set([`${siteUrl}/`, `${siteUrl}/posts/`]);
+  if (!targets.has(canonicalUrl) || html.includes('latest-topic-clusters-heading')) return html;
+
+  const clusters = [
+    {
+      label: 'Releases',
+      title: 'Latest OpenClaw releases and betas',
+      href: '/releases/',
+      description: 'Fresh stable launches, betas, and hotfix coverage for readers comparing upgrades.',
+      posts: allPosts.filter((post) => inferSection(post) === 'Releases').slice(0, 3),
+    },
+    {
+      label: 'Security',
+      title: 'Recent OpenClaw security coverage',
+      href: '/security/',
+      description: 'High-urgency advisories, hardening writeups, and exploit-response reporting.',
+      posts: allPosts.filter((post) => inferSection(post) === 'Security').slice(0, 3),
+    },
+    {
+      label: 'Guides',
+      title: 'Newest setup and migration guides',
+      href: '/guides/',
+      description: 'Evergreen tutorials that answer recurring OpenClaw setup and migration searches.',
+      posts: allPosts.filter((post) => inferSection(post) === 'Guides').slice(0, 3),
+    },
+  ].filter((cluster) => cluster.posts.length);
+
+  if (!clusters.length) return html;
+
+  const cards = clusters.map((cluster) => `
+                <article class="border-border rounded-[min(0.4vw,6px)] border p-6">
+                    <span class="text-red-accent font-mono text-[0.625rem] font-semibold tracking-wider uppercase">${cluster.label}</span>
+                    <h3 class="font-display text-ink mt-2 text-2xl font-semibold tracking-tight text-balance sm:text-xl">${cluster.title}</h3>
+                    <p class="text-ink-body mt-3 text-[0.9375rem] text-pretty">${cluster.description}</p>
+                    <ul class="mt-5 space-y-3">
+                        ${cluster.posts.map((post) => `<li><a href="${post.url}" class="text-ink-strong hover:text-red-accent font-sans text-sm font-medium">${post.title}</a></li>`).join('')}
+                    </ul>
+                    <a href="${cluster.href}" class="mt-5 inline-flex items-center gap-1.5 font-mono text-[0.625rem] font-semibold tracking-wider uppercase text-red-accent transition-colors hover:text-red-vibrant">
+                        Open ${cluster.label.toLowerCase()} hub
+                        <svg class="h-3.5 w-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+                    </a>
+                </article>`).join('');
+
+  const section = `
+        <section class="defer-render mx-auto max-w-7xl px-4 py-10 sm:px-6 lg:px-8" aria-labelledby="latest-topic-clusters-heading">
+            <div class="flex items-center gap-3">
+                <h2 id="latest-topic-clusters-heading" class="text-ink font-mono text-[0.6875rem] font-semibold tracking-widest uppercase">Latest by topic</h2>
+                <div class="bg-border-strong h-px flex-1" aria-hidden="true"></div>
+            </div>
+            <div class="mt-8 grid gap-6 lg:grid-cols-3 lg:gap-8">${cards}
+            </div>
+        </section>`;
+
+  if (canonicalUrl === `${siteUrl}/`) {
+    return html.replace(/\n\s*<section class="defer-render mx-auto max-w-7xl px-4 pb-12[\s\S]*?<\/section>\n\n\s*<\/main>/i, (match) => `${match.replace(/\n\s*<\/main>$/i, '')}${section}\n\n    </main>`);
+  }
+
+  return html.replace(/\n\s*<!-- POSTS_PAGINATION_START -->/i, `${section}\n\n        <!-- POSTS_PAGINATION_START -->`);
+}
+
+function injectArticleToc(html, canonicalUrl) {
+  const match = canonicalUrl.match(/\/posts\/([^/]+)\/$/);
+  if (!match || html.includes('story-toc-heading')) return html;
+
+  const articleMatch = html.match(/<article class="article-content[^>]*>([\s\S]*?)<\/article>/i);
+  if (!articleMatch) return html;
+
+  const usedIds = new Set();
+  const headings = [];
+  const articleWithIds = articleMatch[1].replace(/<h([23])([^>]*)>([\s\S]*?)<\/h\1>/gi, (full, level, attrs, inner) => {
+    const label = inner.replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').trim();
+    if (!label) return full;
+
+    let id = slugify(label);
+    let suffix = 2;
+    while (usedIds.has(id)) {
+      id = `${slugify(label)}-${suffix}`;
+      suffix += 1;
+    }
+    usedIds.add(id);
+    headings.push({ id, label, level: Number(level) });
+
+    const cleanedAttrs = attrs.replace(/\sid="[^"]*"/i, '');
+    return `<h${level}${cleanedAttrs} id="${id}"><a href="#${id}" class="hover:text-red-accent">${inner}</a></h${level}>`;
+  });
+
+  if (headings.length < 3) return html;
+
+  const tocItems = headings.map((heading) => `<li class="${heading.level === 3 ? 'ml-4' : ''}"><a href="#${heading.id}" class="text-ink-strong hover:text-red-accent font-sans text-sm">${heading.label}</a></li>`).join('');
+  const tocMarkup = `
+        <nav class="mx-auto max-w-3xl px-4 pt-8 sm:px-6 lg:px-8" aria-labelledby="story-toc-heading">
+            <div class="border-border rounded-[min(0.3vw,4px)] border bg-surface-alt p-5">
+                <div class="flex items-center gap-3">
+                    <h2 id="story-toc-heading" class="text-ink font-mono text-[0.6875rem] font-semibold tracking-widest uppercase">On this page</h2>
+                    <div class="bg-border-strong h-px flex-1" aria-hidden="true"></div>
+                </div>
+                <ol class="mt-4 space-y-2">${tocItems}</ol>
+            </div>
+        </nav>`;
+
+  html = html.replace(articleMatch[0], `<article class="article-content mx-auto max-w-3xl px-4 py-12 sm:px-6 lg:px-8">${articleWithIds}</article>`);
+  html = html.replace(/\n\s*<!-- Article Content -->/i, `${tocMarkup}\n\n        <!-- Article Content -->`);
+  return html;
 }
 
 function injectRelatedPosts(html, canonicalUrl) {
@@ -554,6 +670,8 @@ for (const file of walk(siteDir)) {
   }
 
   html = fixArticleMetadata(html, canonicalUrl);
+  html = injectLatestTopicSections(html, canonicalUrl);
+  html = injectArticleToc(html, canonicalUrl);
   html = injectRelatedPosts(html, canonicalUrl);
   html = injectArticlePagination(html, canonicalUrl);
   html = optimizeImages(html);
