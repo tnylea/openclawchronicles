@@ -461,7 +461,7 @@ function fixArticleMetadata(html, canonicalUrl) {
   html = html.replace(/<meta property="og:type" content="[^\"]*"\s*\/?\s*>/i, '<meta property="og:type" content="article" />');
   html = html.replace(
     /<meta property="og:site_name" content="OpenClaw Chronicles"\s*\/?\s*>/i,
-    `<meta property="og:site_name" content="OpenClaw Chronicles" />\n    <meta property="article:published_time" content="${post.date}" />\n    <meta property="article:modified_time" content="${post.date}" />\n    <meta property="article:section" content="${section}" />`
+    `<meta property="og:site_name" content="OpenClaw Chronicles" />\n    <meta property="article:published_time" content="${post.date}" />\n    <meta property="article:modified_time" content="${post.date}" />\n    <meta property="article:section" content="${section}" />\n    ${topKeywords.map((keyword) => `<meta property="article:tag" content="${keyword}" />`).join('\n    ')}`
   );
 
   html = html.replace(
@@ -497,6 +497,8 @@ function optimizeImages(html) {
 
   return html.replace(/<img\b([^>]*?)(\s*\/?)>/gi, (full, attrs, closingSlash) => {
     let updated = attrs.replace(/\s+$/, '');
+    const srcMatch = updated.match(/\ssrc="([^"]+)"/i);
+    const src = srcMatch ? srcMatch[1] : '';
     const isAuthorAvatar = /cody\.jpg|rounded-full/.test(attrs);
     const isSiteIcon = /icon-|favicon|apple-touch-icon/.test(attrs);
     const isLikelyHero = !seenContentImage && !isAuthorAvatar && !isSiteIcon;
@@ -506,6 +508,11 @@ function optimizeImages(html) {
     updated = updated.replace(/\sfetchpriority="[^"]*"/gi, '');
 
     if (!/\balt=/.test(updated)) updated += ' alt=""';
+    if (!/\bwidth=/.test(updated) && !/\bheight=/.test(updated)) {
+      if (isAuthorAvatar) updated += ' width="48" height="48"';
+      else if (/\/assets\/images\/posts\//.test(src)) updated += ' width="1200" height="630"';
+      else if (/about-banner\.(png|jpg|webp)$/i.test(src)) updated += ' width="1200" height="630"';
+    }
     updated += ' decoding="async"';
 
     if (isLikelyHero) {

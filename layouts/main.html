@@ -9,13 +9,13 @@
     <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)" />
     <meta name="theme-color" content="#0c0c0c" media="(prefers-color-scheme: dark)" />
     <meta name="color-scheme" content="light dark" />
-    <link rel="canonical" href="https://openclawchronicles.com{frontmatter.url}" />
+    <link rel="canonical" href="{frontmatter.url}" />
     <meta name="author" content="{frontmatter.authorName}" />
     <!-- Open Graph -->
     <meta property="og:type" content="article" />
     <meta property="og:title" content="{frontmatter.title}" />
     <meta property="og:description" content="{frontmatter.excerpt}" />
-    <meta property="og:url" content="https://openclawchronicles.com{frontmatter.url}" />
+    <meta property="og:url" content="{frontmatter.url}" />
     <meta property="og:image" content="https://openclawchronicles.com{frontmatter.ogImageUrl}" />
     <meta property="og:image:secure_url" content="https://openclawchronicles.com{frontmatter.ogImageUrl}" />
     <meta property="og:image:alt" content="Cover image for {frontmatter.title}" />
@@ -43,10 +43,10 @@
         "width": 1200,
         "height": 630
       },
-      "url": "https://openclawchronicles.com{frontmatter.url}",
+      "url": "{frontmatter.url}",
       "mainEntityOfPage": {
         "@type": "WebPage",
-        "@id": "https://openclawchronicles.com{frontmatter.url}"
+        "@id": "{frontmatter.url}"
       },
       "articleSection": "OpenClaw News",
       "keywords": ["OpenClaw", "OpenClaw news", "OpenClaw releases", "OpenClaw security", "OpenClaw guides"],
@@ -104,7 +104,7 @@
           "@type": "ListItem",
           "position": 3,
           "name": "{frontmatter.title}",
-          "item": "https://openclawchronicles.com{frontmatter.url}"
+          "item": "{frontmatter.url}"
         }
       ]
     }
