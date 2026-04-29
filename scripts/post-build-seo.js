@@ -194,7 +194,7 @@ function fixHomepageMetadata(html, canonicalUrl) {
 
   html = html.replace(
     /<!-- JSON-LD WebSite Schema -->[\s\S]*?<!-- Google Analytics -->/i,
-    `<!-- JSON-LD WebSite Schema -->\n    <script type="application/ld+json">\n    {\n      "@context": "https://schema.org",\n      "@type": "WebSite",\n      "name": "OpenClaw Chronicles",\n      "url": "${canonicalUrl}",\n      "description": "${description}",\n      "publisher": {\n        "@type": "Organization",\n        "name": "OpenClaw Chronicles",\n        "url": "${siteUrl}",\n        "logo": {\n          "@type": "ImageObject",\n          "url": "${siteUrl}/icon-512.png",\n          "width": 512,\n          "height": 512\n        }\n      }\n    }\n    </script>\n    <script type="application/ld+json">\n    {\n      "@context": "https://schema.org",\n      "@type": "CollectionPage",\n      "name": "OpenClaw Chronicles homepage",\n      "url": "${canonicalUrl}",\n      "description": "${description}",\n      "mainEntity": {\n        "@type": "ItemList",\n        "itemListElement": ${JSON.stringify(topPosts, null, 8)}\n      }\n    }\n    </script>${faqSchema}\n    <!-- Google Analytics -->`
+    `<!-- JSON-LD WebSite Schema -->\n    <script type="application/ld+json">\n    {\n      "@context": "https://schema.org",\n      "@type": "WebSite",\n      "name": "OpenClaw Chronicles",\n      "url": "${canonicalUrl}",\n      "description": "${description}",\n      "potentialAction": ${JSON.stringify(buildWebsiteSearchAction(), null, 6)},\n      "publisher": {\n        "@type": "Organization",\n        "name": "OpenClaw Chronicles",\n        "url": "${siteUrl}",\n        "logo": {\n          "@type": "ImageObject",\n          "url": "${siteUrl}/icon-512.png",\n          "width": 512,\n          "height": 512\n        }\n      }\n    }\n    </script>\n    <script type="application/ld+json">\n    {\n      "@context": "https://schema.org",\n      "@type": "CollectionPage",\n      "name": "OpenClaw Chronicles homepage",\n      "url": "${canonicalUrl}",\n      "description": "${description}",\n      "mainEntity": {\n        "@type": "ItemList",\n        "itemListElement": ${JSON.stringify(topPosts, null, 8)}\n      }\n    }\n    </script>${faqSchema}\n    <!-- Google Analytics -->`
   );
 
   return html;
@@ -228,6 +228,14 @@ function buildFaqSchema(entries) {
           text: entry.answer,
         },
       })), null, 8)}\n    }\n    </script>`;
+}
+
+function buildWebsiteSearchAction() {
+  return {
+    '@type': 'SearchAction',
+    target: `${siteUrl}/posts/?q={search_term_string}`,
+    'query-input': 'required name=search_term_string',
+  };
 }
 
 function sectionMeta(section) {
@@ -311,7 +319,7 @@ function fixTopicHubMetadata(html, canonicalUrl) {
 
   html = html.replace(
     /<!-- JSON-LD WebSite Schema -->[\s\S]*?<!-- Google Analytics -->/i,
-    `<!-- JSON-LD WebSite Schema -->\n    <script type="application/ld+json">\n    {\n      "@context": "https://schema.org",\n      "@type": "CollectionPage",\n      "name": ${JSON.stringify(hub.title)},\n      "url": ${JSON.stringify(canonicalUrl)},\n      "description": ${JSON.stringify(hub.description)},\n      "isPartOf": {\n        "@type": "WebSite",\n        "name": "OpenClaw Chronicles",\n        "url": ${JSON.stringify(siteUrl)}\n      },\n      "mainEntity": {\n        "@type": "ItemList",\n        "itemListElement": ${JSON.stringify(hubPosts, null, 8)}\n      }\n    }\n    </script>\n    <script type="application/ld+json">\n    {\n      "@context": "https://schema.org",\n      "@type": "BreadcrumbList",\n      "itemListElement": [\n        {\n          "@type": "ListItem",\n          "position": 1,\n          "name": "Home",\n          "item": ${JSON.stringify(`${siteUrl}/`)}\n        },\n        {\n          "@type": "ListItem",\n          "position": 2,\n          "name": ${JSON.stringify(hub.label)},\n          "item": ${JSON.stringify(canonicalUrl)}\n        }\n      ]\n    }\n    </script>${faqSchema}\n    <!-- Google Analytics -->`
+    `<!-- JSON-LD WebSite Schema -->\n    <script type="application/ld+json">\n    {\n      "@context": "https://schema.org",\n      "@type": "CollectionPage",\n      "name": ${JSON.stringify(hub.title)},\n      "url": ${JSON.stringify(canonicalUrl)},\n      "description": ${JSON.stringify(hub.description)},\n      "isPartOf": {\n        "@type": "WebSite",\n        "name": "OpenClaw Chronicles",\n        "url": ${JSON.stringify(siteUrl)},\n        "potentialAction": ${JSON.stringify(buildWebsiteSearchAction(), null, 8)}\n      },\n      "mainEntity": {\n        "@type": "ItemList",\n        "itemListElement": ${JSON.stringify(hubPosts, null, 8)}\n      }\n    }\n    </script>\n    <script type="application/ld+json">\n    {\n      "@context": "https://schema.org",\n      "@type": "BreadcrumbList",\n      "itemListElement": [\n        {\n          "@type": "ListItem",\n          "position": 1,\n          "name": "Home",\n          "item": ${JSON.stringify(`${siteUrl}/`)}\n        },\n        {\n          "@type": "ListItem",\n          "position": 2,\n          "name": ${JSON.stringify(hub.label)},\n          "item": ${JSON.stringify(canonicalUrl)}\n        }\n      ]\n    }\n    </script>${faqSchema}\n    <!-- Google Analytics -->`
   );
 
   return html;
@@ -601,7 +609,7 @@ function fixArticleMetadata(html, canonicalUrl) {
     `$1${topicChipMarkup}`
   );
 
-  const articleSchema = `<!-- JSON-LD Article Schema -->\n    <script type="application/ld+json">\n    {\n      "@context": "https://schema.org",\n      "@type": "${schemaType}",\n      "headline": ${JSON.stringify(post.title)},\n      "description": ${JSON.stringify(post.excerpt)},\n      "image": {\n        "@type": "ImageObject",\n        "url": ${JSON.stringify(`${siteUrl}${post.ogImageUrl}`)},\n        "width": 1200,\n        "height": 630\n      },\n      "url": ${JSON.stringify(canonicalUrl)},\n      "mainEntityOfPage": {\n        "@type": "WebPage",\n        "@id": ${JSON.stringify(canonicalUrl)}\n      },\n      "articleSection": ${JSON.stringify(section)},\n      "keywords": ${JSON.stringify(keywords)},\n      "wordCount": ${wordCount},\n      "timeRequired": "PT${timeRequired}M",\n      "author": {\n        "@type": "Person",\n        "name": ${JSON.stringify(post.authorName)}\n      },\n      "publisher": {\n        "@type": "Organization",\n        "name": "OpenClaw Chronicles",\n        "url": ${JSON.stringify(siteUrl)},\n        "logo": {\n          "@type": "ImageObject",\n          "url": ${JSON.stringify(`${siteUrl}/icon-512.png`)},\n          "width": 512,\n          "height": 512\n        }\n      },\n      "datePublished": ${JSON.stringify(post.date)},\n      "dateModified": ${JSON.stringify(post.date)}\n    }\n    </script>`;
+  const articleSchema = `<!-- JSON-LD Article Schema -->\n    <script type="application/ld+json">\n    {\n      "@context": "https://schema.org",\n      "@type": "${schemaType}",\n      "headline": ${JSON.stringify(post.title)},\n      "description": ${JSON.stringify(post.excerpt)},\n      "image": {\n        "@type": "ImageObject",\n        "url": ${JSON.stringify(`${siteUrl}${post.ogImageUrl}`)},\n        "width": 1200,\n        "height": 630\n      },\n      "url": ${JSON.stringify(canonicalUrl)},\n      "mainEntityOfPage": {\n        "@type": "WebPage",\n        "@id": ${JSON.stringify(canonicalUrl)}\n      },\n      "articleSection": ${JSON.stringify(section)},\n      "keywords": ${JSON.stringify(keywords)},\n      "isAccessibleForFree": true,\n      "about": [\n        {\n          "@type": "Thing",\n          "name": "OpenClaw"\n        },\n        {\n          "@type": "Thing",\n          "name": ${JSON.stringify(section)}\n        }\n      ],\n      "wordCount": ${wordCount},\n      "timeRequired": "PT${timeRequired}M",\n      "author": {\n        "@type": "Person",\n        "name": ${JSON.stringify(post.authorName)}\n      },\n      "publisher": {\n        "@type": "Organization",\n        "name": "OpenClaw Chronicles",\n        "url": ${JSON.stringify(siteUrl)},\n        "logo": {\n          "@type": "ImageObject",\n          "url": ${JSON.stringify(`${siteUrl}/icon-512.png`)},\n          "width": 512,\n          "height": 512\n        }\n      },\n      "datePublished": ${JSON.stringify(post.date)},\n      "dateModified": ${JSON.stringify(post.date)}\n    }\n    </script>`;
 
   html = html.replace(/<!-- JSON-LD Article Schema -->[\s\S]*?<script type="application\/ld\+json">[\s\S]*?<\/script>/i, articleSchema);
 
@@ -622,6 +630,7 @@ function optimizeImages(html) {
     updated = updated.replace(/\sdecoding="[^"]*"/gi, '');
     updated = updated.replace(/\sloading="[^"]*"/gi, '');
     updated = updated.replace(/\sfetchpriority="[^"]*"/gi, '');
+    updated = updated.replace(/\ssizes="[^"]*"/gi, '');
 
     if (!/\balt=/.test(updated)) updated += ' alt=""';
     if (!/\bwidth=/.test(updated) && !/\bheight=/.test(updated)) {
@@ -630,6 +639,14 @@ function optimizeImages(html) {
       else if (/about-banner\.(png|jpg|webp)$/i.test(src)) updated += ' width="1200" height="630"';
     }
     updated += ' decoding="async"';
+
+    if (!/\bsizes=/.test(updated)) {
+      if (/aspect-16\/9/.test(attrs)) updated += ' sizes="(min-width: 1280px) 1200px, 100vw"';
+      else if (/aspect-16\/10/.test(attrs)) updated += ' sizes="(min-width: 1024px) 50vw, 100vw"';
+      else if (/aspect-4\/3/.test(attrs)) updated += ' sizes="(min-width: 640px) 50vw, 100vw"';
+      else if (/aspect-3\/2/.test(attrs)) updated += ' sizes="(min-width: 1024px) 30vw, (min-width: 640px) 50vw, 100vw"';
+      else if (/rounded-full/.test(attrs)) updated += ' sizes="48px"';
+    }
 
     if (isLikelyHero) {
       seenContentImage = true;
