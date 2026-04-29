@@ -76,11 +76,37 @@
             </div>
         </section>
 
+        <section class="mx-auto max-w-7xl px-4 pt-8 sm:px-6 lg:px-8" aria-labelledby="archive-search-heading">
+            <div class="border-border rounded-[min(0.4vw,6px)] border bg-surface-alt p-5 sm:p-6">
+                <div class="flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
+                    <div class="max-w-2xl">
+                        <p class="text-red-accent font-mono text-[0.625rem] font-semibold tracking-wider uppercase">Archive search</p>
+                        <h2 id="archive-search-heading" class="font-display text-ink mt-2 text-2xl font-semibold tracking-tight">Search the latest OpenClaw coverage</h2>
+                        <p class="text-ink-body mt-2 text-[0.9375rem] text-pretty">Filter this archive by release names, security topics, guides, migrations, or specific OpenClaw features using a crawlable <code>?q=</code> URL.</p>
+                    </div>
+                    <form action="/posts/" method="get" class="flex w-full max-w-xl flex-col gap-3 sm:flex-row" role="search" aria-label="Search OpenClaw Chronicles posts archive" data-archive-search-form>
+                        <label for="archive-search" class="sr-only">Search posts</label>
+                        <input id="archive-search" name="q" type="search" inputmode="search" autocomplete="off" spellcheck="false" placeholder="Try: active memory, security, beta, migration" class="border-border bg-surface text-ink placeholder:text-ink-faint focus:border-red-accent focus:ring-red-accent/20 min-h-12 flex-1 rounded-[min(0.3vw,4px)] border px-4 text-sm outline-none focus:ring-4" data-archive-search-input />
+                        <div class="flex gap-3">
+                            <button type="submit" class="bg-red-accent hover:bg-red-vibrant min-h-12 rounded-[min(0.3vw,4px)] px-5 font-sans text-sm font-semibold text-white">Search</button>
+                            <button type="button" class="border-border text-ink-strong hover:text-red-accent min-h-12 rounded-[min(0.3vw,4px)] border px-4 font-sans text-sm font-medium" data-archive-search-clear hidden>Clear</button>
+                        </div>
+                    </form>
+                </div>
+                <div class="mt-4 flex flex-wrap items-center gap-3">
+                    <p class="text-ink-muted font-sans text-sm" data-archive-search-status>Showing the newest OpenClaw stories.</p>
+                    <a href="/releases/" class="border-border text-ink-strong hover:text-red-accent rounded-full border px-3 py-1.5 font-sans text-xs font-medium">Release coverage</a>
+                    <a href="/security/" class="border-border text-ink-strong hover:text-red-accent rounded-full border px-3 py-1.5 font-sans text-xs font-medium">Security coverage</a>
+                    <a href="/guides/" class="border-border text-ink-strong hover:text-red-accent rounded-full border px-3 py-1.5 font-sans text-xs font-medium">Guides and tutorials</a>
+                </div>
+            </div>
+        </section>
+
         <!-- POSTS_PAGINATION_START -->
         <section class="defer-render mx-auto max-w-7xl px-4 py-10 sm:px-6 lg:px-8">
-            <div class="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
+            <div class="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3" data-archive-results>
                 <ForEach content="posts" as="post" orderBy="date, desc">
-                    <article>
+                    <article data-archive-card data-archive-search-text="{post.title} {post.excerpt} {post.dateFormatted}">
                         <a href="{post.link}" class="group">
                             <div class="overflow-hidden rounded-[min(0.3vw,4px)]">
                                 <img
@@ -110,6 +136,10 @@
                         </a>
                     </article>
                 </ForEach>
+            </div>
+            <div class="border-border mt-8 hidden rounded-[min(0.3vw,4px)] border border-dashed p-6 text-center" data-archive-empty>
+                <h3 class="font-display text-ink text-2xl font-semibold tracking-tight">No matching posts yet</h3>
+                <p class="text-ink-body mt-2 text-[0.9375rem] text-pretty">Try a broader term like <span class="font-medium">release</span>, <span class="font-medium">security</span>, <span class="font-medium">memory</span>, or <span class="font-medium">migration</span>.</p>
             </div>
         </section>
         <!-- POSTS_PAGINATION_END -->

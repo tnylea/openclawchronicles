@@ -164,6 +164,71 @@
     });
   }
 
+  function bindArchiveSearch() {
+    var form = document.querySelector('[data-archive-search-form]');
+    if (!form) return;
+
+    var input = form.querySelector('[data-archive-search-input]');
+    var clearButton = form.querySelector('[data-archive-search-clear]');
+    var status = document.querySelector('[data-archive-search-status]');
+    var emptyState = document.querySelector('[data-archive-empty]');
+    var cards = Array.from(document.querySelectorAll('[data-archive-card]'));
+    var params = new URLSearchParams(window.location.search);
+
+    function normalize(value) {
+      return String(value || '').trim().toLowerCase();
+    }
+
+    function updateUrl(query) {
+      var url = new URL(window.location.href);
+      if (query) url.searchParams.set('q', query);
+      else url.searchParams.delete('q');
+      window.history.replaceState({}, '', url.pathname + url.search + url.hash);
+    }
+
+    function applySearch(rawQuery, syncUrl) {
+      var query = normalize(rawQuery);
+      var visibleCount = 0;
+
+      cards.forEach(function (card) {
+        var haystack = normalize(card.getAttribute('data-archive-search-text'));
+        var matches = !query || haystack.indexOf(query) !== -1;
+        card.hidden = !matches;
+        if (matches) visibleCount += 1;
+      });
+
+      if (status) {
+        status.textContent = query
+          ? 'Showing ' + visibleCount + ' post' + (visibleCount === 1 ? '' : 's') + ' for “' + rawQuery.trim() + '”.'
+          : 'Showing the newest OpenClaw stories.';
+      }
+
+      if (emptyState) emptyState.hidden = visibleCount !== 0;
+      if (clearButton) clearButton.hidden = !query;
+      if (syncUrl) updateUrl(rawQuery.trim());
+    }
+
+    input.value = params.get('q') || '';
+    applySearch(input.value, false);
+
+    form.addEventListener('submit', function (event) {
+      event.preventDefault();
+      applySearch(input.value, true);
+    });
+
+    input.addEventListener('input', function () {
+      applySearch(input.value, true);
+    });
+
+    if (clearButton) {
+      clearButton.addEventListener('click', function () {
+        input.value = '';
+        applySearch('', true);
+        input.focus();
+      });
+    }
+  }
+
   document.addEventListener('DOMContentLoaded', function () {
     bindThemeButtons();
     bindMobileMenus();
@@ -171,6 +236,7 @@
     bindMastheadMeta();
     bindCurrentDate();
     bindActiveNav();
+    bindArchiveSearch();
   });
 
   darkModeQuery.addEventListener('change', function () {
