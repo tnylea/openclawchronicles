@@ -1,0 +1,22 @@
+<section class="mx-auto max-w-7xl px-4 py-4 sm:px-6 lg:px-8" aria-labelledby="archive-search-panel-heading">
+  <div class="border-border rounded-[min(0.4vw,6px)] border bg-surface-alt p-5 sm:p-6">
+    <div class="flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
+      <div class="max-w-2xl">
+        <p class="text-red-accent font-mono text-[0.625rem] font-semibold tracking-wider uppercase">Search the archive</p>
+        <h2 id="archive-search-panel-heading" class="font-display text-ink mt-2 text-2xl font-semibold tracking-tight">Find the exact OpenClaw release, guide, or security story faster</h2>
+        <p class="text-ink-body mt-2 text-[0.9375rem] text-pretty">Use the archive search to jump straight into stable releases, security fixes, memory guides, migrations, and ecosystem reporting.</p>
+      </div>
+      <form action="/posts/" method="get" class="flex w-full max-w-xl flex-col gap-3 sm:flex-row" role="search" aria-label="Search OpenClaw Chronicles archive">
+        <label for="archive-search-panel" class="sr-only">Search OpenClaw Chronicles</label>
+        <input id="archive-search-panel" name="q" type="search" inputmode="search" autocomplete="off" spellcheck="false" placeholder="Try: release, security, memory, migration" class="border-border bg-surface text-ink placeholder:text-ink-faint focus:border-red-accent focus:ring-red-accent/20 min-h-12 flex-1 rounded-[min(0.3vw,4px)] border px-4 text-sm outline-none focus:ring-4" />
+        <button type="submit" class="bg-red-accent hover:bg-red-vibrant min-h-12 rounded-[min(0.3vw,4px)] px-5 font-sans text-sm font-semibold text-white">Search archive</button>
+      </form>
+    </div>
+    <div class="mt-4 flex flex-wrap gap-3">
+      <a href="/posts/?q=release" class="border-border text-ink-strong hover:text-red-accent rounded-full border px-3 py-1.5 font-sans text-xs font-medium">Latest releases</a>
+      <a href="/posts/?q=security" class="border-border text-ink-strong hover:text-red-accent rounded-full border px-3 py-1.5 font-sans text-xs font-medium">Security coverage</a>
+      <a href="/posts/?q=memory" class="border-border text-ink-strong hover:text-red-accent rounded-full border px-3 py-1.5 font-sans text-xs font-medium">Memory guides</a>
+      <a href="/posts/?q=migration" class="border-border text-ink-strong hover:text-red-accent rounded-full border px-3 py-1.5 font-sans text-xs font-medium">Migration tutorials</a>
+    </div>
+  </div>
+</section>
