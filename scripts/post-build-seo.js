@@ -133,6 +133,7 @@ function fixPostsArchiveMetadata(html, canonicalUrl) {
     ? 'Browse the OpenClaw Chronicles archive for OpenClaw release coverage, security alerts, migration guides, tutorials, and ecosystem reporting.'
     : `Browse page ${pageNumber} of the OpenClaw Chronicles archive for older OpenClaw releases, guides, and security coverage.`;
   const ogImage = `${siteUrl}/assets/images/about-banner.jpg`;
+  const faqSchema = buildFaqSchema(extractFaqEntries(html, 'archive-faq-heading'));
 
   html = html.replace(/<title>[^<]*<\/title>/i, `<title>${title}</title>`);
   html = html.replace(/<meta name="description" content="[^"]*"\s*\/?\s*>/i, `<meta name="description" content="${description}" />`);
@@ -158,7 +159,7 @@ function fixPostsArchiveMetadata(html, canonicalUrl) {
 
   html = html.replace(
     /<!-- JSON-LD WebSite Schema -->[\s\S]*?<!-- Google Analytics -->/i,
-    `<!-- JSON-LD WebSite Schema -->\n    <script type="application/ld+json">\n    {\n      "@context": "https://schema.org",\n      "@type": "CollectionPage",\n      "name": "${title.replace(/"/g, '&quot;')}",\n      "url": "${canonicalUrl}",\n      "description": "${description}",\n      "isPartOf": {\n        "@type": "WebSite",\n        "name": "OpenClaw Chronicles",\n        "url": "${siteUrl}"\n      },\n      "mainEntity": {\n        "@type": "ItemList",\n        "itemListElement": ${JSON.stringify(itemList, null, 8)}\n      }\n    }\n    </script>\n    <script type="application/ld+json">\n    {\n      "@context": "https://schema.org",\n      "@type": "BreadcrumbList",\n      "itemListElement": [\n        {\n          "@type": "ListItem",\n          "position": 1,\n          "name": "Home",\n          "item": "${siteUrl}/"\n        },\n        {\n          "@type": "ListItem",\n          "position": 2,\n          "name": "Posts",\n          "item": "${siteUrl}/posts/"\n        }${pageNumber > 1 ? `,\n        {\n          "@type": "ListItem",\n          "position": 3,\n          "name": "Page ${pageNumber}",\n          "item": "${canonicalUrl}"\n        }` : ''}\n      ]\n    }\n    </script>\n    <!-- Google Analytics -->`
+    `<!-- JSON-LD WebSite Schema -->\n    <script type="application/ld+json">\n    {\n      "@context": "https://schema.org",\n      "@type": "CollectionPage",\n      "name": "${title.replace(/"/g, '&quot;')}",\n      "url": "${canonicalUrl}",\n      "description": "${description}",\n      "isPartOf": {\n        "@type": "WebSite",\n        "name": "OpenClaw Chronicles",\n        "url": "${siteUrl}"\n      },\n      "mainEntity": {\n        "@type": "ItemList",\n        "itemListElement": ${JSON.stringify(itemList, null, 8)}\n      }\n    }\n    </script>\n    <script type="application/ld+json">\n    {\n      "@context": "https://schema.org",\n      "@type": "BreadcrumbList",\n      "itemListElement": [\n        {\n          "@type": "ListItem",\n          "position": 1,\n          "name": "Home",\n          "item": "${siteUrl}/"\n        },\n        {\n          "@type": "ListItem",\n          "position": 2,\n          "name": "Posts",\n          "item": "${siteUrl}/posts/"\n        }${pageNumber > 1 ? `,\n        {\n          "@type": "ListItem",\n          "position": 3,\n          "name": "Page ${pageNumber}",\n          "item": "${canonicalUrl}"\n        }` : ''}\n      ]\n    }\n    </script>${faqSchema}\n    <!-- Google Analytics -->`
   );
 
   return html;
@@ -616,6 +617,28 @@ function fixArticleMetadata(html, canonicalUrl) {
   return html;
 }
 
+function wrapImagesWithPicture(html) {
+  return html.replace(/<img\b([^>]*?)\s*\/?>/gi, (full, attrs) => {
+    if (/data:|srcset=|<picture/i.test(full)) return full;
+
+    const srcMatch = attrs.match(/\ssrc="([^"]+)"/i);
+    if (!srcMatch) return full;
+
+    const src = srcMatch[1];
+    if (!/^\/assets\/images\//.test(src)) return full;
+    if (/\.webp(?:$|\?)/i.test(src)) return full;
+    if (/cody\.jpg|icon-|favicon|apple-touch-icon/i.test(src)) return full;
+
+    const webpSrc = src.replace(/\.(png|jpe?g)(\?.*)?$/i, '.webp$2');
+    if (webpSrc === src) return full;
+
+    const webpPath = path.join(siteDir, webpSrc.replace(/^\//, '').split('?')[0]);
+    if (!fs.existsSync(webpPath)) return full;
+
+    return `<picture><source srcset="${webpSrc}" type="image/webp">${full}</picture>`;
+  });
+}
+
 function optimizeImages(html) {
   let seenContentImage = false;
 
@@ -691,6 +714,7 @@ for (const file of walk(siteDir)) {
   html = injectArticleToc(html, canonicalUrl);
   html = injectRelatedPosts(html, canonicalUrl);
   html = injectArticlePagination(html, canonicalUrl);
+  html = wrapImagesWithPicture(html);
   html = optimizeImages(html);
   fs.writeFileSync(file, html);
 }

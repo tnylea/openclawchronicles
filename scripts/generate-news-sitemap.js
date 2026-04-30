@@ -34,6 +34,31 @@ function escapeXml(value) {
     .replace(/'/g, '&apos;');
 }
 
+function inferSection(text = '') {
+  const haystack = text.toLowerCase();
+  if (/security|cve|hardening|vulnerability|exploit|incident/.test(haystack)) return 'Security';
+  if (/guide|tutorial|migrate|migration|setup|how to|local model/.test(haystack)) return 'Guides';
+  if (/release|beta|hotfix|stable|changelog/.test(haystack)) return 'Releases';
+  return 'OpenClaw News';
+}
+
+function buildKeywords(meta) {
+  const section = inferSection(`${meta.title || ''} ${meta.excerpt || ''}`);
+  const titleTokens = String(meta.title || '')
+    .toLowerCase()
+    .replace(/[^a-z0-9\s]/g, ' ')
+    .split(/\s+/)
+    .filter((token) => token.length > 3 && !['openclaw', 'with', 'from', 'this', 'that'].includes(token));
+
+  return [...new Set(['OpenClaw', section, ...titleTokens.slice(0, 6)])].join(', ');
+}
+
+function absoluteAssetUrl(assetPath) {
+  if (!assetPath) return null;
+  if (/^https?:\/\//i.test(assetPath)) return assetPath;
+  return `${BASE_URL}${assetPath.startsWith('/') ? '' : '/'}${assetPath}`;
+}
+
 const now = Date.now();
 const posts = fs.readdirSync(POSTS_DIR)
   .filter((file) => file.endsWith('.md'))
@@ -47,6 +72,8 @@ const posts = fs.readdirSync(POSTS_DIR)
       title: meta.title,
       date: published.toISOString(),
       url: `${BASE_URL}/posts/${slug}/`,
+      keywords: buildKeywords(meta),
+      image: absoluteAssetUrl(meta.coverImage),
     };
   })
   .filter((post) => post && now - new Date(post.date).getTime() <= MAX_AGE_MS)
@@ -54,7 +81,7 @@ const posts = fs.readdirSync(POSTS_DIR)
   .slice(0, MAX_NEWS_POSTS);
 
 const xml = `<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:news="http://www.google.com/schemas/sitemap-news/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:news="http://www.google.com/schemas/sitemap-news/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
 ${posts.map((post) => `  <url>
     <loc>${escapeXml(post.url)}</loc>
     <news:news>
@@ -64,7 +91,12 @@ ${posts.map((post) => `  <url>
       </news:publication>
       <news:publication_date>${escapeXml(post.date)}</news:publication_date>
       <news:title>${escapeXml(post.title)}</news:title>
-    </news:news>
+      <news:keywords>${escapeXml(post.keywords)}</news:keywords>
+    </news:news>${post.image ? `
+    <image:image>
+      <image:loc>${escapeXml(post.image)}</image:loc>
+      <image:title>${escapeXml(post.title)}</image:title>
+    </image:image>` : ''}
   </url>`).join('\n')}
 </urlset>
 `;
