@@ -61,6 +61,20 @@ function injectOrReplace(html, regex, replacement) {
   return html;
 }
 
+function injectImagePreload(html) {
+  if (html.includes('data-seo-preload="hero-image"')) return html;
+
+  const heroMatch = html.match(/<img\b[^>]*\bsrc="([^"]+)"[^>]*\bfetchpriority="high"[^>]*>/i)
+    || html.match(/<img\b[^>]*\bsrc="([^"]+)"[^>]*\bloading="eager"[^>]*>/i);
+
+  if (!heroMatch) return html;
+
+  const heroSrc = heroMatch[1];
+  const preloadTag = `    <link rel="preload" as="image" href="${heroSrc}" data-seo-preload="hero-image" />`;
+
+  return html.replace(/<link rel="stylesheet" href="\/styles\.css" \/>/i, `${preloadTag}\n    <link rel="stylesheet" href="/styles.css" />`);
+}
+
 function updateCanonicalAndUrls(html, canonicalUrl) {
   html = html.replace(/<link rel="canonical" href="[^"]*"\s*\/?\s*>/i, `<link rel="canonical" href="${canonicalUrl}" />`);
   html = html.replace(/<meta property="og:url" content="[^"]*"\s*\/?\s*>/i, `<meta property="og:url" content="${canonicalUrl}" />`);
@@ -691,6 +705,7 @@ for (const file of walk(siteDir)) {
   html = fixAboutPageMetadata(html, canonicalUrl);
   html = fixPostsArchiveMetadata(html, canonicalUrl);
   html = fixTopicHubMetadata(html, canonicalUrl);
+  html = injectImagePreload(html);
 
   const paginatedMatch = file.match(/_site\/posts\/(\d+)\/index\.html$/);
   if (paginatedMatch) {
