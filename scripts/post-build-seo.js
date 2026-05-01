@@ -285,6 +285,21 @@ function fixTopicHubMetadata(html, canonicalUrl) {
       description: 'Find OpenClaw setup guides, migration walkthroughs, local model tutorials, and practical how-tos.',
       label: 'Guides',
     },
+    [`${siteUrl}/memory/`]: {
+      title: 'OpenClaw Memory Guides, Active Memory, and Dreaming Coverage',
+      description: 'Explore OpenClaw memory guides, active memory coverage, dreaming explainers, and long-term recall workflows.',
+      label: 'Memory',
+    },
+    [`${siteUrl}/migrations/`]: {
+      title: 'OpenClaw Migration Guides and Upgrade Help',
+      description: 'Browse OpenClaw migration guides, upgrade notes, provider-change tutorials, and breaking-change context.',
+      label: 'Migrations',
+    },
+    [`${siteUrl}/local-models/`]: {
+      title: 'OpenClaw Local Model Guides, Ollama Fixes, and On-Device Workflows',
+      description: 'Find OpenClaw local model guides, Ollama fixes, MacBook Air workflows, and practical self-hosted model coverage.',
+      label: 'Local Models',
+    },
     [`${siteUrl}/site-map/`]: {
       title: 'OpenClaw Chronicles Site Map and Start Here Guide',
       description: 'Use the OpenClaw Chronicles site map to browse release coverage, security reporting, guides, feeds, and evergreen OpenClaw resources.',
@@ -314,6 +329,12 @@ function fixTopicHubMetadata(html, canonicalUrl) {
     ? 'release-faq-heading'
     : hub.label === 'Security'
       ? 'security-faq-heading'
+      : hub.label === 'Memory'
+        ? 'memory-faq-heading'
+        : hub.label === 'Migrations'
+          ? 'migration-faq-heading'
+          : hub.label === 'Local Models'
+            ? 'local-model-faq-heading'
       : hub.label === 'Guides'
         ? 'guides-faq-heading'
         : 'site-map-faq-heading';
@@ -323,6 +344,9 @@ function fixTopicHubMetadata(html, canonicalUrl) {
     const haystack = `${post.title} ${post.excerpt} ${post.content}`.toLowerCase();
     if (hub.label === 'Releases') return /release|beta|hotfix|stable/.test(haystack);
     if (hub.label === 'Security') return /security|cve|hardening|ssrf|redos|exploit|vulnerability/.test(haystack);
+    if (hub.label === 'Memory') return /memory|dreaming|recall|wiki|active memory|rem/.test(haystack);
+    if (hub.label === 'Migrations') return /migrate|migration|upgrade|breaking|oauth|claude cli|config/.test(haystack);
+    if (hub.label === 'Local Models') return /ollama|local|macbook air|gemma|mlx|on-device|local model/.test(haystack);
     if (hub.label === 'Site Map') return /openclaw|guide|tutorial|migrate|migration|setup|security|release|beta|hotfix|cve/.test(haystack);
     return /guide|tutorial|migrate|migration|setup|how to|locally/.test(haystack);
   }).slice(0, 10).map((post, index) => ({

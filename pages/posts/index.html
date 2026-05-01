@@ -94,17 +94,20 @@
                     </form>
                 </div>
                 <div class="mt-4 flex flex-wrap items-center gap-3">
-                    <p class="text-ink-muted font-sans text-sm" data-archive-search-status>Showing the newest OpenClaw stories.</p>
+                    <p class="text-ink-muted font-sans text-sm" data-archive-search-status role="status" aria-live="polite">Showing the newest OpenClaw stories.</p>
                     <a href="/releases/" class="border-border text-ink-strong hover:text-red-accent rounded-full border px-3 py-1.5 font-sans text-xs font-medium">Release coverage</a>
                     <a href="/security/" class="border-border text-ink-strong hover:text-red-accent rounded-full border px-3 py-1.5 font-sans text-xs font-medium">Security coverage</a>
                     <a href="/guides/" class="border-border text-ink-strong hover:text-red-accent rounded-full border px-3 py-1.5 font-sans text-xs font-medium">Guides and tutorials</a>
+                    <a href="/memory/" class="border-border text-ink-strong hover:text-red-accent rounded-full border px-3 py-1.5 font-sans text-xs font-medium">Memory guides</a>
+                    <a href="/migrations/" class="border-border text-ink-strong hover:text-red-accent rounded-full border px-3 py-1.5 font-sans text-xs font-medium">Migration help</a>
+                    <a href="/local-models/" class="border-border text-ink-strong hover:text-red-accent rounded-full border px-3 py-1.5 font-sans text-xs font-medium">Local models</a>
                 </div>
             </div>
         </section>
 
         <!-- POSTS_PAGINATION_START -->
         <section class="defer-render mx-auto max-w-7xl px-4 py-10 sm:px-6 lg:px-8">
-            <div class="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3" data-archive-results>
+            <div class="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3" data-archive-results id="archive-results">
                 <ForEach content="posts" as="post" orderBy="date, desc">
                     <article data-archive-card data-archive-search-text="{post.title} {post.excerpt} {post.dateFormatted}">
                         <a href="{post.link}" class="group">

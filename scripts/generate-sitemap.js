@@ -15,6 +15,17 @@ const OUTPUT = path.join(SITE_DIR, 'sitemap.xml');
 const POSTS_PER_PAGE = 15;
 const PAGES_DIR = path.join(__dirname, '../pages');
 
+const staticPageConfigs = [
+  { slug: 'about', changefreq: 'monthly', priority: '0.6' },
+  { slug: 'site-map', changefreq: 'weekly', priority: '0.7' },
+  { slug: 'releases', changefreq: 'weekly', priority: '0.8', section: 'releases' },
+  { slug: 'security', changefreq: 'weekly', priority: '0.8', section: 'security' },
+  { slug: 'guides', changefreq: 'weekly', priority: '0.8', section: 'guides' },
+  { slug: 'memory', changefreq: 'weekly', priority: '0.7', section: 'guides' },
+  { slug: 'migrations', changefreq: 'weekly', priority: '0.7', section: 'guides' },
+  { slug: 'local-models', changefreq: 'weekly', priority: '0.7', section: 'guides' },
+];
+
 // Parse the first `key: value` frontmatter field from a markdown string
 function getFrontmatterField(content, key) {
   const match = content.match(new RegExp(`^${key}:\\s*['"]?([^'"\\n]+)['"]?`, 'm'));
@@ -70,12 +81,15 @@ urls.push({ loc: `${BASE_URL}/`, lastmod: fileDateOrFallback(path.join(PAGES_DIR
 // Posts index
 urls.push({ loc: `${BASE_URL}/posts/`, lastmod: latestPostDate, changefreq: 'daily', priority: '0.8' });
 
-// Static pages
-urls.push({ loc: `${BASE_URL}/about/`, lastmod: fileDateOrFallback(path.join(PAGES_DIR, 'about.html'), latestPostDate), changefreq: 'monthly', priority: '0.6' });
-urls.push({ loc: `${BASE_URL}/site-map/`, lastmod: fileDateOrFallback(path.join(PAGES_DIR, 'site-map.html'), latestPostDate), changefreq: 'weekly', priority: '0.7' });
-urls.push({ loc: `${BASE_URL}/releases/`, lastmod: fileDateOrFallback(path.join(PAGES_DIR, 'releases.html'), latestSectionDate('releases')), changefreq: 'weekly', priority: '0.8' });
-urls.push({ loc: `${BASE_URL}/security/`, lastmod: fileDateOrFallback(path.join(PAGES_DIR, 'security.html'), latestSectionDate('security')), changefreq: 'weekly', priority: '0.8' });
-urls.push({ loc: `${BASE_URL}/guides/`, lastmod: fileDateOrFallback(path.join(PAGES_DIR, 'guides.html'), latestSectionDate('guides')), changefreq: 'weekly', priority: '0.8' });
+for (const page of staticPageConfigs) {
+  const fallbackDate = page.section ? latestSectionDate(page.section) : latestPostDate;
+  urls.push({
+    loc: `${BASE_URL}/${page.slug}/`,
+    lastmod: fileDateOrFallback(path.join(PAGES_DIR, `${page.slug}.html`), fallbackDate),
+    changefreq: page.changefreq,
+    priority: page.priority,
+  });
+}
 urls.push({ loc: `${BASE_URL}/feed.xml`, lastmod: latestPostDate, changefreq: 'daily', priority: '0.4' });
 urls.push({ loc: `${BASE_URL}/feed.json`, lastmod: latestPostDate, changefreq: 'daily', priority: '0.4' });
 
