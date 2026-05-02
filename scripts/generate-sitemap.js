@@ -54,6 +54,14 @@ function fileDateOrFallback(filePath, fallback) {
   }
 }
 
+function contentModifiedDate(filePath, fallback) {
+  try {
+    return fs.statSync(filePath).mtime.toISOString().split('T')[0];
+  } catch {
+    return fallback;
+  }
+}
+
 // Build URL entries
 const urls = [];
 
@@ -61,14 +69,16 @@ const urls = [];
 const postFiles = fs.readdirSync(POSTS_DIR)
   .filter(f => f.endsWith('.md'))
   .map(file => {
-    const content = fs.readFileSync(path.join(POSTS_DIR, file), 'utf8');
+    const filePath = path.join(POSTS_DIR, file);
+    const content = fs.readFileSync(filePath, 'utf8');
     const slug = path.basename(file, '.md');
     const date = getFrontmatterField(content, 'date');
     const coverImage = getFrontmatterField(content, 'coverImage');
     const title = getFrontmatterField(content, 'title');
     const excerpt = getFrontmatterField(content, 'excerpt');
     const section = inferSection(content);
-    return { slug, date, coverImage, title, excerpt, section };
+    const modified = contentModifiedDate(filePath, date ? date.split('T')[0] : undefined);
+    return { slug, date, coverImage, title, excerpt, section, modified };
   })
   .sort((a, b) => (b.date || '').localeCompare(a.date || ''));
 
@@ -108,7 +118,7 @@ for (let page = 2; page <= totalArchivePages; page++) {
 for (const post of postFiles) {
   urls.push({
     loc: `${BASE_URL}/posts/${post.slug}/`,
-    lastmod: post.date ? post.date.split('T')[0] : undefined,
+    lastmod: post.modified || (post.date ? post.date.split('T')[0] : undefined),
     changefreq: 'monthly',
     priority: '0.7',
     image: absoluteAssetUrl(post.coverImage),

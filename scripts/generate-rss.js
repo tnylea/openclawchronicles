@@ -94,9 +94,11 @@ const files = fs.readdirSync(postsDir).filter((f) => f.endsWith('.md'));
 const posts = [];
 
 for (const file of files) {
-  const raw = fs.readFileSync(path.join(postsDir, file), 'utf8');
+  const filePath = path.join(postsDir, file);
+  const raw = fs.readFileSync(filePath, 'utf8');
   const parsed = parsePost(raw);
   if (!parsed || !parsed.frontmatter.date) continue;
+  const modified = parsed.frontmatter.dateModified || fs.statSync(filePath).mtime.toISOString();
 
   posts.push({
     title: parsed.frontmatter.title || '',
@@ -105,13 +107,14 @@ for (const file of files) {
     url: parsed.frontmatter.url || `/posts/${path.basename(file, '.md')}/`,
     authorName: parsed.frontmatter.authorName || 'Cody',
     ogImageUrl: parsed.frontmatter.ogImageUrl || '',
+    modified,
     body: parsed.body,
   });
 }
 
 posts.sort((a, b) => new Date(b.date) - new Date(a.date));
 const latest = posts.slice(0, 50);
-const lastBuildDate = latest[0]?.date || new Date().toISOString();
+const lastBuildDate = latest[0]?.modified || latest[0]?.date || new Date().toISOString();
 
 const items = latest.map((post) => {
   const link = `${siteUrl}${post.url}`;
@@ -128,6 +131,7 @@ const items = latest.map((post) => {
     <category>${escapeXml(category)}</category>
     <author>news@openclawchronicles.com (${escapeXml(post.authorName)})</author>
     <pubDate>${toRfc822(post.date)}</pubDate>
+    <atom:updated>${escapeXml(post.modified)}</atom:updated>
     <guid isPermaLink="true">${escapeXml(link)}</guid>${enclosure}${contentEncoded}
   </item>`;
 }).join('\n');

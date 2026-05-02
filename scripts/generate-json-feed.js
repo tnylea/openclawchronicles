@@ -71,7 +71,8 @@ const files = fs.readdirSync(postsDir).filter((file) => file.endsWith('.md'));
 const items = [];
 
 for (const file of files) {
-  const raw = fs.readFileSync(path.join(postsDir, file), 'utf8');
+  const filePath = path.join(postsDir, file);
+  const raw = fs.readFileSync(filePath, 'utf8');
   const parsed = parsePost(raw);
   if (!parsed || !parsed.frontmatter.date) continue;
 
@@ -86,7 +87,7 @@ for (const file of files) {
     content_text: parsed.body,
     content_html: markdownToHtml(parsed.body),
     date_published: parsed.frontmatter.date,
-    date_modified: parsed.frontmatter.date,
+    date_modified: parsed.frontmatter.dateModified || fs.statSync(filePath).mtime.toISOString(),
     authors: [
       {
         name: parsed.frontmatter.authorName || 'Cody',

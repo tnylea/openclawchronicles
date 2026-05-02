@@ -59,11 +59,20 @@ function absoluteAssetUrl(assetPath) {
   return `${BASE_URL}${assetPath.startsWith('/') ? '' : '/'}${assetPath}`;
 }
 
+function modifiedDate(filePath, fallback) {
+  try {
+    return fs.statSync(filePath).mtime.toISOString();
+  } catch {
+    return fallback;
+  }
+}
+
 const now = Date.now();
 const posts = fs.readdirSync(POSTS_DIR)
   .filter((file) => file.endsWith('.md'))
   .map((file) => {
-    const meta = parseFrontmatter(path.join(POSTS_DIR, file));
+    const filePath = path.join(POSTS_DIR, file);
+    const meta = parseFrontmatter(filePath);
     if (!meta?.date || !meta?.title) return null;
     const slug = path.basename(file, '.md');
     const published = new Date(meta.date);
@@ -71,6 +80,7 @@ const posts = fs.readdirSync(POSTS_DIR)
     return {
       title: meta.title,
       date: published.toISOString(),
+      modified: modifiedDate(filePath, published.toISOString()),
       url: `${BASE_URL}/posts/${slug}/`,
       keywords: buildKeywords(meta),
       image: absoluteAssetUrl(meta.coverImage),
@@ -84,6 +94,7 @@ const xml = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:news="http://www.google.com/schemas/sitemap-news/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
 ${posts.map((post) => `  <url>
     <loc>${escapeXml(post.url)}</loc>
+    <lastmod>${escapeXml(post.modified)}</lastmod>
     <news:news>
       <news:publication>
         <news:name>OpenClaw Chronicles</news:name>

@@ -10,6 +10,7 @@ function parseFrontmatter(file) {
   const match = raw.match(/^---\n([\s\S]*?)\n---\n([\s\S]*)$/);
   if (!match) return null;
 
+  const stat = fs.statSync(file);
   const meta = {};
   for (const line of match[1].split('\n')) {
     const parts = line.match(/^([A-Za-z0-9_]+):\s*(.*)$/);
@@ -24,6 +25,7 @@ function parseFrontmatter(file) {
     content: match[2].trim(),
     url: meta.url || `/posts/${slug}/`,
     link: meta.link || `/posts/${slug}`,
+    modified: meta.dateModified || stat.mtime.toISOString(),
   };
 }
 
@@ -624,7 +626,13 @@ function fixArticleMetadata(html, canonicalUrl) {
   html = html.replace(/<meta property="og:type" content="[^\"]*"\s*\/?\s*>/i, '<meta property="og:type" content="article" />');
   html = html.replace(
     /<meta property="og:site_name" content="OpenClaw Chronicles"\s*\/?\s*>/i,
-    `<meta property="og:site_name" content="OpenClaw Chronicles" />\n    <meta property="article:published_time" content="${post.date}" />\n    <meta property="article:modified_time" content="${post.date}" />\n    <meta property="article:section" content="${section}" />\n    ${topKeywords.map((keyword) => `<meta property="article:tag" content="${keyword}" />`).join('\n    ')}`
+    `<meta property="og:site_name" content="OpenClaw Chronicles" />\n    <meta property="og:locale" content="en_US" />\n    <meta property="article:published_time" content="${post.date}" />\n    <meta property="article:modified_time" content="${post.modified}" />\n    <meta property="article:author" content="${post.authorName}" />\n    <meta property="article:section" content="${section}" />\n    ${topKeywords.map((keyword) => `<meta property="article:tag" content="${keyword}" />`).join('\n    ')}`
+  );
+
+  html = injectOrReplace(
+    html,
+    /<meta name="author" content="[^"]*"\s*\/?\s*>/i,
+    `<meta name="author" content="${post.authorName}" />\n    <meta name="date" content="${post.date}" />\n    <meta name="last-modified" content="${post.modified}" />`
   );
 
   html = html.replace(
@@ -648,7 +656,8 @@ function fixArticleMetadata(html, canonicalUrl) {
     `$1${topicChipMarkup}`
   );
 
-  const articleSchema = `<!-- JSON-LD Article Schema -->\n    <script type="application/ld+json">\n    {\n      "@context": "https://schema.org",\n      "@type": "${schemaType}",\n      "headline": ${JSON.stringify(post.title)},\n      "description": ${JSON.stringify(post.excerpt)},\n      "image": {\n        "@type": "ImageObject",\n        "url": ${JSON.stringify(`${siteUrl}${post.ogImageUrl}`)},\n        "width": 1200,\n        "height": 630\n      },\n      "url": ${JSON.stringify(canonicalUrl)},\n      "mainEntityOfPage": {\n        "@type": "WebPage",\n        "@id": ${JSON.stringify(canonicalUrl)}\n      },\n      "articleSection": ${JSON.stringify(section)},\n      "keywords": ${JSON.stringify(keywords)},\n      "isAccessibleForFree": true,\n      "about": [\n        {\n          "@type": "Thing",\n          "name": "OpenClaw"\n        },\n        {\n          "@type": "Thing",\n          "name": ${JSON.stringify(section)}\n        }\n      ],\n      "wordCount": ${wordCount},\n      "timeRequired": "PT${timeRequired}M",\n      "author": {\n        "@type": "Person",\n        "name": ${JSON.stringify(post.authorName)}\n      },\n      "publisher": {\n        "@type": "Organization",\n        "name": "OpenClaw Chronicles",\n        "url": ${JSON.stringify(siteUrl)},\n        "logo": {\n          "@type": "ImageObject",\n          "url": ${JSON.stringify(`${siteUrl}/icon-512.png`)},\n          "width": 512,\n          "height": 512\n        }\n      },\n      "datePublished": ${JSON.stringify(post.date)},\n      "dateModified": ${JSON.stringify(post.date)}\n    }\n    </script>`;
+  const articleSchema = `<!-- JSON-LD Article Schema -->\n    <script type="application/ld+json">\n    {\n      "@context": "https://schema.org",\n      "@type": "${schemaType}",\n      "headline": ${JSON.stringify(post.title)},\n      "description": ${JSON.stringify(post.excerpt)},\n      "image": {\n        "@type": "ImageObject",\n        "url": ${JSON.stringify(`${siteUrl}${post.ogImageUrl}`)},\n        "width": 1200,\n        "height": 630\n      },\n      "url": ${JSON.stringify(canonicalUrl)},\n      "mainEntityOfPage": {\n        "@type": "WebPage",\n        "@id": ${JSON.stringify(canonicalUrl)}\n      },\n      "articleSection": ${JSON.stringify(section)},\n      "keywords": ${JSON.stringify(keywords)},\n      "isAccessibleForFree": true,\n      "about": [\n        {\n          "@type": "Thing",\n          "name": "OpenClaw"\n        },\n        {\n          "@type": "Thing",\n          "name": ${JSON.stringify(section)}\n        }\n      ],\n      "wordCount": ${wordCount},\n      "timeRequired": "PT${timeRequired}M",\n      "author": {\n        "@type": "Person",\n        "name": ${JSON.stringify(post.authorName)}\n      },\n      "publisher": {\n        "@type": "Organization",\n        "name": "OpenClaw Chronicles",\n        "url": ${JSON.stringify(siteUrl)},\n        "logo": {\n          "@type": "ImageObject",\n          "url": ${JSON.stringify(`${siteUrl}/icon-512.png`)},\n          "width": 512,\n          "height": 512\n        }\n      },\n      "datePublished": ${JSON.stringify(post.date)},\n      "dateModified": ${JSON.stringify(post.modified)},
+      "inLanguage": "en-US"\n    }\n    </script>`;
 
   html = html.replace(/<!-- JSON-LD Article Schema -->[\s\S]*?<script type="application\/ld\+json">[\s\S]*?<\/script>/i, articleSchema);
 
