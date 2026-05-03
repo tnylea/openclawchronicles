@@ -1,4 +1,6 @@
 <layout title="OpenClaw Chronicles · All Posts" src="home.html">
+    <meta name="archive-default-title" content="OpenClaw Chronicles · All Posts" />
+    <meta name="archive-default-description" content="Browse the full OpenClaw Chronicles archive, including release notes, security advisories, migration guides, and ecosystem reporting for OpenClaw." />
 
     <include src="top-bar.html"></include>
     <include src="header.html"></include>
@@ -131,7 +133,7 @@
                                     {post.excerpt}
                                 </p>
                                 <div class="mt-4 flex items-center gap-3">
-                                    <img src="{post.authorPicture}" class="size-8 rounded-full" alt="{post.authorName}" width="32" height="32" />
+                                    <img src="{post.authorPicture}" class="size-8 rounded-full" alt="{post.authorName}" width="32" height="32" loading="lazy" decoding="async" />
                                     <span class="text-ink-strong font-sans text-[0.8125rem] font-semibold">{post.authorName}</span>
                                     <span class="text-ink-faint font-mono text-[0.625rem] tracking-wider uppercase">{post.dateFormatted}</span>
                                 </div>

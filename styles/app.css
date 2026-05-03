@@ -242,6 +242,25 @@
   content-visibility: auto;
   contain-intrinsic-size: 1px 1200px;
 }
+
+[data-archive-card],
+[data-article] {
+  content-visibility: auto;
+  contain-intrinsic-size: 1px 720px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ticker-animate,
+  .masthead-enter,
+  .masthead-leave {
+    animation: none !important;
+  }
+
+  html:focus-within {
+    scroll-behavior: auto;
+  }
+}
+
 .skip-link {
   position: absolute;
   left: 1rem;
