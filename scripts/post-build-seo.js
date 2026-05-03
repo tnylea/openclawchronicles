@@ -72,7 +72,19 @@ function injectImagePreload(html) {
   if (!heroMatch) return html;
 
   const heroSrc = heroMatch[1];
-  const preloadTag = `    <link rel="preload" as="image" href="${heroSrc}" data-seo-preload="hero-image" />`;
+  let preloadSrc = heroSrc;
+  let preloadType = '';
+
+  if (/^\/assets\/images\//.test(heroSrc) && /\.(png|jpe?g)(\?.*)?$/i.test(heroSrc)) {
+    const webpSrc = heroSrc.replace(/\.(png|jpe?g)(\?.*)?$/i, '.webp$2');
+    const webpPath = path.join(siteDir, webpSrc.replace(/^\//, '').split('?')[0]);
+    if (fs.existsSync(webpPath)) {
+      preloadSrc = webpSrc;
+      preloadType = ' type="image/webp"';
+    }
+  }
+
+  const preloadTag = `    <link rel="preload" as="image" href="${preloadSrc}"${preloadType} data-seo-preload="hero-image" />`;
 
   return html.replace(/<link rel="stylesheet" href="\/styles\.css" \/>/i, `${preloadTag}\n    <link rel="stylesheet" href="/styles.css" />`);
 }
@@ -384,12 +396,44 @@ function slugify(text) {
     .replace(/-+/g, '-') || 'section';
 }
 
+const SECTION_KEYWORDS = {
+  Security: ['security', 'cve', 'hardening', 'ssrf', 'redos', 'vulnerability', 'exploit', 'patch', 'advisory', 'incident'],
+  Guides: ['guide', 'tutorial', 'migrate', 'migration', 'setup', 'install', 'walkthrough', 'how to', 'locally', 'workflow'],
+  Releases: ['release', 'beta', 'hotfix', 'changelog', 'shipped', 'stable', 'preview', 'rc', 'version'],
+};
+
+function scoreSection(post, section) {
+  const title = String(post.title || '').toLowerCase();
+  const excerpt = String(post.excerpt || '').toLowerCase();
+  const content = String(post.content || '').toLowerCase();
+  const haystack = `${title} ${excerpt} ${content}`;
+  const keywords = SECTION_KEYWORDS[section] || [];
+
+  let score = 0;
+  for (const keyword of keywords) {
+    if (title.includes(keyword)) score += 6;
+    if (excerpt.includes(keyword)) score += 3;
+    if (content.includes(keyword)) score += 1;
+  }
+
+  if (section === 'Security' && /(fix|patch|hardening|security)/.test(title)) score += 4;
+  if (section === 'Guides' && /(guide|tutorial|how to|migrate|migration)/.test(title)) score += 4;
+  if (section === 'Releases' && /(release|beta|hotfix|preview|version|v20\d{2}\.)/.test(title)) score += 5;
+  if (/community roundup|hacker news|show hn|ask hn/.test(title) && section !== 'OpenClaw News') score -= 4;
+  if (section === 'Guides' && /(security guide|security hardening guide)/.test(haystack)) score += 2;
+
+  return score;
+}
+
 function inferSection(post) {
-  const haystack = `${post.title} ${post.excerpt} ${post.content}`.toLowerCase();
-  if (/security|cve|hardening|ssrf|redos|vulnerability|exploit/.test(haystack)) return 'Security';
-  if (/guide|tutorial|migrate|migration|setup|install|how to/.test(haystack)) return 'Guides';
-  if (/release|beta|hotfix|changelog|shipped|stable/.test(haystack)) return 'Releases';
-  return 'OpenClaw News';
+  const scores = {
+    Security: scoreSection(post, 'Security'),
+    Guides: scoreSection(post, 'Guides'),
+    Releases: scoreSection(post, 'Releases'),
+  };
+
+  const best = Object.entries(scores).sort((a, b) => b[1] - a[1])[0];
+  return best && best[1] >= 4 ? best[0] : 'OpenClaw News';
 }
 
 function scoreRelatedPosts(currentPost, candidatePost) {
