@@ -61,7 +61,7 @@
   --font-display: "Playfair Display", serif;
   --font-logo: "Manufacturing Consent", serif;
   --font-body: "Newsreader", serif;
-  --font-sans: "Inter", sans-serif;
+  --font-sans: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   --font-mono: "JetBrains Mono", monospace;
   --color-surface: var(--t-surface);
   --color-surface-raised: var(--t-surface-raised);
