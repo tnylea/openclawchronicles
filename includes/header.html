@@ -1,26 +1,45 @@
 <!-- NAVIGATION (sub-pages) -->
 <div data-menu-root>
-<header
-  class="sticky top-0 z-50 bg-nav-scrolled backdrop-blur-md">
+<header class="sticky top-0 z-50 bg-nav-scrolled backdrop-blur-md">
   <nav class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
     <div class="border-border-strong flex items-center justify-between border-b py-3">
+
       <!-- Left: Logo + nav links -->
-      <div class="hidden items-center gap-8 lg:flex">
+      <div class="hidden items-center gap-5 lg:flex min-w-0">
+        <!-- Logo — never wraps -->
         <a href="/" aria-label="Homepage"
-          class="border-border-strong font-logo text-ink mr-4 border-r pr-6 text-xl tracking-tight">
+          class="border-border-strong font-logo text-ink shrink-0 whitespace-nowrap border-r pr-5 text-xl tracking-tight">
           OpenClaw Chronicles
         </a>
-        <a href="/posts/" class="hover:text-red-accent text-ink-body font-sans text-[0.6875rem] font-semibold tracking-widest uppercase">Latest Posts</a>
-        <a href="/releases/" class="hover:text-red-accent text-ink-body font-sans text-[0.6875rem] font-semibold tracking-widest uppercase">Releases</a>
-        <a href="/security/" class="hover:text-red-accent text-ink-body font-sans text-[0.6875rem] font-semibold tracking-widest uppercase">Security</a>
-        <a href="/guides/" class="hover:text-red-accent text-ink-body font-sans text-[0.6875rem] font-semibold tracking-widest uppercase">Guides</a>
-        <a href="/memory/" class="hover:text-red-accent text-ink-body font-sans text-[0.6875rem] font-semibold tracking-widest uppercase">Memory</a>
-        <a href="/local-models/" class="hover:text-red-accent text-ink-body font-sans text-[0.6875rem] font-semibold tracking-widest uppercase">Local Models</a>
-        <a href="/site-map/" class="hover:text-red-accent text-ink-body font-sans text-[0.6875rem] font-semibold tracking-widest uppercase">Site Map</a>
+
+        <!-- Primary nav items -->
+        <a href="/posts/"        class="hover:text-red-accent text-ink-body shrink-0 font-sans text-[0.6875rem] font-semibold tracking-widest uppercase">Latest</a>
+        <a href="/releases/"     class="hover:text-red-accent text-ink-body shrink-0 font-sans text-[0.6875rem] font-semibold tracking-widest uppercase">Releases</a>
+        <a href="/security/"     class="hover:text-red-accent text-ink-body shrink-0 font-sans text-[0.6875rem] font-semibold tracking-widest uppercase">Security</a>
+        <a href="/guides/"       class="hover:text-red-accent text-ink-body shrink-0 font-sans text-[0.6875rem] font-semibold tracking-widest uppercase">Guides</a>
+
+        <!-- More dropdown -->
+        <div class="relative shrink-0" data-more-dropdown>
+          <button type="button" data-more-toggle
+            class="hover:text-red-accent text-ink-body flex items-center gap-1 font-sans text-[0.6875rem] font-semibold tracking-widest uppercase">
+            More
+            <svg viewBox="0 0 16 16" fill="currentColor" class="size-3 transition-transform duration-150" data-more-chevron>
+              <path d="M4.47 6.47a.75.75 0 0 1 1.06 0L8 8.94l2.47-2.47a.75.75 0 1 1 1.06 1.06l-3 3a.75.75 0 0 1-1.06 0l-3-3a.75.75 0 0 1 0-1.06Z"/>
+            </svg>
+          </button>
+          <!-- Dropdown panel -->
+          <div data-more-panel
+            class="bg-surface-raised border-border-strong absolute top-full left-0 z-50 mt-2 hidden min-w-[10rem] border py-1 shadow-lg">
+            <a href="/memory/"      class="hover:bg-surface-hover hover:text-red-accent text-ink-body block px-4 py-2 font-sans text-[0.6875rem] font-semibold tracking-widest uppercase">Memory</a>
+            <a href="/local-models/" class="hover:bg-surface-hover hover:text-red-accent text-ink-body block px-4 py-2 font-sans text-[0.6875rem] font-semibold tracking-widest uppercase">Models</a>
+            <a href="/site-map/"    class="hover:bg-surface-hover hover:text-red-accent text-ink-body block px-4 py-2 font-sans text-[0.6875rem] font-semibold tracking-widest uppercase">Site Map</a>
+            <a href="/about/"       class="hover:bg-surface-hover hover:text-red-accent text-ink-body block px-4 py-2 font-sans text-[0.6875rem] font-semibold tracking-widest uppercase">About</a>
+          </div>
+        </div>
       </div>
 
-      <!-- Desktop actions -->
-      <div class="hidden items-center gap-3 lg:flex">
+      <!-- Right: theme toggle + RSS -->
+      <div class="hidden items-center gap-3 lg:flex shrink-0">
         <!-- Theme Toggle -->
         <div class="bg-switcher flex items-center gap-0.5 rounded-full p-0.5">
           <button type="button" data-theme-button="system" aria-label="System theme" aria-pressed="false"
@@ -40,15 +59,12 @@
           </button>
         </div>
 
-        <a href="/posts/" class="hover:text-red-accent text-ink-body font-sans text-[0.6875rem] font-semibold tracking-widest uppercase">Browse Archive</a>
-        <a href="/site-map/" class="hover:text-red-accent text-ink-body font-sans text-[0.6875rem] font-semibold tracking-widest uppercase">Site Map</a>
-        <a href="/about/" class="hover:text-red-accent text-ink-body font-sans text-[0.6875rem] font-semibold tracking-widest uppercase">About</a>
         <a href="/feed.xml" class="bg-red-accent hover:bg-red-vibrant px-3 py-2 font-sans text-[0.6875rem] font-semibold tracking-wider text-white uppercase">RSS Feed</a>
       </div>
 
-      <!-- Mobile -->
+      <!-- Mobile hamburger -->
       <div class="flex w-full items-center justify-between lg:hidden">
-        <a href="/" aria-label="Homepage" class="font-logo text-ink text-lg tracking-tight">OpenClaw Chronicles</a>
+        <a href="/" aria-label="Homepage" class="font-logo text-ink whitespace-nowrap text-lg tracking-tight">OpenClaw Chronicles</a>
         <button type="button" data-menu-open aria-label="Open menu" class="relative">
           <span class="absolute top-1/2 left-1/2 size-[max(100%,3rem)] -translate-1/2 pointer-fine:hidden" aria-hidden="true"></span>
           <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="stroke-ink size-6"><path d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" /></svg>
@@ -57,8 +73,27 @@
     </div>
   </nav>
 
-  <!-- Mobile menu dialog — rendered outside <header> to escape sticky stacking context -->
+  <!-- More dropdown JS -->
+  <script>
+    (function() {
+      function initMoreDropdown(root) {
+        var toggle = root.querySelector('[data-more-toggle]');
+        var panel  = root.querySelector('[data-more-panel]');
+        var chevron = root.querySelector('[data-more-chevron]');
+        if (!toggle || !panel) return;
+        function open()  { panel.classList.remove('hidden'); if (chevron) chevron.style.transform = 'rotate(180deg)'; }
+        function close() { panel.classList.add('hidden');    if (chevron) chevron.style.transform = ''; }
+        toggle.addEventListener('click', function(e) { e.stopPropagation(); panel.classList.contains('hidden') ? open() : close(); });
+        document.addEventListener('click', function(e) { if (!root.contains(e.target)) close(); });
+        document.addEventListener('keydown', function(e) { if (e.key === 'Escape') close(); });
+      }
+      document.querySelectorAll('[data-more-dropdown]').forEach(initMoreDropdown);
+    })();
+  </script>
+
   </header>
+
+  <!-- Mobile slide-in menu -->
   <div data-menu-panel class="lg:hidden" role="dialog" aria-modal="true" hidden>
     <div class="fixed inset-0 z-[9999] bg-black/60" data-menu-close></div>
     <div class="bg-surface-raised fixed inset-y-0 right-0 z-[9999] w-full max-w-sm overflow-y-auto p-6 shadow-xl">
@@ -70,13 +105,14 @@
         </button>
       </div>
       <div class="mt-8 flex flex-col gap-1">
-        <a href="/posts/" data-menu-link class="border-border text-ink-strong border-b py-3 font-sans text-sm font-semibold tracking-widest uppercase">Latest Posts</a>
-        <a href="/releases/" data-menu-link class="border-border text-ink-strong border-b py-3 font-sans text-sm font-semibold tracking-widest uppercase">Releases</a>
-        <a href="/security/" data-menu-link class="border-border text-ink-strong border-b py-3 font-sans text-sm font-semibold tracking-widest uppercase">Security</a>
-        <a href="/guides/" data-menu-link class="border-border text-ink-strong border-b py-3 font-sans text-sm font-semibold tracking-widest uppercase">Guides</a>
-        <a href="/memory/" data-menu-link class="border-border text-ink-strong border-b py-3 font-sans text-sm font-semibold tracking-widest uppercase">Memory</a>
-        <a href="/local-models/" data-menu-link class="border-border text-ink-strong border-b py-3 font-sans text-sm font-semibold tracking-widest uppercase">Local Models</a>
-        <a href="/site-map/" data-menu-link class="border-border text-ink-strong border-b py-3 font-sans text-sm font-semibold tracking-widest uppercase">Site Map</a>
+        <a href="/posts/"        data-menu-link class="border-border text-ink-strong border-b py-3 font-sans text-sm font-semibold tracking-widest uppercase">Latest</a>
+        <a href="/releases/"     data-menu-link class="border-border text-ink-strong border-b py-3 font-sans text-sm font-semibold tracking-widest uppercase">Releases</a>
+        <a href="/security/"     data-menu-link class="border-border text-ink-strong border-b py-3 font-sans text-sm font-semibold tracking-widest uppercase">Security</a>
+        <a href="/guides/"       data-menu-link class="border-border text-ink-strong border-b py-3 font-sans text-sm font-semibold tracking-widest uppercase">Guides</a>
+        <a href="/memory/"       data-menu-link class="border-border text-ink-strong border-b py-3 font-sans text-sm font-semibold tracking-widest uppercase">Memory</a>
+        <a href="/local-models/" data-menu-link class="border-border text-ink-strong border-b py-3 font-sans text-sm font-semibold tracking-widest uppercase">Models</a>
+        <a href="/site-map/"     data-menu-link class="border-border text-ink-strong border-b py-3 font-sans text-sm font-semibold tracking-widest uppercase">Site Map</a>
+        <a href="/about/"        data-menu-link class="border-border text-ink-strong border-b py-3 font-sans text-sm font-semibold tracking-widest uppercase">About</a>
       </div>
       <div class="mt-8 flex flex-col gap-4">
         <div class="flex items-center justify-between">
@@ -96,8 +132,6 @@
             </button>
           </div>
         </div>
-        <a href="/about/" class="text-ink-muted font-sans text-sm font-medium">About</a>
-        <a href="/site-map/" class="text-ink-muted font-sans text-sm font-medium">HTML Site Map</a>
         <a href="/feed.xml" class="bg-red-accent py-3 text-center font-sans text-sm font-semibold tracking-wider text-white uppercase">RSS Feed</a>
       </div>
     </div>
