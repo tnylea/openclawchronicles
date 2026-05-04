@@ -5,7 +5,7 @@
     "author": "Your Name",
     "license": "ISC",
     "scripts": {
-        "build": "npm run build:css && npm run build:images && node scripts/sync-public-assets.js && npx @devdojo/static build && node scripts/generate-post-pagination.js && node scripts/generate-sitemap.js && node scripts/generate-news-sitemap.js && node scripts/generate-rss.js && node scripts/generate-json-feed.js && node scripts/post-build-seo.js",
+        "build": "npm run build:css && npm run build:images && node scripts/sync-public-assets.js && npx @devdojo/static build && node scripts/generate-post-pagination.js && node scripts/generate-sitemap.js && node scripts/generate-news-sitemap.js && node scripts/generate-sitemap-index.js && node scripts/generate-rss.js && node scripts/generate-json-feed.js && node scripts/post-build-seo.js",
         "build:css": "npx @tailwindcss/cli -i ./styles/app.css -o ./public/styles.css --minify",
         "build:images": "node scripts/generate-webp.js"
     },

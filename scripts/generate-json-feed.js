@@ -28,6 +28,13 @@ function parsePost(content) {
   };
 }
 
+function absolutizeUrl(url) {
+  if (!url) return '';
+  if (/^https?:\/\//i.test(url)) return url;
+  if (url.startsWith('/')) return `${siteUrl}${url}`;
+  return `${siteUrl}/${url.replace(/^\.\//, '')}`;
+}
+
 function markdownToHtml(markdown) {
   return markdown
     .replace(/^###\s+(.*)$/gm, '<h3>$1</h3>')
@@ -36,7 +43,7 @@ function markdownToHtml(markdown) {
     .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
     .replace(/\*(.*?)\*/g, '<em>$1</em>')
     .replace(/`([^`]+)`/g, '<code>$1</code>')
-    .replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2">$1</a>')
+    .replace(/\[([^\]]+)\]\(([^)]+)\)/g, (_, label, href) => `<a href="${absolutizeUrl(href)}">${label}</a>`)
     .split(/\n{2,}/)
     .map((block) => {
       const trimmed = block.trim();
@@ -85,7 +92,7 @@ for (const file of files) {
     title: parsed.frontmatter.title || '',
     summary: parsed.frontmatter.excerpt || '',
     content_text: parsed.body,
-    content_html: markdownToHtml(parsed.body),
+    content_html: `${markdownToHtml(parsed.body)}${image ? `<p><img src="${absolutizeUrl(image)}" alt="${(parsed.frontmatter.title || '').replace(/"/g, '&quot;')}" /></p>` : ''}`,
     date_published: parsed.frontmatter.date,
     date_modified: parsed.frontmatter.dateModified || fs.statSync(filePath).mtime.toISOString(),
     authors: [

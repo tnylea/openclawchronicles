@@ -517,6 +517,80 @@ function injectLatestTopicSections(html, canonicalUrl) {
   return html.replace(/\n\s*<!-- POSTS_PAGINATION_START -->/i, `${section}\n\n        <!-- POSTS_PAGINATION_START -->`);
 }
 
+function injectHubFreshLinks(html, canonicalUrl) {
+  const hubConfigs = {
+    [`${siteUrl}/releases/`]: {
+      headingId: 'latest-release-coverage-heading',
+      heading: 'Latest release coverage',
+      intro: 'Fresh release posts help this hub surface current stable launches, beta drops, and hotfix coverage faster.',
+      filter: (post) => inferSection(post) === 'Releases',
+      label: 'Release',
+    },
+    [`${siteUrl}/security/`]: {
+      headingId: 'latest-security-coverage-heading',
+      heading: 'Latest security coverage',
+      intro: 'Recent advisories and hardening stories strengthen internal linking for urgent OpenClaw security searches.',
+      filter: (post) => inferSection(post) === 'Security',
+      label: 'Security',
+    },
+    [`${siteUrl}/guides/`]: {
+      headingId: 'latest-guides-coverage-heading',
+      heading: 'Latest guides and walkthroughs',
+      intro: 'Recent tutorials keep this hub fresh for recurring setup, migration, and local-model search intent.',
+      filter: (post) => inferSection(post) === 'Guides',
+      label: 'Guide',
+    },
+    [`${siteUrl}/memory/`]: {
+      headingId: 'latest-memory-coverage-heading',
+      heading: 'Latest memory coverage',
+      intro: 'Recent memory stories reinforce the strongest evergreen OpenClaw memory topics from one crawlable page.',
+      filter: (post) => /memory|dreaming|recall|wiki|active memory|rem/i.test(`${post.title} ${post.excerpt} ${post.content}`),
+      label: 'Memory',
+    },
+    [`${siteUrl}/migrations/`]: {
+      headingId: 'latest-migration-coverage-heading',
+      heading: 'Latest migration coverage',
+      intro: 'Recent migration stories help connect breaking changes, provider moves, and upgrade walkthroughs.',
+      filter: (post) => /migrate|migration|upgrade|breaking|oauth|claude cli|config/i.test(`${post.title} ${post.excerpt} ${post.content}`),
+      label: 'Migration',
+    },
+    [`${siteUrl}/local-models/`]: {
+      headingId: 'latest-local-model-coverage-heading',
+      heading: 'Latest local model coverage',
+      intro: 'Recent local-model stories keep this hub current for Ollama, on-device, and self-hosted model workflows.',
+      filter: (post) => /ollama|local|macbook air|gemma|mlx|on-device|local model/i.test(`${post.title} ${post.excerpt} ${post.content}`),
+      label: 'Local models',
+    },
+  };
+
+  const hub = hubConfigs[canonicalUrl];
+  if (!hub || html.includes(hub.headingId)) return html;
+
+  const posts = allPosts.filter(hub.filter).slice(0, 3);
+  if (!posts.length) return html;
+
+  const cards = posts.map((post) => `
+                <article class="border-border rounded-[min(0.3vw,4px)] border p-5">
+                    <span class="text-red-accent font-mono text-[0.625rem] font-semibold tracking-wider uppercase">${hub.label}</span>
+                    <h3 class="font-display text-ink mt-2 text-xl font-semibold tracking-tight text-balance sm:text-lg"><a href="${post.url}" class="hover:text-red-accent">${post.title}</a></h3>
+                    <p class="text-ink-body mt-2 text-[0.9375rem] text-pretty">${post.excerpt}</p>
+                    <p class="text-ink-faint mt-3 font-mono text-[0.625rem] tracking-wider uppercase">${post.dateFormatted || ''}</p>
+                </article>`).join('');
+
+  const section = `
+        <section class="defer-render mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8" aria-labelledby="${hub.headingId}">
+            <div class="flex items-center gap-3">
+                <h2 id="${hub.headingId}" class="text-ink font-mono text-[0.6875rem] font-semibold tracking-widest uppercase">${hub.heading}</h2>
+                <div class="bg-border-strong h-px flex-1" aria-hidden="true"></div>
+            </div>
+            <p class="text-ink-muted mt-3 max-w-3xl text-sm">${hub.intro}</p>
+            <div class="mt-8 grid gap-6 lg:grid-cols-3">${cards}
+            </div>
+        </section>`;
+
+  return html.replace(/\n\s*<section class="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8" aria-labelledby="[^"]+-faq-heading">/i, `${section}\n\n        <section class="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8" aria-labelledby="${canonicalUrl.includes('/releases/') ? 'release' : canonicalUrl.includes('/security/') ? 'security' : canonicalUrl.includes('/guides/') ? 'guides' : canonicalUrl.includes('/memory/') ? 'memory' : canonicalUrl.includes('/migrations/') ? 'migration' : 'local-model'}-faq-heading">`);
+}
+
 function injectArticleToc(html, canonicalUrl) {
   const match = canonicalUrl.match(/\/posts\/([^/]+)\/$/);
   if (!match || html.includes('story-toc-heading')) return html;
@@ -803,6 +877,7 @@ for (const file of walk(siteDir)) {
 
   html = fixArticleMetadata(html, canonicalUrl);
   html = injectLatestTopicSections(html, canonicalUrl);
+  html = injectHubFreshLinks(html, canonicalUrl);
   html = injectArticleToc(html, canonicalUrl);
   html = injectRelatedPosts(html, canonicalUrl);
   html = injectArticlePagination(html, canonicalUrl);

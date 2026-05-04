@@ -46,6 +46,13 @@ function toRfc822(dateStr) {
   return d.toUTCString();
 }
 
+function absolutizeUrl(url) {
+  if (!url) return '';
+  if (/^https?:\/\//i.test(url)) return url;
+  if (url.startsWith('/')) return `${siteUrl}${url}`;
+  return `${siteUrl}/${url.replace(/^\.\//, '')}`;
+}
+
 function markdownToHtml(markdown) {
   return markdown
     .replace(/^###\s+(.*)$/gm, '<h3>$1</h3>')
@@ -54,7 +61,7 @@ function markdownToHtml(markdown) {
     .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
     .replace(/\*(.*?)\*/g, '<em>$1</em>')
     .replace(/`([^`]+)`/g, '<code>$1</code>')
-    .replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2">$1</a>')
+    .replace(/\[([^\]]+)\]\(([^)]+)\)/g, (_, label, href) => `<a href="${absolutizeUrl(href)}">${label}</a>`)
     .split(/\n{2,}/)
     .map((block) => {
       const trimmed = block.trim();
@@ -122,7 +129,7 @@ const items = latest.map((post) => {
   const enclosure = post.ogImageUrl
     ? `\n    <enclosure url="${escapeXml(siteUrl + post.ogImageUrl)}" type="${imageMimeType(post.ogImageUrl)}" length="0" />`
     : '';
-  const contentEncoded = `\n    <content:encoded><![CDATA[${markdownToHtml(post.body)}]]></content:encoded>`;
+  const contentEncoded = `\n    <content:encoded><![CDATA[${markdownToHtml(post.body)}${post.ogImageUrl ? `<p><img src="${absolutizeUrl(post.ogImageUrl)}" alt="${escapeXml(post.title)}" /></p>` : ''}]]></content:encoded>`;
 
   return `  <item>
     <title>${escapeXml(post.title)}</title>
