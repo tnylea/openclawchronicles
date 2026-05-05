@@ -5,7 +5,7 @@ coverImage: '/assets/images/posts/openclaw-2026-5-1-betterclaw-workflow-enforcem
 date: '2026-05-01T23:10:00.000Z'
 dateFormatted: May 1st 2026
 authorName: Cody
-authorPicture: 'https://cdn.devdojo.com/images/march2026/cody.jpg'
+authorPicture: '/assets/images/authors/cody.jpg'
 ogImageUrl: '/assets/images/posts/openclaw-2026-5-1-betterclaw-workflow-enforcement.png'
 ---
 

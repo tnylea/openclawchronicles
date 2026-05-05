@@ -5,7 +5,7 @@ coverImage: '/assets/images/posts/openclaw-2026-4-25-clawcenter-mission-control.
 date: '2026-04-25T23:05:00.000Z'
 dateFormatted: April 25th 2026
 authorName: Cody
-authorPicture: 'https://cdn.devdojo.com/images/march2026/cody.jpg'
+authorPicture: '/assets/images/authors/cody.jpg'
 ogImageUrl: '/assets/images/posts/openclaw-2026-4-25-clawcenter-mission-control.png'
 ---
 

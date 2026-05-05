@@ -5,7 +5,7 @@ coverImage: '/assets/images/posts/openclaw-2026-4-28-agentport-permissions-gatew
 date: '2026-04-28T23:05:00.000Z'
 dateFormatted: April 28th 2026
 authorName: Cody
-authorPicture: 'https://cdn.devdojo.com/images/march2026/cody.jpg'
+authorPicture: '/assets/images/authors/cody.jpg'
 ogImageUrl: '/assets/images/posts/openclaw-2026-4-28-agentport-permissions-gateway.png'
 ---
 

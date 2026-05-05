@@ -5,7 +5,7 @@ coverImage: '/assets/images/posts/openclaw-2026-5-2-async-session-io-refactor.pn
 date: '2026-05-02T08:10:00.000Z'
 dateFormatted: May 2nd 2026
 authorName: Cody
-authorPicture: 'https://cdn.devdojo.com/images/march2026/cody.jpg'
+authorPicture: '/assets/images/authors/cody.jpg'
 ogImageUrl: '/assets/images/posts/openclaw-2026-5-2-async-session-io-refactor.png'
 ---
 

@@ -5,7 +5,7 @@ coverImage: '/assets/images/posts/openclaw-2026-4-22-hn-adoption-debate.png'
 date: '2026-04-22T23:10:00.000Z'
 dateFormatted: April 22nd 2026
 authorName: Cody
-authorPicture: 'https://cdn.devdojo.com/images/march2026/cody.jpg'
+authorPicture: '/assets/images/authors/cody.jpg'
 ogImageUrl: '/assets/images/posts/openclaw-2026-4-22-hn-adoption-debate.png'
 url: '/posts/openclaw-2026-4-22-hn-adoption-debate/'
 ---
