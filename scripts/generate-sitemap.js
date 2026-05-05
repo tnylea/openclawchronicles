@@ -16,14 +16,14 @@ const POSTS_PER_PAGE = 15;
 const PAGES_DIR = path.join(__dirname, '../pages');
 
 const staticPageConfigs = [
-  { slug: 'about', changefreq: 'monthly', priority: '0.6' },
-  { slug: 'site-map', changefreq: 'weekly', priority: '0.7' },
-  { slug: 'releases', changefreq: 'weekly', priority: '0.8', section: 'releases' },
-  { slug: 'security', changefreq: 'weekly', priority: '0.8', section: 'security' },
-  { slug: 'guides', changefreq: 'weekly', priority: '0.8', section: 'guides' },
-  { slug: 'memory', changefreq: 'weekly', priority: '0.7', section: 'guides' },
-  { slug: 'migrations', changefreq: 'weekly', priority: '0.7', section: 'guides' },
-  { slug: 'local-models', changefreq: 'weekly', priority: '0.7', section: 'guides' },
+  { slug: 'about', changefreq: 'monthly', priority: '0.6', image: '/assets/images/about-banner.jpg', imageTitle: 'About OpenClaw Chronicles', imageCaption: 'How OpenClaw Chronicles researches and publishes OpenClaw coverage.' },
+  { slug: 'site-map', changefreq: 'weekly', priority: '0.7', image: '/assets/images/about-banner.jpg', imageTitle: 'OpenClaw Chronicles site map', imageCaption: 'Start here page for release coverage, security reporting, and guides.' },
+  { slug: 'releases', changefreq: 'weekly', priority: '0.8', section: 'releases', image: '/assets/images/about-banner.jpg', imageTitle: 'OpenClaw releases hub', imageCaption: 'Crawlable archive of OpenClaw release coverage, betas, and hotfixes.' },
+  { slug: 'security', changefreq: 'weekly', priority: '0.8', section: 'security', image: '/assets/images/about-banner.jpg', imageTitle: 'OpenClaw security hub', imageCaption: 'OpenClaw security advisories, hardening guidance, and incident coverage.' },
+  { slug: 'guides', changefreq: 'weekly', priority: '0.8', section: 'guides', image: '/assets/images/about-banner.jpg', imageTitle: 'OpenClaw guides and tutorials', imageCaption: 'OpenClaw setup guides, migrations, and practical how-tos.' },
+  { slug: 'memory', changefreq: 'weekly', priority: '0.7', section: 'guides', image: '/assets/images/about-banner.jpg', imageTitle: 'OpenClaw memory guides', imageCaption: 'OpenClaw memory coverage, active memory explainers, and dreaming workflows.' },
+  { slug: 'migrations', changefreq: 'weekly', priority: '0.7', section: 'guides', image: '/assets/images/about-banner.jpg', imageTitle: 'OpenClaw migration guides', imageCaption: 'OpenClaw migration tutorials and upgrade help.' },
+  { slug: 'local-models', changefreq: 'weekly', priority: '0.7', section: 'guides', image: '/assets/images/about-banner.jpg', imageTitle: 'OpenClaw local models', imageCaption: 'Local model workflows and on-device OpenClaw setup coverage.' },
 ];
 
 // Parse the first `key: value` frontmatter field from a markdown string
@@ -86,7 +86,15 @@ const latestPostDate = postFiles[0]?.date?.split('T')[0];
 const latestSectionDate = (section) => postFiles.find((post) => post.section === section)?.date?.split('T')[0] || latestPostDate;
 
 // Homepage
-urls.push({ loc: `${BASE_URL}/`, lastmod: fileDateOrFallback(path.join(PAGES_DIR, 'index.html'), latestPostDate), changefreq: 'daily', priority: '1.0' });
+urls.push({
+  loc: `${BASE_URL}/`,
+  lastmod: fileDateOrFallback(path.join(PAGES_DIR, 'index.html'), latestPostDate),
+  changefreq: 'daily',
+  priority: '1.0',
+  image: absoluteAssetUrl('/assets/images/about-banner.jpg'),
+  imageTitle: 'OpenClaw Chronicles homepage',
+  imageCaption: 'OpenClaw news, releases, security alerts, and guides.'
+});
 
 // Posts index
 urls.push({ loc: `${BASE_URL}/posts/`, lastmod: latestPostDate, changefreq: 'daily', priority: '0.8' });
@@ -98,6 +106,9 @@ for (const page of staticPageConfigs) {
     lastmod: fileDateOrFallback(path.join(PAGES_DIR, `${page.slug}.html`), fallbackDate),
     changefreq: page.changefreq,
     priority: page.priority,
+    image: absoluteAssetUrl(page.image),
+    imageTitle: page.imageTitle,
+    imageCaption: page.imageCaption,
   });
 }
 urls.push({ loc: `${BASE_URL}/feed.xml`, lastmod: latestPostDate, changefreq: 'daily', priority: '0.4' });

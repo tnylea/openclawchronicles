@@ -20,7 +20,7 @@
 
         <!-- More dropdown -->
         <div class="relative shrink-0" data-more-dropdown>
-          <button type="button" data-more-toggle
+          <button type="button" data-more-toggle aria-haspopup="true" aria-expanded="false"
             class="hover:text-red-accent text-ink-body flex items-center gap-1 font-sans text-[0.6875rem] font-semibold tracking-widest uppercase">
             More
             <svg viewBox="0 0 16 16" fill="currentColor" class="size-3 transition-transform duration-150" data-more-chevron>
@@ -28,7 +28,7 @@
             </svg>
           </button>
           <!-- Dropdown panel -->
-          <div data-more-panel
+          <div data-more-panel hidden
             class="bg-surface-raised border-border-strong absolute top-full left-0 z-50 mt-2 hidden min-w-[10rem] border py-1 shadow-lg">
             <a href="/memory/"      class="hover:bg-surface-hover hover:text-red-accent text-ink-body block px-4 py-2 font-sans text-[0.6875rem] font-semibold tracking-widest uppercase">Memory</a>
             <a href="/local-models/" class="hover:bg-surface-hover hover:text-red-accent text-ink-body block px-4 py-2 font-sans text-[0.6875rem] font-semibold tracking-widest uppercase">Models</a>
@@ -72,24 +72,6 @@
       </div>
     </div>
   </nav>
-
-  <!-- More dropdown JS -->
-  <script>
-    (function() {
-      function initMoreDropdown(root) {
-        var toggle = root.querySelector('[data-more-toggle]');
-        var panel  = root.querySelector('[data-more-panel]');
-        var chevron = root.querySelector('[data-more-chevron]');
-        if (!toggle || !panel) return;
-        function open()  { panel.classList.remove('hidden'); if (chevron) chevron.style.transform = 'rotate(180deg)'; }
-        function close() { panel.classList.add('hidden');    if (chevron) chevron.style.transform = ''; }
-        toggle.addEventListener('click', function(e) { e.stopPropagation(); panel.classList.contains('hidden') ? open() : close(); });
-        document.addEventListener('click', function(e) { if (!root.contains(e.target)) close(); });
-        document.addEventListener('keydown', function(e) { if (e.key === 'Escape') close(); });
-      }
-      document.querySelectorAll('[data-more-dropdown]').forEach(initMoreDropdown);
-    })();
-  </script>
 
   </header>
 
