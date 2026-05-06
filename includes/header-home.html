@@ -97,24 +97,6 @@
     </div>
   </nav>
 
-  <!-- More dropdown JS -->
-  <script>
-    (function() {
-      function initMoreDropdown(root) {
-        var toggle = root.querySelector('[data-more-toggle]');
-        var panel  = root.querySelector('[data-more-panel]');
-        var chevron = root.querySelector('[data-more-chevron]');
-        if (!toggle || !panel) return;
-        function open()  { panel.classList.remove('hidden'); if (chevron) chevron.style.transform = 'rotate(180deg)'; }
-        function close() { panel.classList.add('hidden');    if (chevron) chevron.style.transform = ''; }
-        toggle.addEventListener('click', function(e) { e.stopPropagation(); panel.classList.contains('hidden') ? open() : close(); });
-        document.addEventListener('click', function(e) { if (!root.contains(e.target)) close(); });
-        document.addEventListener('keydown', function(e) { if (e.key === 'Escape') close(); });
-      }
-      document.querySelectorAll('[data-more-dropdown]').forEach(initMoreDropdown);
-    })();
-  </script>
-
   <!-- Mobile menu dialog -->
   <div data-menu-panel class="lg:hidden" role="dialog" aria-modal="true" hidden>
     <div class="fixed inset-0 z-50 bg-black/60" data-menu-close></div>
