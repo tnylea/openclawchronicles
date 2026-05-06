@@ -25,6 +25,8 @@
             </div>
         </section>
 
+        <include src="archive-search-panel.html"></include>
+
         <section class="mx-auto max-w-7xl px-4 pb-8 sm:px-6 lg:px-8">
             <div class="grid gap-6 lg:grid-cols-3">
                 <article class="border-border rounded-[min(0.3vw,4px)] border p-5 lg:col-span-2">
@@ -69,6 +71,39 @@
                         <p class="text-ink-body mt-3 text-[0.9375rem] text-pretty">A strong overview for readers who want the architecture and release context around dreaming before they adopt it.</p>
                     </a>
                 </article>
+            </div>
+        </section>
+
+        <section class="defer-render mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8" aria-labelledby="memory-archive-heading">
+            <div class="flex items-center gap-3">
+                <h2 id="memory-archive-heading" class="text-ink font-mono text-[0.6875rem] font-semibold tracking-widest uppercase">Memory archive</h2>
+                <div class="bg-border-strong h-px flex-1" aria-hidden="true"></div>
+            </div>
+            <div class="mt-8 grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
+                <ForEach content="posts" as="post" orderBy="date, desc">
+                    <If condition="post.title.indexOf('memory') !== -1 || post.title.indexOf('Memory') !== -1 || post.title.indexOf('dreaming') !== -1 || post.title.indexOf('Dreaming') !== -1 || post.title.indexOf('REM') !== -1 || post.title.indexOf('wiki') !== -1 || post.excerpt.indexOf('memory') !== -1 || post.excerpt.indexOf('dreaming') !== -1 || post.excerpt.indexOf('recall') !== -1 || post.excerpt.indexOf('wiki') !== -1">
+                        <article>
+                            <a href="{post.link}" class="group">
+                                <div class="overflow-hidden rounded-[min(0.3vw,4px)]">
+                                    <img
+                                        src="{post.coverImage}"
+                                        alt="{post.title}"
+                                        width="1200"
+                                        height="800"
+                                        loading="lazy"
+                                        decoding="async"
+                                        class="outline-img-outline aspect-3/2 w-full object-cover outline-1 -outline-offset-1 transition-transform duration-300 group-hover:scale-105" />
+                                </div>
+                                <div class="mt-4">
+                                    <span class="text-red-accent font-mono text-[0.625rem] font-semibold tracking-wider uppercase">Memory</span>
+                                    <h3 class="font-display group-hover:text-red-accent text-ink mt-1 text-xl font-semibold tracking-tight text-balance">{post.title}</h3>
+                                    <p class="font-body text-ink-body mt-2 text-[0.9375rem] text-pretty">{post.excerpt}</p>
+                                    <p class="text-ink-faint mt-3 font-mono text-[0.625rem] tracking-wider uppercase">{post.dateFormatted}</p>
+                                </div>
+                            </a>
+                        </article>
+                    </If>
+                </ForEach>
             </div>
         </section>
 

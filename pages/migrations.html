@@ -17,8 +17,15 @@
                 <span class="text-red-accent font-mono text-[0.625rem] font-semibold tracking-wider uppercase">Topic hub</span>
                 <h1 class="font-display text-ink mt-3 text-4xl font-semibold tracking-tight text-balance sm:text-5xl">OpenClaw migration guides, upgrade notes, and changeover tutorials</h1>
                 <p class="font-body text-ink-muted mt-4 max-w-3xl text-lg italic">A crawlable landing page for OpenClaw migration intent, from provider changes to release-driven upgrade paths.</p>
+                <div class="mt-5 flex flex-wrap gap-3">
+                    <a href="/guides/" class="border-border text-ink-strong hover:text-red-accent rounded-full border px-3 py-1.5 font-sans text-xs font-medium">Guides hub</a>
+                    <a href="/releases/" class="border-border text-ink-strong hover:text-red-accent rounded-full border px-3 py-1.5 font-sans text-xs font-medium">Release coverage</a>
+                    <a href="/posts/?q=migration" class="border-border text-ink-strong hover:text-red-accent rounded-full border px-3 py-1.5 font-sans text-xs font-medium">Search migration posts</a>
+                </div>
             </div>
         </section>
+
+        <include src="archive-search-panel.html"></include>
 
         <section class="defer-render mx-auto max-w-7xl px-4 pb-12 sm:px-6 lg:px-8" aria-labelledby="migration-guides-heading">
             <div class="grid gap-6 lg:grid-cols-3">
@@ -52,6 +59,39 @@
                         <p class="text-ink-body mt-3 text-[0.9375rem] text-pretty">Use the broader guides archive when a migration question overlaps with local setup, provider choice, or new workflow onboarding.</p>
                     </a>
                 </article>
+            </div>
+        </section>
+
+        <section class="defer-render mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8" aria-labelledby="migration-archive-heading">
+            <div class="flex items-center gap-3">
+                <h2 id="migration-archive-heading" class="text-ink font-mono text-[0.6875rem] font-semibold tracking-widest uppercase">Migration archive</h2>
+                <div class="bg-border-strong h-px flex-1" aria-hidden="true"></div>
+            </div>
+            <div class="mt-8 grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
+                <ForEach content="posts" as="post" orderBy="date, desc">
+                    <If condition="post.title.indexOf('migrate') !== -1 || post.title.indexOf('Migrate') !== -1 || post.title.indexOf('migration') !== -1 || post.title.indexOf('Migration') !== -1 || post.title.indexOf('upgrade') !== -1 || post.title.indexOf('Upgrade') !== -1 || post.title.indexOf('breaking') !== -1 || post.excerpt.indexOf('migration') !== -1 || post.excerpt.indexOf('migrate') !== -1 || post.excerpt.indexOf('upgrade') !== -1 || post.excerpt.indexOf('breaking change') !== -1 || post.excerpt.indexOf('config') !== -1">
+                        <article>
+                            <a href="{post.link}" class="group">
+                                <div class="overflow-hidden rounded-[min(0.3vw,4px)]">
+                                    <img
+                                        src="{post.coverImage}"
+                                        alt="{post.title}"
+                                        width="1200"
+                                        height="800"
+                                        loading="lazy"
+                                        decoding="async"
+                                        class="outline-img-outline aspect-3/2 w-full object-cover outline-1 -outline-offset-1 transition-transform duration-300 group-hover:scale-105" />
+                                </div>
+                                <div class="mt-4">
+                                    <span class="text-red-accent font-mono text-[0.625rem] font-semibold tracking-wider uppercase">Migration</span>
+                                    <h3 class="font-display group-hover:text-red-accent text-ink mt-1 text-xl font-semibold tracking-tight text-balance">{post.title}</h3>
+                                    <p class="font-body text-ink-body mt-2 text-[0.9375rem] text-pretty">{post.excerpt}</p>
+                                    <p class="text-ink-faint mt-3 font-mono text-[0.625rem] tracking-wider uppercase">{post.dateFormatted}</p>
+                                </div>
+                            </a>
+                        </article>
+                    </If>
+                </ForEach>
             </div>
         </section>
 
