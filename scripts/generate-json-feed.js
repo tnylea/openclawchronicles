@@ -67,11 +67,19 @@ function inferTags(post) {
   const tags = ['OpenClaw'];
 
   if (/security|cve|hardening|vulnerability|exploit/.test(haystack)) tags.push('Security');
-  if (/guide|tutorial|migrate|migration|setup|how to|locally/.test(haystack)) tags.push('Guides');
+  if (/guide|tutorial|migrate|migration|setup|how to|locally|walkthrough|workflow|memory|dreaming|local model/.test(haystack)) tags.push('Guides');
   if (/release|beta|hotfix|stable|changelog/.test(haystack)) tags.push('Releases');
+  if (/memory|dreaming|active memory|recall|wiki/.test(haystack)) tags.push('Memory');
+  if (/ollama|local model|macbook air|on-device|gemma|mlx/.test(haystack)) tags.push('Local Models');
   if (tags.length === 1) tags.push('News');
 
-  return tags;
+  const keywordTags = [...new Set(String(post.title || '')
+    .toLowerCase()
+    .replace(/[^a-z0-9\s]/g, ' ')
+    .split(/\s+/)
+    .filter((token) => token.length > 3 && !['openclaw', 'with', 'from', 'this', 'that', 'into', 'your'].includes(token)))].slice(0, 5);
+
+  return [...new Set([...tags, ...keywordTags.map((tag) => tag.replace(/\b\w/g, (char) => char.toUpperCase()))])];
 }
 
 const files = fs.readdirSync(postsDir).filter((file) => file.endsWith('.md'));
@@ -98,6 +106,8 @@ for (const file of files) {
     authors: [
       {
         name: parsed.frontmatter.authorName || 'Cody',
+        url: `${siteUrl}/about/`,
+        avatar: `${siteUrl}/assets/images/authors/cody.jpg`,
       },
     ],
     tags: [],
@@ -125,9 +135,11 @@ const feed = {
     {
       name: 'Cody',
       url: `${siteUrl}/about/`,
+      avatar: `${siteUrl}/assets/images/authors/cody.jpg`,
     },
   ],
   language: 'en-US',
+  banner_image: `${siteUrl}/assets/images/about-banner.jpg`,
   items: items.slice(0, 50),
 };
 

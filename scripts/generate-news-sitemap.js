@@ -37,7 +37,7 @@ function escapeXml(value) {
 function inferSection(text = '') {
   const haystack = text.toLowerCase();
   if (/security|cve|hardening|vulnerability|exploit|incident/.test(haystack)) return 'Security';
-  if (/guide|tutorial|migrate|migration|setup|how to|local model/.test(haystack)) return 'Guides';
+  if (/guide|tutorial|migrate|migration|setup|how to|local model|walkthrough|workflow|memory|dreaming/.test(haystack)) return 'Guides';
   if (/release|beta|hotfix|stable|changelog/.test(haystack)) return 'Releases';
   return 'OpenClaw News';
 }

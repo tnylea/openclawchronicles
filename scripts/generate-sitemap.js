@@ -35,7 +35,7 @@ function getFrontmatterField(content, key) {
 function inferSection(content = '') {
   const haystack = content.toLowerCase();
   if (/security|cve|hardening|vulnerability|exploit/.test(haystack)) return 'security';
-  if (/guide|tutorial|migrate|migration|setup|how to|locally/.test(haystack)) return 'guides';
+  if (/guide|tutorial|migrate|migration|setup|how to|locally|walkthrough|workflow|memory|dreaming|local model/.test(haystack)) return 'guides';
   if (/release|beta|hotfix|stable|changelog/.test(haystack)) return 'releases';
   return 'news';
 }

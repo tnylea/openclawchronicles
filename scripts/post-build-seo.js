@@ -282,6 +282,62 @@ function postKeywords(post, limit = 4) {
   return [...new Set(tokenize(`${post.title} ${post.excerpt}`))].slice(0, limit);
 }
 
+function buildHowToSchema(post, html) {
+  const section = inferSection(post);
+  if (!['Guides'].includes(section) && !/migrate|migration|setup|tutorial|how to|walkthrough|local model/i.test(`${post.title} ${post.excerpt}`)) {
+    return '';
+  }
+
+  const articleMatch = html.match(/<article class="article-content[^"]*">([\s\S]*?)<\/article>/i);
+  const articleHtml = articleMatch ? articleMatch[1] : html;
+  const headingMatches = [...articleHtml.matchAll(/<h([23])[^>]*>([\s\S]*?)<\/h\1>/gi)];
+  const steps = headingMatches
+    .map((match) => match[2].replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').trim())
+    .filter((label) => label && !/^(continue reading|story navigation|related openclaw coverage|on this page)$/i.test(label))
+    .slice(0, 8)
+    .map((label, index) => ({
+      '@type': 'HowToStep',
+      position: index + 1,
+      name: label,
+      url: `${siteUrl}${post.url}#${slugify(label)}`,
+      text: label,
+    }));
+
+  if (steps.length < 2) return '';
+
+  return `\n    <script type="application/ld+json">\n    ${JSON.stringify({
+      '@context': 'https://schema.org',
+      '@type': 'HowTo',
+      name: post.title,
+      description: post.excerpt,
+      url: `${siteUrl}${post.url}`,
+      image: `${siteUrl}${post.ogImageUrl}`,
+      totalTime: `PT${Math.max(2, Math.ceil(String(post.content || '').split(/\s+/).filter(Boolean).length / 220))}M`,
+      supply: [
+        {
+          '@type': 'HowToSupply',
+          name: 'OpenClaw installation or target environment',
+        },
+      ],
+      tool: [
+        {
+          '@type': 'HowToTool',
+          name: 'OpenClaw',
+        },
+      ],
+      step: steps,
+      author: {
+        '@type': 'Person',
+        name: post.authorName,
+      },
+      publisher: {
+        '@type': 'Organization',
+        name: 'OpenClaw Chronicles',
+        url: siteUrl,
+      },
+    }, null, 4)}\n    </script>`;
+}
+
 function fixTopicHubMetadata(html, canonicalUrl) {
   const hubs = {
     [`${siteUrl}/releases/`]: {
@@ -398,7 +454,7 @@ function slugify(text) {
 
 const SECTION_KEYWORDS = {
   Security: ['security', 'cve', 'hardening', 'ssrf', 'redos', 'vulnerability', 'exploit', 'patch', 'advisory', 'incident'],
-  Guides: ['guide', 'tutorial', 'migrate', 'migration', 'setup', 'install', 'walkthrough', 'how to', 'locally', 'workflow'],
+  Guides: ['guide', 'tutorial', 'migrate', 'migration', 'setup', 'install', 'walkthrough', 'how to', 'locally', 'workflow', 'memory', 'active memory', 'dreaming', 'local model'],
   Releases: ['release', 'beta', 'hotfix', 'changelog', 'shipped', 'stable', 'preview', 'rc', 'version'],
 };
 
@@ -417,7 +473,7 @@ function scoreSection(post, section) {
   }
 
   if (section === 'Security' && /(fix|patch|hardening|security)/.test(title)) score += 4;
-  if (section === 'Guides' && /(guide|tutorial|how to|migrate|migration)/.test(title)) score += 4;
+  if (section === 'Guides' && /(guide|tutorial|how to|migrate|migration|memory|workflow|walkthrough|local model)/.test(title)) score += 4;
   if (section === 'Releases' && /(release|beta|hotfix|preview|version|v20\d{2}\.)/.test(title)) score += 5;
   if (/community roundup|hacker news|show hn|ask hn/.test(title) && section !== 'OpenClaw News') score -= 4;
   if (section === 'Guides' && /(security guide|security hardening guide)/.test(haystack)) score += 2;
@@ -774,8 +830,7 @@ function fixArticleMetadata(html, canonicalUrl) {
     `$1${topicChipMarkup}`
   );
 
-  const articleSchema = `<!-- JSON-LD Article Schema -->\n    <script type="application/ld+json">\n    {\n      "@context": "https://schema.org",\n      "@type": "${schemaType}",\n      "headline": ${JSON.stringify(post.title)},\n      "description": ${JSON.stringify(post.excerpt)},\n      "image": {\n        "@type": "ImageObject",\n        "url": ${JSON.stringify(`${siteUrl}${post.ogImageUrl}`)},\n        "width": 1200,\n        "height": 630\n      },\n      "url": ${JSON.stringify(canonicalUrl)},\n      "mainEntityOfPage": {\n        "@type": "WebPage",\n        "@id": ${JSON.stringify(canonicalUrl)}\n      },\n      "articleSection": ${JSON.stringify(section)},\n      "keywords": ${JSON.stringify(keywords)},\n      "isAccessibleForFree": true,\n      "about": [\n        {\n          "@type": "Thing",\n          "name": "OpenClaw"\n        },\n        {\n          "@type": "Thing",\n          "name": ${JSON.stringify(section)}\n        }\n      ],\n      "wordCount": ${wordCount},\n      "timeRequired": "PT${timeRequired}M",\n      "author": {\n        "@type": "Person",\n        "name": ${JSON.stringify(post.authorName)}\n      },\n      "publisher": {\n        "@type": "Organization",\n        "name": "OpenClaw Chronicles",\n        "url": ${JSON.stringify(siteUrl)},\n        "logo": {\n          "@type": "ImageObject",\n          "url": ${JSON.stringify(`${siteUrl}/icon-512.png`)},\n          "width": 512,\n          "height": 512\n        }\n      },\n      "datePublished": ${JSON.stringify(post.date)},\n      "dateModified": ${JSON.stringify(post.modified)},
-      "inLanguage": "en-US"\n    }\n    </script>`;
+  const articleSchema = `<!-- JSON-LD Article Schema -->\n    <script type="application/ld+json">\n    {\n      "@context": "https://schema.org",\n      "@type": "${schemaType}",\n      "headline": ${JSON.stringify(post.title)},\n      "description": ${JSON.stringify(post.excerpt)},\n      "image": {\n        "@type": "ImageObject",\n        "url": ${JSON.stringify(`${siteUrl}${post.ogImageUrl}`)},\n        "width": 1200,\n        "height": 630\n      },\n      "url": ${JSON.stringify(canonicalUrl)},\n      "mainEntityOfPage": {\n        "@type": "WebPage",\n        "@id": ${JSON.stringify(canonicalUrl)}\n      },\n      "articleSection": ${JSON.stringify(section)},\n      "keywords": ${JSON.stringify(keywords)},\n      "isAccessibleForFree": true,\n      "about": [\n        {\n          "@type": "Thing",\n          "name": "OpenClaw"\n        },\n        {\n          "@type": "Thing",\n          "name": ${JSON.stringify(section)}\n        }\n      ],\n      "wordCount": ${wordCount},\n      "timeRequired": "PT${timeRequired}M",\n      "author": {\n        "@type": "Person",\n        "name": ${JSON.stringify(post.authorName)}\n      },\n      "publisher": {\n        "@type": "Organization",\n        "name": "OpenClaw Chronicles",\n        "url": ${JSON.stringify(siteUrl)},\n        "logo": {\n          "@type": "ImageObject",\n          "url": ${JSON.stringify(`${siteUrl}/icon-512.png`)},\n          "width": 512,\n          "height": 512\n        }\n      },\n      "datePublished": ${JSON.stringify(post.date)},\n      "dateModified": ${JSON.stringify(post.modified)},\n      "inLanguage": "en-US"\n    }\n    </script>${buildHowToSchema(post, html)}`;
 
   html = html.replace(/<!-- JSON-LD Article Schema -->[\s\S]*?<script type="application\/ld\+json">[\s\S]*?<\/script>/i, articleSchema);
 

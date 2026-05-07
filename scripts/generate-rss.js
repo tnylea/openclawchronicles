@@ -83,7 +83,7 @@ function markdownToHtml(markdown) {
 function inferCategory(post) {
   const haystack = `${post.title} ${post.excerpt} ${post.body}`.toLowerCase();
   if (/security|cve|hardening|vulnerability|exploit/.test(haystack)) return 'Security';
-  if (/guide|tutorial|migrate|migration|setup|how to|locally/.test(haystack)) return 'Guides';
+  if (/guide|tutorial|migrate|migration|setup|how to|locally|walkthrough|workflow|memory|dreaming|local model/.test(haystack)) return 'Guides';
   if (/release|beta|hotfix|stable|changelog/.test(haystack)) return 'Releases';
   return 'OpenClaw News';
 }
@@ -144,7 +144,7 @@ const items = latest.map((post) => {
 }).join('\n');
 
 const rss = `<?xml version="1.0" encoding="UTF-8"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:dc="http://purl.org/dc/elements/1.1/">
   <channel>
     <title>OpenClaw Chronicles</title>
     <link>${siteUrl}</link>
@@ -153,8 +153,16 @@ const rss = `<?xml version="1.0" encoding="UTF-8"?>
     <lastBuildDate>${toRfc822(lastBuildDate)}</lastBuildDate>
     <ttl>60</ttl>
     <managingEditor>news@openclawchronicles.com (Cody)</managingEditor>
+    <webMaster>news@openclawchronicles.com (Cody)</webMaster>
+    <docs>https://www.rssboard.org/rss-specification</docs>
+    <image>
+      <url>${siteUrl}/icon-512.png</url>
+      <title>OpenClaw Chronicles</title>
+      <link>${siteUrl}</link>
+    </image>
     <atom:link href="${siteUrl}/feed.xml" rel="self" type="application/rss+xml" />
-${items}
+    <atom:link href="${siteUrl}/" rel="alternate" type="text/html" />
+${items.replace(/<author>news@openclawchronicles\.com \(([^<]+)\)<\/author>/g, '<author>news@openclawchronicles.com ($1)</author>\n    <dc:creator>$1</dc:creator>')}
   </channel>
 </rss>`;
 
