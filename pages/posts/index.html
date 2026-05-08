@@ -59,7 +59,8 @@
                 <h2 id="archive-paths-heading" class="text-ink font-mono text-[0.6875rem] font-semibold tracking-widest uppercase">Browse by topic path</h2>
                 <div class="bg-border-strong h-px flex-1" aria-hidden="true"></div>
             </div>
-            <div class="mt-8 grid gap-6 lg:grid-cols-3">
+            <p class="text-ink-muted mt-3 max-w-3xl text-sm">These crawlable hubs give search engines and readers cleaner paths into the strongest OpenClaw topic clusters, instead of forcing everything through a single archive page.</p>
+            <div class="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
                 <article class="border-border rounded-[min(0.3vw,4px)] border p-5">
                     <span class="text-red-accent font-mono text-[0.625rem] font-semibold tracking-wider uppercase">Releases</span>
                     <p class="text-ink-body mt-3 text-[0.9375rem] text-pretty">Track stable launches, beta notes, hotfixes, and changelog context for OpenClaw upgrades.</p>
@@ -74,6 +75,21 @@
                     <span class="text-red-accent font-mono text-[0.625rem] font-semibold tracking-wider uppercase">Guides</span>
                     <p class="text-ink-body mt-3 text-[0.9375rem] text-pretty">Find migrations, setup help, local-model walkthroughs, and practical OpenClaw tutorials.</p>
                     <a href="/guides/" class="text-ink-strong hover:text-red-accent mt-4 inline-flex font-sans text-sm font-medium">Open guides hub</a>
+                </article>
+                <article class="border-border rounded-[min(0.3vw,4px)] border p-5">
+                    <span class="text-red-accent font-mono text-[0.625rem] font-semibold tracking-wider uppercase">Memory</span>
+                    <p class="text-ink-body mt-3 text-[0.9375rem] text-pretty">Browse active memory, recall, dreaming, and long-term context workflows from one evergreen topic hub.</p>
+                    <a href="/memory/" class="text-ink-strong hover:text-red-accent mt-4 inline-flex font-sans text-sm font-medium">Open memory hub</a>
+                </article>
+                <article class="border-border rounded-[min(0.3vw,4px)] border p-5">
+                    <span class="text-red-accent font-mono text-[0.625rem] font-semibold tracking-wider uppercase">Migrations</span>
+                    <p class="text-ink-body mt-3 text-[0.9375rem] text-pretty">Surface upgrade guides, provider changes, and breaking-path walkthroughs for readers who need migration help fast.</p>
+                    <a href="/migrations/" class="text-ink-strong hover:text-red-accent mt-4 inline-flex font-sans text-sm font-medium">Open migrations hub</a>
+                </article>
+                <article class="border-border rounded-[min(0.3vw,4px)] border p-5">
+                    <span class="text-red-accent font-mono text-[0.625rem] font-semibold tracking-wider uppercase">Local models</span>
+                    <p class="text-ink-body mt-3 text-[0.9375rem] text-pretty">Cluster MacBook Air, Ollama, on-device, and self-hosted local model workflows in one stronger discovery path.</p>
+                    <a href="/local-models/" class="text-ink-strong hover:text-red-accent mt-4 inline-flex font-sans text-sm font-medium">Open local models hub</a>
                 </article>
             </div>
         </section>
@@ -179,6 +195,7 @@
 
         <!-- Newsletter -->
         <include src="newsletter.html"></include>
+        <script src="/assets/js/archive-search.js" defer></script>
     </main>
 
 </layout>
