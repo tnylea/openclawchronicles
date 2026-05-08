@@ -42,6 +42,14 @@ function inferSection(text = '') {
   return 'OpenClaw News';
 }
 
+function isNewsworthy(meta) {
+  const section = inferSection(`${meta.title || ''} ${meta.excerpt || ''}`);
+  if (section === 'Guides') return false;
+  const title = `${meta.title || ''} ${meta.excerpt || ''}`.toLowerCase();
+  if (/\babout\b|site map|faq|start here/.test(title)) return false;
+  return true;
+}
+
 function buildKeywords(meta) {
   const section = inferSection(`${meta.title || ''} ${meta.excerpt || ''}`);
   const titleTokens = String(meta.title || '')
@@ -77,11 +85,13 @@ const posts = fs.readdirSync(POSTS_DIR)
     const slug = path.basename(file, '.md');
     const published = new Date(meta.date);
     if (Number.isNaN(published.getTime())) return null;
+    if (!isNewsworthy(meta)) return null;
     return {
       title: meta.title,
       date: published.toISOString(),
       modified: modifiedDate(filePath, published.toISOString()),
       url: `${BASE_URL}/posts/${slug}/`,
+      section: inferSection(`${meta.title || ''} ${meta.excerpt || ''}`),
       keywords: buildKeywords(meta),
       image: absoluteAssetUrl(meta.coverImage),
     };
@@ -103,6 +113,7 @@ ${posts.map((post) => `  <url>
       <news:publication_date>${escapeXml(post.date)}</news:publication_date>
       <news:title>${escapeXml(post.title)}</news:title>
       <news:keywords>${escapeXml(post.keywords)}</news:keywords>
+      <news:genres>${escapeXml(post.section === 'Releases' ? 'PressRelease, Blog' : 'Blog')}</news:genres>
     </news:news>${post.image ? `
     <image:image>
       <image:loc>${escapeXml(post.image)}</image:loc>

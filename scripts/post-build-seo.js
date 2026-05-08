@@ -90,7 +90,9 @@ function injectImagePreload(html) {
 }
 
 function updateCanonicalAndUrls(html, canonicalUrl) {
-  html = html.replace(/<link rel="canonical" href="[^"]*"\s*\/?\s*>/i, `<link rel="canonical" href="${canonicalUrl}" />`);
+  html = html.replace(/\s*<link rel="alternate" hreflang="en" href="[^"]*"\s*\/?>/gi, '');
+  html = html.replace(/\s*<link rel="alternate" hreflang="x-default" href="[^"]*"\s*\/?>/gi, '');
+  html = html.replace(/<link rel="canonical" href="[^"]*"\s*\/?\s*>/i, `<link rel="canonical" href="${canonicalUrl}" />\n    <link rel="alternate" hreflang="en" href="${canonicalUrl}" />\n    <link rel="alternate" hreflang="x-default" href="${canonicalUrl}" />`);
   html = html.replace(/<meta property="og:url" content="[^"]*"\s*\/?\s*>/i, `<meta property="og:url" content="${canonicalUrl}" />`);
 
   html = html.replace(/"url":\s*"https:\/\/openclawchronicles\.com\{frontmatter\.url\}"/g, `"url": "${canonicalUrl}"`);
