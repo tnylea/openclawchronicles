@@ -62,6 +62,30 @@
             </div>
         </section>
 
+        <section class="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8" aria-labelledby="migration-intents-heading">
+            <div class="flex items-center gap-3">
+                <h2 id="migration-intents-heading" class="text-ink font-mono text-[0.6875rem] font-semibold tracking-widest uppercase">Browse by migration intent</h2>
+                <div class="bg-border-strong h-px flex-1" aria-hidden="true"></div>
+            </div>
+            <div class="mt-8 grid gap-6 lg:grid-cols-3">
+                <article class="border-border rounded-[min(0.3vw,4px)] border p-5">
+                    <span class="text-red-accent font-mono text-[0.625rem] font-semibold tracking-wider uppercase">Provider changes</span>
+                    <p class="text-ink-body mt-3 text-[0.9375rem] text-pretty">Start here if OpenClaw auth, provider policies, or CLI setup changed and you need the fastest path to a working replacement.</p>
+                    <a href="/posts/openclaw-2026-4-4-migrate-anthropic-oauth-to-claude-cli/" class="text-ink-strong hover:text-red-accent mt-4 inline-flex font-sans text-sm font-medium">Read the Claude CLI migration</a>
+                </article>
+                <article class="border-border rounded-[min(0.3vw,4px)] border p-5">
+                    <span class="text-red-accent font-mono text-[0.625rem] font-semibold tracking-wider uppercase">Version upgrades</span>
+                    <p class="text-ink-body mt-3 text-[0.9375rem] text-pretty">Use release coverage when you need to understand what changed between versions before you upgrade a production OpenClaw install.</p>
+                    <a href="/releases/" class="text-ink-strong hover:text-red-accent mt-4 inline-flex font-sans text-sm font-medium">Browse OpenClaw release coverage</a>
+                </article>
+                <article class="border-border rounded-[min(0.3vw,4px)] border p-5">
+                    <span class="text-red-accent font-mono text-[0.625rem] font-semibold tracking-wider uppercase">Risk and hardening</span>
+                    <p class="text-ink-body mt-3 text-[0.9375rem] text-pretty">Some migrations are driven by security fixes or exposed config paths, so pair upgrade steps with hardening guidance before reopening access.</p>
+                    <a href="/security/" class="text-ink-strong hover:text-red-accent mt-4 inline-flex font-sans text-sm font-medium">Compare with the security hub</a>
+                </article>
+            </div>
+        </section>
+
         <section class="defer-render mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8" aria-labelledby="migration-archive-heading">
             <div class="flex items-center gap-3">
                 <h2 id="migration-archive-heading" class="text-ink font-mono text-[0.6875rem] font-semibold tracking-widest uppercase">Migration archive</h2>

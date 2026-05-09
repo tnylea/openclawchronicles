@@ -9,6 +9,7 @@ const imageRoots = [
 ];
 
 const allowedExtensions = new Set(['.png', '.jpg', '.jpeg']);
+const responsiveWidths = [640, 960];
 const skipPatterns = [
   /favicon/i,
   /icon-/i,
@@ -32,6 +33,21 @@ function walk(dir) {
 
 function shouldSkip(file) {
   return skipPatterns.some((pattern) => pattern.test(file.replace(/\\/g, '/')));
+}
+
+function needsResponsiveVariants(file) {
+  const normalized = file.replace(/\\/g, '/');
+  return /\/assets\/images\/(posts\/|about-banner\.(png|jpe?g)$)/i.test(normalized);
+}
+
+async function writeWebp(source, output, width = null) {
+  let pipeline = sharp(source).rotate();
+
+  if (width) {
+    pipeline = pipeline.resize({ width, withoutEnlargement: true });
+  }
+
+  await pipeline.webp({ quality: 78, effort: 6 }).toFile(output);
 }
 
 async function main() {
@@ -58,12 +74,22 @@ async function main() {
         continue;
       }
 
-      await sharp(file)
-        .rotate()
-        .webp({ quality: 78, effort: 6 })
-        .toFile(output);
-
+      await writeWebp(file, output);
       converted += 1;
+
+      if (needsResponsiveVariants(file)) {
+        for (const width of responsiveWidths) {
+          const variantOutput = output.replace(/\.webp$/i, `-${width}.webp`);
+          const variantFresh = fs.existsSync(variantOutput) && fs.statSync(variantOutput).mtimeMs >= sourceStat.mtimeMs;
+          if (variantFresh) {
+            skipped += 1;
+            continue;
+          }
+
+          await writeWebp(file, variantOutput, width);
+          converted += 1;
+        }
+      }
     }
   }
 

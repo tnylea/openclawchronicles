@@ -866,6 +866,27 @@ function fixArticleMetadata(html, canonicalUrl) {
   return html;
 }
 
+function buildResponsiveWebpSrcset(src) {
+  const webpSrc = src.replace(/\.(png|jpe?g)(\?.*)?$/i, '.webp$2');
+  if (webpSrc === src) return null;
+
+  const sourcePath = webpSrc.replace(/^\//, '').split('?')[0];
+  const absolutePath = path.join(siteDir, sourcePath);
+  if (!fs.existsSync(absolutePath)) return null;
+
+  const candidates = [640, 960]
+    .map((width) => {
+      const candidateSrc = webpSrc.replace(/\.webp(\?.*)?$/i, `-${width}.webp$1`);
+      const candidatePath = path.join(siteDir, candidateSrc.replace(/^\//, '').split('?')[0]);
+      return fs.existsSync(candidatePath) ? `${candidateSrc} ${width}w` : null;
+    })
+    .filter(Boolean);
+
+  candidates.push(`${webpSrc} 1600w`);
+
+  return candidates.join(', ');
+}
+
 function wrapImagesWithPicture(html) {
   return html.replace(/<img\b([^>]*?)\s*\/?>/gi, (full, attrs) => {
     if (/data:|srcset=|<picture/i.test(full)) return full;
@@ -884,7 +905,10 @@ function wrapImagesWithPicture(html) {
     const webpPath = path.join(siteDir, webpSrc.replace(/^\//, '').split('?')[0]);
     if (!fs.existsSync(webpPath)) return full;
 
-    return `<picture><source srcset="${webpSrc}" type="image/webp">${full}</picture>`;
+    const srcset = buildResponsiveWebpSrcset(src);
+    const srcsetAttr = srcset ? ` srcset="${srcset}"` : ` srcset="${webpSrc}"`;
+
+    return `<picture><source${srcsetAttr} type="image/webp">${full}</picture>`;
   });
 }
 
