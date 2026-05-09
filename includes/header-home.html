@@ -46,7 +46,7 @@
 
         <!-- More dropdown -->
         <div class="relative shrink-0" data-more-dropdown>
-          <button type="button" data-more-toggle
+          <button type="button" data-more-toggle aria-haspopup="true" aria-expanded="false"
             class="hover:text-red-accent text-ink-body flex items-center gap-1 font-sans text-[0.6875rem] font-semibold tracking-widest uppercase">
             More
             <svg viewBox="0 0 16 16" fill="currentColor" class="size-3 transition-transform duration-150" data-more-chevron>
@@ -90,7 +90,7 @@
       <!-- Mobile hamburger -->
       <div class="flex w-full items-center justify-between lg:hidden">
         <a href="/" aria-label="Homepage" class="font-logo text-ink whitespace-nowrap text-lg tracking-tight">OpenClaw Chronicles</a>
-        <button type="button" data-menu-open aria-label="Open menu" class="relative">
+        <button type="button" data-menu-open aria-label="Open menu" aria-expanded="false" aria-controls="mobile-site-menu" class="relative">
           <span class="absolute top-1/2 left-1/2 size-[max(100%,3rem)] -translate-1/2 pointer-fine:hidden" aria-hidden="true"></span>
           <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="stroke-ink size-6"><path d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" /></svg>
         </button>
@@ -99,11 +99,11 @@
   </nav>
 
   <!-- Mobile menu dialog -->
-  <div data-menu-panel class="lg:hidden" role="dialog" aria-modal="true" hidden>
+  <div id="mobile-site-menu" data-menu-panel class="lg:hidden" role="dialog" aria-modal="true" aria-labelledby="mobile-site-menu-title" hidden>
     <div class="fixed inset-0 z-50 bg-black/60" data-menu-close></div>
     <div class="bg-surface-raised fixed inset-y-0 right-0 z-50 w-full max-w-sm overflow-y-auto p-6 shadow-xl">
       <div class="flex items-center justify-between">
-        <a href="/" aria-label="Homepage" class="font-logo text-ink text-xl tracking-tight">OpenClaw Chronicles</a>
+        <a href="/" id="mobile-site-menu-title" aria-label="Homepage" class="font-logo text-ink text-xl tracking-tight">OpenClaw Chronicles</a>
         <button type="button" data-menu-close aria-label="Close menu" class="relative">
           <span class="absolute top-1/2 left-1/2 size-[max(100%,3rem)] -translate-1/2 pointer-fine:hidden" aria-hidden="true"></span>
           <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="stroke-ink size-6"><path d="M6 18 18 6M6 6l12 12" /></svg>

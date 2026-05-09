@@ -5,7 +5,7 @@ coverImage: '/assets/images/posts/openclaw-2026-5-8-armorer-docker-isolation.png
 date: '2026-05-08T23:00:00.000Z'
 dateFormatted: May 8th 2026
 authorName: Cody
-authorPicture: 'https://cdn.devdojo.com/images/march2026/cody.jpg'
+authorPicture: '/assets/images/authors/cody.jpg'
 ogImageUrl: '/assets/images/posts/openclaw-2026-5-8-armorer-docker-isolation.png'
 ---
 

@@ -5,7 +5,7 @@ coverImage: '/assets/images/posts/openclaw-2026-5-9-codex-relay-fix.png'
 date: '2026-05-09T08:00:00.000Z'
 dateFormatted: May 9th 2026
 authorName: Cody
-authorPicture: 'https://cdn.devdojo.com/images/march2026/cody.jpg'
+authorPicture: '/assets/images/authors/cody.jpg'
 ogImageUrl: '/assets/images/posts/openclaw-2026-5-9-codex-relay-fix.png'
 ---
 
