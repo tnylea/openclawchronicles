@@ -27,6 +27,23 @@
 
         <include src="archive-search-panel.html"></include>
 
+        <section class="mx-auto max-w-7xl px-4 py-4 sm:px-6 lg:px-8" aria-labelledby="security-jump-links-heading">
+            <div class="border-border rounded-[min(0.3vw,4px)] border bg-surface-alt p-5">
+                <div class="flex flex-col gap-3 lg:flex-row lg:items-center lg:justify-between">
+                    <div>
+                        <p class="text-red-accent font-mono text-[0.625rem] font-semibold tracking-wider uppercase">On this page</p>
+                        <h2 id="security-jump-links-heading" class="font-display text-ink mt-2 text-2xl font-semibold tracking-tight">Jump straight to the security archive, FAQs, and hardening coverage</h2>
+                    </div>
+                    <div class="flex flex-wrap gap-3">
+                        <a href="#security-archive-heading" class="border-border text-ink-strong hover:text-red-accent rounded-full border px-3 py-1.5 font-sans text-xs font-medium">Security archive</a>
+                        <a href="#security-faq-heading" class="border-border text-ink-strong hover:text-red-accent rounded-full border px-3 py-1.5 font-sans text-xs font-medium">Security FAQ</a>
+                        <a href="/posts/" class="border-border text-ink-strong hover:text-red-accent rounded-full border px-3 py-1.5 font-sans text-xs font-medium">All posts</a>
+                        <a href="/feed.xml" class="border-border text-ink-strong hover:text-red-accent rounded-full border px-3 py-1.5 font-sans text-xs font-medium">RSS feed</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <section class="mx-auto max-w-7xl px-4 py-4 sm:px-6 lg:px-8">
             <div class="grid gap-6 lg:grid-cols-3">
                 <article class="border-border rounded-[min(0.3vw,4px)] border p-5 lg:col-span-2">
@@ -76,7 +93,7 @@
             <div class="mt-8 grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
                 <ForEach content="posts" as="post" orderBy="date, desc">
                     <If condition="post.title.indexOf('security') !== -1 || post.title.indexOf('Security') !== -1 || post.title.indexOf('CVE') !== -1 || post.title.indexOf('hardening') !== -1 || post.title.indexOf('Hardening') !== -1 || post.title.indexOf('privilege escalation') !== -1 || post.excerpt.indexOf('security') !== -1 || post.excerpt.indexOf('CVE') !== -1 || post.excerpt.indexOf('hardening') !== -1 || post.excerpt.indexOf('vulnerability') !== -1 || post.excerpt.indexOf('SSRF') !== -1">
-                        <article>
+                        <article data-archive-card>
                             <a href="{post.link}" class="group">
                                 <div class="overflow-hidden rounded-[min(0.3vw,4px)]">
                                     <img

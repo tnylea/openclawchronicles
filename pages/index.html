@@ -138,7 +138,7 @@
             <div class="lg:divide-border grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 lg:gap-0 lg:divide-x">
                 <ForEach content="posts" as="post" orderBy="date, desc" count="3">
                     <If condition="loop == 1">
-                        <article class="lg:pr-5">
+                        <article class="lg:pr-5" data-archive-card>
                             <a href="{post.link}" class="group flex gap-4 lg:flex-col lg:gap-0" data-post-date="{post.date}">
                                 <div class="shrink-0 sm:shrink">
                                     <img
@@ -161,7 +161,7 @@
                         </article>
                     </If>
                     <If condition="loop == 2">
-                        <article class="lg:px-5">
+                        <article class="lg:px-5" data-archive-card>
                             <a href="{post.link}" class="group flex gap-4 lg:flex-col lg:gap-0" data-post-date="{post.date}">
                                 <div class="shrink-0 sm:shrink">
                                     <img
@@ -184,7 +184,7 @@
                         </article>
                     </If>
                     <If condition="loop == 3">
-                        <article class="lg:pl-5">
+                        <article class="lg:pl-5" data-archive-card>
                             <a href="{post.link}" class="group flex gap-4 lg:flex-col lg:gap-0" data-post-date="{post.date}">
                                 <div class="shrink-0 sm:shrink">
                                     <img
@@ -238,7 +238,7 @@
                     <div>
                     <ForEach content="posts" as="post" orderBy="date, desc" count="12">
                         <div data-article>
-                        <article class="mt-8">
+                        <article class="mt-8" data-archive-card>
                             <a href="{post.link}" class="group grid gap-6 sm:grid-cols-2" data-post-date="{post.date}">
                                 <div>
                                     <img
