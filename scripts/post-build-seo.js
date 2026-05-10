@@ -269,6 +269,20 @@ function buildWebsiteSearchAction() {
   };
 }
 
+function matchesHubTopic(post, label) {
+  const haystack = `${post.title} ${post.excerpt} ${post.content}`.toLowerCase();
+
+  if (label === 'Releases') return inferSection(post) === 'Releases';
+  if (label === 'Security') return inferSection(post) === 'Security';
+  if (label === 'Guides') return inferSection(post) === 'Guides';
+  if (label === 'Memory') return /\bmemory\b|dreaming|recall|wiki|active memory|memory palace|memory palace|session search|formative memory|memory plugin/.test(haystack);
+  if (label === 'Migrations') return /\bmigrate\b|migration|upgrade|oauth|claude cli|breaking change|doctor --fix|provider change|provider-change/.test(haystack);
+  if (label === 'Local Models') return /ollama|local model|\blocal\b|macbook air|gemma|mlx|on-device|self-hosted model/.test(haystack);
+  if (label === 'Site Map') return /openclaw|guide|tutorial|migrate|migration|setup|security|release|beta|hotfix|cve/.test(haystack);
+
+  return false;
+}
+
 function sectionMeta(section) {
   const map = {
     Releases: { href: `${siteUrl}/releases/`, label: 'Releases' },
@@ -439,16 +453,7 @@ function fixTopicHubMetadata(html, canonicalUrl) {
         : 'site-map-faq-heading';
   const faqSchema = buildFaqSchema(extractFaqEntries(html, faqSectionId));
 
-  const hubPosts = allPosts.filter((post) => {
-    const haystack = `${post.title} ${post.excerpt} ${post.content}`.toLowerCase();
-    if (hub.label === 'Releases') return /release|beta|hotfix|stable/.test(haystack);
-    if (hub.label === 'Security') return /security|cve|hardening|ssrf|redos|exploit|vulnerability/.test(haystack);
-    if (hub.label === 'Memory') return /memory|dreaming|recall|wiki|active memory|rem/.test(haystack);
-    if (hub.label === 'Migrations') return /migrate|migration|upgrade|breaking|oauth|claude cli|config/.test(haystack);
-    if (hub.label === 'Local Models') return /ollama|local|macbook air|gemma|mlx|on-device|local model/.test(haystack);
-    if (hub.label === 'Site Map') return /openclaw|guide|tutorial|migrate|migration|setup|security|release|beta|hotfix|cve/.test(haystack);
-    return /guide|tutorial|migrate|migration|setup|how to|locally/.test(haystack);
-  }).slice(0, 10).map((post, index) => ({
+  const hubPosts = allPosts.filter((post) => matchesHubTopic(post, hub.label)).slice(0, 10).map((post, index) => ({
     '@type': 'ListItem',
     position: index + 1,
     url: `${siteUrl}${post.url}`,
@@ -608,42 +613,42 @@ function injectHubFreshLinks(html, canonicalUrl) {
       headingId: 'latest-release-coverage-heading',
       heading: 'Latest release coverage',
       intro: 'Fresh release posts help this hub surface current stable launches, beta drops, and hotfix coverage faster.',
-      filter: (post) => inferSection(post) === 'Releases',
+      filter: (post) => matchesHubTopic(post, 'Releases'),
       label: 'Release',
     },
     [`${siteUrl}/security/`]: {
       headingId: 'latest-security-coverage-heading',
       heading: 'Latest security coverage',
       intro: 'Recent advisories and hardening stories strengthen internal linking for urgent OpenClaw security searches.',
-      filter: (post) => inferSection(post) === 'Security',
+      filter: (post) => matchesHubTopic(post, 'Security'),
       label: 'Security',
     },
     [`${siteUrl}/guides/`]: {
       headingId: 'latest-guides-coverage-heading',
       heading: 'Latest guides and walkthroughs',
       intro: 'Recent tutorials keep this hub fresh for recurring setup, migration, and local-model search intent.',
-      filter: (post) => inferSection(post) === 'Guides',
+      filter: (post) => matchesHubTopic(post, 'Guides'),
       label: 'Guide',
     },
     [`${siteUrl}/memory/`]: {
       headingId: 'latest-memory-coverage-heading',
       heading: 'Latest memory coverage',
       intro: 'Recent memory stories reinforce the strongest evergreen OpenClaw memory topics from one crawlable page.',
-      filter: (post) => /memory|dreaming|recall|wiki|active memory|rem/i.test(`${post.title} ${post.excerpt} ${post.content}`),
+      filter: (post) => matchesHubTopic(post, 'Memory'),
       label: 'Memory',
     },
     [`${siteUrl}/migrations/`]: {
       headingId: 'latest-migration-coverage-heading',
       heading: 'Latest migration coverage',
       intro: 'Recent migration stories help connect breaking changes, provider moves, and upgrade walkthroughs.',
-      filter: (post) => /migrate|migration|upgrade|breaking|oauth|claude cli|config/i.test(`${post.title} ${post.excerpt} ${post.content}`),
+      filter: (post) => matchesHubTopic(post, 'Migrations'),
       label: 'Migration',
     },
     [`${siteUrl}/local-models/`]: {
       headingId: 'latest-local-model-coverage-heading',
       heading: 'Latest local model coverage',
       intro: 'Recent local-model stories keep this hub current for Ollama, on-device, and self-hosted model workflows.',
-      filter: (post) => /ollama|local|macbook air|gemma|mlx|on-device|local model/i.test(`${post.title} ${post.excerpt} ${post.content}`),
+      filter: (post) => matchesHubTopic(post, 'Local Models'),
       label: 'Local models',
     },
   };
