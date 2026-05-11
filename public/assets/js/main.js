@@ -272,14 +272,26 @@
     });
   }
 
+  function runWhenIdle(callback) {
+    if ('requestIdleCallback' in window) {
+      window.requestIdleCallback(callback, { timeout: 1200 });
+      return;
+    }
+
+    window.setTimeout(callback, 1);
+  }
+
   document.addEventListener('DOMContentLoaded', function () {
     bindThemeButtons();
     bindMobileMenus();
     bindHomeHeader();
-    bindMastheadMeta();
-    bindCurrentDate();
-    bindActiveNav();
-    bindMoreDropdowns();
+
+    runWhenIdle(function () {
+      bindMastheadMeta();
+      bindCurrentDate();
+      bindActiveNav();
+      bindMoreDropdowns();
+    });
   });
 
   darkModeQuery.addEventListener('change', function () {
