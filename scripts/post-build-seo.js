@@ -63,6 +63,13 @@ function injectOrReplace(html, regex, replacement) {
   return html;
 }
 
+function normalizeInternalPostLinks(html) {
+  return html.replace(/href="\/posts\/([a-z0-9-]+)(?<!\/)"/gi, (match, slug) => {
+    if (/^\d+$/.test(slug)) return match;
+    return `href="/posts/${slug}/"`;
+  });
+}
+
 function injectImagePreload(html) {
   if (html.includes('data-seo-preload="hero-image"')) return html;
 
@@ -89,15 +96,30 @@ function injectImagePreload(html) {
   return html.replace(/<link rel="stylesheet" href="\/styles\.css" \/>/i, `${preloadTag}\n    <link rel="stylesheet" href="/styles.css" />`);
 }
 
+function stripArticleOnlyMeta(html) {
+  return html
+    .replace(/\s*<meta property="article:published_time" content="[^"]*"\s*\/?>/gi, '')
+    .replace(/\s*<meta property="article:modified_time" content="[^"]*"\s*\/?>/gi, '')
+    .replace(/\s*<meta property="article:author" content="[^"]*"\s*\/?>/gi, '')
+    .replace(/\s*<meta property="article:section" content="[^"]*"\s*\/?>/gi, '')
+    .replace(/\s*<meta property="article:tag" content="[^"]*"\s*\/?>/gi, '')
+    .replace(/\s*<meta property="og:updated_time" content="[^"]*"\s*\/?>/gi, '');
+}
+
 function updateCanonicalAndUrls(html, canonicalUrl) {
   html = html.replace(/\s*<link rel="alternate" hreflang="en" href="[^"]*"\s*\/?>/gi, '');
   html = html.replace(/\s*<link rel="alternate" hreflang="x-default" href="[^"]*"\s*\/?>/gi, '');
   html = html.replace(/<link rel="canonical" href="[^"]*"\s*\/?\s*>/i, `<link rel="canonical" href="${canonicalUrl}" />\n    <link rel="alternate" hreflang="en" href="${canonicalUrl}" />\n    <link rel="alternate" hreflang="x-default" href="${canonicalUrl}" />`);
   html = html.replace(/<meta property="og:url" content="[^"]*"\s*\/?\s*>/i, `<meta property="og:url" content="${canonicalUrl}" />`);
+  html = html.replace(/<meta property="og:url" content="\{frontmatter\.url\}"\s*\/?\s*>/gi, `<meta property="og:url" content="${canonicalUrl}" />`);
+  html = html.replace(/<link rel="canonical" href="\{frontmatter\.url\}"\s*\/?\s*>/gi, `<link rel="canonical" href="${canonicalUrl}" />\n    <link rel="alternate" hreflang="en" href="${canonicalUrl}" />\n    <link rel="alternate" hreflang="x-default" href="${canonicalUrl}" />`);
 
   html = html.replace(/"url":\s*"https:\/\/openclawchronicles\.com\{frontmatter\.url\}"/g, `"url": "${canonicalUrl}"`);
+  html = html.replace(/"url":\s*"\{frontmatter\.url\}"/g, `"url": "${canonicalUrl}"`);
   html = html.replace(/"item":\s*"https:\/\/openclawchronicles\.com\{frontmatter\.url\}"/g, `"item": "${canonicalUrl}"`);
+  html = html.replace(/"item":\s*"\{frontmatter\.url\}"/g, `"item": "${canonicalUrl}"`);
   html = html.replace(/"@id":\s*"https:\/\/openclawchronicles\.com\{frontmatter\.url\}"/g, `"@id": "${canonicalUrl}"`);
+  html = html.replace(/"@id":\s*"\{frontmatter\.url\}"/g, `"@id": "${canonicalUrl}"`);
   html = html.replace(/"url":\s*"https:\/\/openclawchronicles\.com\/"/g, (match, offset) => {
     const around = html.slice(Math.max(0, offset - 120), Math.min(html.length, offset + 120));
     if (around.includes('"@type": "WebSite"')) return match;
@@ -129,6 +151,8 @@ function fixAboutPageMetadata(html, canonicalUrl) {
   const description = 'Learn how OpenClaw Chronicles covers OpenClaw releases, security updates, tutorials, and ecosystem news with a human-AI editorial workflow.';
   const ogImage = `${siteUrl}/assets/images/about-banner.jpg`;
   const faqSchema = buildFaqSchema(extractFaqEntries(html, 'about-faq-heading'));
+
+  html = stripArticleOnlyMeta(html);
 
   html = html.replace(/<meta name="description" content="[^"]*"\s*\/?\s*>/i, `<meta name="description" content="${description}" />`);
   html = html.replace(/<meta name="author" content="[^"]*"\s*\/?\s*>/i, '<meta name="author" content="Cody" />');
@@ -164,6 +188,8 @@ function fixPostsArchiveMetadata(html, canonicalUrl) {
     : `Browse page ${pageNumber} of the OpenClaw Chronicles archive for older OpenClaw releases, guides, and security coverage.`;
   const ogImage = `${siteUrl}/assets/images/about-banner.jpg`;
   const faqSchema = buildFaqSchema(extractFaqEntries(html, 'archive-faq-heading'));
+
+  html = stripArticleOnlyMeta(html);
 
   html = html.replace(/<title>[^<]*<\/title>/i, `<title>${title}</title>`);
   html = html.replace(/<meta name="description" content="[^"]*"\s*\/?\s*>/i, `<meta name="description" content="${description}" />`);
@@ -424,6 +450,7 @@ function fixTopicHubMetadata(html, canonicalUrl) {
   if (!hub) return html;
 
   const ogImage = `${siteUrl}/assets/images/about-banner.jpg`;
+  html = stripArticleOnlyMeta(html);
   html = html.replace(/<title>[^<]*<\/title>/i, `<title>${hub.title}</title>`);
   html = html.replace(/<meta name="description" content="[^"]*"\s*\/?\s*>/i, `<meta name="description" content="${hub.description}" />`);
   html = html.replace(/<meta name="author" content="[^"]*"\s*\/?\s*>/i, '<meta name="author" content="Cody" />');
@@ -831,6 +858,10 @@ function fixArticleMetadata(html, canonicalUrl) {
   const timeRequired = Math.max(1, Math.ceil(wordCount / 220));
   const schemaType = section === 'Releases' ? 'TechArticle' : 'NewsArticle';
 
+  html = html.replace(/<meta property="article:modified_time" content="\{frontmatter\.dateModified\}"\s*\/?\s*>/i, `<meta property="article:modified_time" content="${post.modified}" />`);
+  html = html.replace(/<meta property="og:updated_time" content="\{frontmatter\.dateModified\}"\s*\/?\s*>/i, `<meta property="og:updated_time" content="${post.modified}" />`);
+  html = html.replace(/<meta property="og:url" content="\{frontmatter\.url\}"\s*\/?\s*>/i, `<meta property="og:url" content="${canonicalUrl}" />`);
+
   html = html.replace(/<meta property="og:type" content="[^\"]*"\s*\/?\s*>/i, '<meta property="og:type" content="article" />');
   html = html.replace(
     /<meta property="og:site_name" content="OpenClaw Chronicles"\s*\/?\s*>/i,
@@ -994,6 +1025,7 @@ for (const file of walk(siteDir)) {
   html = injectArticleToc(html, canonicalUrl);
   html = injectRelatedPosts(html, canonicalUrl);
   html = injectArticlePagination(html, canonicalUrl);
+  html = normalizeInternalPostLinks(html);
   html = wrapImagesWithPicture(html);
   html = optimizeImages(html);
   fs.writeFileSync(file, html);

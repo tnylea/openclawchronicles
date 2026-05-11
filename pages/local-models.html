@@ -66,7 +66,7 @@
                 <ForEach content="posts" as="post" orderBy="date, desc">
                     <If condition="post.title.indexOf('local') !== -1 || post.title.indexOf('Local') !== -1 || post.title.indexOf('Ollama') !== -1 || post.title.indexOf('ollama') !== -1 || post.title.indexOf('MacBook Air') !== -1 || post.title.indexOf('Gemma') !== -1 || post.title.indexOf('WSL2') !== -1 || post.excerpt.indexOf('local') !== -1 || post.excerpt.indexOf('Ollama') !== -1 || post.excerpt.indexOf('on-device') !== -1 || post.excerpt.indexOf('MacBook Air') !== -1 || post.excerpt.indexOf('self-hosted model') !== -1">
                         <article>
-                            <a href="{post.link}" class="group">
+                            <a href="{post.url}" class="group">
                                 <div class="overflow-hidden rounded-[min(0.3vw,4px)]">
                                     <img
                                         src="{post.coverImage}"

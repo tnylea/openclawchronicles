@@ -83,7 +83,7 @@
                 <ForEach content="posts" as="post" orderBy="date, desc">
                     <If condition="post.title.indexOf('memory') !== -1 || post.title.indexOf('Memory') !== -1 || post.title.indexOf('dreaming') !== -1 || post.title.indexOf('Dreaming') !== -1 || post.title.indexOf('REM') !== -1 || post.title.indexOf('wiki') !== -1 || post.excerpt.indexOf('memory') !== -1 || post.excerpt.indexOf('dreaming') !== -1 || post.excerpt.indexOf('recall') !== -1 || post.excerpt.indexOf('wiki') !== -1">
                         <article>
-                            <a href="{post.link}" class="group">
+                            <a href="{post.url}" class="group">
                                 <div class="overflow-hidden rounded-[min(0.3vw,4px)]">
                                     <img
                                         src="{post.coverImage}"

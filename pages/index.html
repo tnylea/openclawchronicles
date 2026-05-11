@@ -16,7 +16,7 @@
                         <!-- CENTER COLUMN (featured) -->
                         <div class="lg:col-span-6 lg:px-6 lg:order-2">
                             <article>
-                                <a href="{post.link}" class="group" data-post-date="{post.date}">
+                                <a href="{post.url}" class="group" data-post-date="{post.date}">
                                     <figure>
                                         <div class="overflow-hidden rounded-[min(0.5vw,6px)]">
                                             <img
@@ -55,7 +55,7 @@
                         <!-- LEFT COLUMN -->
                         <div class="lg:border-border lg:col-span-3 lg:border-r lg:pr-6 lg:order-1">
                             <article>
-                                <a href="{post.link}" class="group" data-post-date="{post.date}">
+                                <a href="{post.url}" class="group" data-post-date="{post.date}">
                                     <span class="text-red-accent font-mono text-[0.625rem] font-semibold tracking-wider uppercase">Latest</span>
                                     <h3 class="font-display group-hover:text-red-accent text-ink mt-1.5 text-xl font-semibold tracking-tight text-balance sm:text-lg">
                                         {post.title}
@@ -76,7 +76,7 @@
                         <!-- RIGHT COLUMN -->
                         <div class="lg:border-border lg:col-span-3 lg:border-l lg:pl-6 lg:order-3">
                             <article>
-                                <a href="{post.link}" class="group" data-post-date="{post.date}">
+                                <a href="{post.url}" class="group" data-post-date="{post.date}">
                                     <div class="flex items-center gap-2">
                                         <span class="relative flex size-2">
                                             <span class="bg-red-accent absolute inline-flex size-full animate-ping rounded-full opacity-75"></span>
@@ -162,7 +162,7 @@
                 <ForEach content="posts" as="post" orderBy="date, desc" count="3">
                     <If condition="loop == 1">
                         <article class="lg:pr-5" data-archive-card>
-                            <a href="{post.link}" class="group flex gap-4 lg:flex-col lg:gap-0" data-post-date="{post.date}">
+                            <a href="{post.url}" class="group flex gap-4 lg:flex-col lg:gap-0" data-post-date="{post.date}">
                                 <div class="shrink-0 sm:shrink">
                                     <img
                                         src="{post.coverImage}"
@@ -185,7 +185,7 @@
                     </If>
                     <If condition="loop == 2">
                         <article class="lg:px-5" data-archive-card>
-                            <a href="{post.link}" class="group flex gap-4 lg:flex-col lg:gap-0" data-post-date="{post.date}">
+                            <a href="{post.url}" class="group flex gap-4 lg:flex-col lg:gap-0" data-post-date="{post.date}">
                                 <div class="shrink-0 sm:shrink">
                                     <img
                                         src="{post.coverImage}"
@@ -208,7 +208,7 @@
                     </If>
                     <If condition="loop == 3">
                         <article class="lg:pl-5" data-archive-card>
-                            <a href="{post.link}" class="group flex gap-4 lg:flex-col lg:gap-0" data-post-date="{post.date}">
+                            <a href="{post.url}" class="group flex gap-4 lg:flex-col lg:gap-0" data-post-date="{post.date}">
                                 <div class="shrink-0 sm:shrink">
                                     <img
                                         src="{post.coverImage}"
@@ -262,7 +262,7 @@
                     <ForEach content="posts" as="post" orderBy="date, desc" count="12">
                         <div data-article>
                         <article class="mt-8" data-archive-card>
-                            <a href="{post.link}" class="group grid gap-6 sm:grid-cols-2" data-post-date="{post.date}">
+                            <a href="{post.url}" class="group grid gap-6 sm:grid-cols-2" data-post-date="{post.date}">
                                 <div>
                                     <img
                                         src="{post.coverImage}"
@@ -371,9 +371,9 @@
                     <h3 class="font-display text-ink mt-2 text-2xl font-semibold tracking-tight text-balance sm:text-xl">Track every OpenClaw release, beta, and hotfix</h3>
                     <p class="text-ink-body mt-3 text-[0.9375rem] text-pretty">Follow version launches, changelog breakdowns, and post-release fixes so readers can quickly understand what shipped and whether they should upgrade.</p>
                     <ul class="mt-5 space-y-3">
-                        <li><a href="/posts/openclaw-2026-4-12-release-v2026-4-11/" class="text-ink-strong hover:text-red-accent font-sans text-sm font-medium">OpenClaw v2026.4.11 Lands Plugin Setup and Better Web Chat</a></li>
-                        <li><a href="/posts/openclaw-2026-4-11-beta-memory-palace-embeds/" class="text-ink-strong hover:text-red-accent font-sans text-sm font-medium">OpenClaw v2026.4.11-beta.1 Adds Memory Palace and Embeds</a></li>
-                        <li><a href="/posts/openclaw-2026-4-8-v2026-4-8-hotfix/" class="text-ink-strong hover:text-red-accent font-sans text-sm font-medium">OpenClaw v2026.4.8: Hotfix for Bundled Channel Startup and Slack Proxy Support</a></li>
+                        <li><a href="/posts/openclaw-2026-5-6-release-notes/" class="text-ink-strong hover:text-red-accent font-sans text-sm font-medium">OpenClaw v2026.5.5 and v2026.5.6 Recovery Release Notes</a></li>
+                        <li><a href="/posts/openclaw-2026-5-5-v2026-5-4-stable/" class="text-ink-strong hover:text-red-accent font-sans text-sm font-medium">OpenClaw v2026.5.4 Stable Release Breakdown</a></li>
+                        <li><a href="/posts/openclaw-2026-5-11-beta3-release/" class="text-ink-strong hover:text-red-accent font-sans text-sm font-medium">OpenClaw v2026.5.10-beta.3 Improves Slack, Codex, and Plugin SDKs</a></li>
                     </ul>
                     <a href="/releases/" class="mt-5 inline-flex items-center gap-1.5 font-mono text-[0.625rem] font-semibold tracking-wider uppercase text-red-accent transition-colors hover:text-red-vibrant">
                         Browse the full releases hub
@@ -386,8 +386,8 @@
                     <h3 class="font-display text-ink mt-2 text-2xl font-semibold tracking-tight text-balance sm:text-xl">Security advisories, patches, and self-hosting hardening</h3>
                     <p class="text-ink-body mt-3 text-[0.9375rem] text-pretty">This track clusters OpenClaw security alerts, CVEs, exploit response, and configuration hardening for self-hosters who need actionable guidance fast.</p>
                     <ul class="mt-5 space-y-3">
-                        <li><a href="/posts/openclaw-2026-4-11-security-hardening/" class="text-ink-strong hover:text-red-accent font-sans text-sm font-medium">OpenClaw v2026.4.10 Security Hardening: What Changed and Why It Matters</a></li>
-                        <li><a href="/posts/openclaw-2026-4-6-privilege-escalation-cve/" class="text-ink-strong hover:text-red-accent font-sans text-sm font-medium">OpenClaw Privilege Escalation CVE: What You Need to Know</a></li>
+                        <li><a href="/posts/openclaw-2026-5-8-approval-security-ux/" class="text-ink-strong hover:text-red-accent font-sans text-sm font-medium">OpenClaw Approval Security UX Fixes Tighten SSRF and Review Flows</a></li>
+                        <li><a href="/posts/openclaw-2026-5-7-security-authz-release/" class="text-ink-strong hover:text-red-accent font-sans text-sm font-medium">OpenClaw v2026.5.7 Security and Authorization Release</a></li>
                         <li><a href="/posts/openclaw-2026-3-30-security-exposed-instances/" class="text-ink-strong hover:text-red-accent font-sans text-sm font-medium">OpenClaw Security Crisis: 42,000 Exposed Instances and What to Do</a></li>
                     </ul>
                     <a href="/security/" class="mt-5 inline-flex items-center gap-1.5 font-mono text-[0.625rem] font-semibold tracking-wider uppercase text-red-accent transition-colors hover:text-red-vibrant">
@@ -403,7 +403,7 @@
                     <ul class="mt-5 space-y-3">
                         <li><a href="/posts/openclaw-2026-4-11-active-memory-guide/" class="text-ink-strong hover:text-red-accent font-sans text-sm font-medium">OpenClaw Active Memory: Make Your Agent Remember Automatically</a></li>
                         <li><a href="/posts/openclaw-2026-4-4-migrate-anthropic-oauth-to-claude-cli/" class="text-ink-strong hover:text-red-accent font-sans text-sm font-medium">How to Migrate OpenClaw from Anthropic OAuth to Claude CLI</a></li>
-                        <li><a href="/posts/openclaw-2026-4-5-gemma4-turboquant-local-agent/" class="text-ink-strong hover:text-red-accent font-sans text-sm font-medium">Run OpenClaw Locally with Gemma 4 TurboQuant on a MacBook Air</a></li>
+                        <li><a href="/posts/openclaw-discord-voice-realtime-setup-2026/" class="text-ink-strong hover:text-red-accent font-sans text-sm font-medium">How to Set Up OpenClaw Discord Voice Realtime in 2026</a></li>
                     </ul>
                     <a href="/guides/" class="mt-5 inline-flex items-center gap-1.5 font-mono text-[0.625rem] font-semibold tracking-wider uppercase text-red-accent transition-colors hover:text-red-vibrant">
                         Visit the guides hub
