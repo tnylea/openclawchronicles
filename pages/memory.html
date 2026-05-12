@@ -19,13 +19,31 @@
                 <p class="font-body text-ink-muted mt-4 max-w-3xl text-lg italic">A focused landing page for readers researching OpenClaw memory, recall, wiki, dreaming, and long-term context workflows.</p>
                 <div class="mt-5 flex flex-wrap gap-3">
                     <a href="/guides/" class="border-border text-ink-strong hover:text-red-accent rounded-full border px-3 py-1.5 font-sans text-xs font-medium">Guides hub</a>
-                    <a href="/posts/?q=memory" class="border-border text-ink-strong hover:text-red-accent rounded-full border px-3 py-1.5 font-sans text-xs font-medium">Search memory posts</a>
+                    <a href="/migrations/" class="border-border text-ink-strong hover:text-red-accent rounded-full border px-3 py-1.5 font-sans text-xs font-medium">Migration help</a>
+                    <a href="/local-models/" class="border-border text-ink-strong hover:text-red-accent rounded-full border px-3 py-1.5 font-sans text-xs font-medium">Local model workflows</a>
                     <a href="/feed.xml" class="border-border text-ink-strong hover:text-red-accent rounded-full border px-3 py-1.5 font-sans text-xs font-medium">Follow via RSS</a>
                 </div>
             </div>
         </section>
 
         <include src="archive-search-panel.html"></include>
+
+        <section class="mx-auto max-w-7xl px-4 py-4 sm:px-6 lg:px-8" aria-labelledby="memory-jump-links-heading">
+            <div class="border-border rounded-[min(0.3vw,4px)] border bg-surface-alt p-5">
+                <div class="flex flex-col gap-3 lg:flex-row lg:items-center lg:justify-between">
+                    <div>
+                        <p class="text-red-accent font-mono text-[0.625rem] font-semibold tracking-wider uppercase">On this page</p>
+                        <h2 id="memory-jump-links-heading" class="font-display text-ink mt-2 text-2xl font-semibold tracking-tight">Jump to memory guides, archive coverage, and FAQ answers</h2>
+                    </div>
+                    <div class="flex flex-wrap gap-3">
+                        <a href="#memory-guides-heading" class="border-border text-ink-strong hover:text-red-accent rounded-full border px-3 py-1.5 font-sans text-xs font-medium">Best memory coverage</a>
+                        <a href="#memory-archive-heading" class="border-border text-ink-strong hover:text-red-accent rounded-full border px-3 py-1.5 font-sans text-xs font-medium">Memory archive</a>
+                        <a href="#memory-faq-heading" class="border-border text-ink-strong hover:text-red-accent rounded-full border px-3 py-1.5 font-sans text-xs font-medium">Memory FAQ</a>
+                        <a href="/guides/" class="border-border text-ink-strong hover:text-red-accent rounded-full border px-3 py-1.5 font-sans text-xs font-medium">Guides hub</a>
+                    </div>
+                </div>
+            </div>
+        </section>
 
         <section class="mx-auto max-w-7xl px-4 pb-8 sm:px-6 lg:px-8">
             <div class="grid gap-6 lg:grid-cols-3">
@@ -40,6 +58,30 @@
                         <li><a href="/posts/openclaw-memory-dreaming-rem-backfill/" class="text-ink-strong hover:text-red-accent font-sans text-sm font-medium">Memory dreaming REM backfill deep dive</a></li>
                         <li><a href="/posts/openclaw-2026-4-7-memory-dreaming-deep-dive/" class="text-ink-strong hover:text-red-accent font-sans text-sm font-medium">Memory dreaming feature overview</a></li>
                     </ul>
+                </article>
+            </div>
+        </section>
+
+        <section class="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8" aria-labelledby="memory-intents-heading">
+            <div class="flex items-center gap-3">
+                <h2 id="memory-intents-heading" class="text-ink font-mono text-[0.6875rem] font-semibold tracking-widest uppercase">Browse by memory intent</h2>
+                <div class="bg-border-strong h-px flex-1" aria-hidden="true"></div>
+            </div>
+            <div class="mt-8 grid gap-6 lg:grid-cols-3">
+                <article class="border-border rounded-[min(0.3vw,4px)] border p-5">
+                    <span class="text-red-accent font-mono text-[0.625rem] font-semibold tracking-wider uppercase">Active memory setup</span>
+                    <p class="text-ink-body mt-3 text-[0.9375rem] text-pretty">Start here if you want practical steps for getting OpenClaw to remember context automatically without manually patching every workflow.</p>
+                    <a href="/posts/openclaw-2026-4-11-active-memory-guide/" class="text-ink-strong hover:text-red-accent mt-4 inline-flex font-sans text-sm font-medium">Open the Active Memory guide</a>
+                </article>
+                <article class="border-border rounded-[min(0.3vw,4px)] border p-5">
+                    <span class="text-red-accent font-mono text-[0.625rem] font-semibold tracking-wider uppercase">Dreaming and recall</span>
+                    <p class="text-ink-body mt-3 text-[0.9375rem] text-pretty">Use these stories when you need the deeper architecture behind dreaming, REM backfill, grounded recall, and memory wiki behavior.</p>
+                    <a href="/posts/openclaw-memory-dreaming-rem-backfill/" class="text-ink-strong hover:text-red-accent mt-4 inline-flex font-sans text-sm font-medium">Read the REM backfill deep dive</a>
+                </article>
+                <article class="border-border rounded-[min(0.3vw,4px)] border p-5">
+                    <span class="text-red-accent font-mono text-[0.625rem] font-semibold tracking-wider uppercase">Related setup paths</span>
+                    <p class="text-ink-body mt-3 text-[0.9375rem] text-pretty">Memory questions often overlap with migrations, local models, and release changes, so these neighboring hubs keep the crawl path tight and useful.</p>
+                    <a href="/migrations/" class="text-ink-strong hover:text-red-accent mt-4 inline-flex font-sans text-sm font-medium">Compare with migration coverage</a>
                 </article>
             </div>
         </section>
@@ -120,6 +162,14 @@
                     <article>
                         <h3 class="font-display text-ink text-xl font-semibold tracking-tight">Does this hub cover dreaming and wiki memory too?</h3>
                         <p class="text-ink-body mt-2 text-[0.9375rem] text-pretty">Yes. It highlights dreaming, REM backfill, and memory wiki related coverage so readers can compare release notes and deeper explainers quickly.</p>
+                    </article>
+                    <article>
+                        <h3 class="font-display text-ink text-xl font-semibold tracking-tight">Which OpenClaw memory page is best for practical setup?</h3>
+                        <p class="text-ink-body mt-2 text-[0.9375rem] text-pretty">The <a href="/posts/openclaw-2026-4-11-active-memory-guide/" class="text-red-accent hover:text-red-vibrant">Active Memory guide</a> is the best starting point if your main question is how to configure memory for a real assistant workflow.</p>
+                    </article>
+                    <article>
+                        <h3 class="font-display text-ink text-xl font-semibold tracking-tight">Are memory changes tied to releases too?</h3>
+                        <p class="text-ink-body mt-2 text-[0.9375rem] text-pretty">Often, yes. Memory features and fixes regularly land inside major releases, so pairing this hub with <a href="/releases/" class="text-red-accent hover:text-red-vibrant">release coverage</a> helps you see what changed and when.</p>
                     </article>
                 </div>
             </div>

@@ -20,12 +20,30 @@
                 <div class="mt-5 flex flex-wrap gap-3">
                     <a href="/guides/" class="border-border text-ink-strong hover:text-red-accent rounded-full border px-3 py-1.5 font-sans text-xs font-medium">Guides hub</a>
                     <a href="/releases/" class="border-border text-ink-strong hover:text-red-accent rounded-full border px-3 py-1.5 font-sans text-xs font-medium">Release coverage</a>
-                    <a href="/posts/?q=migration" class="border-border text-ink-strong hover:text-red-accent rounded-full border px-3 py-1.5 font-sans text-xs font-medium">Search migration posts</a>
+                    <a href="/security/" class="border-border text-ink-strong hover:text-red-accent rounded-full border px-3 py-1.5 font-sans text-xs font-medium">Security hardening</a>
+                    <a href="/memory/" class="border-border text-ink-strong hover:text-red-accent rounded-full border px-3 py-1.5 font-sans text-xs font-medium">Memory workflows</a>
                 </div>
             </div>
         </section>
 
         <include src="archive-search-panel.html"></include>
+
+        <section class="mx-auto max-w-7xl px-4 py-4 sm:px-6 lg:px-8" aria-labelledby="migration-jump-links-heading">
+            <div class="border-border rounded-[min(0.3vw,4px)] border bg-surface-alt p-5">
+                <div class="flex flex-col gap-3 lg:flex-row lg:items-center lg:justify-between">
+                    <div>
+                        <p class="text-red-accent font-mono text-[0.625rem] font-semibold tracking-wider uppercase">On this page</p>
+                        <h2 id="migration-jump-links-heading" class="font-display text-ink mt-2 text-2xl font-semibold tracking-tight">Jump to key migrations, archive coverage, and upgrade FAQs</h2>
+                    </div>
+                    <div class="flex flex-wrap gap-3">
+                        <a href="#migration-guides-heading" class="border-border text-ink-strong hover:text-red-accent rounded-full border px-3 py-1.5 font-sans text-xs font-medium">Key migration stories</a>
+                        <a href="#migration-archive-heading" class="border-border text-ink-strong hover:text-red-accent rounded-full border px-3 py-1.5 font-sans text-xs font-medium">Migration archive</a>
+                        <a href="#migration-faq-heading" class="border-border text-ink-strong hover:text-red-accent rounded-full border px-3 py-1.5 font-sans text-xs font-medium">Migration FAQ</a>
+                        <a href="/guides/" class="border-border text-ink-strong hover:text-red-accent rounded-full border px-3 py-1.5 font-sans text-xs font-medium">Guides hub</a>
+                    </div>
+                </div>
+            </div>
+        </section>
 
         <section class="defer-render mx-auto max-w-7xl px-4 pb-12 sm:px-6 lg:px-8" aria-labelledby="migration-guides-heading">
             <div class="grid gap-6 lg:grid-cols-3">
@@ -132,6 +150,14 @@
                     <article>
                         <h3 class="font-display text-ink text-xl font-semibold tracking-tight">Does OpenClaw Chronicles explain breaking changes too?</h3>
                         <p class="text-ink-body mt-2 text-[0.9375rem] text-pretty">Yes. Release posts and migration tutorials are written to surface what changed, why it matters, and what readers likely need to update next.</p>
+                    </article>
+                    <article>
+                        <h3 class="font-display text-ink text-xl font-semibold tracking-tight">What if my migration is triggered by a security issue?</h3>
+                        <p class="text-ink-body mt-2 text-[0.9375rem] text-pretty">Pair this hub with the <a href="/security/" class="text-red-accent hover:text-red-vibrant">security archive</a> so you can judge urgency, patch order, and hardening steps before reopening production access.</p>
+                    </article>
+                    <article>
+                        <h3 class="font-display text-ink text-xl font-semibold tracking-tight">Are provider and auth migrations covered here too?</h3>
+                        <p class="text-ink-body mt-2 text-[0.9375rem] text-pretty">Yes. This hub is meant for exactly that kind of change, especially when OpenClaw provider defaults, auth flows, or CLI requirements move underneath an existing setup.</p>
                     </article>
                 </div>
             </div>

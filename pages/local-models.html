@@ -19,13 +19,72 @@
                 <p class="font-body text-ink-muted mt-4 max-w-3xl text-lg italic">A focused destination for local OpenClaw usage, MacBook Air workflows, Ollama setup, and practical self-hosted model coverage.</p>
                 <div class="mt-5 flex flex-wrap gap-3">
                     <a href="/guides/" class="border-border text-ink-strong hover:text-red-accent rounded-full border px-3 py-1.5 font-sans text-xs font-medium">Guides hub</a>
-                    <a href="/posts/?q=ollama" class="border-border text-ink-strong hover:text-red-accent rounded-full border px-3 py-1.5 font-sans text-xs font-medium">Search Ollama posts</a>
-                    <a href="/posts/?q=local models" class="border-border text-ink-strong hover:text-red-accent rounded-full border px-3 py-1.5 font-sans text-xs font-medium">Search local model coverage</a>
+                    <a href="/memory/" class="border-border text-ink-strong hover:text-red-accent rounded-full border px-3 py-1.5 font-sans text-xs font-medium">Memory workflows</a>
+                    <a href="/migrations/" class="border-border text-ink-strong hover:text-red-accent rounded-full border px-3 py-1.5 font-sans text-xs font-medium">Migration help</a>
+                    <a href="/feed.xml" class="border-border text-ink-strong hover:text-red-accent rounded-full border px-3 py-1.5 font-sans text-xs font-medium">Follow via RSS</a>
                 </div>
             </div>
         </section>
 
         <include src="archive-search-panel.html"></include>
+
+        <section class="mx-auto max-w-7xl px-4 py-4 sm:px-6 lg:px-8" aria-labelledby="local-model-jump-links-heading">
+            <div class="border-border rounded-[min(0.3vw,4px)] border bg-surface-alt p-5">
+                <div class="flex flex-col gap-3 lg:flex-row lg:items-center lg:justify-between">
+                    <div>
+                        <p class="text-red-accent font-mono text-[0.625rem] font-semibold tracking-wider uppercase">On this page</p>
+                        <h2 id="local-model-jump-links-heading" class="font-display text-ink mt-2 text-2xl font-semibold tracking-tight">Jump to local-model setup guides, archive coverage, and FAQ answers</h2>
+                    </div>
+                    <div class="flex flex-wrap gap-3">
+                        <a href="#local-models-heading" class="border-border text-ink-strong hover:text-red-accent rounded-full border px-3 py-1.5 font-sans text-xs font-medium">Best local-model coverage</a>
+                        <a href="#local-models-archive-heading" class="border-border text-ink-strong hover:text-red-accent rounded-full border px-3 py-1.5 font-sans text-xs font-medium">Local model archive</a>
+                        <a href="#local-model-faq-heading" class="border-border text-ink-strong hover:text-red-accent rounded-full border px-3 py-1.5 font-sans text-xs font-medium">Local model FAQ</a>
+                        <a href="/guides/" class="border-border text-ink-strong hover:text-red-accent rounded-full border px-3 py-1.5 font-sans text-xs font-medium">Guides hub</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="mx-auto max-w-7xl px-4 pb-8 sm:px-6 lg:px-8">
+            <div class="grid gap-6 lg:grid-cols-3">
+                <article class="border-border rounded-[min(0.3vw,4px)] border p-5 lg:col-span-2">
+                    <span class="text-red-accent font-mono text-[0.625rem] font-semibold tracking-wider uppercase">Why this matters</span>
+                    <p class="text-ink-body mt-3 text-[0.9375rem] text-pretty">Local model traffic usually comes from readers comparing Ollama setups, privacy-first OpenClaw installs, MacBook Air viability, and on-device tradeoffs. This hub keeps those answers grouped into one stronger discovery path.</p>
+                </article>
+                <article class="border-border rounded-[min(0.3vw,4px)] border p-5">
+                    <span class="text-red-accent font-mono text-[0.625rem] font-semibold tracking-wider uppercase">Start here</span>
+                    <ul class="mt-3 space-y-3">
+                        <li><a href="/posts/openclaw-2026-4-5-gemma4-turboquant-local-agent/" class="text-ink-strong hover:text-red-accent font-sans text-sm font-medium">Run OpenClaw locally on a MacBook Air</a></li>
+                        <li><a href="/posts/openclaw-2026-3-27-wsl2-ollama-fix/" class="text-ink-strong hover:text-red-accent font-sans text-sm font-medium">Fix WSL2 Ollama networking issues</a></li>
+                        <li><a href="/posts/openclaw-2026-4-7-freecodecamp-guide-ollama-update/" class="text-ink-strong hover:text-red-accent font-sans text-sm font-medium">Broader Ollama and community setup context</a></li>
+                    </ul>
+                </article>
+            </div>
+        </section>
+
+        <section class="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8" aria-labelledby="local-model-intents-heading">
+            <div class="flex items-center gap-3">
+                <h2 id="local-model-intents-heading" class="text-ink font-mono text-[0.6875rem] font-semibold tracking-widest uppercase">Browse by local-model intent</h2>
+                <div class="bg-border-strong h-px flex-1" aria-hidden="true"></div>
+            </div>
+            <div class="mt-8 grid gap-6 lg:grid-cols-3">
+                <article class="border-border rounded-[min(0.3vw,4px)] border p-5">
+                    <span class="text-red-accent font-mono text-[0.625rem] font-semibold tracking-wider uppercase">Portable setups</span>
+                    <p class="text-ink-body mt-3 text-[0.9375rem] text-pretty">Start here if you want to know whether OpenClaw can run well on a MacBook Air or other modest local hardware.</p>
+                    <a href="/posts/openclaw-2026-4-5-gemma4-turboquant-local-agent/" class="text-ink-strong hover:text-red-accent mt-4 inline-flex font-sans text-sm font-medium">Read the MacBook Air guide</a>
+                </article>
+                <article class="border-border rounded-[min(0.3vw,4px)] border p-5">
+                    <span class="text-red-accent font-mono text-[0.625rem] font-semibold tracking-wider uppercase">Ollama troubleshooting</span>
+                    <p class="text-ink-body mt-3 text-[0.9375rem] text-pretty">Use these stories when your local OpenClaw install works in theory but provider routing, WSL networking, or model plumbing is getting in the way.</p>
+                    <a href="/posts/openclaw-2026-3-27-wsl2-ollama-fix/" class="text-ink-strong hover:text-red-accent mt-4 inline-flex font-sans text-sm font-medium">Open the Ollama fix guide</a>
+                </article>
+                <article class="border-border rounded-[min(0.3vw,4px)] border p-5">
+                    <span class="text-red-accent font-mono text-[0.625rem] font-semibold tracking-wider uppercase">Related setup paths</span>
+                    <p class="text-ink-body mt-3 text-[0.9375rem] text-pretty">Local model readers often need migration and memory context too, especially when moving providers or trying to keep more data on-device.</p>
+                    <a href="/migrations/" class="text-ink-strong hover:text-red-accent mt-4 inline-flex font-sans text-sm font-medium">Compare with migration help</a>
+                </article>
+            </div>
+        </section>
 
         <section class="defer-render mx-auto max-w-7xl px-4 pb-12 sm:px-6 lg:px-8" aria-labelledby="local-models-heading">
             <div class="mt-2 flex items-center gap-3">
@@ -103,6 +162,14 @@
                     <article>
                         <h3 class="font-display text-ink text-xl font-semibold tracking-tight">Does this hub include troubleshooting coverage too?</h3>
                         <p class="text-ink-body mt-2 text-[0.9375rem] text-pretty">Yes. It links setup guides and problem-solving stories so searchers can move from installation to fixes without bouncing across unrelated pages.</p>
+                    </article>
+                    <article>
+                        <h3 class="font-display text-ink text-xl font-semibold tracking-tight">Which OpenClaw local-model guide is best for beginners?</h3>
+                        <p class="text-ink-body mt-2 text-[0.9375rem] text-pretty">The <a href="/posts/openclaw-2026-4-5-gemma4-turboquant-local-agent/" class="text-red-accent hover:text-red-vibrant">MacBook Air Gemma guide</a> is the clearest beginner entry point because it combines hardware expectations, model choice, and a practical OpenClaw workflow.</p>
+                    </article>
+                    <article>
+                        <h3 class="font-display text-ink text-xl font-semibold tracking-tight">Do local-model workflows overlap with migration coverage?</h3>
+                        <p class="text-ink-body mt-2 text-[0.9375rem] text-pretty">Often, yes. Moving from cloud providers to Ollama or other local setups usually involves provider changes, so the <a href="/migrations/" class="text-red-accent hover:text-red-vibrant">migration hub</a> is a useful companion.</p>
                     </article>
                 </div>
             </div>
