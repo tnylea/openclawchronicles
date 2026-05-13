@@ -266,8 +266,8 @@ function extractFaqEntries(html, sectionId) {
   let match;
 
   while ((match = cardRegex.exec(sectionMatch[1])) !== null) {
-    const question = match[1].replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').trim();
-    const answer = match[2].replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').trim();
+    const question = cleanTextForSchema(match[1]);
+    const answer = cleanTextForSchema(match[2]);
     if (question && answer) entries.push({ question, answer });
   }
 
@@ -285,6 +285,16 @@ function buildFaqSchema(entries) {
           text: entry.answer,
         },
       })), null, 8)}\n    }\n    </script>`;
+}
+
+function cleanTextForSchema(text) {
+  return String(text || '')
+    .replace(/<[^>]+>/g, ' ')
+    .replace(/\s+/g, ' ')
+    .replace(/\s+([,.;:!?])/g, '$1')
+    .replace(/([("'])\s+/g, '$1')
+    .replace(/\s+([)"'])/g, '$1')
+    .trim();
 }
 
 function buildWebsiteSearchAction() {
@@ -842,12 +852,70 @@ function injectArticlePagination(html, canonicalUrl) {
   return html.replace(paginationRegex, `<div id="story-pagination" class="mt-6 grid gap-4 sm:grid-cols-2">${markup}</div>`);
 }
 
+function decorateActiveNavigation(html, canonicalUrl) {
+  const navTargets = ['/', '/posts/', '/releases/', '/security/', '/guides/', '/migrations/', '/memory/', '/local-models/', '/site-map/', '/about/', '/feed.xml', '/feed.json'];
+
+  let currentPath = canonicalUrl.replace(siteUrl, '/');
+  if (!currentPath.startsWith('/')) currentPath = `/${currentPath}`;
+
+  let activePath = currentPath;
+  if (/^\/posts\/[^/]+\/$/.test(currentPath)) {
+    const slug = currentPath.split('/').filter(Boolean).pop();
+    const post = postBySlug.get(slug);
+    const section = post ? inferSection(post) : 'OpenClaw News';
+    activePath = sectionMeta(section).href.replace(siteUrl, '');
+  } else if (/^\/posts\/\d+\/$/.test(currentPath)) {
+    activePath = '/posts/';
+  }
+
+  for (const target of navTargets) {
+    const escaped = target.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+    const regex = new RegExp(`<a([^>]*?)href="${escaped}"([^>]*)>`, 'g');
+    html = html.replace(regex, (full, before, after) => {
+      const normalizedBefore = before.replace(/\saria-current="page"/gi, '');
+      const normalizedAfter = after.replace(/\saria-current="page"/gi, '');
+      if (target !== activePath) return `<a${normalizedBefore}href="${target}"${normalizedAfter}>`;
+      return `<a${normalizedBefore}href="${target}"${normalizedAfter} aria-current="page">`;
+    });
+  }
+
+  return html;
+}
+
+function injectArticleMetaSummary(html, canonicalUrl) {
+  const match = canonicalUrl.match(/\/posts\/([^/]+)\/$/);
+  if (!match || html.includes('story-meta-summary')) return html;
+
+  const post = postBySlug.get(match[1]);
+  if (!post) return html;
+
+  const section = inferSection(post);
+  const sectionInfo = sectionMeta(section);
+  const wordCount = String(post.content || '').split(/\s+/).filter(Boolean).length;
+  const readTime = Math.max(1, Math.ceil(wordCount / 220));
+  const updatedDate = new Date(post.modified || post.date);
+  const updatedLabel = Number.isNaN(updatedDate.getTime())
+    ? null
+    : updatedDate.toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric', timeZone: 'UTC' });
+
+  const summaryMarkup = `
+            <div id="story-meta-summary" class="mt-5 flex flex-wrap items-center gap-2.5" aria-label="Story details">
+                <a href="${sectionInfo.href.replace(siteUrl, '/')}" class="border-border text-ink-strong hover:text-red-accent rounded-full border px-3 py-1.5 font-sans text-xs font-medium">Filed under ${sectionInfo.label}</a>
+                <span class="border-border text-ink-muted rounded-full border px-3 py-1.5 font-sans text-xs">${readTime} min read</span>
+                ${updatedLabel ? `<span class="border-border text-ink-muted rounded-full border px-3 py-1.5 font-sans text-xs">Updated ${updatedLabel}</span>` : ''}
+            </div>`;
+
+  return html.replace(/(<p class="font-body text-ink-muted mt-4 text-lg italic">[\s\S]*?<\/p>)/i, `$1${summaryMarkup}`);
+}
+
 function fixArticleMetadata(html, canonicalUrl) {
   const match = canonicalUrl.match(/\/posts\/([^/]+)\/$/);
   if (!match) return html;
 
   const post = postBySlug.get(match[1]);
   if (!post) return html;
+
+  html = stripArticleOnlyMeta(html);
 
   const section = inferSection(post);
   const sectionInfo = sectionMeta(section);
@@ -865,7 +933,7 @@ function fixArticleMetadata(html, canonicalUrl) {
   html = html.replace(/<meta property="og:type" content="[^\"]*"\s*\/?\s*>/i, '<meta property="og:type" content="article" />');
   html = html.replace(
     /<meta property="og:site_name" content="OpenClaw Chronicles"\s*\/?\s*>/i,
-    `<meta property="og:site_name" content="OpenClaw Chronicles" />\n    <meta property="og:locale" content="en_US" />\n    <meta property="article:published_time" content="${post.date}" />\n    <meta property="article:modified_time" content="${post.modified}" />\n    <meta property="article:author" content="${post.authorName}" />\n    <meta property="article:section" content="${section}" />\n    ${topKeywords.map((keyword) => `<meta property="article:tag" content="${keyword}" />`).join('\n    ')}`
+    `<meta property="og:site_name" content="OpenClaw Chronicles" />\n    <meta property="article:published_time" content="${post.date}" />\n    <meta property="article:modified_time" content="${post.modified}" />\n    <meta property="article:author" content="${post.authorName}" />\n    <meta property="article:section" content="${section}" />\n    ${topKeywords.map((keyword) => `<meta property="article:tag" content="${keyword}" />`).join('\n    ')}`
   );
 
   html = injectOrReplace(
@@ -1020,11 +1088,13 @@ for (const file of walk(siteDir)) {
   }
 
   html = fixArticleMetadata(html, canonicalUrl);
+  html = injectArticleMetaSummary(html, canonicalUrl);
   html = injectLatestTopicSections(html, canonicalUrl);
   html = injectHubFreshLinks(html, canonicalUrl);
   html = injectArticleToc(html, canonicalUrl);
   html = injectRelatedPosts(html, canonicalUrl);
   html = injectArticlePagination(html, canonicalUrl);
+  html = decorateActiveNavigation(html, canonicalUrl);
   html = normalizeInternalPostLinks(html);
   html = wrapImagesWithPicture(html);
   html = optimizeImages(html);
