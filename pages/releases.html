@@ -94,7 +94,7 @@
                 <ForEach content="posts" as="post" orderBy="date, desc">
                     <If condition="post.title.indexOf('release') !== -1 || post.title.indexOf('Release') !== -1 || post.title.indexOf('beta') !== -1 || post.title.indexOf('Beta') !== -1 || post.title.indexOf('hotfix') !== -1 || post.title.indexOf('Hotfix') !== -1 || post.title.indexOf('preview') !== -1 || post.title.indexOf('Preview') !== -1 || post.excerpt.indexOf('release') !== -1 || post.excerpt.indexOf('beta') !== -1 || post.excerpt.indexOf('hotfix') !== -1 || post.excerpt.indexOf('stable build') !== -1 || post.excerpt.indexOf('changelog') !== -1">
                         <article data-archive-card>
-                            <a href="{post.url}" class="group">
+                            <a href="{post.link}" class="group">
                                 <div class="overflow-hidden rounded-[min(0.3vw,4px)]">
                                     <img
                                         src="{post.coverImage}"

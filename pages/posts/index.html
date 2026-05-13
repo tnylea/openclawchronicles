@@ -128,7 +128,7 @@
             <div class="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3" data-archive-results id="archive-results">
                 <ForEach content="posts" as="post" orderBy="date, desc">
                     <article data-archive-card data-archive-search-text="{post.title} {post.excerpt} {post.dateFormatted}">
-                        <a href="{post.url}" class="group">
+                        <a href="{post.link}" class="group">
                             <div class="overflow-hidden rounded-[min(0.3vw,4px)]">
                                 <img
                                     src="{post.coverImage}"

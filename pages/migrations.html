@@ -113,7 +113,7 @@
                 <ForEach content="posts" as="post" orderBy="date, desc">
                     <If condition="post.title.indexOf('migrate') !== -1 || post.title.indexOf('Migrate') !== -1 || post.title.indexOf('migration') !== -1 || post.title.indexOf('Migration') !== -1 || post.title.indexOf('upgrade') !== -1 || post.title.indexOf('Upgrade') !== -1 || post.title.indexOf('breaking') !== -1 || post.excerpt.indexOf('migration') !== -1 || post.excerpt.indexOf('migrate') !== -1 || post.excerpt.indexOf('upgrade') !== -1 || post.excerpt.indexOf('breaking change') !== -1 || post.excerpt.indexOf('config') !== -1">
                         <article>
-                            <a href="{post.url}" class="group">
+                            <a href="{post.link}" class="group">
                                 <div class="overflow-hidden rounded-[min(0.3vw,4px)]">
                                     <img
                                         src="{post.coverImage}"
