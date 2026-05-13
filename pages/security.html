@@ -92,7 +92,7 @@
             </div>
             <div class="mt-8 grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
                 <ForEach content="posts" as="post" orderBy="date, desc">
-                    <If condition="post.title.indexOf('security') !== -1 || post.title.indexOf('Security') !== -1 || post.title.indexOf('CVE') !== -1 || post.title.indexOf('hardening') !== -1 || post.title.indexOf('Hardening') !== -1 || post.title.indexOf('privilege escalation') !== -1 || post.excerpt.indexOf('security') !== -1 || post.excerpt.indexOf('CVE') !== -1 || post.excerpt.indexOf('hardening') !== -1 || post.excerpt.indexOf('vulnerability') !== -1 || post.excerpt.indexOf('SSRF') !== -1">
+                    <If condition="post.title.indexOf('security') !== -1 || post.title.indexOf('Security') !== -1 || post.title.indexOf('CVE') !== -1 || post.title.indexOf('hardening') !== -1 || post.title.indexOf('Hardening') !== -1 || post.title.indexOf('privilege escalation') !== -1 || post.title.indexOf('SSRF') !== -1 || post.title.indexOf('authorization') !== -1 || post.title.indexOf('Authorization') !== -1 || post.title.indexOf('exploit') !== -1 || post.title.indexOf('Exploit') !== -1 || post.excerpt.indexOf('security') !== -1 || post.excerpt.indexOf('CVE') !== -1 || post.excerpt.indexOf('hardening') !== -1 || post.excerpt.indexOf('vulnerability') !== -1 || post.excerpt.indexOf('SSRF') !== -1 || post.excerpt.indexOf('authorization') !== -1 || post.excerpt.indexOf('incident response') !== -1 || post.excerpt.indexOf('exploit') !== -1">
                         <article data-archive-card>
                             <a href="{post.link}" class="group">
                                 <div class="overflow-hidden rounded-[min(0.3vw,4px)]">
