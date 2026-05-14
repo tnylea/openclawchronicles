@@ -13,6 +13,10 @@
     var params = new URLSearchParams(window.location.search);
     var defaultTitle = titleTemplate ? titleTemplate.content : document.title;
     var defaultDescription = descriptionTemplate ? descriptionTemplate.content : '';
+    var defaultOgTitle = (document.querySelector('meta[property="og:title"]') || {}).content || defaultTitle;
+    var defaultOgDescription = (document.querySelector('meta[property="og:description"]') || {}).content || defaultDescription;
+    var defaultTwitterTitle = (document.querySelector('meta[name="twitter:title"]') || {}).content || defaultTitle;
+    var defaultTwitterDescription = (document.querySelector('meta[name="twitter:description"]') || {}).content || defaultDescription;
 
     function normalize(value) {
       return String(value || '').trim().toLowerCase();
@@ -28,6 +32,16 @@
       node.setAttribute('content', content);
     }
 
+    function upsertProperty(property, content) {
+      var node = document.querySelector('meta[property="' + property + '"]');
+      if (!node) {
+        node = document.createElement('meta');
+        node.setAttribute('property', property);
+        document.head.appendChild(node);
+      }
+      node.setAttribute('content', content);
+    }
+
     function syncSearchMetadata(query, visibleCount) {
       var canonical = document.querySelector('link[rel="canonical"]');
       var trimmed = query.trim();
@@ -37,14 +51,27 @@
         if (defaultDescription) upsertMeta('description', defaultDescription);
         upsertMeta('robots', 'index,follow,max-image-preview:large');
         upsertMeta('googlebot', 'index,follow,max-image-preview:large');
+        upsertProperty('og:title', defaultOgTitle);
+        upsertProperty('og:description', defaultOgDescription);
+        upsertProperty('og:url', 'https://openclawchronicles.com/posts/');
+        upsertMeta('twitter:title', defaultTwitterTitle);
+        upsertMeta('twitter:description', defaultTwitterDescription);
         if (canonical) canonical.setAttribute('href', 'https://openclawchronicles.com/posts/');
         return;
       }
 
-      document.title = 'Search OpenClaw Chronicles for “' + trimmed + '”';
-      upsertMeta('description', 'Filtered OpenClaw Chronicles archive results for ' + trimmed + '. Search pages stay crawl-friendly for users but are marked noindex to avoid thin query URLs in search results.');
+      var searchTitle = 'Search OpenClaw Chronicles for “' + trimmed + '”';
+      var searchDescription = 'Filtered OpenClaw Chronicles archive results for ' + trimmed + '. Search pages stay crawl-friendly for users but are marked noindex to avoid thin query URLs in search results.';
+
+      document.title = searchTitle;
+      upsertMeta('description', searchDescription);
       upsertMeta('robots', 'noindex,follow');
       upsertMeta('googlebot', 'noindex,follow');
+      upsertProperty('og:title', searchTitle);
+      upsertProperty('og:description', searchDescription);
+      upsertProperty('og:url', window.location.href);
+      upsertMeta('twitter:title', searchTitle);
+      upsertMeta('twitter:description', searchDescription);
       if (canonical) canonical.setAttribute('href', 'https://openclawchronicles.com/posts/');
 
       if (status) {

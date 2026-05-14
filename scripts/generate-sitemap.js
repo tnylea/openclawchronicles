@@ -7,6 +7,7 @@
 
 const fs = require('fs');
 const path = require('path');
+const { inferSection } = require('./post-taxonomy');
 
 const BASE_URL = 'https://openclawchronicles.com';
 const POSTS_DIR = path.join(__dirname, '../content/posts');
@@ -30,14 +31,6 @@ const staticPageConfigs = [
 function getFrontmatterField(content, key) {
   const match = content.match(new RegExp(`^${key}:\\s*['"]?([^'"\\n]+)['"]?`, 'm'));
   return match ? match[1].trim() : null;
-}
-
-function inferSection(content = '') {
-  const haystack = content.toLowerCase();
-  if (/security|cve|hardening|vulnerability|exploit/.test(haystack)) return 'security';
-  if (/guide|tutorial|migrate|migration|setup|how to|locally|walkthrough|workflow|memory|dreaming|local model/.test(haystack)) return 'guides';
-  if (/release|beta|hotfix|stable|changelog/.test(haystack)) return 'releases';
-  return 'news';
 }
 
 function absoluteAssetUrl(assetPath) {
@@ -76,7 +69,9 @@ const postFiles = fs.readdirSync(POSTS_DIR)
     const coverImage = getFrontmatterField(content, 'coverImage');
     const title = getFrontmatterField(content, 'title');
     const excerpt = getFrontmatterField(content, 'excerpt');
-    const section = inferSection(content);
+    const section = inferSection({ title, excerpt, content })
+      .toLowerCase()
+      .replace('openclaw news', 'news');
     const modified = contentModifiedDate(filePath, date ? date.split('T')[0] : undefined);
     return { slug, date, coverImage, title, excerpt, section, modified };
   })

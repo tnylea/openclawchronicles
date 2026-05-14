@@ -1,5 +1,6 @@
 const fs = require('fs');
 const path = require('path');
+const { inferSection } = require('./post-taxonomy');
 
 const postsDir = path.join(__dirname, '../content/posts');
 const outputFile = path.join(__dirname, '../_site/feed.xml');
@@ -81,11 +82,7 @@ function markdownToHtml(markdown) {
 }
 
 function inferCategory(post) {
-  const haystack = `${post.title} ${post.excerpt} ${post.body}`.toLowerCase();
-  if (/security|cve|hardening|vulnerability|exploit/.test(haystack)) return 'Security';
-  if (/guide|tutorial|migrate|migration|setup|how to|locally|walkthrough|workflow|memory|dreaming|local model/.test(haystack)) return 'Guides';
-  if (/release|beta|hotfix|stable|changelog/.test(haystack)) return 'Releases';
-  return 'OpenClaw News';
+  return inferSection(post);
 }
 
 function imageMimeType(url) {

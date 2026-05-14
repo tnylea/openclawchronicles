@@ -1,5 +1,6 @@
 const fs = require('fs');
 const path = require('path');
+const { inferFeedTags } = require('./post-taxonomy');
 
 const postsDir = path.join(__dirname, '../content/posts');
 const outputFile = path.join(__dirname, '../_site/feed.json');
@@ -63,15 +64,7 @@ function markdownToHtml(markdown) {
 }
 
 function inferTags(post) {
-  const haystack = `${post.title} ${post.summary} ${post.content_text}`.toLowerCase();
-  const tags = ['OpenClaw'];
-
-  if (/security|cve|hardening|vulnerability|exploit/.test(haystack)) tags.push('Security');
-  if (/guide|tutorial|migrate|migration|setup|how to|locally|walkthrough|workflow|memory|dreaming|local model/.test(haystack)) tags.push('Guides');
-  if (/release|beta|hotfix|stable|changelog/.test(haystack)) tags.push('Releases');
-  if (/memory|dreaming|active memory|recall|wiki/.test(haystack)) tags.push('Memory');
-  if (/ollama|local model|macbook air|on-device|gemma|mlx/.test(haystack)) tags.push('Local Models');
-  if (tags.length === 1) tags.push('News');
+  const tags = inferFeedTags(post);
 
   const keywordTags = [...new Set(String(post.title || '')
     .toLowerCase()

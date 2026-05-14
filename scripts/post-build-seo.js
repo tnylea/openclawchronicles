@@ -1,5 +1,6 @@
 const fs = require('fs');
 const path = require('path');
+const { inferSection } = require('./post-taxonomy');
 
 const siteDir = path.join(__dirname, '..', '_site');
 const siteUrl = 'https://openclawchronicles.com';
@@ -521,46 +522,6 @@ function slugify(text) {
     .trim()
     .replace(/\s+/g, '-')
     .replace(/-+/g, '-') || 'section';
-}
-
-const SECTION_KEYWORDS = {
-  Security: ['security', 'cve', 'hardening', 'ssrf', 'redos', 'vulnerability', 'exploit', 'patch', 'advisory', 'incident'],
-  Guides: ['guide', 'tutorial', 'migrate', 'migration', 'setup', 'install', 'walkthrough', 'how to', 'locally', 'workflow', 'memory', 'active memory', 'dreaming', 'local model'],
-  Releases: ['release', 'beta', 'hotfix', 'changelog', 'shipped', 'stable', 'preview', 'rc', 'version'],
-};
-
-function scoreSection(post, section) {
-  const title = String(post.title || '').toLowerCase();
-  const excerpt = String(post.excerpt || '').toLowerCase();
-  const content = String(post.content || '').toLowerCase();
-  const haystack = `${title} ${excerpt} ${content}`;
-  const keywords = SECTION_KEYWORDS[section] || [];
-
-  let score = 0;
-  for (const keyword of keywords) {
-    if (title.includes(keyword)) score += 6;
-    if (excerpt.includes(keyword)) score += 3;
-    if (content.includes(keyword)) score += 1;
-  }
-
-  if (section === 'Security' && /(fix|patch|hardening|security)/.test(title)) score += 4;
-  if (section === 'Guides' && /(guide|tutorial|how to|migrate|migration|memory|workflow|walkthrough|local model)/.test(title)) score += 4;
-  if (section === 'Releases' && /(release|beta|hotfix|preview|version|v20\d{2}\.)/.test(title)) score += 5;
-  if (/community roundup|hacker news|show hn|ask hn/.test(title) && section !== 'OpenClaw News') score -= 4;
-  if (section === 'Guides' && /(security guide|security hardening guide)/.test(haystack)) score += 2;
-
-  return score;
-}
-
-function inferSection(post) {
-  const scores = {
-    Security: scoreSection(post, 'Security'),
-    Guides: scoreSection(post, 'Guides'),
-    Releases: scoreSection(post, 'Releases'),
-  };
-
-  const best = Object.entries(scores).sort((a, b) => b[1] - a[1])[0];
-  return best && best[1] >= 4 ? best[0] : 'OpenClaw News';
 }
 
 function scoreRelatedPosts(currentPost, candidatePost) {
