@@ -194,23 +194,6 @@
     });
   }
 
-  function bindActiveNav() {
-    var currentPath = window.location.pathname.replace(/index\.html$/, '');
-    if (currentPath.length > 1 && currentPath.endsWith('/')) currentPath = currentPath.slice(0, -1);
-
-    document.querySelectorAll('a[href^="/"]').forEach(function (link) {
-      var href = link.getAttribute('href');
-      if (!href || href === '/') return;
-
-      var normalizedHref = href.replace(/index\.html$/, '');
-      if (normalizedHref.length > 1 && normalizedHref.endsWith('/')) normalizedHref = normalizedHref.slice(0, -1);
-
-      if (normalizedHref === currentPath) {
-        link.setAttribute('aria-current', 'page');
-      }
-    });
-  }
-
   function bindMoreDropdowns() {
     document.querySelectorAll('[data-more-dropdown]').forEach(function (root) {
       var toggle = root.querySelector('[data-more-toggle]');
@@ -289,7 +272,6 @@
     runWhenIdle(function () {
       bindMastheadMeta();
       bindCurrentDate();
-      bindActiveNav();
       bindMoreDropdowns();
     });
   });
