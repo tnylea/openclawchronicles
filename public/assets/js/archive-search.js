@@ -7,12 +7,16 @@
     var clearButton = form.querySelector('[data-archive-search-clear]');
     var status = document.querySelector('[data-archive-search-status]');
     var emptyState = document.querySelector('[data-archive-empty]');
+    var heading = document.querySelector('[data-archive-search-heading]');
+    var description = document.querySelector('[data-archive-search-description]');
     var titleTemplate = document.querySelector('meta[name="archive-default-title"]');
     var descriptionTemplate = document.querySelector('meta[name="archive-default-description"]');
     var cards = Array.from(document.querySelectorAll('[data-archive-card]'));
     var params = new URLSearchParams(window.location.search);
     var defaultTitle = titleTemplate ? titleTemplate.content : document.title;
     var defaultDescription = descriptionTemplate ? descriptionTemplate.content : '';
+    var defaultHeading = heading ? heading.textContent : 'All Posts';
+    var defaultHeadingDescription = description ? description.textContent : defaultDescription;
     var defaultOgTitle = (document.querySelector('meta[property="og:title"]') || {}).content || defaultTitle;
     var defaultOgDescription = (document.querySelector('meta[property="og:description"]') || {}).content || defaultDescription;
     var defaultTwitterTitle = (document.querySelector('meta[name="twitter:title"]') || {}).content || defaultTitle;
@@ -48,6 +52,8 @@
 
       if (!trimmed) {
         document.title = defaultTitle;
+        if (heading) heading.textContent = defaultHeading;
+        if (description) description.textContent = defaultHeadingDescription;
         if (defaultDescription) upsertMeta('description', defaultDescription);
         upsertMeta('robots', 'index,follow,max-image-preview:large');
         upsertMeta('googlebot', 'index,follow,max-image-preview:large');
@@ -62,8 +68,12 @@
 
       var searchTitle = 'Search OpenClaw Chronicles for “' + trimmed + '”';
       var searchDescription = 'Filtered OpenClaw Chronicles archive results for ' + trimmed + '. Search pages stay crawl-friendly for users but are marked noindex to avoid thin query URLs in search results.';
+      var searchHeading = 'Search results for “' + trimmed + '”';
+      var searchHeadingDescription = visibleCount + ' OpenClaw ' + (visibleCount === 1 ? 'story matches' : 'stories match') + ' this archive search. Refine the query or jump into releases, security, guides, memory, and migration coverage from here.';
 
       document.title = searchTitle;
+      if (heading) heading.textContent = searchHeading;
+      if (description) description.textContent = searchHeadingDescription;
       upsertMeta('description', searchDescription);
       upsertMeta('robots', 'noindex,follow');
       upsertMeta('googlebot', 'noindex,follow');

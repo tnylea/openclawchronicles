@@ -679,6 +679,54 @@ function injectHubFreshLinks(html, canonicalUrl) {
   return html.replace(/\n\s*<section class="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8" aria-labelledby="[^"]+-faq-heading">/i, `${section}\n\n        <section class="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8" aria-labelledby="${canonicalUrl.includes('/releases/') ? 'release' : canonicalUrl.includes('/security/') ? 'security' : canonicalUrl.includes('/guides/') ? 'guides' : canonicalUrl.includes('/memory/') ? 'memory' : canonicalUrl.includes('/migrations/') ? 'migration' : 'local-model'}-faq-heading">`);
 }
 
+function buildTopicLinkItems(posts, label) {
+  return posts.map((post) => `<li><a href="${post.url}" class="text-ink-strong hover:text-red-accent font-sans text-sm font-medium">${post.title}</a></li>`).join('');
+}
+
+function refreshHomepageCoverageTracks(html, canonicalUrl) {
+  if (canonicalUrl !== `${siteUrl}/`) return html;
+
+  const releasePosts = allPosts.filter((post) => inferSection(post) === 'Releases').slice(0, 3);
+  const securityPosts = allPosts.filter((post) => inferSection(post) === 'Security').slice(0, 3);
+  const guidePosts = allPosts.filter((post) => inferSection(post) === 'Guides').slice(0, 3);
+
+  if (releasePosts.length) {
+    html = html.replace(/(<article id="releases-coverage"[\s\S]*?<ul class="mt-5 space-y-3">)([\s\S]*?)(<\/ul>)/i, `$1${buildTopicLinkItems(releasePosts, 'Release')}$3`);
+  }
+
+  if (securityPosts.length) {
+    html = html.replace(/(<article id="security-coverage"[\s\S]*?<ul class="mt-5 space-y-3">)([\s\S]*?)(<\/ul>)/i, `$1${buildTopicLinkItems(securityPosts, 'Security')}$3`);
+  }
+
+  if (guidePosts.length) {
+    html = html.replace(/(<article id="guides-coverage"[\s\S]*?<ul class="mt-5 space-y-3">)([\s\S]*?)(<\/ul>)/i, `$1${buildTopicLinkItems(guidePosts, 'Guide')}$3`);
+  }
+
+  return html;
+}
+
+function refreshSiteMapLatestCoverage(html, canonicalUrl) {
+  if (canonicalUrl !== `${siteUrl}/site-map/`) return html;
+
+  const releasePosts = allPosts.filter((post) => inferSection(post) === 'Releases').slice(0, 2);
+  const securityPosts = allPosts.filter((post) => inferSection(post) === 'Security').slice(0, 2);
+  const guidePosts = allPosts.filter((post) => inferSection(post) === 'Guides').slice(0, 2);
+
+  if (releasePosts.length) {
+    html = html.replace(/(<article[\s\S]*?<span class="text-red-accent[^"]*">Releases<\/span>[\s\S]*?<ul class="mt-4 space-y-3">)([\s\S]*?)(<\/ul>)/i, `$1${buildTopicLinkItems([...releasePosts, { url: '/releases/', title: 'Browse all release coverage' }], 'Release')}$3`);
+  }
+
+  if (securityPosts.length) {
+    html = html.replace(/(<article[\s\S]*?<span class="text-red-accent[^"]*">Security<\/span>[\s\S]*?<ul class="mt-4 space-y-3">)([\s\S]*?)(<\/ul>)/i, `$1${buildTopicLinkItems([...securityPosts, { url: '/security/', title: 'Browse all security coverage' }], 'Security')}$3`);
+  }
+
+  if (guidePosts.length) {
+    html = html.replace(/(<article[\s\S]*?<span class="text-red-accent[^"]*">Guides<\/span>[\s\S]*?<ul class="mt-4 space-y-3">)([\s\S]*?)(<\/ul>)/i, `$1${buildTopicLinkItems([...guidePosts, { url: '/guides/', title: 'Browse all guides and tutorials' }], 'Guide')}$3`);
+  }
+
+  return html;
+}
+
 function injectArticleToc(html, canonicalUrl) {
   const match = canonicalUrl.match(/\/posts\/([^/]+)\/$/);
   if (!match || html.includes('story-toc-heading')) return html;
@@ -1052,6 +1100,8 @@ for (const file of walk(siteDir)) {
   html = injectArticleMetaSummary(html, canonicalUrl);
   html = injectLatestTopicSections(html, canonicalUrl);
   html = injectHubFreshLinks(html, canonicalUrl);
+  html = refreshHomepageCoverageTracks(html, canonicalUrl);
+  html = refreshSiteMapLatestCoverage(html, canonicalUrl);
   html = injectArticleToc(html, canonicalUrl);
   html = injectRelatedPosts(html, canonicalUrl);
   html = injectArticlePagination(html, canonicalUrl);
