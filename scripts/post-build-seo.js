@@ -74,14 +74,17 @@ function normalizeInternalPostLinks(html) {
 function injectImagePreload(html) {
   if (html.includes('data-seo-preload="hero-image"')) return html;
 
-  const heroMatch = html.match(/<img\b[^>]*\bsrc="([^"]+)"[^>]*\bfetchpriority="high"[^>]*>/i)
-    || html.match(/<img\b[^>]*\bsrc="([^"]+)"[^>]*\bloading="eager"[^>]*>/i);
+  const heroMatch = html.match(/<img\b[^>]*\bsrc="([^"]+)"([^>]*)\bfetchpriority="high"[^>]*>/i)
+    || html.match(/<img\b[^>]*\bsrc="([^"]+)"([^>]*)\bloading="eager"[^>]*>/i);
 
   if (!heroMatch) return html;
 
   const heroSrc = heroMatch[1];
+  const heroAttrs = heroMatch[2] || '';
   let preloadSrc = heroSrc;
   let preloadType = '';
+  let imageSrcset = '';
+  let imageSizes = '';
 
   if (/^\/assets\/images\//.test(heroSrc) && /\.(png|jpe?g)(\?.*)?$/i.test(heroSrc)) {
     const webpSrc = heroSrc.replace(/\.(png|jpe?g)(\?.*)?$/i, '.webp$2');
@@ -89,10 +92,15 @@ function injectImagePreload(html) {
     if (fs.existsSync(webpPath)) {
       preloadSrc = webpSrc;
       preloadType = ' type="image/webp"';
+      const responsiveSrcset = buildResponsiveWebpSrcset(heroSrc);
+      if (responsiveSrcset) imageSrcset = ` imagesrcset="${responsiveSrcset}"`;
     }
   }
 
-  const preloadTag = `    <link rel="preload" as="image" href="${preloadSrc}"${preloadType} data-seo-preload="hero-image" />`;
+  const sizesMatch = heroAttrs.match(/\ssizes="([^"]+)"/i);
+  if (sizesMatch) imageSizes = ` imagesizes="${sizesMatch[1]}"`;
+
+  const preloadTag = `    <link rel="preload" as="image" href="${preloadSrc}"${preloadType}${imageSrcset}${imageSizes} data-seo-preload="hero-image" />`;
 
   return html.replace(/<link rel="stylesheet" href="\/styles\.css" \/>/i, `${preloadTag}\n    <link rel="stylesheet" href="/styles.css" />`);
 }
@@ -711,6 +719,9 @@ function refreshSiteMapLatestCoverage(html, canonicalUrl) {
   const releasePosts = allPosts.filter((post) => inferSection(post) === 'Releases').slice(0, 2);
   const securityPosts = allPosts.filter((post) => inferSection(post) === 'Security').slice(0, 2);
   const guidePosts = allPosts.filter((post) => inferSection(post) === 'Guides').slice(0, 2);
+  const memoryPosts = allPosts.filter((post) => matchesHubTopic(post, 'Memory')).slice(0, 2);
+  const migrationPosts = allPosts.filter((post) => matchesHubTopic(post, 'Migrations')).slice(0, 2);
+  const localModelPosts = allPosts.filter((post) => matchesHubTopic(post, 'Local Models')).slice(0, 2);
 
   if (releasePosts.length) {
     html = html.replace(/(<article[\s\S]*?<span class="text-red-accent[^"]*">Releases<\/span>[\s\S]*?<ul class="mt-4 space-y-3">)([\s\S]*?)(<\/ul>)/i, `$1${buildTopicLinkItems([...releasePosts, { url: '/releases/', title: 'Browse all release coverage' }], 'Release')}$3`);
@@ -722,6 +733,57 @@ function refreshSiteMapLatestCoverage(html, canonicalUrl) {
 
   if (guidePosts.length) {
     html = html.replace(/(<article[\s\S]*?<span class="text-red-accent[^"]*">Guides<\/span>[\s\S]*?<ul class="mt-4 space-y-3">)([\s\S]*?)(<\/ul>)/i, `$1${buildTopicLinkItems([...guidePosts, { url: '/guides/', title: 'Browse all guides and tutorials' }], 'Guide')}$3`);
+  }
+
+  if (releasePosts.length) {
+    html = html.replace(/(<h3 class="font-display text-ink text-2xl font-semibold tracking-tight">Release coverage<\/h3>[\s\S]*?<ul class="mt-4 space-y-2">)([\s\S]*?)(<\/ul>)/i, `$1${buildTopicLinkItems([{ url: '/releases/', title: 'Open the releases hub' }, ...releasePosts], 'Release')}$3`);
+  }
+
+  if (securityPosts.length) {
+    html = html.replace(/(<h3 class="font-display text-ink text-2xl font-semibold tracking-tight">Security coverage<\/h3>[\s\S]*?<ul class="mt-4 space-y-2">)([\s\S]*?)(<\/ul>)/i, `$1${buildTopicLinkItems([{ url: '/security/', title: 'Open the security hub' }, ...securityPosts], 'Security')}$3`);
+  }
+
+  if (guidePosts.length) {
+    html = html.replace(/(<h3 class="font-display text-ink text-2xl font-semibold tracking-tight">Guides and tutorials<\/h3>[\s\S]*?<ul class="mt-4 space-y-2">)([\s\S]*?)(<\/ul>)/i, `$1${buildTopicLinkItems([{ url: '/guides/', title: 'Open the guides hub' }, { url: '/memory/', title: 'Memory guides and recall workflows' }, ...guidePosts.slice(0, 1), { url: '/migrations/', title: 'Migration help and upgrade notes' }, { url: '/local-models/', title: 'Local model setup coverage' }], 'Guide')}$3`);
+  }
+
+  if (memoryPosts.length) {
+    html = html.replace(/(<span class="text-red-accent font-mono text-\[0\.625rem\] font-semibold tracking-wider uppercase">Memory<\/span>[\s\S]*?<ul class="mt-4 space-y-3">)([\s\S]*?)(<\/ul>)/i, `$1${buildTopicLinkItems([{ url: '/memory/', title: 'Open the memory hub' }, ...memoryPosts], 'Memory')}$3`);
+  }
+
+  if (migrationPosts.length) {
+    html = html.replace(/(<span class="text-red-accent font-mono text-\[0\.625rem\] font-semibold tracking-wider uppercase">Migrations<\/span>[\s\S]*?<ul class="mt-4 space-y-3">)([\s\S]*?)(<\/ul>)/i, `$1${buildTopicLinkItems([{ url: '/migrations/', title: 'Open the migration hub' }, ...migrationPosts], 'Migration')}$3`);
+  }
+
+  if (localModelPosts.length) {
+    html = html.replace(/(<span class="text-red-accent font-mono text-\[0\.625rem\] font-semibold tracking-wider uppercase">Local models<\/span>[\s\S]*?<ul class="mt-4 space-y-3">)([\s\S]*?)(<\/ul>)/i, `$1${buildTopicLinkItems([{ url: '/local-models/', title: 'Open the local models hub' }, ...localModelPosts], 'Local models')}$3`);
+  }
+
+  return html;
+}
+
+function refreshAboutReaderPaths(html, canonicalUrl) {
+  if (canonicalUrl !== `${siteUrl}/about/`) return html;
+
+  const latestRelease = allPosts.find((post) => inferSection(post) === 'Releases');
+  const latestSecurity = allPosts.find((post) => inferSection(post) === 'Security');
+  const latestGuide = allPosts.find((post) => inferSection(post) === 'Guides');
+  const latestLocalModel = allPosts.find((post) => matchesHubTopic(post, 'Local Models'));
+
+  if (latestRelease) {
+    html = html.replace(/(<h3 class="mt-0!">If you want the newest OpenClaw shipping details<\/h3>[\s\S]*?<p>[\s\S]*?Start with the <a href="\/releases\/">releases hub<\/a>, then jump into )(?:[\s\S]*?)(<\/p>)/i, `$1<a href="${latestRelease.url}">${latestRelease.title}</a> for the freshest release context.$2`);
+  }
+
+  if (latestSecurity) {
+    html = html.replace(/(<h3 class="mt-0!">If you need safer self-hosting guidance<\/h3>[\s\S]*?<p>[\s\S]*?Use the <a href="\/security\/">security hub<\/a> and practical response pieces like )(?:[\s\S]*?)(<\/p>)/i, `$1<a href="${latestSecurity.url}">${latestSecurity.title}</a> for the newest hardening or advisory context.$2`);
+  }
+
+  if (latestGuide) {
+    html = html.replace(/(<h3 class="mt-0!">If you are solving setup, migration, or memory questions<\/h3>[\s\S]*?<p>)(?:[\s\S]*?)(<\/p>)/i, `$1Go straight to the <a href="/guides/">guides hub</a>, then branch into the <a href="/memory/">memory hub</a> or <a href="/migrations/">migration hub</a>, with <a href="${latestGuide.url}">${latestGuide.title}</a> as a strong practical starting point.$2`);
+  }
+
+  if (latestLocalModel) {
+    html = html.replace(/(<h3 class="mt-0!">If you care about local-first OpenClaw workflows<\/h3>[\s\S]*?<p>)(?:[\s\S]*?)(<\/p>)/i, `$1The <a href="/local-models/">local models hub</a> now points more directly into on-device coverage, including <a href="${latestLocalModel.url}">${latestLocalModel.title}</a> for readers trying to keep more OpenClaw work local.$2`);
   }
 
   return html;
@@ -1102,6 +1164,7 @@ for (const file of walk(siteDir)) {
   html = injectHubFreshLinks(html, canonicalUrl);
   html = refreshHomepageCoverageTracks(html, canonicalUrl);
   html = refreshSiteMapLatestCoverage(html, canonicalUrl);
+  html = refreshAboutReaderPaths(html, canonicalUrl);
   html = injectArticleToc(html, canonicalUrl);
   html = injectRelatedPosts(html, canonicalUrl);
   html = injectArticlePagination(html, canonicalUrl);
