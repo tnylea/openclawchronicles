@@ -987,7 +987,7 @@ function buildResponsiveWebpSrcset(src) {
   const absolutePath = path.join(siteDir, sourcePath);
   if (!fs.existsSync(absolutePath)) return null;
 
-  const candidates = [640, 960]
+  const candidates = [640, 960, 1200]
     .map((width) => {
       const candidateSrc = webpSrc.replace(/\.webp(\?.*)?$/i, `-${width}.webp$1`);
       const candidatePath = path.join(siteDir, candidateSrc.replace(/^\//, '').split('?')[0]);
@@ -1061,7 +1061,7 @@ function optimizeImages(html) {
       seenContentImage = true;
       updated += ' loading="eager" fetchpriority="high"';
     } else {
-      updated += ' loading="lazy"';
+      updated += ' loading="lazy" fetchpriority="low"';
     }
 
     return `<img${updated}${closingSlash || ''}>`;

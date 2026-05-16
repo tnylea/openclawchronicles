@@ -9,7 +9,7 @@ const imageRoots = [
 ];
 
 const allowedExtensions = new Set(['.png', '.jpg', '.jpeg']);
-const responsiveWidths = [640, 960];
+const responsiveWidths = [640, 960, 1200];
 const skipPatterns = [
   /favicon/i,
   /icon-/i,
@@ -71,11 +71,10 @@ async function main() {
 
       if (outputFresh) {
         skipped += 1;
-        continue;
+      } else {
+        await writeWebp(file, output);
+        converted += 1;
       }
-
-      await writeWebp(file, output);
-      converted += 1;
 
       if (needsResponsiveVariants(file)) {
         for (const width of responsiveWidths) {
