@@ -78,7 +78,8 @@ const postFiles = fs.readdirSync(POSTS_DIR)
   .sort((a, b) => (b.date || '').localeCompare(a.date || ''));
 
 const latestPostDate = postFiles[0]?.date?.split('T')[0];
-const latestSectionDate = (section) => postFiles.find((post) => post.section === section)?.date?.split('T')[0] || latestPostDate;
+const latestPostModified = postFiles[0]?.modified || latestPostDate;
+const latestSectionDate = (section) => postFiles.find((post) => post.section === section)?.modified || postFiles.find((post) => post.section === section)?.date?.split('T')[0] || latestPostDate;
 
 // Homepage
 urls.push({
@@ -92,7 +93,7 @@ urls.push({
 });
 
 // Posts index
-urls.push({ loc: `${BASE_URL}/posts/`, lastmod: latestPostDate, changefreq: 'daily', priority: '0.8' });
+urls.push({ loc: `${BASE_URL}/posts/`, lastmod: latestPostModified, changefreq: 'daily', priority: '0.8' });
 
 for (const page of staticPageConfigs) {
   const fallbackDate = page.section ? latestSectionDate(page.section) : latestPostDate;
@@ -106,20 +107,10 @@ for (const page of staticPageConfigs) {
     imageCaption: page.imageCaption,
   });
 }
-urls.push({ loc: `${BASE_URL}/feed.xml`, lastmod: latestPostDate, changefreq: 'daily', priority: '0.4' });
-urls.push({ loc: `${BASE_URL}/feed.json`, lastmod: latestPostDate, changefreq: 'daily', priority: '0.4' });
+urls.push({ loc: `${BASE_URL}/feed.xml`, lastmod: latestPostModified, changefreq: 'daily', priority: '0.4' });
+urls.push({ loc: `${BASE_URL}/feed.json`, lastmod: latestPostModified, changefreq: 'daily', priority: '0.4' });
 
 const totalArchivePages = Math.max(1, Math.ceil(postFiles.length / POSTS_PER_PAGE));
-
-for (let page = 2; page <= totalArchivePages; page++) {
-  const pagePosts = postFiles.slice((page - 1) * POSTS_PER_PAGE, page * POSTS_PER_PAGE);
-  urls.push({
-    loc: `${BASE_URL}/posts/${page}/`,
-    lastmod: pagePosts[0]?.date?.split('T')[0] || latestPostDate,
-    changefreq: 'weekly',
-    priority: '0.5',
-  });
-}
 
 for (const post of postFiles) {
   urls.push({

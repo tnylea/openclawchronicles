@@ -184,6 +184,13 @@ function fixAboutPageMetadata(html, canonicalUrl) {
   return html;
 }
 
+function latestModifiedForPosts(posts) {
+  return posts
+    .map((post) => post.modified || post.date)
+    .filter(Boolean)
+    .sort((a, b) => new Date(b) - new Date(a))[0] || null;
+}
+
 function fixPostsArchiveMetadata(html, canonicalUrl) {
   if (!/^https:\/\/openclawchronicles\.com\/posts\/(\d+\/)?$/.test(canonicalUrl)) return html;
 
@@ -203,6 +210,8 @@ function fixPostsArchiveMetadata(html, canonicalUrl) {
   html = html.replace(/<title>[^<]*<\/title>/i, `<title>${title}</title>`);
   html = html.replace(/<meta name="description" content="[^"]*"\s*\/?\s*>/i, `<meta name="description" content="${description}" />`);
   html = html.replace(/<meta name="author" content="[^"]*"\s*\/?\s*>/i, '<meta name="author" content="Cody" />');
+  html = injectOrReplace(html, /<meta name="robots" content="[^"]*"\s*\/?>/i, `<meta name="robots" content="${pageNumber > 1 ? 'noindex,follow,max-image-preview:large' : 'index,follow,max-image-preview:large'}" />`);
+  html = injectOrReplace(html, /<meta name="googlebot" content="[^"]*"\s*\/?>/i, `<meta name="googlebot" content="${pageNumber > 1 ? 'noindex,follow,max-image-preview:large' : 'index,follow,max-image-preview:large'}" />`);
   html = html.replace(/<meta property="og:type" content="[^"]*"\s*\/?\s*>/i, '<meta property="og:type" content="website" />');
   html = html.replace(/<meta property="og:title" content="[^"]*"\s*\/?\s*>/i, `<meta property="og:title" content="${title}" />`);
   html = html.replace(/<meta property="og:description" content="[^"]*"\s*\/?\s*>/i, `<meta property="og:description" content="${description}" />`);
@@ -215,6 +224,11 @@ function fixPostsArchiveMetadata(html, canonicalUrl) {
   html = html.replace(/<meta name="twitter:image:alt" content="[^"]*"\s*\/?\s*>/i, '<meta name="twitter:image:alt" content="OpenClaw Chronicles archive page" />');
 
   const topPosts = allPosts.slice((pageNumber - 1) * 15, (pageNumber - 1) * 15 + 10);
+  const latestModified = latestModifiedForPosts(topPosts) || latestModifiedForPosts(allPosts);
+  if (latestModified) {
+    html = injectOrReplace(html, /<meta property="og:updated_time" content="[^"]*"\s*\/?>/i, `<meta property="og:updated_time" content="${latestModified}" />`);
+  }
+
   const itemList = topPosts.map((post, index) => ({
     '@type': 'ListItem',
     position: index + 1,
@@ -224,7 +238,7 @@ function fixPostsArchiveMetadata(html, canonicalUrl) {
 
   html = html.replace(
     /<!-- JSON-LD WebSite Schema -->[\s\S]*?<!-- Google Analytics -->/i,
-    `<!-- JSON-LD WebSite Schema -->\n    <script type="application/ld+json">\n    {\n      "@context": "https://schema.org",\n      "@type": "CollectionPage",\n      "name": "${title.replace(/"/g, '&quot;')}",\n      "url": "${canonicalUrl}",\n      "description": "${description}",\n      "isPartOf": {\n        "@type": "WebSite",\n        "name": "OpenClaw Chronicles",\n        "url": "${siteUrl}"\n      },\n      "mainEntity": {\n        "@type": "ItemList",\n        "itemListElement": ${JSON.stringify(itemList, null, 8)}\n      }\n    }\n    </script>\n    <script type="application/ld+json">\n    {\n      "@context": "https://schema.org",\n      "@type": "BreadcrumbList",\n      "itemListElement": [\n        {\n          "@type": "ListItem",\n          "position": 1,\n          "name": "Home",\n          "item": "${siteUrl}/"\n        },\n        {\n          "@type": "ListItem",\n          "position": 2,\n          "name": "Posts",\n          "item": "${siteUrl}/posts/"\n        }${pageNumber > 1 ? `,\n        {\n          "@type": "ListItem",\n          "position": 3,\n          "name": "Page ${pageNumber}",\n          "item": "${canonicalUrl}"\n        }` : ''}\n      ]\n    }\n    </script>${faqSchema}\n    <!-- Google Analytics -->`
+    `<!-- JSON-LD WebSite Schema -->\n    <script type="application/ld+json">\n    {\n      "@context": "https://schema.org",\n      "@type": "CollectionPage",\n      "name": "${title.replace(/"/g, '&quot;')}",\n      "url": "${canonicalUrl}",\n      "description": "${description}",\n      "dateModified": ${JSON.stringify(latestModified)},\n      "about": [\n        {\n          "@type": "Thing",\n          "name": "OpenClaw"\n        },\n        {\n          "@type": "Thing",\n          "name": ${JSON.stringify(pageNumber > 1 ? `OpenClaw archive page ${pageNumber}` : 'OpenClaw archive')}\n        }\n      ],\n      "isPartOf": {\n        "@type": "WebSite",\n        "name": "OpenClaw Chronicles",\n        "url": "${siteUrl}"\n      },\n      "mainEntity": {\n        "@type": "ItemList",\n        "numberOfItems": ${itemList.length},\n        "itemListOrder": "https://schema.org/ItemListOrderDescending",\n        "itemListElement": ${JSON.stringify(itemList, null, 8)}\n      }\n    }\n    </script>\n    <script type="application/ld+json">\n    {\n      "@context": "https://schema.org",\n      "@type": "BreadcrumbList",\n      "itemListElement": [\n        {\n          "@type": "ListItem",\n          "position": 1,\n          "name": "Home",\n          "item": "${siteUrl}/"\n        },\n        {\n          "@type": "ListItem",\n          "position": 2,\n          "name": "Posts",\n          "item": "${siteUrl}/posts/"\n        }${pageNumber > 1 ? `,\n        {\n          "@type": "ListItem",\n          "position": 3,\n          "name": "Page ${pageNumber}",\n          "item": "${canonicalUrl}"\n        }` : ''}\n      ]\n    }\n    </script>${faqSchema}\n    <!-- Google Analytics -->`
   );
 
   return html;
@@ -237,6 +251,7 @@ function fixHomepageMetadata(html, canonicalUrl) {
   const description = 'OpenClaw Chronicles covers OpenClaw releases, security alerts, migration guides, tutorials, and ecosystem news with a fast, crawlable archive.';
   const ogImage = `${siteUrl}/assets/images/about-banner.jpg`;
   const faqSchema = buildFaqSchema(extractFaqEntries(html, 'homepage-faq-heading'));
+  const latestModified = latestModifiedForPosts(allPosts);
   const topPosts = allPosts.slice(0, 8).map((post, index) => ({
     '@type': 'ListItem',
     position: index + 1,
@@ -257,10 +272,13 @@ function fixHomepageMetadata(html, canonicalUrl) {
   html = html.replace(/<meta name="twitter:description" content="[^"]*"\s*\/?\s*>/i, `<meta name="twitter:description" content="${description}" />`);
   html = html.replace(/<meta name="twitter:image" content="[^"]*"\s*\/?\s*>/i, `<meta name="twitter:image" content="${ogImage}" />`);
   html = html.replace(/<meta name="twitter:image:alt" content="[^"]*"\s*\/?\s*>/i, '<meta name="twitter:image:alt" content="OpenClaw Chronicles homepage" />');
+  if (latestModified) {
+    html = injectOrReplace(html, /<meta property="og:updated_time" content="[^"]*"\s*\/?>/i, `<meta property="og:updated_time" content="${latestModified}" />`);
+  }
 
   html = html.replace(
     /<!-- JSON-LD WebSite Schema -->[\s\S]*?<!-- Google Analytics -->/i,
-    `<!-- JSON-LD WebSite Schema -->\n    <script type="application/ld+json">\n    {\n      "@context": "https://schema.org",\n      "@type": "WebSite",\n      "name": "OpenClaw Chronicles",\n      "url": "${canonicalUrl}",\n      "description": "${description}",\n      "potentialAction": ${JSON.stringify(buildWebsiteSearchAction(), null, 6)},\n      "publisher": {\n        "@type": "Organization",\n        "name": "OpenClaw Chronicles",\n        "url": "${siteUrl}",\n        "logo": {\n          "@type": "ImageObject",\n          "url": "${siteUrl}/icon-512.png",\n          "width": 512,\n          "height": 512\n        }\n      }\n    }\n    </script>\n    <script type="application/ld+json">\n    {\n      "@context": "https://schema.org",\n      "@type": "CollectionPage",\n      "name": "OpenClaw Chronicles homepage",\n      "url": "${canonicalUrl}",\n      "description": "${description}",\n      "mainEntity": {\n        "@type": "ItemList",\n        "itemListElement": ${JSON.stringify(topPosts, null, 8)}\n      }\n    }\n    </script>${faqSchema}\n    <!-- Google Analytics -->`
+    `<!-- JSON-LD WebSite Schema -->\n    <script type="application/ld+json">\n    {\n      "@context": "https://schema.org",\n      "@type": "WebSite",\n      "name": "OpenClaw Chronicles",\n      "url": "${canonicalUrl}",\n      "description": "${description}",\n      "potentialAction": ${JSON.stringify(buildWebsiteSearchAction(), null, 6)},\n      "publisher": {\n        "@type": "Organization",\n        "name": "OpenClaw Chronicles",\n        "url": "${siteUrl}",\n        "logo": {\n          "@type": "ImageObject",\n          "url": "${siteUrl}/icon-512.png",\n          "width": 512,\n          "height": 512\n        }\n      }\n    }\n    </script>\n    <script type="application/ld+json">\n    {\n      "@context": "https://schema.org",\n      "@type": "CollectionPage",\n      "name": "OpenClaw Chronicles homepage",\n      "url": "${canonicalUrl}",\n      "description": "${description}",\n      "dateModified": ${JSON.stringify(latestModified)},\n      "mainEntity": {\n        "@type": "ItemList",\n        "numberOfItems": ${topPosts.length},\n        "itemListOrder": "https://schema.org/ItemListOrderDescending",\n        "itemListElement": ${JSON.stringify(topPosts, null, 8)}\n      }\n    }\n    </script>${faqSchema}\n    <!-- Google Analytics -->`
   );
 
   return html;
@@ -499,7 +517,13 @@ function fixTopicHubMetadata(html, canonicalUrl) {
         : 'site-map-faq-heading';
   const faqSchema = buildFaqSchema(extractFaqEntries(html, faqSectionId));
 
-  const hubPosts = allPosts.filter((post) => matchesHubTopic(post, hub.label)).slice(0, 10).map((post, index) => ({
+  const matchingPosts = allPosts.filter((post) => matchesHubTopic(post, hub.label));
+  const latestModified = latestModifiedForPosts(matchingPosts) || latestModifiedForPosts(allPosts);
+  if (latestModified) {
+    html = injectOrReplace(html, /<meta property="og:updated_time" content="[^"]*"\s*\/?>/i, `<meta property="og:updated_time" content="${latestModified}" />`);
+  }
+
+  const hubPosts = matchingPosts.slice(0, 10).map((post, index) => ({
     '@type': 'ListItem',
     position: index + 1,
     url: `${siteUrl}${post.url}`,
@@ -508,7 +532,7 @@ function fixTopicHubMetadata(html, canonicalUrl) {
 
   html = html.replace(
     /<!-- JSON-LD WebSite Schema -->[\s\S]*?<!-- Google Analytics -->/i,
-    `<!-- JSON-LD WebSite Schema -->\n    <script type="application/ld+json">\n    {\n      "@context": "https://schema.org",\n      "@type": "CollectionPage",\n      "name": ${JSON.stringify(hub.title)},\n      "url": ${JSON.stringify(canonicalUrl)},\n      "description": ${JSON.stringify(hub.description)},\n      "isPartOf": {\n        "@type": "WebSite",\n        "name": "OpenClaw Chronicles",\n        "url": ${JSON.stringify(siteUrl)},\n        "potentialAction": ${JSON.stringify(buildWebsiteSearchAction(), null, 8)}\n      },\n      "mainEntity": {\n        "@type": "ItemList",\n        "itemListElement": ${JSON.stringify(hubPosts, null, 8)}\n      }\n    }\n    </script>\n    <script type="application/ld+json">\n    {\n      "@context": "https://schema.org",\n      "@type": "BreadcrumbList",\n      "itemListElement": [\n        {\n          "@type": "ListItem",\n          "position": 1,\n          "name": "Home",\n          "item": ${JSON.stringify(`${siteUrl}/`)}\n        },\n        {\n          "@type": "ListItem",\n          "position": 2,\n          "name": ${JSON.stringify(hub.label)},\n          "item": ${JSON.stringify(canonicalUrl)}\n        }\n      ]\n    }\n    </script>${faqSchema}\n    <!-- Google Analytics -->`
+    `<!-- JSON-LD WebSite Schema -->\n    <script type="application/ld+json">\n    {\n      "@context": "https://schema.org",\n      "@type": "CollectionPage",\n      "name": ${JSON.stringify(hub.title)},\n      "url": ${JSON.stringify(canonicalUrl)},\n      "description": ${JSON.stringify(hub.description)},\n      "dateModified": ${JSON.stringify(latestModified)},\n      "isPartOf": {\n        "@type": "WebSite",\n        "name": "OpenClaw Chronicles",\n        "url": ${JSON.stringify(siteUrl)},\n        "potentialAction": ${JSON.stringify(buildWebsiteSearchAction(), null, 8)}\n      },\n      "mainEntity": {\n        "@type": "ItemList",\n        "numberOfItems": ${hubPosts.length},\n        "itemListOrder": "https://schema.org/ItemListOrderDescending",\n        "itemListElement": ${JSON.stringify(hubPosts, null, 8)}\n      }\n    }\n    </script>\n    <script type="application/ld+json">\n    {\n      "@context": "https://schema.org",\n      "@type": "BreadcrumbList",\n      "itemListElement": [\n        {\n          "@type": "ListItem",\n          "position": 1,\n          "name": "Home",\n          "item": ${JSON.stringify(`${siteUrl}/`)}\n        },\n        {\n          "@type": "ListItem",\n          "position": 2,\n          "name": ${JSON.stringify(hub.label)},\n          "item": ${JSON.stringify(canonicalUrl)}\n        }\n      ]\n    }\n    </script>${faqSchema}\n    <!-- Google Analytics -->`
   );
 
   return html;
