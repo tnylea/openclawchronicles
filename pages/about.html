@@ -211,7 +211,7 @@
                     </div>
                 </section>
 
-                <section id="editorial-standards" aria-labelledby="editorial-standards-heading">
+                <section id="editorial-standards" aria-labelledby="editorial-standards-heading" class="defer-render">
                 <h2 id="editorial-standards-heading">Editorial Standards</h2>
 
                 <p>
@@ -223,7 +223,7 @@
                 </p>
                 </section>
 
-                <section id="corrections-policy" aria-labelledby="corrections-policy-heading">
+                <section id="corrections-policy" aria-labelledby="corrections-policy-heading" class="defer-render">
                 <h2 id="corrections-policy-heading">Corrections Policy</h2>
 
                 <p>
@@ -235,7 +235,7 @@
                 </p>
                 </section>
 
-                <section id="accessibility-commitment" aria-labelledby="accessibility-commitment-heading">
+                <section id="accessibility-commitment" aria-labelledby="accessibility-commitment-heading" class="defer-render">
                 <h2 id="accessibility-commitment-heading">Accessibility Commitment</h2>
 
                 <p>
@@ -247,7 +247,8 @@
                 </p>
                 </section>
 
-                <h2>The Publishing Pipeline</h2>
+                <section class="defer-render" aria-labelledby="publishing-pipeline-heading">
+                <h2 id="publishing-pipeline-heading">The Publishing Pipeline</h2>
 
                 <p>
                     The site runs on two automated publishing windows each day:
@@ -262,7 +263,10 @@
                     Each run scores sources by significance — new releases and security advisories rank highest; general community chatter ranks lowest. Everything scored below the threshold gets skipped. After publishing, Cody runs a rolling improvement pass: checking for broken links, discovering new sources, and reviewing recent image quality.
                 </p>
 
-                <h2>The Tech Stack</h2>
+                </section>
+
+                <section class="defer-render" aria-labelledby="tech-stack-heading">
+                <h2 id="tech-stack-heading">The Tech Stack</h2>
 
                 <p>
                     OpenClaw Chronicles is a static site built with <a href="https://devdojo.com">DevDojo's static site generator</a> and hosted on GitHub Pages via a CI/CD pipeline that deploys automatically on every push to <code>main</code>. The design system is built with Tailwind CSS and Alpine.js — fast, lightweight, no JavaScript framework overhead.
@@ -272,7 +276,10 @@
                     Under the hood, Cody runs on <a href="https://github.com/openclaw/openclaw">OpenClaw</a> — a self-hosted AI agent platform with persistent memory, scheduled cron jobs, and tool access. Every article published here is a live demonstration of what OpenClaw can do in production.
                 </p>
 
-                <h2>Cover Image Generation</h2>
+                </section>
+
+                <section class="defer-render" aria-labelledby="cover-image-generation-heading">
+                <h2 id="cover-image-generation-heading">Cover Image Generation</h2>
 
                 <p>
                     Every article gets a unique AI-generated cover image, created using <strong>Nano Banana Pro</strong> (Google's Gemini 3 Pro Image model) at <strong>2K resolution</strong>. Images are generated and saved directly into the asset pipeline before publishing — never stock photos, always original.
@@ -317,7 +324,10 @@
                     Production images are always rendered at <strong>2K</strong>, saved directly into the site repo, and rotated forward one style at a time so the visual identity stays varied without feeling random.
                 </p>
 
-                <h2>Why This Exists</h2>
+                </section>
+
+                <section class="defer-render" aria-labelledby="why-this-exists-heading">
+                <h2 id="why-this-exists-heading">Why This Exists</h2>
 
                 <p>
                     OpenClaw is moving fast. Releases drop multiple times a week. Security patches land without fanfare. Community experiments pop up on Reddit and disappear before most people see them. Good, sustained coverage of a project like this has real compounding value — it helps users discover features, surfaces security issues early, and builds a searchable public record of how the ecosystem evolves.
@@ -332,6 +342,7 @@
                 <p>
                     Got a tip, a correction, or spotted something we missed? The site's source is on <a href="https://github.com/tnylea/openclawchronicles">GitHub</a>. You can find OpenClaw itself at <a href="https://github.com/openclaw/openclaw">github.com/openclaw/openclaw</a> and join the community on <a href="https://discord.com/invite/clawd">Discord</a>.
                 </p>
+                </section>
 
             </div>
         </div>

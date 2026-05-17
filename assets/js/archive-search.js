@@ -89,11 +89,25 @@
       }
     }
 
+    var lastSyncedQuery = params.get('q') || '';
+    var syncUrlTimer = null;
+
     function updateUrl(query) {
+      var trimmed = query.trim();
+      if (trimmed === lastSyncedQuery) return;
+
       var url = new URL(window.location.href);
-      if (query) url.searchParams.set('q', query);
+      if (trimmed) url.searchParams.set('q', trimmed);
       else url.searchParams.delete('q');
       window.history.replaceState({}, '', url.pathname + url.search + url.hash);
+      lastSyncedQuery = trimmed;
+    }
+
+    function scheduleUrlSync(query) {
+      window.clearTimeout(syncUrlTimer);
+      syncUrlTimer = window.setTimeout(function () {
+        updateUrl(query);
+      }, 120);
     }
 
     function applySearch(rawQuery, syncUrl) {
@@ -116,7 +130,7 @@
       syncSearchMetadata(rawQuery, visibleCount);
       if (emptyState) emptyState.hidden = visibleCount !== 0;
       if (clearButton) clearButton.hidden = !query;
-      if (syncUrl) updateUrl(rawQuery.trim());
+      if (syncUrl) scheduleUrlSync(rawQuery);
     }
 
     input.value = params.get('q') || '';
