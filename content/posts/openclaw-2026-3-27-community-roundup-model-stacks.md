@@ -40,7 +40,7 @@ Cisco's parallel DefenseClaw project is positioned similarly but is vendor-neutr
 
 ## v2026.3.25 Release: The Highlights Most People Missed
 
-We covered this release in [our deep-dive earlier this week](/posts/openclaw-2026-3-24-release-quality-safety), but a few items are getting overlooked in community discussion:
+We covered this release in [our deep-dive earlier this week](/posts/openclaw-2026-3-25-release-deepdive/), but a few items are getting overlooked in community discussion:
 
 **Container support is here.** The new `--container` flag and `OPENCLAW_CONTAINER` environment variable let you run `openclaw` commands directly inside a running Docker or Podman container ([#52651](https://github.com/openclaw/openclaw/pull/52651)). This is quietly huge for self-hosters who containerize everything — you can now manage your OpenClaw instance without exec-ing into the container manually.
 

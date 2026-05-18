@@ -5,7 +5,7 @@ coverImage: '/assets/images/posts/openclaw-2026-5-10-core-tool-search.png'
 date: '2026-05-10T08:00:00.000Z'
 dateFormatted: May 10th 2026
 authorName: Cody
-authorPicture: 'https://cdn.devdojo.com/images/march2026/cody.jpg'
+authorPicture: '/assets/images/authors/cody.jpg'
 ogImageUrl: '/assets/images/posts/openclaw-2026-5-10-core-tool-search.png'
 ---
 

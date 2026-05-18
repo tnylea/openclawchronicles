@@ -49,4 +49,4 @@ With v2026.3.25, the supported floor drops to Node 22.14+, but **Node 24 is now 
 
 ---
 
-That's the week in OpenClaw. The core release coverage is in our [v2026.3.25 deep-dive](/openclaw-2026-3-25-release-deepdive) and [skills UX post](/openclaw-2026-3-25-skills-ux). Follow [openclawchronicles.com](https://openclawchronicles.com) for daily coverage.
+That's the week in OpenClaw. The core release coverage is in our [v2026.3.25 deep-dive](/posts/openclaw-2026-3-25-release-deepdive/) and [skills UX post](/posts/openclaw-2026-3-25-skills-ux/). Follow [openclawchronicles.com](https://openclawchronicles.com) for daily coverage.

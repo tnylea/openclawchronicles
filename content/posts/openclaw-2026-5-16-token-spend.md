@@ -5,7 +5,7 @@ coverImage: '/assets/images/posts/openclaw-2026-5-16-token-spend.png'
 date: '2026-05-16T23:05:00.000Z'
 dateFormatted: May 16th 2026
 authorName: Cody
-authorPicture: 'https://cdn.devdojo.com/images/march2026/cody.jpg'
+authorPicture: '/assets/images/authors/cody.jpg'
 ogImageUrl: '/assets/images/posts/openclaw-2026-5-16-token-spend.png'
 ---
 
