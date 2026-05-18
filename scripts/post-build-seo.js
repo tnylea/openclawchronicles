@@ -191,6 +191,17 @@ function latestModifiedForPosts(posts) {
     .sort((a, b) => new Date(b) - new Date(a))[0] || null;
 }
 
+function formatUtcDate(value) {
+  const date = new Date(value);
+  if (Number.isNaN(date.getTime())) return null;
+  return date.toLocaleDateString('en-US', {
+    year: 'numeric',
+    month: 'short',
+    day: 'numeric',
+    timeZone: 'UTC',
+  });
+}
+
 function fixPostsArchiveMetadata(html, canonicalUrl) {
   if (!/^https:\/\/openclawchronicles\.com\/posts\/(\d+\/)?$/.test(canonicalUrl)) return html;
 
@@ -977,6 +988,146 @@ function decorateActiveNavigation(html, canonicalUrl) {
   return html;
 }
 
+function injectFreshnessSignals(html, canonicalUrl) {
+  const hubMatchers = [
+    {
+      test: canonicalUrl === `${siteUrl}/`,
+      posts: allPosts,
+      headline: 'Updated from the latest OpenClaw coverage',
+      detailPrefix: 'Latest archive update',
+    },
+    {
+      test: /^https:\/\/openclawchronicles\.com\/posts\/(\d+\/)?$/.test(canonicalUrl),
+      posts: allPosts,
+      headline: 'Fresh archive path',
+      detailPrefix: 'Latest archive update',
+    },
+    {
+      test: canonicalUrl === `${siteUrl}/about/`,
+      posts: allPosts,
+      headline: 'Editorial workflow is kept current',
+      detailPrefix: 'Latest site coverage refresh',
+    },
+    {
+      test: canonicalUrl === `${siteUrl}/site-map/`,
+      posts: allPosts,
+      headline: 'Crawl paths refreshed from current coverage',
+      detailPrefix: 'Latest archive update',
+    },
+    {
+      test: canonicalUrl === `${siteUrl}/releases/`,
+      posts: allPosts.filter((post) => matchesHubTopic(post, 'Releases')),
+      headline: 'Release hub refreshed from current OpenClaw shipping news',
+      detailPrefix: 'Latest release update',
+    },
+    {
+      test: canonicalUrl === `${siteUrl}/security/`,
+      posts: allPosts.filter((post) => matchesHubTopic(post, 'Security')),
+      headline: 'Security hub refreshed from current advisories and hardening coverage',
+      detailPrefix: 'Latest security update',
+    },
+    {
+      test: canonicalUrl === `${siteUrl}/guides/`,
+      posts: allPosts.filter((post) => matchesHubTopic(post, 'Guides')),
+      headline: 'Guides hub refreshed from current tutorial coverage',
+      detailPrefix: 'Latest guide update',
+    },
+    {
+      test: canonicalUrl === `${siteUrl}/memory/`,
+      posts: allPosts.filter((post) => matchesHubTopic(post, 'Memory')),
+      headline: 'Memory hub refreshed from current recall and workflow coverage',
+      detailPrefix: 'Latest memory update',
+    },
+    {
+      test: canonicalUrl === `${siteUrl}/migrations/`,
+      posts: allPosts.filter((post) => matchesHubTopic(post, 'Migrations')),
+      headline: 'Migration hub refreshed from current provider and upgrade coverage',
+      detailPrefix: 'Latest migration update',
+    },
+    {
+      test: canonicalUrl === `${siteUrl}/local-models/`,
+      posts: allPosts.filter((post) => matchesHubTopic(post, 'Local Models')),
+      headline: 'Local models hub refreshed from current on-device coverage',
+      detailPrefix: 'Latest local-model update',
+    },
+  ];
+
+  const target = hubMatchers.find((entry) => entry.test);
+  if (!target || html.includes('data-freshness-signal')) return html;
+
+  const latestPost = (target.posts || []).slice().sort((a, b) => new Date(b.modified || b.date) - new Date(a.modified || a.date))[0];
+  if (!latestPost) return html;
+
+  const updatedLabel = formatUtcDate(latestPost.modified || latestPost.date);
+  if (!updatedLabel) return html;
+
+  const badge = `
+        <div data-freshness-signal class="mt-5 inline-flex max-w-3xl flex-wrap items-center gap-2 rounded-[min(0.3vw,4px)] border border-border bg-surface-alt px-3 py-2 text-left">
+            <span class="text-red-accent font-mono text-[0.625rem] font-semibold tracking-wider uppercase">${target.headline}</span>
+            <span class="text-ink-muted font-sans text-xs">${target.detailPrefix}: <a href="${latestPost.url}" class="text-ink-strong hover:text-red-accent font-medium">${latestPost.title}</a> on ${updatedLabel}.</span>
+        </div>`;
+
+  return html.replace(/(<p class="font-body text-ink-muted mt-3 max-w-3xl text-lg italic">[\s\S]*?<\/p>|<p class="font-body text-ink-muted mt-4 text-lg italic">[\s\S]*?<\/p>)/i, `$1${badge}`);
+}
+
+function injectIntentHubLinks(html, canonicalUrl) {
+  const match = canonicalUrl.match(/\/posts\/([^/]+)\/$/);
+  if (!match) return html;
+
+  const post = postBySlug.get(match[1]);
+  if (!post) return html;
+
+  const section = inferSection(post);
+  const haystack = `${post.title} ${post.excerpt} ${post.content}`.toLowerCase();
+  const links = [];
+  const pushLink = (href, label) => {
+    if (!links.find((link) => link.href === href)) links.push({ href, label });
+  };
+
+  pushLink(sectionMeta(section).href.replace(siteUrl, ''), `Filed under ${sectionMeta(section).label}`);
+  pushLink('/posts/', 'Full archive');
+
+  if (section === 'Releases') {
+    pushLink('/security/', 'Security follow-up');
+    pushLink('/migrations/', 'Upgrade and migration help');
+  }
+  if (section === 'Security') {
+    pushLink('/releases/', 'Related release coverage');
+    pushLink('/guides/', 'Hardening and setup guides');
+  }
+  if (section === 'Guides') {
+    pushLink('/guides/', 'Guides and tutorials');
+    if (/memory|recall|dreaming|wiki/.test(haystack)) pushLink('/memory/', 'Memory workflows');
+    if (/migrate|migration|oauth|upgrade|provider/.test(haystack)) pushLink('/migrations/', 'Migration help');
+    if (/ollama|local|mlx|macbook air|gemma|on-device/.test(haystack)) pushLink('/local-models/', 'Local model guides');
+    pushLink('/releases/', 'Latest release coverage');
+  }
+
+  pushLink('/security/', 'Security coverage');
+  pushLink('/guides/', 'Guides and tutorials');
+  pushLink('/memory/', 'Memory guides');
+  pushLink('/local-models/', 'Local models');
+
+  const limitedLinks = links.slice(0, 6).map((link) => `<a href="${link.href}" class="border-border text-ink-strong hover:text-red-accent rounded-full border px-3 py-1.5 font-sans text-xs font-medium">${link.label}</a>`).join('');
+  const intro = section === 'Security'
+    ? 'Keep crawling into the security context, the related release path, and the strongest OpenClaw setup hubs.'
+    : section === 'Releases'
+      ? 'Keep crawling into the release timeline, upgrade guidance, and follow-up security coverage.'
+      : 'Keep crawling into the strongest OpenClaw clusters that match this workflow, plus the broader archive.';
+
+  return html.replace(/<nav class="mx-auto max-w-3xl px-4 pb-4 sm:px-6 lg:px-8" aria-label="Explore topic hubs">[\s\S]*?<\/nav>/i, `<nav class="mx-auto max-w-3xl px-4 pb-4 sm:px-6 lg:px-8" aria-label="Explore topic hubs">\n            <div class="border-border rounded-[min(0.3vw,4px)] border bg-surface-alt p-4">\n                <p class="text-ink-faint font-mono text-[0.625rem] font-semibold tracking-wider uppercase">Explore next-best paths</p>\n                <p class="text-ink-body mt-2 text-sm">${intro}</p>\n                <div class="mt-3 flex flex-wrap gap-3">${limitedLinks}</div>\n            </div>\n        </nav>`);
+}
+
+function optimizeDeferredSections(html) {
+  return html.replace(/<(section|div)([^>]*class="[^"]*\bdefer-render\b[^"]*"[^>]*)>/gi, (full, tag, attrs) => {
+    if (/content-visibility\s*:/.test(attrs)) return full;
+    if (/\sstyle="/.test(attrs)) {
+      return `<${tag}${attrs.replace(/\sstyle="([^"]*)"/, ' style="$1;content-visibility:auto;contain-intrinsic-size:1px 960px"')}>`;
+    }
+    return `<${tag}${attrs} style="content-visibility:auto;contain-intrinsic-size:1px 960px">`;
+  });
+}
+
 function injectArticleMetaSummary(html, canonicalUrl) {
   const match = canonicalUrl.match(/\/posts\/([^/]+)\/$/);
   if (!match || html.includes('story-meta-summary')) return html;
@@ -1183,7 +1334,9 @@ for (const file of walk(siteDir)) {
   }
 
   html = fixArticleMetadata(html, canonicalUrl);
+  html = injectFreshnessSignals(html, canonicalUrl);
   html = injectArticleMetaSummary(html, canonicalUrl);
+  html = injectIntentHubLinks(html, canonicalUrl);
   html = injectLatestTopicSections(html, canonicalUrl);
   html = injectHubFreshLinks(html, canonicalUrl);
   html = refreshHomepageCoverageTracks(html, canonicalUrl);
@@ -1194,6 +1347,7 @@ for (const file of walk(siteDir)) {
   html = injectArticlePagination(html, canonicalUrl);
   html = decorateActiveNavigation(html, canonicalUrl);
   html = normalizeInternalPostLinks(html);
+  html = optimizeDeferredSections(html);
   html = wrapImagesWithPicture(html);
   html = optimizeImages(html);
   fs.writeFileSync(file, html);
