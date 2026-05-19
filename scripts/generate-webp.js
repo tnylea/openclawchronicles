@@ -10,6 +10,13 @@ const imageRoots = [
 
 const allowedExtensions = new Set(['.png', '.jpg', '.jpeg']);
 const responsiveWidths = [640, 960, 1200];
+const outputFormats = [
+  {
+    extension: 'webp',
+    encode: (pipeline) => pipeline.webp({ quality: 78, effort: 6 }),
+    include: () => true,
+  },
+];
 const skipPatterns = [
   /favicon/i,
   /icon-/i,
@@ -40,14 +47,14 @@ function needsResponsiveVariants(file) {
   return /\/assets\/images\/(posts\/|about-banner\.(png|jpe?g)$)/i.test(normalized);
 }
 
-async function writeWebp(source, output, width = null) {
+async function writeVariant(source, output, format, width = null) {
   let pipeline = sharp(source).rotate();
 
   if (width) {
     pipeline = pipeline.resize({ width, withoutEnlargement: true });
   }
 
-  await pipeline.webp({ quality: 78, effort: 6 }).toFile(output);
+  await format.encode(pipeline).toFile(output);
 }
 
 async function imageMetadata(file) {
@@ -68,43 +75,49 @@ async function main() {
         continue;
       }
 
-      const output = file.replace(/\.(png|jpe?g)$/i, '.webp');
       const sourceStat = fs.statSync(file);
-      const outputExists = fs.existsSync(output);
-      const outputFresh = outputExists && fs.statSync(output).mtimeMs >= sourceStat.mtimeMs;
-
       const metadata = needsResponsiveVariants(file) ? await imageMetadata(file) : null;
       const sourceWidth = metadata?.width || null;
 
-      if (outputFresh) {
-        skipped += 1;
-      } else {
-        await writeWebp(file, output);
-        converted += 1;
-      }
+      for (const format of outputFormats) {
+        if (!format.include(file)) {
+          skipped += 1;
+          continue;
+        }
+        const output = file.replace(/\.(png|jpe?g)$/i, `.${format.extension}`);
+        const outputExists = fs.existsSync(output);
+        const outputFresh = outputExists && fs.statSync(output).mtimeMs >= sourceStat.mtimeMs;
 
-      if (needsResponsiveVariants(file)) {
-        for (const width of responsiveWidths) {
-          if (sourceWidth && width >= sourceWidth) {
-            skipped += 1;
-            continue;
-          }
-
-          const variantOutput = output.replace(/\.webp$/i, `-${width}.webp`);
-          const variantFresh = fs.existsSync(variantOutput) && fs.statSync(variantOutput).mtimeMs >= sourceStat.mtimeMs;
-          if (variantFresh) {
-            skipped += 1;
-            continue;
-          }
-
-          await writeWebp(file, variantOutput, width);
+        if (outputFresh) {
+          skipped += 1;
+        } else {
+          await writeVariant(file, output, format);
           converted += 1;
+        }
+
+        if (needsResponsiveVariants(file)) {
+          for (const width of responsiveWidths) {
+            if (sourceWidth && width >= sourceWidth) {
+              skipped += 1;
+              continue;
+            }
+
+            const variantOutput = output.replace(new RegExp(`\\.${format.extension}$`, 'i'), `-${width}.${format.extension}`);
+            const variantFresh = fs.existsSync(variantOutput) && fs.statSync(variantOutput).mtimeMs >= sourceStat.mtimeMs;
+            if (variantFresh) {
+              skipped += 1;
+              continue;
+            }
+
+            await writeVariant(file, variantOutput, format, width);
+            converted += 1;
+          }
         }
       }
     }
   }
 
-  console.log(`Generated WebP assets, converted ${converted}, skipped ${skipped}`);
+  console.log(`Generated responsive image assets, converted ${converted}, skipped ${skipped}`);
 }
 
 main().catch((error) => {

@@ -71,6 +71,41 @@ function normalizeInternalPostLinks(html) {
   });
 }
 
+function buildResponsiveModernSrcset(src, extension) {
+  const modernSrc = src.replace(/\.(png|jpe?g)(\?.*)?$/i, `.${extension}$2`);
+  if (modernSrc === src) return null;
+
+  const sourcePath = modernSrc.replace(/^\//, '').split('?')[0];
+  const absolutePath = path.join(siteDir, sourcePath);
+  if (!fs.existsSync(absolutePath)) return null;
+
+  const candidates = [640, 960, 1200]
+    .map((width) => {
+      const candidateSrc = modernSrc.replace(new RegExp(`\\.${extension}(\\?.*)?$`, 'i'), `-${width}.${extension}$1`);
+      const candidatePath = path.join(siteDir, candidateSrc.replace(/^\//, '').split('?')[0]);
+      return fs.existsSync(candidatePath) ? `${candidateSrc} ${width}w` : null;
+    })
+    .filter(Boolean);
+
+  candidates.push(`${modernSrc} 1600w`);
+
+  return candidates.join(', ');
+}
+
+function bestModernImageSource(src) {
+  if (!/^\/assets\/images\//.test(src) || !/\.(png|jpe?g)(\?.*)?$/i.test(src)) return null;
+
+  const modernSrc = src.replace(/\.(png|jpe?g)(\?.*)?$/i, '.webp$2');
+  const modernPath = path.join(siteDir, modernSrc.replace(/^\//, '').split('?')[0]);
+  if (!fs.existsSync(modernPath)) return null;
+
+  return {
+    src: modernSrc,
+    type: 'image/webp',
+    srcset: buildResponsiveModernSrcset(src, 'webp'),
+  };
+}
+
 function injectImagePreload(html) {
   if (html.includes('data-seo-preload="hero-image"')) return html;
 
@@ -86,15 +121,11 @@ function injectImagePreload(html) {
   let imageSrcset = '';
   let imageSizes = '';
 
-  if (/^\/assets\/images\//.test(heroSrc) && /\.(png|jpe?g)(\?.*)?$/i.test(heroSrc)) {
-    const webpSrc = heroSrc.replace(/\.(png|jpe?g)(\?.*)?$/i, '.webp$2');
-    const webpPath = path.join(siteDir, webpSrc.replace(/^\//, '').split('?')[0]);
-    if (fs.existsSync(webpPath)) {
-      preloadSrc = webpSrc;
-      preloadType = ' type="image/webp"';
-      const responsiveSrcset = buildResponsiveWebpSrcset(heroSrc);
-      if (responsiveSrcset) imageSrcset = ` imagesrcset="${responsiveSrcset}"`;
-    }
+  const bestModernSource = bestModernImageSource(heroSrc);
+  if (bestModernSource) {
+    preloadSrc = bestModernSource.src;
+    preloadType = ` type="${bestModernSource.type}"`;
+    if (bestModernSource.srcset) imageSrcset = ` imagesrcset="${bestModernSource.srcset}"`;
   }
 
   const sizesMatch = heroAttrs.match(/\ssizes="([^"]+)"/i);
@@ -1217,24 +1248,7 @@ function fixArticleMetadata(html, canonicalUrl) {
 }
 
 function buildResponsiveWebpSrcset(src) {
-  const webpSrc = src.replace(/\.(png|jpe?g)(\?.*)?$/i, '.webp$2');
-  if (webpSrc === src) return null;
-
-  const sourcePath = webpSrc.replace(/^\//, '').split('?')[0];
-  const absolutePath = path.join(siteDir, sourcePath);
-  if (!fs.existsSync(absolutePath)) return null;
-
-  const candidates = [640, 960, 1200]
-    .map((width) => {
-      const candidateSrc = webpSrc.replace(/\.webp(\?.*)?$/i, `-${width}.webp$1`);
-      const candidatePath = path.join(siteDir, candidateSrc.replace(/^\//, '').split('?')[0]);
-      return fs.existsSync(candidatePath) ? `${candidateSrc} ${width}w` : null;
-    })
-    .filter(Boolean);
-
-  candidates.push(`${webpSrc} 1600w`);
-
-  return candidates.join(', ');
+  return buildResponsiveModernSrcset(src, 'webp');
 }
 
 function wrapImagesWithPicture(html) {
@@ -1249,16 +1263,21 @@ function wrapImagesWithPicture(html) {
     if (/\.webp(?:$|\?)/i.test(src)) return full;
     if (/cody\.jpg|icon-|favicon|apple-touch-icon/i.test(src)) return full;
 
-    const webpSrc = src.replace(/\.(png|jpe?g)(\?.*)?$/i, '.webp$2');
-    if (webpSrc === src) return full;
+    const sources = [
+      { extension: 'webp', type: 'image/webp' },
+    ].map((format) => {
+      const modernSrc = src.replace(/\.(png|jpe?g)(\?.*)?$/i, `.${format.extension}$2`);
+      const modernPath = path.join(siteDir, modernSrc.replace(/^\//, '').split('?')[0]);
+      if (!fs.existsSync(modernPath)) return null;
 
-    const webpPath = path.join(siteDir, webpSrc.replace(/^\//, '').split('?')[0]);
-    if (!fs.existsSync(webpPath)) return full;
+      const srcset = buildResponsiveModernSrcset(src, format.extension);
+      const srcsetAttr = srcset ? ` srcset="${srcset}"` : ` srcset="${modernSrc}"`;
+      return `<source${srcsetAttr} type="${format.type}">`;
+    }).filter(Boolean);
 
-    const srcset = buildResponsiveWebpSrcset(src);
-    const srcsetAttr = srcset ? ` srcset="${srcset}"` : ` srcset="${webpSrc}"`;
+    if (!sources.length) return full;
 
-    return `<picture><source${srcsetAttr} type="image/webp">${full}</picture>`;
+    return `<picture>${sources.join('')}${full}</picture>`;
   });
 }
 
