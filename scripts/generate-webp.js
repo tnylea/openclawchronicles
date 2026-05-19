@@ -50,6 +50,10 @@ async function writeWebp(source, output, width = null) {
   await pipeline.webp({ quality: 78, effort: 6 }).toFile(output);
 }
 
+async function imageMetadata(file) {
+  return sharp(file).metadata();
+}
+
 async function main() {
   let converted = 0;
   let skipped = 0;
@@ -69,6 +73,9 @@ async function main() {
       const outputExists = fs.existsSync(output);
       const outputFresh = outputExists && fs.statSync(output).mtimeMs >= sourceStat.mtimeMs;
 
+      const metadata = needsResponsiveVariants(file) ? await imageMetadata(file) : null;
+      const sourceWidth = metadata?.width || null;
+
       if (outputFresh) {
         skipped += 1;
       } else {
@@ -78,6 +85,11 @@ async function main() {
 
       if (needsResponsiveVariants(file)) {
         for (const width of responsiveWidths) {
+          if (sourceWidth && width >= sourceWidth) {
+            skipped += 1;
+            continue;
+          }
+
           const variantOutput = output.replace(/\.webp$/i, `-${width}.webp`);
           const variantFresh = fs.existsSync(variantOutput) && fs.statSync(variantOutput).mtimeMs >= sourceStat.mtimeMs;
           if (variantFresh) {

@@ -1,5 +1,11 @@
 User-agent: *
 Allow: /
+
+# Canonical sitemap entry point
 Sitemap: https://openclawchronicles.com/sitemap-index.xml
+
+# Direct sitemap files for crawlers that fetch them individually
 Sitemap: https://openclawchronicles.com/sitemap.xml
 Sitemap: https://openclawchronicles.com/news-sitemap.xml
+
+Host: openclawchronicles.com

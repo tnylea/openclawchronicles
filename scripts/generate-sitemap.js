@@ -93,7 +93,15 @@ urls.push({
 });
 
 // Posts index
-urls.push({ loc: `${BASE_URL}/posts/`, lastmod: latestPostModified, changefreq: 'daily', priority: '0.8' });
+urls.push({
+  loc: `${BASE_URL}/posts/`,
+  lastmod: latestPostModified,
+  changefreq: 'daily',
+  priority: '0.8',
+  image: absoluteAssetUrl('/assets/images/about-banner.jpg'),
+  imageTitle: 'OpenClaw Chronicles archive',
+  imageCaption: 'Browse the full OpenClaw Chronicles archive for releases, security coverage, and guides.',
+});
 
 for (const page of staticPageConfigs) {
   const fallbackDate = page.section ? latestSectionDate(page.section) : latestPostDate;
@@ -111,6 +119,22 @@ urls.push({ loc: `${BASE_URL}/feed.xml`, lastmod: latestPostModified, changefreq
 urls.push({ loc: `${BASE_URL}/feed.json`, lastmod: latestPostModified, changefreq: 'daily', priority: '0.4' });
 
 const totalArchivePages = Math.max(1, Math.ceil(postFiles.length / POSTS_PER_PAGE));
+
+for (let page = 2; page <= totalArchivePages; page += 1) {
+  const start = (page - 1) * POSTS_PER_PAGE;
+  const pagePosts = postFiles.slice(start, start + POSTS_PER_PAGE);
+  const pageLastmod = pagePosts[0]?.modified || pagePosts[0]?.date?.split('T')[0] || latestPostModified;
+
+  urls.push({
+    loc: `${BASE_URL}/posts/${page}/`,
+    lastmod: pageLastmod,
+    changefreq: 'weekly',
+    priority: page <= 4 ? '0.6' : '0.5',
+    image: absoluteAssetUrl('/assets/images/about-banner.jpg'),
+    imageTitle: `OpenClaw Chronicles archive page ${page}`,
+    imageCaption: `Paginated OpenClaw archive page ${page} with older releases, security coverage, and guides.`,
+  });
+}
 
 for (const post of postFiles) {
   urls.push({
