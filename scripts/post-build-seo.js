@@ -855,6 +855,125 @@ function refreshAboutReaderPaths(html, canonicalUrl) {
   return html;
 }
 
+function refreshHubFeaturedContent(html, canonicalUrl) {
+  const hubConfigs = {
+    [`${siteUrl}/releases/`]: {
+      topic: 'Releases',
+      label: 'Release',
+      listHeading: 'Start here',
+      ctaMap: {
+        'Latest stable': 'Read the latest release breakdown',
+        'Beta tracking': 'See the latest beta coverage',
+      },
+    },
+    [`${siteUrl}/security/`]: {
+      topic: 'Security',
+      label: 'Security',
+      listHeading: 'Key reading',
+      ctaMap: {
+        'Urgent patches': 'See the latest hardening release',
+        'Self-hosting risk': 'Review the latest operator-focused security coverage',
+        'Incident response': 'Read the latest incident-style security coverage',
+      },
+    },
+    [`${siteUrl}/guides/`]: {
+      topic: 'Guides',
+      label: 'Guide',
+      listHeading: 'Popular starting points',
+      ctaMap: {
+        'Memory setup': 'Read the latest memory guide',
+        'Migration help': 'See the latest migration walkthrough',
+        'Local-first workflows': 'Start with the newest local-model guide',
+      },
+    },
+    [`${siteUrl}/local-models/`]: {
+      topic: 'Local Models',
+      label: 'Local models',
+      listHeading: 'Start here',
+      ctaMap: {
+        'Portable setups': 'Read the latest Mac or local hardware guide',
+        'Ollama troubleshooting': 'Open the latest Ollama or local routing guide',
+      },
+    },
+  };
+
+  const hub = hubConfigs[canonicalUrl];
+  if (!hub) return html;
+
+  const matchesTopic = (post) => matchesHubTopic(post, hub.topic);
+  const topicPosts = allPosts.filter(matchesTopic);
+  if (!topicPosts.length) return html;
+
+  const newest = topicPosts[0];
+  const newestStableOrGeneral = hub.topic === 'Releases'
+    ? topicPosts.find((post) => /stable|release|hotfix|v2026\./i.test(`${post.title} ${post.excerpt}`)) || newest
+    : newest;
+  const newestBeta = hub.topic === 'Releases'
+    ? topicPosts.find((post) => /beta|preview/i.test(`${post.title} ${post.excerpt}`)) || newest
+    : null;
+  const newestSecurityOperator = hub.topic === 'Security'
+    ? topicPosts.find((post) => /docker|isolation|gateway|self-host|hardening|operator|pairing/i.test(`${post.title} ${post.excerpt}`)) || newest
+    : null;
+  const newestIncident = hub.topic === 'Security'
+    ? topicPosts.find((post) => /incident|response|exposed|exploit|vulnerability|ssrf|cve/i.test(`${post.title} ${post.excerpt}`)) || newest
+    : null;
+  const newestMemoryGuide = hub.topic === 'Guides'
+    ? topicPosts.find((post) => /memory|recall|dreaming|wiki/i.test(`${post.title} ${post.excerpt}`)) || newest
+    : null;
+  const newestMigrationGuide = hub.topic === 'Guides'
+    ? topicPosts.find((post) => /migrate|migration|oauth|upgrade|provider/i.test(`${post.title} ${post.excerpt}`)) || newest
+    : null;
+  const newestLocalGuide = hub.topic === 'Guides' || hub.topic === 'Local Models'
+    ? topicPosts.find((post) => /local|ollama|macbook air|gemma|mlx|wsl2|on-device/i.test(`${post.title} ${post.excerpt}`)) || newest
+    : null;
+
+  const listPosts = topicPosts.slice(0, 3);
+  html = html.replace(
+    new RegExp(`(<span class="text-red-accent[^"]*">${hub.listHeading}<\\/span>[\\s\\S]*?<ul class="mt-3 space-y-3">)([\\s\\S]*?)(<\\/ul>)`, 'i'),
+    `$1${buildTopicLinkItems(listPosts, hub.label)}$3`
+  );
+
+  const ctaTargets = {
+    'Latest stable': newestStableOrGeneral,
+    'Beta tracking': newestBeta,
+    'Urgent patches': newest,
+    'Self-hosting risk': newestSecurityOperator,
+    'Incident response': newestIncident,
+    'Memory setup': newestMemoryGuide,
+    'Migration help': newestMigrationGuide,
+    'Local-first workflows': newestLocalGuide,
+    'Portable setups': newestLocalGuide,
+    'Ollama troubleshooting': newestLocalGuide,
+  };
+
+  for (const [heading, label] of Object.entries(hub.ctaMap || {})) {
+    const post = ctaTargets[heading];
+    if (!post) continue;
+    const headingEscaped = heading.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+    html = html.replace(
+      new RegExp(`(<h3 class="font-display text-ink text-2xl font-semibold tracking-tight">${headingEscaped}<\\/h3>[\\s\\S]*?<a href=")([^"]+)(" class="text-ink-strong hover:text-red-accent mt-4 inline-flex font-sans text-sm font-medium">)([\\s\\S]*?)(<\\/a>)`, 'i'),
+      `$1${post.url}$3${label}$5`
+    );
+  }
+
+  if (canonicalUrl === `${siteUrl}/local-models/`) {
+    const spotlightPosts = topicPosts.slice(0, 3);
+    const cards = spotlightPosts.map((post) => `
+                <article class="border-border rounded-[min(0.3vw,4px)] border p-5">
+                    <a href="${post.url}" class="group block">
+                        <span class="text-red-accent font-mono text-[0.625rem] font-semibold tracking-wider uppercase">${inferSection(post) === 'Guides' ? 'Guide' : 'Local models'}</span>
+                        <h3 class="font-display group-hover:text-red-accent text-ink mt-2 text-2xl font-semibold tracking-tight text-balance sm:text-xl">${post.title}</h3>
+                        <p class="text-ink-body mt-3 text-[0.9375rem] text-pretty">${post.excerpt}</p>
+                    </a>
+                </article>`).join('');
+
+    html = html.replace(/(<h2 id="local-models-heading"[\s\S]*?<div class="mt-8 grid gap-6 lg:grid-cols-3">)([\s\S]*?)(<\/div>\s*<\/section>)/i, `$1${cards}
+            $3`);
+  }
+
+  return html;
+}
+
 function injectArticleToc(html, canonicalUrl) {
   const match = canonicalUrl.match(/\/posts\/([^/]+)\/$/);
   if (!match || html.includes('story-toc-heading')) return html;
@@ -1358,6 +1477,7 @@ for (const file of walk(siteDir)) {
   html = injectIntentHubLinks(html, canonicalUrl);
   html = injectLatestTopicSections(html, canonicalUrl);
   html = injectHubFreshLinks(html, canonicalUrl);
+  html = refreshHubFeaturedContent(html, canonicalUrl);
   html = refreshHomepageCoverageTracks(html, canonicalUrl);
   html = refreshSiteMapLatestCoverage(html, canonicalUrl);
   html = refreshAboutReaderPaths(html, canonicalUrl);

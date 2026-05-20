@@ -47,6 +47,31 @@ function pageHref(page) {
   return page === 1 ? '/posts/' : `/posts/${page}/`;
 }
 
+function visiblePages(currentPage) {
+  if (totalPages <= 7) return Array.from({ length: totalPages }, (_, i) => i + 1);
+
+  const pages = new Set([1, 2, totalPages - 1, totalPages, currentPage - 1, currentPage, currentPage + 1]);
+  return [...pages]
+    .filter((page) => page >= 1 && page <= totalPages)
+    .sort((a, b) => a - b);
+}
+
+function paginationNumbers(page) {
+  const pages = visiblePages(page);
+  const parts = [];
+
+  pages.forEach((n, index) => {
+    if (index > 0 && n - pages[index - 1] > 1) {
+      parts.push('<span class="px-1 font-mono text-[0.625rem] font-semibold tracking-wider text-ink-faint" aria-hidden="true">…</span>');
+    }
+
+    const active = n === page;
+    parts.push(`<a href="${pageHref(n)}" ${active ? 'aria-current="page"' : ''} aria-label="Archive page ${n}" class="min-w-[1.75rem] h-7 px-1.5 rounded font-mono text-[0.625rem] font-semibold tracking-wider transition-colors inline-flex items-center justify-center ${active ? 'bg-red-accent text-white' : 'text-ink-muted hover:text-ink'}">${n}</a>`);
+  });
+
+  return parts.join('\n                            ');
+}
+
 function pagination(page) {
   if (totalPages <= 1) return '';
 
@@ -55,12 +80,13 @@ function pagination(page) {
   const prevHref = prevDisabled ? '#' : pageHref(page - 1);
   const nextHref = nextDisabled ? '#' : pageHref(page + 1);
 
-  const numbers = Array.from({ length: totalPages }, (_, i) => i + 1)
-    .map((n) => {
-      const active = n === page;
-      return `<a href="${pageHref(n)}" ${active ? 'aria-current="page"' : ''} aria-label="Archive page ${n}" class="min-w-[1.75rem] h-7 px-1.5 rounded font-mono text-[0.625rem] font-semibold tracking-wider transition-colors inline-flex items-center justify-center ${active ? 'bg-red-accent text-white' : 'text-ink-muted hover:text-ink'}">${n}</a>`;
-    })
-    .join('\n                            ');
+  const numbers = paginationNumbers(page);
+  const firstLink = page > 3
+    ? `<a href="${pageHref(1)}" aria-label="Go to the first archive page" class="inline-flex items-center gap-1.5 font-mono text-[0.625rem] font-semibold tracking-wider uppercase text-ink-muted hover:text-ink transition-colors">First</a>`
+    : '';
+  const lastLink = page < totalPages - 2
+    ? `<a href="${pageHref(totalPages)}" aria-label="Go to the last archive page" class="inline-flex items-center gap-1.5 font-mono text-[0.625rem] font-semibold tracking-wider uppercase text-ink-muted hover:text-ink transition-colors">Last</a>`
+    : '';
 
   return `
             <nav class="mt-10 border-border border-t pt-8" aria-label="Archive pagination">
@@ -70,7 +96,9 @@ function pagination(page) {
                       : `<a href="${prevHref}" rel="prev" aria-label="Go to archive page ${page - 1}" class="inline-flex items-center gap-1.5 font-mono text-[0.625rem] font-semibold tracking-wider uppercase text-ink-muted hover:text-ink transition-colors">Prev</a>`}
 
                     <div class="flex items-center gap-1" aria-label="Archive page numbers">
+                                ${firstLink}
                                 ${numbers}
+                                ${lastLink}
                     </div>
 
                     ${nextDisabled
