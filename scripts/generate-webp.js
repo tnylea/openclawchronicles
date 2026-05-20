@@ -12,6 +12,11 @@ const allowedExtensions = new Set(['.png', '.jpg', '.jpeg']);
 const responsiveWidths = [640, 960, 1200];
 const outputFormats = [
   {
+    extension: 'avif',
+    encode: (pipeline) => pipeline.avif({ quality: 52, effort: 7 }),
+    include: () => true,
+  },
+  {
     extension: 'webp',
     encode: (pipeline) => pipeline.webp({ quality: 78, effort: 6 }),
     include: () => true,

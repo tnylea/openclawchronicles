@@ -26,7 +26,7 @@ function normalizeAssetTarget(targetPath) {
 function normalizePageTarget(targetPath) {
   const clean = targetPath.split('#')[0].split('?')[0];
   if (clean === '/' || clean === '') return path.join(siteDir, 'index.html');
-  if (clean.endsWith('.xml') || clean.endsWith('.json') || clean.endsWith('.txt') || clean.endsWith('.webmanifest') || clean.endsWith('.ico') || clean.endsWith('.png') || clean.endsWith('.jpg') || clean.endsWith('.jpeg') || clean.endsWith('.webp') || clean.endsWith('.svg') || clean.endsWith('.css') || clean.endsWith('.js')) {
+  if (clean.endsWith('.xml') || clean.endsWith('.json') || clean.endsWith('.txt') || clean.endsWith('.webmanifest') || clean.endsWith('.ico') || clean.endsWith('.png') || clean.endsWith('.jpg') || clean.endsWith('.jpeg') || clean.endsWith('.webp') || clean.endsWith('.avif') || clean.endsWith('.svg') || clean.endsWith('.css') || clean.endsWith('.js')) {
     return normalizeAssetTarget(clean);
   }
   return path.join(siteDir, clean.replace(/^\//, ''), 'index.html');

@@ -95,15 +95,24 @@ function buildResponsiveModernSrcset(src, extension) {
 function bestModernImageSource(src) {
   if (!/^\/assets\/images\//.test(src) || !/\.(png|jpe?g)(\?.*)?$/i.test(src)) return null;
 
-  const modernSrc = src.replace(/\.(png|jpe?g)(\?.*)?$/i, '.webp$2');
-  const modernPath = path.join(siteDir, modernSrc.replace(/^\//, '').split('?')[0]);
-  if (!fs.existsSync(modernPath)) return null;
+  const formats = [
+    { extension: 'avif', type: 'image/avif' },
+    { extension: 'webp', type: 'image/webp' },
+  ];
 
-  return {
-    src: modernSrc,
-    type: 'image/webp',
-    srcset: buildResponsiveModernSrcset(src, 'webp'),
-  };
+  for (const format of formats) {
+    const modernSrc = src.replace(/\.(png|jpe?g)(\?.*)?$/i, `.${format.extension}$2`);
+    const modernPath = path.join(siteDir, modernSrc.replace(/^\//, '').split('?')[0]);
+    if (!fs.existsSync(modernPath)) continue;
+
+    return {
+      src: modernSrc,
+      type: format.type,
+      srcset: buildResponsiveModernSrcset(src, format.extension),
+    };
+  }
+
+  return null;
 }
 
 function injectImagePreload(html) {
@@ -209,7 +218,7 @@ function fixAboutPageMetadata(html, canonicalUrl) {
 
   html = html.replace(
     /<!-- JSON-LD Article Schema -->[\s\S]*?<!-- Google Analytics -->/i,
-    `<!-- JSON-LD Article Schema -->\n    <script type="application/ld+json">\n    {\n      "@context": "https://schema.org",\n      "@type": "AboutPage",\n      "name": "About OpenClaw Chronicles",\n      "url": "${canonicalUrl}",\n      "description": "${description}",\n      "mainEntity": {\n        "@type": "Person",\n        "name": "Cody",\n        "url": "${siteUrl}/about/#about-cody",\n        "description": "AI journalist and editor for OpenClaw Chronicles.",\n        "image": "${siteUrl}/assets/images/authors/cody.jpg",\n        "worksFor": {\n          "@type": "Organization",\n          "name": "OpenClaw Chronicles",\n          "url": "${siteUrl}",\n          "logo": "${siteUrl}/icon-512.png"\n        }\n      }\n    }\n    </script>\n    <script type="application/ld+json">\n    {\n      "@context": "https://schema.org",\n      "@type": "Person",\n      "name": "Cody",\n      "url": "${siteUrl}/about/#about-cody",\n      "description": "AI journalist and editor for OpenClaw Chronicles.",\n      "image": "${siteUrl}/assets/images/authors/cody.jpg",\n      "jobTitle": "AI Journalist",\n      "worksFor": {\n        "@type": "Organization",\n        "name": "OpenClaw Chronicles",\n        "url": "${siteUrl}"\n      },\n      "knowsAbout": ["OpenClaw", "OpenClaw releases", "OpenClaw security", "OpenClaw guides"]\n    }\n    </script>\n    <script type="application/ld+json">\n    {\n      "@context": "https://schema.org",\n      "@type": "BreadcrumbList",\n      "itemListElement": [\n        {\n          "@type": "ListItem",\n          "position": 1,\n          "name": "Home",\n          "item": "${siteUrl}/"\n        },\n        {\n          "@type": "ListItem",\n          "position": 2,\n          "name": "About",\n          "item": "${canonicalUrl}"\n        }\n      ]\n    }\n    </script>${faqSchema}\n    <!-- Google Analytics -->`
+    `<!-- JSON-LD Article Schema -->\n    <script type="application/ld+json">\n    {\n      "@context": "https://schema.org",\n      "@type": "AboutPage",\n      "name": "About OpenClaw Chronicles",\n      "url": "${canonicalUrl}",\n      "description": "${description}",\n      "mainEntity": {\n        "@type": "Person",\n        "name": "Cody",\n        "url": "${siteUrl}/about/#about-cody",\n        "description": "AI journalist and editor for OpenClaw Chronicles.",\n        "image": "${siteUrl}/assets/images/authors/cody.jpg",\n        "worksFor": {\n          "@type": "NewsMediaOrganization",\n          "name": "OpenClaw Chronicles",\n          "url": "${siteUrl}",\n          "logo": "${siteUrl}/icon-512.png"\n        }\n      }\n    }\n    </script>\n    <script type="application/ld+json">\n    {\n      "@context": "https://schema.org",\n      "@type": "Person",\n      "name": "Cody",\n      "url": "${siteUrl}/about/#about-cody",\n      "description": "AI journalist and editor for OpenClaw Chronicles.",\n      "image": "${siteUrl}/assets/images/authors/cody.jpg",\n      "jobTitle": "AI Journalist",\n      "worksFor": {\n        "@type": "NewsMediaOrganization",\n        "name": "OpenClaw Chronicles",\n        "url": "${siteUrl}"\n      },\n      "knowsAbout": ["OpenClaw", "OpenClaw releases", "OpenClaw security", "OpenClaw guides"]\n    }\n    </script>\n    <script type="application/ld+json">\n    {\n      "@context": "https://schema.org",\n      "@type": "BreadcrumbList",\n      "itemListElement": [\n        {\n          "@type": "ListItem",\n          "position": 1,\n          "name": "Home",\n          "item": "${siteUrl}/"\n        },\n        {\n          "@type": "ListItem",\n          "position": 2,\n          "name": "About",\n          "item": "${canonicalUrl}"\n        }\n      ]\n    }\n    </script>${faqSchema}\n    <!-- Google Analytics -->`
   );
 
   return html;
@@ -320,7 +329,7 @@ function fixHomepageMetadata(html, canonicalUrl) {
 
   html = html.replace(
     /<!-- JSON-LD WebSite Schema -->[\s\S]*?<!-- Google Analytics -->/i,
-    `<!-- JSON-LD WebSite Schema -->\n    <script type="application/ld+json">\n    {\n      "@context": "https://schema.org",\n      "@type": "WebSite",\n      "name": "OpenClaw Chronicles",\n      "url": "${canonicalUrl}",\n      "description": "${description}",\n      "potentialAction": ${JSON.stringify(buildWebsiteSearchAction(), null, 6)},\n      "publisher": {\n        "@type": "Organization",\n        "name": "OpenClaw Chronicles",\n        "url": "${siteUrl}",\n        "logo": {\n          "@type": "ImageObject",\n          "url": "${siteUrl}/icon-512.png",\n          "width": 512,\n          "height": 512\n        }\n      }\n    }\n    </script>\n    <script type="application/ld+json">\n    {\n      "@context": "https://schema.org",\n      "@type": "CollectionPage",\n      "name": "OpenClaw Chronicles homepage",\n      "url": "${canonicalUrl}",\n      "description": "${description}",\n      "dateModified": ${JSON.stringify(latestModified)},\n      "mainEntity": {\n        "@type": "ItemList",\n        "numberOfItems": ${topPosts.length},\n        "itemListOrder": "https://schema.org/ItemListOrderDescending",\n        "itemListElement": ${JSON.stringify(topPosts, null, 8)}\n      }\n    }\n    </script>${faqSchema}\n    <!-- Google Analytics -->`
+    `<!-- JSON-LD WebSite Schema -->\n    <script type="application/ld+json">\n    {\n      "@context": "https://schema.org",\n      "@type": "WebSite",\n      "name": "OpenClaw Chronicles",\n      "url": "${canonicalUrl}",\n      "description": "${description}",\n      "potentialAction": ${JSON.stringify(buildWebsiteSearchAction(), null, 6)},\n      "publisher": {\n        "@type": "NewsMediaOrganization",\n        "name": "OpenClaw Chronicles",\n        "url": "${siteUrl}",\n        "logo": {\n          "@type": "ImageObject",\n          "url": "${siteUrl}/icon-512.png",\n          "width": 512,\n          "height": 512\n        },\n        "sameAs": [\n          "https://x.com/openclawai",\n          "https://github.com/tnylea/openclawchronicles"\n        ],\n        "publishingPrinciples": "${siteUrl}/about/#editorial-standards",\n        "ethicsPolicy": "${siteUrl}/about/#editorial-standards",\n        "correctionsPolicy": "${siteUrl}/about/#corrections-policy"\n      }\n    }\n    </script>\n    <script type="application/ld+json">\n    {\n      "@context": "https://schema.org",\n      "@type": "CollectionPage",\n      "name": "OpenClaw Chronicles homepage",\n      "url": "${canonicalUrl}",\n      "description": "${description}",\n      "dateModified": ${JSON.stringify(latestModified)},\n      "mainEntity": {\n        "@type": "ItemList",\n        "numberOfItems": ${topPosts.length},\n        "itemListOrder": "https://schema.org/ItemListOrderDescending",\n        "itemListElement": ${JSON.stringify(topPosts, null, 8)}\n      }\n    }\n    </script>${faqSchema}\n    <!-- Google Analytics -->`
   );
 
   return html;
@@ -479,7 +488,7 @@ function buildHowToSchema(post, html) {
         name: post.authorName,
       },
       publisher: {
-        '@type': 'Organization',
+        '@type': 'NewsMediaOrganization',
         name: 'OpenClaw Chronicles',
         url: siteUrl,
       },
@@ -1359,9 +1368,9 @@ function fixArticleMetadata(html, canonicalUrl) {
     `$1${topicChipMarkup}`
   );
 
-  const articleSchema = `<!-- JSON-LD Article Schema -->\n    <script type="application/ld+json">\n    {\n      "@context": "https://schema.org",\n      "@type": "${schemaType}",\n      "headline": ${JSON.stringify(post.title)},\n      "description": ${JSON.stringify(post.excerpt)},\n      "image": {\n        "@type": "ImageObject",\n        "url": ${JSON.stringify(`${siteUrl}${post.ogImageUrl}`)},\n        "width": 1200,\n        "height": 630\n      },\n      "thumbnailUrl": ${JSON.stringify(`${siteUrl}${post.ogImageUrl}`)},\n      "url": ${JSON.stringify(canonicalUrl)},\n      "mainEntityOfPage": {\n        "@type": "WebPage",\n        "@id": ${JSON.stringify(canonicalUrl)}\n      },\n      "isPartOf": {\n        "@type": "WebSite",\n        "name": "OpenClaw Chronicles",\n        "url": ${JSON.stringify(siteUrl)}\n      },\n      "articleSection": ${JSON.stringify(section)},\n      "keywords": ${JSON.stringify(keywords)},\n      "isAccessibleForFree": true,\n      "about": [\n        {\n          "@type": "Thing",\n          "name": "OpenClaw"\n        },\n        {\n          "@type": "Thing",\n          "name": ${JSON.stringify(section)}\n        }\n      ],\n      "wordCount": ${wordCount},\n      "timeRequired": "PT${timeRequired}M",\n      "speakable": {\n        "@type": "SpeakableSpecification",\n        "cssSelector": [\n          "h1",\n          ".article-content h2",\n          ".article-content p"\n        ]\n      },\n      "author": {\n        "@type": "Person",\n        "name": ${JSON.stringify(post.authorName)},\n        "url": ${JSON.stringify(`${siteUrl}/about/#about-cody`)},\n        "image": ${JSON.stringify(`${siteUrl}/assets/images/authors/cody.jpg`)},\n        "jobTitle": "AI Journalist"\n      },\n      "publisher": {\n        "@type": "Organization",\n        "name": "OpenClaw Chronicles",\n        "url": ${JSON.stringify(siteUrl)},\n        "logo": {\n          "@type": "ImageObject",\n          "url": ${JSON.stringify(`${siteUrl}/icon-512.png`)},\n          "width": 512,\n          "height": 512\n        }\n      },\n      "datePublished": ${JSON.stringify(post.date)},\n      "dateModified": ${JSON.stringify(post.modified)},\n      "inLanguage": "en-US"\n    }\n    </script>${buildArticleBreadcrumbSchema(post, sectionInfo, canonicalUrl)}${buildHowToSchema(post, html)}`;
+  const articleSchema = `<!-- JSON-LD Article Schema -->\n    <script type="application/ld+json">\n    {\n      "@context": "https://schema.org",\n      "@type": "${schemaType}",\n      "headline": ${JSON.stringify(post.title)},\n      "description": ${JSON.stringify(post.excerpt)},\n      "image": {\n        "@type": "ImageObject",\n        "url": ${JSON.stringify(`${siteUrl}${post.ogImageUrl}`)},\n        "width": 1200,\n        "height": 630\n      },\n      "thumbnailUrl": ${JSON.stringify(`${siteUrl}${post.ogImageUrl}`)},\n      "url": ${JSON.stringify(canonicalUrl)},\n      "mainEntityOfPage": {\n        "@type": "WebPage",\n        "@id": ${JSON.stringify(canonicalUrl)}\n      },\n      "isPartOf": {\n        "@type": "WebSite",\n        "name": "OpenClaw Chronicles",\n        "url": ${JSON.stringify(siteUrl)}\n      },\n      "articleSection": ${JSON.stringify(section)},\n      "keywords": ${JSON.stringify(keywords)},\n      "isAccessibleForFree": true,\n      "about": [\n        {\n          "@type": "Thing",\n          "name": "OpenClaw"\n        },\n        {\n          "@type": "Thing",\n          "name": ${JSON.stringify(section)}\n        }\n      ],\n      "wordCount": ${wordCount},\n      "timeRequired": "PT${timeRequired}M",\n      "speakable": {\n        "@type": "SpeakableSpecification",\n        "cssSelector": [\n          "h1",\n          ".article-content h2",\n          ".article-content p"\n        ]\n      },\n      "author": {\n        "@type": "Person",\n        "name": ${JSON.stringify(post.authorName)},\n        "url": ${JSON.stringify(`${siteUrl}/about/#about-cody`)},\n        "image": ${JSON.stringify(`${siteUrl}/assets/images/authors/cody.jpg`)},\n        "jobTitle": "AI Journalist"\n      },\n      "publisher": {\n        "@type": "NewsMediaOrganization",\n        "name": "OpenClaw Chronicles",\n        "url": ${JSON.stringify(siteUrl)},\n        "logo": {\n          "@type": "ImageObject",\n          "url": ${JSON.stringify(`${siteUrl}/icon-512.png`)},\n          "width": 512,\n          "height": 512\n        },\n        "sameAs": [\n          "https://x.com/openclawai",\n          "https://github.com/tnylea/openclawchronicles"\n        ],\n        "publishingPrinciples": ${JSON.stringify(`${siteUrl}/about/#editorial-standards`)},\n        "ethicsPolicy": ${JSON.stringify(`${siteUrl}/about/#editorial-standards`)},\n        "correctionsPolicy": ${JSON.stringify(`${siteUrl}/about/#corrections-policy`)}\n      },\n      "datePublished": ${JSON.stringify(post.date)},\n      "dateModified": ${JSON.stringify(post.modified)},\n      "inLanguage": "en-US"\n    }\n    </script>${buildArticleBreadcrumbSchema(post, sectionInfo, canonicalUrl)}${buildHowToSchema(post, html)}`;
 
-  html = html.replace(/<!-- JSON-LD Article Schema -->[\s\S]*?<script type="application\/ld\+json">[\s\S]*?<\/script>[\s\S]*?(?=\n    <script type="application\/ld\+json">\n    \{\n      "@context": "https:\/\/schema\.org",\n      "@type": "Organization"|\n    <!-- Google Analytics -->)/i, articleSchema);
+  html = html.replace(/<!-- JSON-LD Article Schema -->[\s\S]*?<script type="application\/ld\+json">[\s\S]*?<\/script>[\s\S]*?(?=\n    <script type="application\/ld\+json">\n    \{\n      "@context": "https:\/\/schema\.org",\n      "@type": "NewsMediaOrganization"|\n    <!-- Google Analytics -->)/i, articleSchema);
 
   return html;
 }
@@ -1383,6 +1392,7 @@ function wrapImagesWithPicture(html) {
     if (/cody\.jpg|icon-|favicon|apple-touch-icon/i.test(src)) return full;
 
     const sources = [
+      { extension: 'avif', type: 'image/avif' },
       { extension: 'webp', type: 'image/webp' },
     ].map((format) => {
       const modernSrc = src.replace(/\.(png|jpe?g)(\?.*)?$/i, `.${format.extension}$2`);

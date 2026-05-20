@@ -8,6 +8,10 @@ const copies = [
     from: path.join(root, 'assets', 'js'),
     to: path.join(root, 'public', 'assets', 'js'),
   },
+  {
+    from: path.join(root, 'assets', 'images'),
+    to: path.join(root, 'public', 'assets', 'images'),
+  },
 ];
 
 for (const { from, to } of copies) {
