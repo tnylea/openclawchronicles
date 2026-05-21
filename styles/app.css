@@ -282,3 +282,15 @@
 a[aria-current="page"] {
   color: var(--color-red-accent);
 }
+
+nav a[aria-current="page"],
+[data-menu-panel] a[aria-current="page"] {
+  color: var(--color-red-accent);
+  text-decoration: underline;
+  text-decoration-color: color-mix(in srgb, var(--color-red-accent) 65%, transparent);
+  text-underline-offset: 0.3em;
+}
+
+[data-more-panel] a[aria-current="page"] {
+  background: var(--color-surface-alt);
+}

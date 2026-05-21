@@ -122,6 +122,30 @@ function buildSection(page) {
                 </div>
                 <a href="/site-map/" class="inline-flex items-center gap-1.5 font-mono text-[0.625rem] font-semibold tracking-wider uppercase text-red-accent transition-colors hover:text-red-vibrant">Browse topic hubs and evergreen links</a>
             </div>
+            <div class="mb-8 grid gap-4 lg:grid-cols-2">
+                <article class="border-border rounded-[min(0.3vw,4px)] border bg-surface-alt p-4">
+                    <p class="text-red-accent font-mono text-[0.625rem] font-semibold tracking-wider uppercase">Jump by topic</p>
+                    <div class="mt-3 flex flex-wrap gap-3">
+                        <a href="/releases/" class="border-border text-ink-strong hover:text-red-accent rounded-full border px-3 py-1.5 font-sans text-xs font-medium">Releases</a>
+                        <a href="/security/" class="border-border text-ink-strong hover:text-red-accent rounded-full border px-3 py-1.5 font-sans text-xs font-medium">Security</a>
+                        <a href="/guides/" class="border-border text-ink-strong hover:text-red-accent rounded-full border px-3 py-1.5 font-sans text-xs font-medium">Guides</a>
+                        <a href="/memory/" class="border-border text-ink-strong hover:text-red-accent rounded-full border px-3 py-1.5 font-sans text-xs font-medium">Memory</a>
+                        <a href="/migrations/" class="border-border text-ink-strong hover:text-red-accent rounded-full border px-3 py-1.5 font-sans text-xs font-medium">Migrations</a>
+                        <a href="/local-models/" class="border-border text-ink-strong hover:text-red-accent rounded-full border px-3 py-1.5 font-sans text-xs font-medium">Local models</a>
+                    </div>
+                </article>
+                <article class="border-border rounded-[min(0.3vw,4px)] border bg-surface-alt p-4">
+                    <p class="text-red-accent font-mono text-[0.625rem] font-semibold tracking-wider uppercase">Popular searches</p>
+                    <div class="mt-3 flex flex-wrap gap-3">
+                        <a href="/posts/?q=release" class="border-border text-ink-strong hover:text-red-accent rounded-full border px-3 py-1.5 font-sans text-xs font-medium">Release notes</a>
+                        <a href="/posts/?q=security" class="border-border text-ink-strong hover:text-red-accent rounded-full border px-3 py-1.5 font-sans text-xs font-medium">Security fixes</a>
+                        <a href="/posts/?q=memory" class="border-border text-ink-strong hover:text-red-accent rounded-full border px-3 py-1.5 font-sans text-xs font-medium">Memory guides</a>
+                        <a href="/posts/?q=migration" class="border-border text-ink-strong hover:text-red-accent rounded-full border px-3 py-1.5 font-sans text-xs font-medium">Migration help</a>
+                        <a href="/posts/?q=local+model" class="border-border text-ink-strong hover:text-red-accent rounded-full border px-3 py-1.5 font-sans text-xs font-medium">Local models</a>
+                        <a href="/posts/?q=discord+voice" class="border-border text-ink-strong hover:text-red-accent rounded-full border px-3 py-1.5 font-sans text-xs font-medium">Discord voice</a>
+                    </div>
+                </article>
+            </div>
             <div class="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
 ${cards}
             </div>
