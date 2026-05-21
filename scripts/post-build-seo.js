@@ -1036,6 +1036,11 @@ function injectRelatedPosts(html, canonicalUrl) {
   const currentPost = postBySlug.get(currentSlug);
   if (!currentPost) return html;
 
+  const currentSection = inferSection(currentPost);
+  const latestSameSection = allPosts
+    .filter((post) => post && typeof post.url === 'string' && post.url !== currentPost.url && inferSection(post) === currentSection)
+    .slice(0, 2);
+
   const related = allPosts
     .filter((post) => post && typeof post.url === 'string' && post.url !== currentPost.url)
     .map((post) => ({ post, score: scoreRelatedPosts(currentPost, post) }))
@@ -1043,7 +1048,18 @@ function injectRelatedPosts(html, canonicalUrl) {
     .slice(0, 3)
     .map(({ post }) => post);
 
-  if (related.length === 0) return html;
+  if (related.length === 0 && latestSameSection.length === 0) return html;
+
+  const latestCards = latestSameSection.length ? latestSameSection.map((post) => `
+                    <article class="border-border rounded-[min(0.3vw,4px)] border p-4">
+                        <a href="${post.url}" class="group block">
+                            <span class="text-red-accent font-mono text-[0.625rem] font-semibold tracking-wider uppercase">Latest ${currentSection}</span>
+                            <h3 class="font-display group-hover:text-red-accent text-ink mt-2 text-xl font-semibold tracking-tight text-balance sm:text-lg">
+                                ${post.title}
+                            </h3>
+                            <p class="text-ink-body mt-2 text-[0.9375rem] text-pretty">${post.excerpt}</p>
+                        </a>
+                    </article>`).join('') : '';
 
   const cards = related.map((post) => `
                     <article class="border-border rounded-[min(0.3vw,4px)] border p-4">
@@ -1056,7 +1072,21 @@ function injectRelatedPosts(html, canonicalUrl) {
                         </a>
                     </article>`).join('');
 
+  const latestSection = latestCards ? `
+        <section class="defer-render mx-auto max-w-3xl px-4 pb-8 sm:px-6 lg:px-8" aria-labelledby="latest-section-heading">
+            <div class="border-border-strong border-t pt-8">
+                <div class="flex items-center gap-3">
+                    <h2 id="latest-section-heading" class="text-ink font-mono text-[0.6875rem] font-semibold tracking-widest uppercase">Latest in ${currentSection}</h2>
+                    <div class="bg-border-strong h-px flex-1" aria-hidden="true"></div>
+                </div>
+                <p class="text-ink-muted mt-3 max-w-2xl text-sm">Fresh internal links from the same section help readers and crawlers keep moving through the newest ${currentSection.toLowerCase()} coverage.</p>
+                <div class="mt-6 grid gap-4 sm:grid-cols-2">${latestCards}
+                </div>
+            </div>
+        </section>` : '';
+
   const section = `
+        ${latestSection}
         <section class="defer-render mx-auto max-w-3xl px-4 pb-10 sm:px-6 lg:px-8" aria-labelledby="related-posts-heading">
             <div class="border-border-strong border-t pt-8">
                 <div class="flex items-center gap-3">

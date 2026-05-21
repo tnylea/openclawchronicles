@@ -21,6 +21,7 @@
     var defaultOgDescription = (document.querySelector('meta[property="og:description"]') || {}).content || defaultDescription;
     var defaultTwitterTitle = (document.querySelector('meta[name="twitter:title"]') || {}).content || defaultTitle;
     var defaultTwitterDescription = (document.querySelector('meta[name="twitter:description"]') || {}).content || defaultDescription;
+    var baseCanonicalUrl = 'https://openclawchronicles.com/posts/';
 
     function normalize(value) {
       return String(value || '').trim().toLowerCase();
@@ -46,9 +47,41 @@
       node.setAttribute('content', content);
     }
 
+    function ensureJsonLdScript(id) {
+      var node = document.getElementById(id);
+      if (!node) {
+        node = document.createElement('script');
+        node.type = 'application/ld+json';
+        node.id = id;
+        document.head.appendChild(node);
+      }
+      return node;
+    }
+
+    function setJsonLd(id, payload) {
+      ensureJsonLdScript(id).textContent = JSON.stringify(payload);
+    }
+
+    function visibleCardData() {
+      return cards
+        .filter(function (card) { return !card.hidden; })
+        .slice(0, 12)
+        .map(function (card, index) {
+          var link = card.querySelector('a[href]');
+          var titleNode = card.querySelector('h2, h3');
+          return {
+            '@type': 'ListItem',
+            position: index + 1,
+            url: link ? new URL(link.getAttribute('href'), window.location.origin).href : baseCanonicalUrl,
+            name: titleNode ? titleNode.textContent.trim() : 'OpenClaw post'
+          };
+        });
+    }
+
     function syncSearchMetadata(query, visibleCount) {
       var canonical = document.querySelector('link[rel="canonical"]');
       var trimmed = query.trim();
+      var resultItems = visibleCardData();
 
       if (!trimmed) {
         document.title = defaultTitle;
@@ -59,10 +92,28 @@
         upsertMeta('googlebot', 'index,follow,max-image-preview:large');
         upsertProperty('og:title', defaultOgTitle);
         upsertProperty('og:description', defaultOgDescription);
-        upsertProperty('og:url', 'https://openclawchronicles.com/posts/');
+        upsertProperty('og:url', baseCanonicalUrl);
         upsertMeta('twitter:title', defaultTwitterTitle);
         upsertMeta('twitter:description', defaultTwitterDescription);
-        if (canonical) canonical.setAttribute('href', 'https://openclawchronicles.com/posts/');
+        if (canonical) canonical.setAttribute('href', baseCanonicalUrl);
+        setJsonLd('archive-search-jsonld', {
+          '@context': 'https://schema.org',
+          '@type': 'CollectionPage',
+          name: defaultTitle,
+          url: baseCanonicalUrl,
+          description: defaultDescription,
+          isPartOf: {
+            '@type': 'WebSite',
+            name: 'OpenClaw Chronicles',
+            url: 'https://openclawchronicles.com/'
+          },
+          mainEntity: {
+            '@type': 'ItemList',
+            numberOfItems: resultItems.length,
+            itemListOrder: 'https://schema.org/ItemListOrderDescending',
+            itemListElement: resultItems
+          }
+        });
         return;
       }
 
@@ -82,7 +133,26 @@
       upsertProperty('og:url', window.location.href);
       upsertMeta('twitter:title', searchTitle);
       upsertMeta('twitter:description', searchDescription);
-      if (canonical) canonical.setAttribute('href', 'https://openclawchronicles.com/posts/');
+      if (canonical) canonical.setAttribute('href', baseCanonicalUrl);
+      setJsonLd('archive-search-jsonld', {
+        '@context': 'https://schema.org',
+        '@type': 'SearchResultsPage',
+        name: searchTitle,
+        url: window.location.href,
+        description: searchDescription,
+        isPartOf: {
+          '@type': 'WebSite',
+          name: 'OpenClaw Chronicles',
+          url: 'https://openclawchronicles.com/'
+        },
+        about: 'OpenClaw',
+        mainEntity: {
+          '@type': 'ItemList',
+          numberOfItems: resultItems.length,
+          itemListOrder: 'https://schema.org/ItemListOrderDescending',
+          itemListElement: resultItems
+        }
+      });
 
       if (status) {
         status.setAttribute('data-result-count', String(visibleCount));
