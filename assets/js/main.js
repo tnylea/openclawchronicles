@@ -264,16 +264,29 @@
     window.setTimeout(callback, 1);
   }
 
-  document.addEventListener('DOMContentLoaded', function () {
-    bindThemeButtons();
+  var enhancementsBound = false;
+
+  function bindNonCriticalEnhancements() {
+    if (enhancementsBound) return;
+    enhancementsBound = true;
     bindMobileMenus();
     bindHomeHeader();
+    bindMastheadMeta();
+    bindCurrentDate();
+    bindMoreDropdowns();
+  }
 
-    runWhenIdle(function () {
-      bindMastheadMeta();
-      bindCurrentDate();
-      bindMoreDropdowns();
+  function scheduleEnhancements() {
+    runWhenIdle(bindNonCriticalEnhancements);
+
+    ['pointerdown', 'keydown', 'touchstart', 'scroll'].forEach(function (eventName) {
+      window.addEventListener(eventName, bindNonCriticalEnhancements, { once: true, passive: true });
     });
+  }
+
+  document.addEventListener('DOMContentLoaded', function () {
+    bindThemeButtons();
+    scheduleEnhancements();
   });
 
   darkModeQuery.addEventListener('change', function () {

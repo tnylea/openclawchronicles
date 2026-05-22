@@ -607,6 +607,62 @@ function slugify(text) {
     .replace(/-+/g, '-') || 'section';
 }
 
+function injectSectionAnchorsAndToc(html, canonicalUrl) {
+  const evergreenTargets = new Set([
+    `${siteUrl}/about/`,
+    `${siteUrl}/site-map/`,
+    `${siteUrl}/posts/`,
+    `${siteUrl}/releases/`,
+    `${siteUrl}/security/`,
+    `${siteUrl}/guides/`,
+    `${siteUrl}/memory/`,
+    `${siteUrl}/migrations/`,
+    `${siteUrl}/local-models/`,
+  ]);
+
+  if (!evergreenTargets.has(canonicalUrl)) return html;
+
+  const usedIds = new Set();
+  const headings = [];
+  html = html.replace(/<h([23])([^>]*)>([\s\S]*?)<\/h\1>/gi, (full, level, attrs, inner) => {
+    const cleanLabel = inner.replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').trim();
+    if (!cleanLabel) return full;
+
+    const idMatch = attrs.match(/\sid="([^"]+)"/i);
+    let id = idMatch ? idMatch[1] : slugify(cleanLabel);
+    let suffix = 2;
+    while (usedIds.has(id)) {
+      id = `${idMatch ? idMatch[1] : slugify(cleanLabel)}-${suffix}`;
+      suffix += 1;
+    }
+    usedIds.add(id);
+
+    const normalizedAttrs = idMatch ? attrs.replace(/\sid="[^"]+"/i, '') : attrs;
+    if (!/faq/i.test(id) && !/breadcrumb/i.test(id) && !/current-date/i.test(id)) {
+      headings.push({ id, label: cleanLabel, level: Number(level) });
+    }
+
+    if (/href="#/.test(inner)) return `<h${level}${normalizedAttrs} id="${id}">${inner}</h${level}>`;
+    return `<h${level}${normalizedAttrs} id="${id}"><a href="#${id}" class="hover:text-red-accent">${inner}</a></h${level}>`;
+  });
+
+  if (headings.length < 4 || html.includes('page-toc-heading')) return html;
+
+  const tocItems = headings.slice(0, 12).map((heading) => `<li class="${heading.level === 3 ? 'ml-4' : ''}"><a href="#${heading.id}" class="text-ink-strong hover:text-red-accent font-sans text-sm">${heading.label}</a></li>`).join('');
+  const tocMarkup = `
+        <nav class="mx-auto max-w-7xl px-4 pb-2 sm:px-6 lg:px-8" aria-labelledby="page-toc-heading">
+            <div class="border-border rounded-[min(0.3vw,4px)] border bg-surface-alt p-5">
+                <div class="flex items-center gap-3">
+                    <h2 id="page-toc-heading" class="text-ink font-mono text-[0.6875rem] font-semibold tracking-widest uppercase">On this page</h2>
+                    <div class="bg-border-strong h-px flex-1" aria-hidden="true"></div>
+                </div>
+                <ol class="mt-4 grid gap-2 sm:grid-cols-2">${tocItems}</ol>
+            </div>
+        </nav>`;
+
+  return html.replace(/(<include src="archive-search-panel\.html"><\/include>|<section class="mx-auto max-w-7xl px-4 pt-4 pb-8 sm:px-6 lg:px-8">|<section class="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8" aria-labelledby="archive-start-here">)/i, `$1${tocMarkup}`);
+}
+
 function scoreRelatedPosts(currentPost, candidatePost) {
   const currentTokens = tokenize(`${currentPost.title} ${currentPost.excerpt} ${currentPost.content}`);
   const candidateTokens = new Set(tokenize(`${candidatePost.title} ${candidatePost.excerpt} ${candidatePost.content}`));
@@ -1514,6 +1570,7 @@ for (const file of walk(siteDir)) {
   html = fixArticleMetadata(html, canonicalUrl);
   html = injectFreshnessSignals(html, canonicalUrl);
   html = injectArticleMetaSummary(html, canonicalUrl);
+  html = injectSectionAnchorsAndToc(html, canonicalUrl);
   html = injectIntentHubLinks(html, canonicalUrl);
   html = injectLatestTopicSections(html, canonicalUrl);
   html = injectHubFreshLinks(html, canonicalUrl);

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<OpenSearchDescription xmlns="http://a9.com/-/spec/opensearch/1.1/">
+  <ShortName>OpenClaw Chronicles</ShortName>
+  <Description>Search OpenClaw Chronicles for releases, security alerts, guides, migrations, memory workflows, and local model coverage.</Description>
+  <InputEncoding>UTF-8</InputEncoding>
+  <Image width="32" height="32" type="image/png">https://openclawchronicles.com/assets/images/favicon.png</Image>
+  <Url type="text/html" method="get" template="https://openclawchronicles.com/posts/?q={searchTerms}" />
+  <Url type="application/rss+xml" template="https://openclawchronicles.com/feed.xml" />
+  <Query role="example" searchTerms="security" />
+  <Query role="example" searchTerms="release" />
+  <Developer>OpenClaw Chronicles</Developer>
+  <Attribution>OpenClaw Chronicles</Attribution>
+  <SyndicationRight>open</SyndicationRight>
+  <AdultContent>false</AdultContent>
+  <Language>en-us</Language>
+</OpenSearchDescription>
