@@ -21,7 +21,7 @@
 
         <!-- More dropdown -->
         <div class="relative shrink-0" data-more-dropdown>
-          <button type="button" data-more-toggle aria-haspopup="true" aria-expanded="false"
+          <button type="button" data-more-toggle aria-haspopup="true" aria-expanded="false" aria-controls="subpage-more-menu"
             class="hover:text-red-accent text-ink-body flex items-center gap-1 font-sans text-[0.6875rem] font-semibold tracking-widest uppercase">
             More
             <svg viewBox="0 0 16 16" fill="currentColor" class="size-3 transition-transform duration-150" data-more-chevron>
@@ -29,7 +29,7 @@
             </svg>
           </button>
           <!-- Dropdown panel -->
-          <div data-more-panel hidden
+          <div id="subpage-more-menu" data-more-panel hidden
             class="bg-surface-raised border-border-strong absolute top-full left-0 z-50 mt-2 hidden min-w-[10rem] border py-1 shadow-lg">
             <a href="/memory/"       class="hover:bg-surface-hover hover:text-red-accent text-ink-body block px-4 py-2 font-sans text-[0.6875rem] font-semibold tracking-widest uppercase">Memory</a>
             <a href="/local-models/" class="hover:bg-surface-hover hover:text-red-accent text-ink-body block px-4 py-2 font-sans text-[0.6875rem] font-semibold tracking-widest uppercase">Models</a>
@@ -37,6 +37,15 @@
             <a href="/about/"        class="hover:bg-surface-hover hover:text-red-accent text-ink-body block px-4 py-2 font-sans text-[0.6875rem] font-semibold tracking-widest uppercase">About</a>
           </div>
         </div>
+
+        <noscript>
+          <div class="border-border ml-5 flex items-center gap-4 border-l pl-5">
+            <a href="/memory/" class="hover:text-red-accent text-ink-body shrink-0 font-sans text-[0.6875rem] font-semibold tracking-widest uppercase">Memory</a>
+            <a href="/local-models/" class="hover:text-red-accent text-ink-body shrink-0 font-sans text-[0.6875rem] font-semibold tracking-widest uppercase">Models</a>
+            <a href="/site-map/" class="hover:text-red-accent text-ink-body shrink-0 font-sans text-[0.6875rem] font-semibold tracking-widest uppercase">Site Map</a>
+            <a href="/about/" class="hover:text-red-accent text-ink-body shrink-0 font-sans text-[0.6875rem] font-semibold tracking-widest uppercase">About</a>
+          </div>
+        </noscript>
       </div>
 
       <!-- Right: theme toggle + RSS -->

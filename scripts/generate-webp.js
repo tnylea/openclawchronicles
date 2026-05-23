@@ -46,13 +46,51 @@ function walk(dir) {
   return files;
 }
 
+function normalizeFile(file) {
+  return file.replace(/\\/g, '/');
+}
+
 function shouldSkip(file) {
-  return skipPatterns.some((pattern) => pattern.test(file.replace(/\\/g, '/')));
+  return skipPatterns.some((pattern) => pattern.test(normalizeFile(file)));
 }
 
 function needsResponsiveVariants(file) {
-  const normalized = file.replace(/\\/g, '/');
+  const normalized = normalizeFile(file);
   return /\/assets\/images\/(posts\/|about-banner\.(png|jpe?g)$)/i.test(normalized);
+}
+
+function expectedOutputs(file) {
+  const outputs = [];
+
+  for (const format of outputFormats) {
+    const baseOutput = file.replace(/\.(png|jpe?g)$/i, `.${format.extension}`);
+    outputs.push(baseOutput);
+
+    if (needsResponsiveVariants(file)) {
+      for (const width of responsiveWidths) {
+        outputs.push(baseOutput.replace(new RegExp(`\\.${format.extension}$`, 'i'), `-${width}.${format.extension}`));
+      }
+    }
+  }
+
+  return outputs;
+}
+
+function cleanupOrphanedDerivatives(rootDir, sourceFiles) {
+  const expected = new Set();
+  for (const file of sourceFiles) {
+    expectedOutputs(file).forEach((output) => expected.add(path.resolve(output)));
+  }
+
+  let removed = 0;
+  for (const file of walk(rootDir)) {
+    if (!/\.(avif|webp)$/i.test(file)) continue;
+    if (expected.has(path.resolve(file))) continue;
+    fs.unlinkSync(file);
+    removed += 1;
+  }
+
+  return removed;
 }
 
 async function writeVariant(source, output, format, width = null) {
@@ -72,17 +110,19 @@ async function imageMetadata(file) {
 async function main() {
   let converted = 0;
   let skipped = 0;
+  let removed = 0;
 
   for (const imageRoot of imageRoots) {
     if (!fs.existsSync(imageRoot)) continue;
 
-    for (const file of walk(imageRoot)) {
+    const sourceFiles = walk(imageRoot).filter((file) => {
       const ext = path.extname(file).toLowerCase();
-      if (!allowedExtensions.has(ext) || shouldSkip(file)) {
-        skipped += 1;
-        continue;
-      }
+      return allowedExtensions.has(ext) && !shouldSkip(file);
+    });
 
+    removed += cleanupOrphanedDerivatives(imageRoot, sourceFiles);
+
+    for (const file of sourceFiles) {
       const sourceStat = fs.statSync(file);
       const metadata = needsResponsiveVariants(file) ? await imageMetadata(file) : null;
       const sourceWidth = metadata?.width || null;
@@ -125,7 +165,7 @@ async function main() {
     }
   }
 
-  console.log(`Generated responsive image assets, converted ${converted}, skipped ${skipped}`);
+  console.log(`Generated responsive image assets, converted ${converted}, skipped ${skipped}, removed ${removed}`);
 }
 
 main().catch((error) => {
