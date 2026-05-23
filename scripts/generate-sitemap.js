@@ -47,6 +47,16 @@ function fileDateOrFallback(filePath, fallback) {
   }
 }
 
+function mostRecentDate(...values) {
+  return values
+    .filter(Boolean)
+    .sort((a, b) => new Date(b) - new Date(a))[0];
+}
+
+function pageLastmod(filePath, fallback, ...relatedDates) {
+  return mostRecentDate(fileDateOrFallback(filePath, fallback), fallback, ...relatedDates);
+}
+
 function contentModifiedDate(filePath, fallback) {
   try {
     return fs.statSync(filePath).mtime.toISOString().split('T')[0];
@@ -84,7 +94,7 @@ const latestSectionDate = (section) => postFiles.find((post) => post.section ===
 // Homepage
 urls.push({
   loc: `${BASE_URL}/`,
-  lastmod: fileDateOrFallback(path.join(PAGES_DIR, 'index.html'), latestPostDate),
+  lastmod: pageLastmod(path.join(PAGES_DIR, 'index.html'), latestPostDate, latestPostModified),
   changefreq: 'daily',
   priority: '1.0',
   image: absoluteAssetUrl('/assets/images/about-banner.jpg'),
@@ -107,7 +117,7 @@ for (const page of staticPageConfigs) {
   const fallbackDate = page.section ? latestSectionDate(page.section) : latestPostDate;
   urls.push({
     loc: `${BASE_URL}/${page.slug}/`,
-    lastmod: fileDateOrFallback(path.join(PAGES_DIR, `${page.slug}.html`), fallbackDate),
+    lastmod: pageLastmod(path.join(PAGES_DIR, `${page.slug}.html`), fallbackDate, page.section ? latestSectionDate(page.section) : latestPostModified, latestPostModified),
     changefreq: page.changefreq,
     priority: page.priority,
     image: absoluteAssetUrl(page.image),

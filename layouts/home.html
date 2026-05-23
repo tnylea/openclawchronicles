@@ -178,11 +178,34 @@
         gtag('config', 'G-7016K8GHP7', { transport_type: 'beacon' });
       };
 
-      if ('requestIdleCallback' in window) {
-        requestIdleCallback(window.__loadAnalytics, { timeout: 3000 });
-      } else {
-        window.addEventListener('load', window.__loadAnalytics, { once: true });
-      }
+      (function () {
+        var triggered = false;
+        var interactionEvents = ['pointerdown', 'keydown', 'touchstart', 'scroll'];
+
+        function onReady() {
+          if (triggered) return;
+          if (document.visibilityState === 'hidden') return;
+          triggered = true;
+          interactionEvents.forEach(function (eventName) {
+            window.removeEventListener(eventName, onReady, listenerOptions);
+          });
+          document.removeEventListener('visibilitychange', onReady);
+          if ('requestIdleCallback' in window) {
+            requestIdleCallback(window.__loadAnalytics, { timeout: 2000 });
+          } else {
+            setTimeout(window.__loadAnalytics, 1200);
+          }
+        }
+
+        var listenerOptions = { once: true, passive: true };
+        interactionEvents.forEach(function (eventName) {
+          window.addEventListener(eventName, onReady, listenerOptions);
+        });
+        document.addEventListener('visibilitychange', onReady, { passive: true });
+        window.addEventListener('load', function () {
+          setTimeout(onReady, 5000);
+        }, { once: true });
+      })();
     </script>
     <link rel="alternate" type="application/rss+xml" title="OpenClaw Chronicles RSS" href="https://openclawchronicles.com/feed.xml" />
     <link rel="alternate" type="application/feed+json" title="OpenClaw Chronicles JSON Feed" href="https://openclawchronicles.com/feed.json" />

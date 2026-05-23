@@ -9,6 +9,32 @@
   "background_color": "#ffffff",
   "theme_color": "#1c1917",
   "categories": ["technology", "news", "developer tools"],
+  "shortcuts": [
+    {
+      "name": "Latest Releases",
+      "short_name": "Releases",
+      "description": "Open the latest OpenClaw release coverage.",
+      "url": "/releases/"
+    },
+    {
+      "name": "Security Coverage",
+      "short_name": "Security",
+      "description": "Browse OpenClaw security advisories and hardening guides.",
+      "url": "/security/"
+    },
+    {
+      "name": "Guides and Tutorials",
+      "short_name": "Guides",
+      "description": "Jump into setup guides, migrations, and local model workflows.",
+      "url": "/guides/"
+    },
+    {
+      "name": "Search Archive",
+      "short_name": "Search",
+      "description": "Search the full OpenClaw Chronicles archive.",
+      "url": "/posts/"
+    }
+  ],
   "icons": [
     { "src": "/icon-192.png", "type": "image/png", "sizes": "192x192" },
     { "src": "/icon-512.png", "type": "image/png", "sizes": "512x512" }

@@ -3,6 +3,9 @@ const fs = require('fs');
 const path = require('path');
 const sharp = require('sharp');
 
+sharp.concurrency(1);
+sharp.cache(false);
+
 const root = path.join(__dirname, '..');
 const imageRoots = [
   path.join(root, 'assets', 'images'),
