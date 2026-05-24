@@ -104,7 +104,16 @@
                     </div>
                     <form action="/posts/" method="get" class="flex w-full max-w-xl flex-col gap-3 sm:flex-row" role="search" aria-label="Search OpenClaw Chronicles posts archive" data-archive-search-form>
                         <label for="archive-search" class="sr-only">Search posts</label>
-                        <input id="archive-search" name="q" type="search" inputmode="search" autocomplete="off" spellcheck="false" placeholder="Try: active memory, security, beta, migration" class="border-border bg-surface text-ink placeholder:text-ink-faint focus:border-red-accent focus:ring-red-accent/20 min-h-12 flex-1 rounded-[min(0.3vw,4px)] border px-4 text-sm outline-none focus:ring-4" data-archive-search-input />
+                        <input id="archive-search" name="q" type="search" inputmode="search" enterkeyhint="search" autocomplete="off" autocapitalize="off" spellcheck="false" list="archive-search-suggestions" placeholder="Try: active memory, security, beta, migration" class="border-border bg-surface text-ink placeholder:text-ink-faint focus:border-red-accent focus:ring-red-accent/20 min-h-12 flex-1 rounded-[min(0.3vw,4px)] border px-4 text-sm outline-none focus:ring-4" data-archive-search-input />
+                        <datalist id="archive-search-suggestions">
+                            <option value="active memory"></option>
+                            <option value="security"></option>
+                            <option value="release"></option>
+                            <option value="migration"></option>
+                            <option value="local models"></option>
+                            <option value="discord voice"></option>
+                            <option value="oauth"></option>
+                        </datalist>
                         <div class="flex gap-3">
                             <button type="submit" class="bg-red-accent hover:bg-red-vibrant min-h-12 rounded-[min(0.3vw,4px)] px-5 font-sans text-sm font-semibold text-white">Search</button>
                             <button type="button" class="border-border text-ink-strong hover:text-red-accent min-h-12 rounded-[min(0.3vw,4px)] border px-4 font-sans text-sm font-medium" data-archive-search-clear hidden>Clear</button>
@@ -120,6 +129,13 @@
                     <a href="/migrations/" class="border-border text-ink-strong hover:text-red-accent rounded-full border px-3 py-1.5 font-sans text-xs font-medium">Migration help</a>
                     <a href="/local-models/" class="border-border text-ink-strong hover:text-red-accent rounded-full border px-3 py-1.5 font-sans text-xs font-medium">Local models</a>
                 </div>
+                <div class="border-border mt-5 flex flex-wrap items-center gap-3 border-t pt-4 text-xs">
+                    <span class="text-ink-faint font-mono uppercase tracking-wider">Crawlable resources</span>
+                    <a href="/site-map/" class="text-ink-strong hover:text-red-accent font-sans font-medium">HTML site map</a>
+                    <a href="/feed.xml" class="text-ink-strong hover:text-red-accent font-sans font-medium">RSS feed</a>
+                    <a href="/feed.json" class="text-ink-strong hover:text-red-accent font-sans font-medium">JSON feed</a>
+                    <a href="/sitemap.xml" class="text-ink-strong hover:text-red-accent font-sans font-medium">XML sitemap</a>
+                </div>
             </div>
         </section>
 
@@ -127,7 +143,7 @@
         <section class="defer-render mx-auto max-w-7xl px-4 py-10 sm:px-6 lg:px-8">
             <div class="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3" data-archive-results id="archive-results">
                 <ForEach content="posts" as="post" orderBy="date, desc">
-                    <article data-archive-card data-archive-search-text="{post.title} {post.excerpt} {post.dateFormatted}">
+                    <article data-archive-card data-archive-search-text="{post.title} {post.excerpt} {post.dateFormatted} {post.authorName} {post.link}">
                         <a href="{post.link}" class="group">
                             <div class="overflow-hidden rounded-[min(0.3vw,4px)]">
                                 <img

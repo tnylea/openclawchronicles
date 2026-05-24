@@ -115,7 +115,16 @@
                     </div>
                     <form action="/posts/" method="get" class="flex w-full max-w-xl flex-col gap-3 sm:flex-row" role="search" aria-label="Search OpenClaw Chronicles from the homepage">
                         <label for="homepage-search" class="sr-only">Search OpenClaw Chronicles</label>
-                        <input id="homepage-search" name="q" type="search" inputmode="search" autocomplete="off" spellcheck="false" placeholder="Try: release, security, memory, migration" class="border-border bg-surface text-ink placeholder:text-ink-faint focus:border-red-accent focus:ring-red-accent/20 min-h-12 flex-1 rounded-[min(0.3vw,4px)] border px-4 text-sm outline-none focus:ring-4" />
+                        <input id="homepage-search" name="q" type="search" inputmode="search" enterkeyhint="search" autocomplete="off" autocapitalize="off" spellcheck="false" list="homepage-search-suggestions" placeholder="Try: release, security, memory, migration" class="border-border bg-surface text-ink placeholder:text-ink-faint focus:border-red-accent focus:ring-red-accent/20 min-h-12 flex-1 rounded-[min(0.3vw,4px)] border px-4 text-sm outline-none focus:ring-4" />
+                        <datalist id="homepage-search-suggestions">
+                            <option value="release"></option>
+                            <option value="security"></option>
+                            <option value="active memory"></option>
+                            <option value="migration"></option>
+                            <option value="local models"></option>
+                            <option value="discord voice"></option>
+                            <option value="oauth"></option>
+                        </datalist>
                         <button type="submit" class="bg-red-accent hover:bg-red-vibrant min-h-12 rounded-[min(0.3vw,4px)] px-5 font-sans text-sm font-semibold text-white">Search archive</button>
                     </form>
                 </div>
@@ -131,6 +140,7 @@
                     <a href="/site-map/" class="text-ink-strong hover:text-red-accent font-sans font-medium">HTML site map</a>
                     <a href="/feed.xml" class="text-ink-strong hover:text-red-accent font-sans font-medium">RSS feed</a>
                     <a href="/feed.json" class="text-ink-strong hover:text-red-accent font-sans font-medium">JSON feed</a>
+                    <a href="/sitemap.xml" class="text-ink-strong hover:text-red-accent font-sans font-medium">XML sitemap</a>
                 </div>
                 <div class="mt-6 grid gap-4 lg:grid-cols-3" aria-label="Popular OpenClaw paths">
                     <article class="border-border rounded-[min(0.3vw,4px)] border bg-surface p-4">
