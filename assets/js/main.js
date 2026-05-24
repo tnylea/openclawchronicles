@@ -237,10 +237,45 @@
       });
 
       panel.addEventListener('keydown', function (event) {
+        var links = panelLinks();
+        var currentIndex = links.indexOf(document.activeElement);
+
         if (event.key === 'Escape') {
           close();
           toggle.focus();
+          return;
         }
+
+        if (!links.length) return;
+
+        if (event.key === 'ArrowDown') {
+          event.preventDefault();
+          links[(currentIndex + 1 + links.length) % links.length].focus();
+          return;
+        }
+
+        if (event.key === 'ArrowUp') {
+          event.preventDefault();
+          links[(currentIndex - 1 + links.length) % links.length].focus();
+          return;
+        }
+
+        if (event.key === 'Home') {
+          event.preventDefault();
+          links[0].focus();
+          return;
+        }
+
+        if (event.key === 'End') {
+          event.preventDefault();
+          links[links.length - 1].focus();
+        }
+      });
+
+      root.addEventListener('focusout', function () {
+        window.setTimeout(function () {
+          if (!root.contains(document.activeElement)) close();
+        }, 0);
       });
 
       document.addEventListener('click', function (event) {

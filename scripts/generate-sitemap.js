@@ -16,6 +16,10 @@ const OUTPUT = path.join(SITE_DIR, 'sitemap.xml');
 const POSTS_PER_PAGE = 15;
 const PAGES_DIR = path.join(__dirname, '../pages');
 
+function rootDir() {
+  return path.join(__dirname, '..');
+}
+
 const staticPageConfigs = [
   { slug: 'about', changefreq: 'monthly', priority: '0.6', image: '/assets/images/about-banner.jpg', imageTitle: 'About OpenClaw Chronicles', imageCaption: 'How OpenClaw Chronicles researches and publishes OpenClaw coverage.' },
   { slug: 'site-map', changefreq: 'weekly', priority: '0.7', image: '/assets/images/about-banner.jpg', imageTitle: 'OpenClaw Chronicles site map', imageCaption: 'Start here page for release coverage, security reporting, and guides.' },
@@ -127,6 +131,8 @@ for (const page of staticPageConfigs) {
 }
 urls.push({ loc: `${BASE_URL}/feed.xml`, lastmod: latestPostModified, changefreq: 'daily', priority: '0.4' });
 urls.push({ loc: `${BASE_URL}/feed.json`, lastmod: latestPostModified, changefreq: 'daily', priority: '0.4' });
+urls.push({ loc: `${BASE_URL}/opensearch.xml`, lastmod: fileDateOrFallback(path.join(rootDir(), 'public', 'opensearch.xml'), latestPostModified), changefreq: 'monthly', priority: '0.3' });
+urls.push({ loc: `${BASE_URL}/robots.txt`, lastmod: fileDateOrFallback(path.join(rootDir(), 'public', 'robots.txt'), latestPostModified), changefreq: 'monthly', priority: '0.2' });
 
 const totalArchivePages = Math.max(1, Math.ceil(postFiles.length / POSTS_PER_PAGE));
 
