@@ -8,7 +8,16 @@
       </div>
       <form action="/posts/" method="get" class="flex w-full max-w-xl flex-col gap-3 sm:flex-row" role="search" aria-label="Search OpenClaw Chronicles archive">
         <label for="archive-search-panel" class="sr-only">Search OpenClaw Chronicles</label>
-        <input id="archive-search-panel" name="q" type="search" inputmode="search" autocomplete="off" spellcheck="false" placeholder="Try: release, security, memory, migration" class="border-border bg-surface text-ink placeholder:text-ink-faint focus:border-red-accent focus:ring-red-accent/20 min-h-12 flex-1 rounded-[min(0.3vw,4px)] border px-4 text-sm outline-none focus:ring-4" />
+        <input id="archive-search-panel" name="q" type="search" inputmode="search" enterkeyhint="search" autocomplete="off" autocapitalize="off" spellcheck="false" list="archive-search-panel-suggestions" placeholder="Try: release, security, memory, migration" class="border-border bg-surface text-ink placeholder:text-ink-faint focus:border-red-accent focus:ring-red-accent/20 min-h-12 flex-1 rounded-[min(0.3vw,4px)] border px-4 text-sm outline-none focus:ring-4" />
+        <datalist id="archive-search-panel-suggestions">
+          <option value="release"></option>
+          <option value="security"></option>
+          <option value="active memory"></option>
+          <option value="migration"></option>
+          <option value="local models"></option>
+          <option value="discord voice"></option>
+          <option value="oauth"></option>
+        </datalist>
         <button type="submit" class="bg-red-accent hover:bg-red-vibrant min-h-12 rounded-[min(0.3vw,4px)] px-5 font-sans text-sm font-semibold text-white">Search archive</button>
       </form>
     </div>
@@ -19,11 +28,22 @@
       <a href="/migrations/" class="border-border text-ink-strong hover:text-red-accent rounded-full border px-3 py-1.5 font-sans text-xs font-medium">Migration tutorials</a>
       <a href="/local-models/" class="border-border text-ink-strong hover:text-red-accent rounded-full border px-3 py-1.5 font-sans text-xs font-medium">Local model workflows</a>
     </div>
-    <div class="border-border mt-5 flex flex-wrap items-center gap-3 border-t pt-4 text-xs">
-      <span class="text-ink-faint font-mono uppercase tracking-wider">Crawlable shortcuts</span>
-      <a href="/site-map/" class="text-ink-strong hover:text-red-accent font-sans font-medium">HTML site map</a>
-      <a href="/feed.xml" class="text-ink-strong hover:text-red-accent font-sans font-medium">RSS feed</a>
-      <a href="/feed.json" class="text-ink-strong hover:text-red-accent font-sans font-medium">JSON feed</a>
+    <div class="mt-5 grid gap-4 border-t border-border pt-4 lg:grid-cols-[1.35fr_1fr]">
+      <div class="flex flex-wrap items-center gap-3 text-xs">
+        <span class="text-ink-faint font-mono uppercase tracking-wider">Crawlable shortcuts</span>
+        <a href="/site-map/" class="text-ink-strong hover:text-red-accent font-sans font-medium">HTML site map</a>
+        <a href="/feed.xml" class="text-ink-strong hover:text-red-accent font-sans font-medium">RSS feed</a>
+        <a href="/feed.json" class="text-ink-strong hover:text-red-accent font-sans font-medium">JSON feed</a>
+        <a href="/sitemap.xml" class="text-ink-strong hover:text-red-accent font-sans font-medium">XML sitemap</a>
+      </div>
+      <div class="border-border rounded-[min(0.3vw,4px)] border bg-surface p-4">
+        <p class="text-red-accent font-mono text-[0.625rem] font-semibold tracking-wider uppercase">Top reader paths</p>
+        <ul class="mt-3 space-y-2">
+          <li><a href="/posts/openclaw-2026-5-17-reduce-token-usage-10x/" class="text-ink-strong hover:text-red-accent font-sans text-sm font-medium">Cut OpenClaw token usage by 10x</a></li>
+          <li><a href="/posts/openclaw-2026-4-11-active-memory-guide/" class="text-ink-strong hover:text-red-accent font-sans text-sm font-medium">OpenClaw Active Memory guide</a></li>
+          <li><a href="/posts/openclaw-discord-voice-realtime-setup-2026/" class="text-ink-strong hover:text-red-accent font-sans text-sm font-medium">Discord voice realtime setup guide</a></li>
+        </ul>
+      </div>
     </div>
   </div>
 </section>

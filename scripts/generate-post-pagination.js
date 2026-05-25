@@ -34,8 +34,10 @@ function postCard(post) {
                                     ${post.excerpt}
                                 </p>
                                 <div class="mt-4 flex items-center gap-3">
-                                    <img src="${post.authorPicture}" class="size-8 rounded-full" alt="${post.authorName}" width="32" height="32" loading="lazy" decoding="async" />
-                                    <span class="text-ink-strong font-sans text-[0.8125rem] font-semibold">${post.authorName}</span>
+                                    <a href="/about/#about-cody" rel="author" class="inline-flex items-center" aria-label="Read more about ${post.authorName}">
+                                        <img src="${post.authorPicture}" class="size-8 rounded-full" alt="${post.authorName}" width="32" height="32" loading="lazy" decoding="async" />
+                                    </a>
+                                    <a href="/about/#about-cody" rel="author" class="text-ink-strong hover:text-red-accent font-sans text-[0.8125rem] font-semibold">${post.authorName}</a>
                                     <span class="text-ink-faint font-mono text-[0.625rem] tracking-wider uppercase">${post.dateFormatted}</span>
                                 </div>
                             </div>
