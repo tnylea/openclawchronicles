@@ -53,9 +53,11 @@
                 <article class="border-border rounded-[min(0.3vw,4px)] border p-5">
                     <span class="text-red-accent font-mono text-[0.625rem] font-semibold tracking-wider uppercase">Popular starting points</span>
                     <ul class="mt-3 space-y-3">
-                        <li><a href="/posts/openclaw-2026-4-11-active-memory-guide/" class="text-ink-strong hover:text-red-accent font-sans text-sm font-medium">OpenClaw Active Memory guide</a></li>
-                        <li><a href="/posts/openclaw-2026-4-4-migrate-anthropic-oauth-to-claude-cli/" class="text-ink-strong hover:text-red-accent font-sans text-sm font-medium">Migrate from Anthropic OAuth to Claude CLI</a></li>
-                        <li><a href="/posts/openclaw-2026-4-5-gemma4-turboquant-local-agent/" class="text-ink-strong hover:text-red-accent font-sans text-sm font-medium">Run OpenClaw locally on a MacBook Air</a></li>
+                        <ForEach content="posts" as="post" orderBy="date, desc" count="3">
+                            <If condition="post.title.indexOf('guide') !== -1 || post.title.indexOf('Guide') !== -1 || post.title.indexOf('How to') !== -1 || post.title.indexOf('how to') !== -1 || post.title.indexOf('Migrate') !== -1 || post.title.indexOf('migrate') !== -1 || post.title.indexOf('migration') !== -1 || post.title.indexOf('Migration') !== -1 || post.title.indexOf('locally') !== -1 || post.title.indexOf('tutorial') !== -1 || post.title.indexOf('Tutorial') !== -1 || post.title.indexOf('setup') !== -1 || post.title.indexOf('Setup') !== -1 || post.title.indexOf('memory') !== -1 || post.title.indexOf('Memory') !== -1 || post.title.indexOf('Ollama') !== -1 || post.title.indexOf('ollama') !== -1 || post.title.indexOf('local') !== -1 || post.title.indexOf('Local') !== -1 || post.excerpt.indexOf('migration') !== -1 || post.excerpt.indexOf('tutorial') !== -1 || post.excerpt.indexOf('how to') !== -1 || post.excerpt.indexOf('setup') !== -1 || post.excerpt.indexOf('locally') !== -1 || post.excerpt.indexOf('walkthrough') !== -1 || post.excerpt.indexOf('memory') !== -1 || post.excerpt.indexOf('local model') !== -1 || post.excerpt.indexOf('OpenClaw workflow') !== -1">
+                                <li><a href="{post.link}" class="text-ink-strong hover:text-red-accent font-sans text-sm font-medium">{post.title}</a></li>
+                            </If>
+                        </ForEach>
                     </ul>
                 </article>
             </div>
@@ -70,17 +72,17 @@
                 <article class="border-border rounded-[min(0.3vw,4px)] border p-5">
                     <span class="text-red-accent font-mono text-[0.625rem] font-semibold tracking-wider uppercase">Memory setup</span>
                     <p class="text-ink-body mt-3 text-[0.9375rem] text-pretty">These guides answer how OpenClaw memory works, when recall triggers, and how to make your assistant remember context automatically.</p>
-                    <a href="/posts/openclaw-2026-4-11-active-memory-guide/" class="text-ink-strong hover:text-red-accent mt-4 inline-flex font-sans text-sm font-medium">Read the Active Memory guide</a>
+                    <a href="/memory/" class="text-ink-strong hover:text-red-accent mt-4 inline-flex font-sans text-sm font-medium">Open the memory hub for current memory setup coverage</a>
                 </article>
                 <article class="border-border rounded-[min(0.3vw,4px)] border p-5">
                     <span class="text-red-accent font-mono text-[0.625rem] font-semibold tracking-wider uppercase">Migration help</span>
                     <p class="text-ink-body mt-3 text-[0.9375rem] text-pretty">Use these walkthroughs when provider policies change, auth flows break, or you need to move an existing setup onto a new OpenClaw path.</p>
-                    <a href="/posts/openclaw-2026-4-4-migrate-anthropic-oauth-to-claude-cli/" class="text-ink-strong hover:text-red-accent mt-4 inline-flex font-sans text-sm font-medium">See a migration walkthrough</a>
+                    <a href="/migrations/" class="text-ink-strong hover:text-red-accent mt-4 inline-flex font-sans text-sm font-medium">Open the migration hub for current provider-change help</a>
                 </article>
                 <article class="border-border rounded-[min(0.3vw,4px)] border p-5">
                     <span class="text-red-accent font-mono text-[0.625rem] font-semibold tracking-wider uppercase">Local-first workflows</span>
                     <p class="text-ink-body mt-3 text-[0.9375rem] text-pretty">Explore local model tutorials, MacBook Air setups, and privacy-focused installs if you want to run more of OpenClaw on your own hardware.</p>
-                    <a href="/posts/openclaw-2026-4-5-gemma4-turboquant-local-agent/" class="text-ink-strong hover:text-red-accent mt-4 inline-flex font-sans text-sm font-medium">Start with the local Mac guide</a>
+                    <a href="/local-models/" class="text-ink-strong hover:text-red-accent mt-4 inline-flex font-sans text-sm font-medium">Open the local models hub for current on-device guides</a>
                 </article>
             </div>
         </section>

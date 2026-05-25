@@ -54,8 +54,11 @@
                     <p class="text-ink-body mt-3 text-[0.9375rem] text-pretty">Stable launches, beta previews, hotfixes, and upgrade context.</p>
                     <ul class="mt-4 space-y-2">
                         <li><a href="/releases/" class="text-ink-strong hover:text-red-accent font-sans text-sm font-medium">Open the releases hub</a></li>
-                        <li><a href="/posts/openclaw-2026-5-6-release-notes/" class="text-ink-strong hover:text-red-accent font-sans text-sm font-medium">OpenClaw v2026.5.5 and v2026.5.6 recovery release coverage</a></li>
-                        <li><a href="/posts/openclaw-2026-5-11-beta3-release/" class="text-ink-strong hover:text-red-accent font-sans text-sm font-medium">Latest beta breakdown</a></li>
+                        <ForEach content="posts" as="post" orderBy="date, desc" count="2">
+                            <If condition="post.title.indexOf('release') !== -1 || post.title.indexOf('Release') !== -1 || post.title.indexOf('beta') !== -1 || post.title.indexOf('Beta') !== -1 || post.title.indexOf('hotfix') !== -1 || post.title.indexOf('Hotfix') !== -1 || post.title.indexOf('preview') !== -1 || post.title.indexOf('Preview') !== -1 || post.title.indexOf('stable') !== -1 || post.title.indexOf('Stable') !== -1 || post.title.indexOf('v2026.') !== -1 || post.excerpt.indexOf('release') !== -1 || post.excerpt.indexOf('beta') !== -1 || post.excerpt.indexOf('hotfix') !== -1 || post.excerpt.indexOf('stable build') !== -1 || post.excerpt.indexOf('changelog') !== -1 || post.excerpt.indexOf('stable') !== -1 || post.excerpt.indexOf('version') !== -1">
+                                <li><a href="{post.link}" class="text-ink-strong hover:text-red-accent font-sans text-sm font-medium">{post.title}</a></li>
+                            </If>
+                        </ForEach>
                     </ul>
                 </article>
                 <article class="border-border rounded-[min(0.3vw,4px)] border p-5">
@@ -63,8 +66,11 @@
                     <p class="text-ink-body mt-3 text-[0.9375rem] text-pretty">Advisories, CVEs, incident response, and self-hosting hardening.</p>
                     <ul class="mt-4 space-y-2">
                         <li><a href="/security/" class="text-ink-strong hover:text-red-accent font-sans text-sm font-medium">Open the security hub</a></li>
-                        <li><a href="/posts/openclaw-2026-5-8-approval-security-ux/" class="text-ink-strong hover:text-red-accent font-sans text-sm font-medium">Security hardening overview</a></li>
-                        <li><a href="/posts/openclaw-2026-3-30-security-exposed-instances/" class="text-ink-strong hover:text-red-accent font-sans text-sm font-medium">Exposed instances response guide</a></li>
+                        <ForEach content="posts" as="post" orderBy="date, desc" count="2">
+                            <If condition="post.title.indexOf('security') !== -1 || post.title.indexOf('Security') !== -1 || post.title.indexOf('CVE') !== -1 || post.title.indexOf('hardening') !== -1 || post.title.indexOf('Hardening') !== -1 || post.title.indexOf('privilege escalation') !== -1 || post.title.indexOf('SSRF') !== -1 || post.title.indexOf('authorization') !== -1 || post.title.indexOf('Authorization') !== -1 || post.title.indexOf('exploit') !== -1 || post.title.indexOf('Exploit') !== -1 || post.excerpt.indexOf('security') !== -1 || post.excerpt.indexOf('CVE') !== -1 || post.excerpt.indexOf('hardening') !== -1 || post.excerpt.indexOf('vulnerability') !== -1 || post.excerpt.indexOf('SSRF') !== -1 || post.excerpt.indexOf('authorization') !== -1 || post.excerpt.indexOf('incident response') !== -1 || post.excerpt.indexOf('exploit') !== -1">
+                                <li><a href="{post.link}" class="text-ink-strong hover:text-red-accent font-sans text-sm font-medium">{post.title}</a></li>
+                            </If>
+                        </ForEach>
                     </ul>
                 </article>
                 <article class="border-border rounded-[min(0.3vw,4px)] border p-5">

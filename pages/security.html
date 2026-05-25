@@ -53,9 +53,11 @@
                 <article class="border-border rounded-[min(0.3vw,4px)] border p-5">
                     <span class="text-red-accent font-mono text-[0.625rem] font-semibold tracking-wider uppercase">Key reading</span>
                     <ul class="mt-3 space-y-3">
-                        <li><a href="/posts/openclaw-2026-5-8-approval-security-ux/" class="text-ink-strong hover:text-red-accent font-sans text-sm font-medium">Approval Highlights, Media Auth, and Smarter SSRF Guards</a></li>
-                        <li><a href="/posts/openclaw-2026-5-7-security-authz-release/" class="text-ink-strong hover:text-red-accent font-sans text-sm font-medium">OpenClaw v2026.5.7 Authorization Hardening Across the Stack</a></li>
-                        <li><a href="/posts/openclaw-2026-3-30-security-exposed-instances/" class="text-ink-strong hover:text-red-accent font-sans text-sm font-medium">42,000 Exposed Instances, What to Do</a></li>
+                        <ForEach content="posts" as="post" orderBy="date, desc" count="3">
+                            <If condition="post.title.indexOf('security') !== -1 || post.title.indexOf('Security') !== -1 || post.title.indexOf('CVE') !== -1 || post.title.indexOf('hardening') !== -1 || post.title.indexOf('Hardening') !== -1 || post.title.indexOf('privilege escalation') !== -1 || post.title.indexOf('SSRF') !== -1 || post.title.indexOf('authorization') !== -1 || post.title.indexOf('Authorization') !== -1 || post.title.indexOf('exploit') !== -1 || post.title.indexOf('Exploit') !== -1 || post.excerpt.indexOf('security') !== -1 || post.excerpt.indexOf('CVE') !== -1 || post.excerpt.indexOf('hardening') !== -1 || post.excerpt.indexOf('vulnerability') !== -1 || post.excerpt.indexOf('SSRF') !== -1 || post.excerpt.indexOf('authorization') !== -1 || post.excerpt.indexOf('incident response') !== -1 || post.excerpt.indexOf('exploit') !== -1">
+                                <li><a href="{post.link}" class="text-ink-strong hover:text-red-accent font-sans text-sm font-medium">{post.title}</a></li>
+                            </If>
+                        </ForEach>
                     </ul>
                 </article>
             </div>
@@ -70,12 +72,12 @@
                 <article class="border-border rounded-[min(0.3vw,4px)] border p-5">
                     <span class="text-red-accent font-mono text-[0.625rem] font-semibold tracking-wider uppercase">Urgent patches</span>
                     <p class="text-ink-body mt-3 text-[0.9375rem] text-pretty">Start here if you need to know whether to upgrade immediately because a new OpenClaw vulnerability, exploit path, or hardening patch landed.</p>
-                    <a href="/posts/openclaw-2026-5-7-security-authz-release/" class="text-ink-strong hover:text-red-accent mt-4 inline-flex font-sans text-sm font-medium">See the latest hardening release</a>
+                    <a href="#security-archive-heading" class="text-ink-strong hover:text-red-accent mt-4 inline-flex font-sans text-sm font-medium">Jump to the latest hardening and advisory stories</a>
                 </article>
                 <article class="border-border rounded-[min(0.3vw,4px)] border p-5">
                     <span class="text-red-accent font-mono text-[0.625rem] font-semibold tracking-wider uppercase">Self-hosting risk</span>
                     <p class="text-ink-body mt-3 text-[0.9375rem] text-pretty">These stories are best for operators evaluating exposed instances, configuration mistakes, and practical hardening decisions before rollout.</p>
-                    <a href="/posts/openclaw-2026-5-8-armorer-docker-isolation/" class="text-ink-strong hover:text-red-accent mt-4 inline-flex font-sans text-sm font-medium">Review isolation-focused coverage</a>
+                    <a href="/security/" class="text-ink-strong hover:text-red-accent mt-4 inline-flex font-sans text-sm font-medium">Stay inside the security hub for self-hosting guidance</a>
                 </article>
                 <article class="border-border rounded-[min(0.3vw,4px)] border p-5">
                     <span class="text-red-accent font-mono text-[0.625rem] font-semibold tracking-wider uppercase">Incident response</span>
