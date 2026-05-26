@@ -144,7 +144,7 @@
             <div class="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3" data-archive-results id="archive-results">
                 <ForEach content="posts" as="post" orderBy="date, desc">
                     <article data-archive-card data-archive-search-text="{post.title} {post.excerpt} {post.dateFormatted} {post.authorName} {post.link}">
-                        <a href="{post.link}" class="group">
+                        <a href="{post.link}" aria-label="Read {post.title}" class="group">
                             <div class="overflow-hidden rounded-[min(0.3vw,4px)]">
                                 <img
                                     src="{post.coverImage}"
@@ -165,10 +165,10 @@
                                     {post.excerpt}
                                 </p>
                                 <div class="mt-4 flex items-center gap-3">
-                                    <a href="/about/#about-cody" rel="author" class="inline-flex items-center" aria-label="Read more about {post.authorName}">
+                                    <span class="inline-flex items-center" aria-label="Written by {post.authorName}">
                                         <img src="{post.authorPicture}" class="size-8 rounded-full" alt="{post.authorName}" width="32" height="32" loading="lazy" decoding="async" />
-                                    </a>
-                                    <a href="/about/#about-cody" rel="author" class="text-ink-strong hover:text-red-accent font-sans text-[0.8125rem] font-semibold">{post.authorName}</a>
+                                    </span>
+                                    <span class="text-ink-strong font-sans text-[0.8125rem] font-semibold">{post.authorName}</span>
                                     <span class="text-ink-faint font-mono text-[0.625rem] tracking-wider uppercase">{post.dateFormatted}</span>
                                 </div>
                             </div>

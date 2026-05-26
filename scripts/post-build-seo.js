@@ -1587,6 +1587,7 @@ for (const file of walk(siteDir)) {
   html = decorateActiveNavigation(html, canonicalUrl);
   html = normalizeInternalPostLinks(html);
   html = optimizeDeferredSections(html);
+  html = wrapImagesWithPicture(html);
   html = optimizeImages(html);
   fs.writeFileSync(file, html);
 }
