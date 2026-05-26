@@ -134,24 +134,6 @@ urls.push({ loc: `${BASE_URL}/feed.json`, lastmod: latestPostModified, changefre
 urls.push({ loc: `${BASE_URL}/opensearch.xml`, lastmod: fileDateOrFallback(path.join(rootDir(), 'public', 'opensearch.xml'), latestPostModified), changefreq: 'monthly', priority: '0.3' });
 urls.push({ loc: `${BASE_URL}/robots.txt`, lastmod: fileDateOrFallback(path.join(rootDir(), 'public', 'robots.txt'), latestPostModified), changefreq: 'monthly', priority: '0.2' });
 
-const totalArchivePages = Math.max(1, Math.ceil(postFiles.length / POSTS_PER_PAGE));
-
-for (let page = 2; page <= totalArchivePages; page += 1) {
-  const start = (page - 1) * POSTS_PER_PAGE;
-  const pagePosts = postFiles.slice(start, start + POSTS_PER_PAGE);
-  const pageLastmod = pagePosts[0]?.modified || pagePosts[0]?.date?.split('T')[0] || latestPostModified;
-
-  urls.push({
-    loc: `${BASE_URL}/posts/${page}/`,
-    lastmod: pageLastmod,
-    changefreq: 'weekly',
-    priority: page <= 4 ? '0.6' : '0.5',
-    image: absoluteAssetUrl('/assets/images/about-banner.jpg'),
-    imageTitle: `OpenClaw Chronicles archive page ${page}`,
-    imageCaption: `Paginated OpenClaw archive page ${page} with older releases, security coverage, and guides.`,
-  });
-}
-
 for (const post of postFiles) {
   urls.push({
     loc: `${BASE_URL}/posts/${post.slug}/`,

@@ -1466,8 +1466,11 @@ function buildResponsiveWebpSrcset(src) {
 }
 
 function wrapImagesWithPicture(html) {
-  return html.replace(/<img\b([^>]*?)\s*\/?>/gi, (full, attrs) => {
-    if (/data:|srcset=|<picture/i.test(full)) return full;
+  return html.replace(/<img\b([^>]*?)\s*\/?>/gi, (full, attrs, offset) => {
+    const previousPictureOpen = html.lastIndexOf('<picture', offset);
+    const previousPictureClose = html.lastIndexOf('</picture>', offset);
+    if (previousPictureOpen > previousPictureClose) return full;
+    if (/data:|srcset=/i.test(full)) return full;
 
     const srcMatch = attrs.match(/\ssrc="([^"]+)"/i);
     if (!srcMatch) return full;
@@ -1584,7 +1587,6 @@ for (const file of walk(siteDir)) {
   html = decorateActiveNavigation(html, canonicalUrl);
   html = normalizeInternalPostLinks(html);
   html = optimizeDeferredSections(html);
-  html = wrapImagesWithPicture(html);
   html = optimizeImages(html);
   fs.writeFileSync(file, html);
 }
