@@ -13,12 +13,7 @@ const BASE_URL = 'https://openclawchronicles.com';
 const POSTS_DIR = path.join(__dirname, '../content/posts');
 const SITE_DIR = path.join(__dirname, '../_site');
 const OUTPUT = path.join(SITE_DIR, 'sitemap.xml');
-const POSTS_PER_PAGE = 15;
 const PAGES_DIR = path.join(__dirname, '../pages');
-
-function rootDir() {
-  return path.join(__dirname, '..');
-}
 
 const staticPageConfigs = [
   { slug: 'about', changefreq: 'monthly', priority: '0.6', image: '/assets/images/about-banner.jpg', imageTitle: 'About OpenClaw Chronicles', imageCaption: 'How OpenClaw Chronicles researches and publishes OpenClaw coverage.' },
@@ -129,10 +124,6 @@ for (const page of staticPageConfigs) {
     imageCaption: page.imageCaption,
   });
 }
-urls.push({ loc: `${BASE_URL}/feed.xml`, lastmod: latestPostModified, changefreq: 'daily', priority: '0.4' });
-urls.push({ loc: `${BASE_URL}/feed.json`, lastmod: latestPostModified, changefreq: 'daily', priority: '0.4' });
-urls.push({ loc: `${BASE_URL}/opensearch.xml`, lastmod: fileDateOrFallback(path.join(rootDir(), 'public', 'opensearch.xml'), latestPostModified), changefreq: 'monthly', priority: '0.3' });
-urls.push({ loc: `${BASE_URL}/robots.txt`, lastmod: fileDateOrFallback(path.join(rootDir(), 'public', 'robots.txt'), latestPostModified), changefreq: 'monthly', priority: '0.2' });
 
 for (const post of postFiles) {
   urls.push({

@@ -72,8 +72,13 @@
         </noscript>
       </div>
 
-      <!-- Right: theme toggle + RSS -->
+      <!-- Right: search + theme toggle + RSS -->
       <div class="hidden items-center gap-3 lg:flex shrink-0">
+        <form action="/posts/" method="get" role="search" aria-label="Search OpenClaw Chronicles" class="flex items-center gap-2">
+          <label for="home-nav-search" class="sr-only">Search OpenClaw Chronicles</label>
+          <input id="home-nav-search" name="q" type="search" inputmode="search" enterkeyhint="search" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="Search archive" class="border-border bg-surface text-ink placeholder:text-ink-faint focus:border-red-accent focus:ring-red-accent/20 h-10 w-44 rounded-full border px-3 text-xs outline-none focus:ring-4" />
+          <button type="submit" class="border-border text-ink-strong hover:text-red-accent h-10 rounded-full border px-3 font-sans text-[0.6875rem] font-semibold tracking-wider uppercase">Search</button>
+        </form>
         <!-- Theme Toggle -->
         <div class="bg-switcher flex items-center gap-0.5 rounded-full p-0.5">
           <button type="button" data-theme-button="system" aria-label="System theme" aria-pressed="false"
@@ -118,6 +123,18 @@
           <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="stroke-ink size-6"><path d="M6 18 18 6M6 6l12 12" /></svg>
         </button>
       </div>
+      <form action="/posts/" method="get" role="search" aria-label="Search OpenClaw Chronicles" class="mt-8 flex flex-col gap-3">
+        <label for="mobile-home-nav-search" class="sr-only">Search OpenClaw Chronicles</label>
+        <div class="flex gap-2">
+          <input id="mobile-home-nav-search" name="q" type="search" inputmode="search" enterkeyhint="search" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="Search archive" class="border-border bg-surface text-ink placeholder:text-ink-faint focus:border-red-accent focus:ring-red-accent/20 min-h-12 flex-1 rounded-[min(0.3vw,4px)] border px-4 text-sm outline-none focus:ring-4" />
+          <button type="submit" class="bg-red-accent min-h-12 rounded-[min(0.3vw,4px)] px-4 font-sans text-sm font-semibold tracking-wider text-white uppercase">Search</button>
+        </div>
+        <div class="flex flex-wrap gap-2 text-xs">
+          <a href="/posts/?q=release" class="border-border text-ink-strong rounded-full border px-3 py-1.5 font-sans font-medium">Release</a>
+          <a href="/posts/?q=security" class="border-border text-ink-strong rounded-full border px-3 py-1.5 font-sans font-medium">Security</a>
+          <a href="/posts/?q=memory" class="border-border text-ink-strong rounded-full border px-3 py-1.5 font-sans font-medium">Memory</a>
+        </div>
+      </form>
       <div class="mt-8 flex flex-col gap-1">
         <a href="/posts/"        data-menu-link class="border-border text-ink-strong border-b py-3 font-sans text-sm font-semibold tracking-widest uppercase">Latest</a>
         <a href="/releases/"     data-menu-link class="border-border text-ink-strong border-b py-3 font-sans text-sm font-semibold tracking-widest uppercase">Releases</a>
