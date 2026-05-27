@@ -683,6 +683,51 @@ function scoreRelatedPosts(currentPost, candidatePost) {
   return score;
 }
 
+function buildSearchPanelData() {
+  const releasePost = allPosts.find((post) => inferSection(post) === 'Releases');
+  const securityPost = allPosts.find((post) => inferSection(post) === 'Security');
+  const guidePost = allPosts.find((post) => inferSection(post) === 'Guides');
+  const memoryPost = allPosts.find((post) => matchesHubTopic(post, 'Memory'));
+  const localModelsPost = allPosts.find((post) => matchesHubTopic(post, 'Local Models'));
+  const migrationPost = allPosts.find((post) => matchesHubTopic(post, 'Migrations'));
+
+  return {
+    chips: [
+      { href: '/posts/?q=release', label: 'Latest releases' },
+      { href: '/posts/?q=security', label: 'Security coverage' },
+      { href: '/posts/?q=memory', label: 'Memory workflows' },
+      { href: '/posts/?q=migration', label: 'Migration help' },
+      { href: '/posts/?q=local%20models', label: 'Local model workflows' },
+    ],
+    freshness: [releasePost, securityPost, guidePost].filter(Boolean).slice(0, 3),
+    readerPaths: [
+      releasePost ? { href: releasePost.url, label: releasePost.title } : { href: '/releases/', label: 'Track the latest OpenClaw releases and betas' },
+      securityPost ? { href: securityPost.url, label: securityPost.title } : { href: '/security/', label: 'Browse current OpenClaw security coverage' },
+      guidePost ? { href: guidePost.url, label: guidePost.title } : { href: '/guides/', label: 'OpenClaw guides and tutorial archive' },
+      memoryPost ? { href: memoryPost.url, label: memoryPost.title } : migrationPost ? { href: migrationPost.url, label: migrationPost.title } : localModelsPost ? { href: localModelsPost.url, label: localModelsPost.title } : { href: '/local-models/', label: 'Run OpenClaw with local models and on-device workflows' },
+    ],
+  };
+}
+
+function refreshSearchPanels(html) {
+  const searchPanelData = buildSearchPanelData();
+
+  if (html.includes('data-search-shortcut-chips')) {
+    html = html.replace(/<div class="mt-4 flex flex-wrap gap-3" data-search-shortcut-chips>[\s\S]*?<\/div>/i, `<div class="mt-4 flex flex-wrap gap-3" data-search-shortcut-chips>${searchPanelData.chips.map((chip) => `\n      <a href="${chip.href}" class="border-border text-ink-strong hover:text-red-accent rounded-full border px-3 py-1.5 font-sans text-xs font-medium">${chip.label}</a>`).join('')}\n    </div>`);
+  }
+
+  if (html.includes('data-search-freshness')) {
+    const freshnessLinks = searchPanelData.freshness.map((post) => `<a href="${post.url}" class="text-ink-strong hover:text-red-accent font-medium">${post.title}</a>`).join(', ');
+    html = html.replace(/<div class="mt-4 rounded-\[min\(0\.3vw,4px\)\] border border-border bg-surface px-4 py-3" data-search-freshness>[\s\S]*?<\/div>/i, `<div class="mt-4 rounded-[min(0.3vw,4px)] border border-border bg-surface px-4 py-3" data-search-freshness>\n      <p class="text-red-accent font-mono text-[0.625rem] font-semibold tracking-wider uppercase">Fresh archive entry points</p>\n      <p class="text-ink-body mt-2 text-sm">Start with ${freshnessLinks || 'the latest OpenClaw coverage'}, then branch into the full archive if you need older context.</p>\n    </div>`);
+  }
+
+  if (html.includes('data-search-reader-paths')) {
+    html = html.replace(/<ul class="mt-3 space-y-2" data-search-reader-paths>[\s\S]*?<\/ul>/i, `<ul class="mt-3 space-y-2" data-search-reader-paths>${searchPanelData.readerPaths.map((item) => `\n          <li><a href="${item.href}" class="text-ink-strong hover:text-red-accent font-sans text-sm font-medium">${item.label}</a></li>`).join('')}\n        </ul>`);
+  }
+
+  return html;
+}
+
 function injectLatestTopicSections(html, canonicalUrl) {
   const targets = new Set([`${siteUrl}/`, `${siteUrl}/posts/`]);
   if (!targets.has(canonicalUrl) || html.includes('latest-topic-clusters-heading')) return html;
@@ -1547,6 +1592,7 @@ for (const file of walk(siteDir)) {
   const canonicalUrl = normalizedUrlFromFile(file);
 
   html = updateCanonicalAndUrls(html, canonicalUrl);
+  html = refreshSearchPanels(html);
   html = fixHomepageMetadata(html, canonicalUrl);
   html = fixAboutPageMetadata(html, canonicalUrl);
   html = fixPostsArchiveMetadata(html, canonicalUrl);

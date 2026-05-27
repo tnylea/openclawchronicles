@@ -21,12 +21,16 @@
         <button type="submit" class="bg-red-accent hover:bg-red-vibrant min-h-12 rounded-[min(0.3vw,4px)] px-5 font-sans text-sm font-semibold text-white">Search archive</button>
       </form>
     </div>
-    <div class="mt-4 flex flex-wrap gap-3">
+    <div class="mt-4 flex flex-wrap gap-3" data-search-shortcut-chips>
       <a href="/posts/?q=release" class="border-border text-ink-strong hover:text-red-accent rounded-full border px-3 py-1.5 font-sans text-xs font-medium">Latest releases</a>
       <a href="/posts/?q=security" class="border-border text-ink-strong hover:text-red-accent rounded-full border px-3 py-1.5 font-sans text-xs font-medium">Security coverage</a>
       <a href="/memory/" class="border-border text-ink-strong hover:text-red-accent rounded-full border px-3 py-1.5 font-sans text-xs font-medium">Memory guides</a>
       <a href="/migrations/" class="border-border text-ink-strong hover:text-red-accent rounded-full border px-3 py-1.5 font-sans text-xs font-medium">Migration tutorials</a>
       <a href="/local-models/" class="border-border text-ink-strong hover:text-red-accent rounded-full border px-3 py-1.5 font-sans text-xs font-medium">Local model workflows</a>
+    </div>
+    <div class="mt-4 rounded-[min(0.3vw,4px)] border border-border bg-surface px-4 py-3" data-search-freshness>
+      <p class="text-red-accent font-mono text-[0.625rem] font-semibold tracking-wider uppercase">Fresh archive entry points</p>
+      <p class="text-ink-body mt-2 text-sm">Start with the latest release, security, and guide coverage, then branch into the full archive if you need older OpenClaw context.</p>
     </div>
     <div class="mt-5 grid gap-4 border-t border-border pt-4 lg:grid-cols-[1.35fr_1fr]">
       <div class="flex flex-wrap items-center gap-3 text-xs">
@@ -38,7 +42,7 @@
       </div>
       <div class="border-border rounded-[min(0.3vw,4px)] border bg-surface p-4">
         <p class="text-red-accent font-mono text-[0.625rem] font-semibold tracking-wider uppercase">Top reader paths</p>
-        <ul class="mt-3 space-y-2">
+        <ul class="mt-3 space-y-2" data-search-reader-paths>
           <li><a href="/releases/" class="text-ink-strong hover:text-red-accent font-sans text-sm font-medium">Track the latest OpenClaw releases and betas</a></li>
           <li><a href="/posts/openclaw-2026-5-17-reduce-token-usage-10x/" class="text-ink-strong hover:text-red-accent font-sans text-sm font-medium">Cut OpenClaw token usage by 10x</a></li>
           <li><a href="/posts/openclaw-2026-4-11-active-memory-guide/" class="text-ink-strong hover:text-red-accent font-sans text-sm font-medium">OpenClaw Active Memory guide</a></li>
