@@ -56,7 +56,8 @@ function pageLastmod(filePath, fallback, ...relatedDates) {
   return mostRecentDate(fileDateOrFallback(filePath, fallback), fallback, ...relatedDates);
 }
 
-function contentModifiedDate(filePath, fallback) {
+function contentModifiedDate(filePath, frontmatterModified, fallback) {
+  if (frontmatterModified) return frontmatterModified.split('T')[0];
   try {
     return fs.statSync(filePath).mtime.toISOString().split('T')[0];
   } catch {
@@ -78,11 +79,12 @@ const postFiles = fs.readdirSync(POSTS_DIR)
     const coverImage = getFrontmatterField(content, 'coverImage');
     const title = getFrontmatterField(content, 'title');
     const excerpt = getFrontmatterField(content, 'excerpt');
+    const dateModified = getFrontmatterField(content, 'dateModified');
     const section = inferSection({ title, excerpt, content })
       .toLowerCase()
       .replace('openclaw news', 'news');
-    const modified = contentModifiedDate(filePath, date ? date.split('T')[0] : undefined);
-    return { slug, date, coverImage, title, excerpt, section, modified };
+    const modified = contentModifiedDate(filePath, dateModified, date ? date.split('T')[0] : undefined);
+    return { slug, date, dateModified, coverImage, title, excerpt, section, modified };
   })
   .sort((a, b) => (b.date || '').localeCompare(a.date || ''));
 

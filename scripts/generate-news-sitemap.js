@@ -67,7 +67,8 @@ function absoluteAssetUrl(assetPath) {
   return `${BASE_URL}${assetPath.startsWith('/') ? '' : '/'}${assetPath}`;
 }
 
-function modifiedDate(filePath, fallback) {
+function modifiedDate(filePath, frontmatterModified, fallback) {
+  if (frontmatterModified) return frontmatterModified;
   try {
     return fs.statSync(filePath).mtime.toISOString();
   } catch {
@@ -89,10 +90,11 @@ const posts = fs.readdirSync(POSTS_DIR)
     return {
       title: meta.title,
       date: published.toISOString(),
-      modified: modifiedDate(filePath, published.toISOString()),
+      modified: modifiedDate(filePath, meta.dateModified, published.toISOString()),
       url: `${BASE_URL}/posts/${slug}/`,
       section: inferSection(`${meta.title || ''} ${meta.excerpt || ''}`),
       keywords: buildKeywords(meta),
+      excerpt: meta.excerpt || '',
       image: absoluteAssetUrl(meta.coverImage),
     };
   })
@@ -117,7 +119,8 @@ ${posts.map((post) => `  <url>
     </news:news>${post.image ? `
     <image:image>
       <image:loc>${escapeXml(post.image)}</image:loc>
-      <image:title>${escapeXml(post.title)}</image:title>
+      <image:title>${escapeXml(post.title)}</image:title>${post.excerpt ? `
+      <image:caption>${escapeXml(post.excerpt)}</image:caption>` : ''}
     </image:image>` : ''}
   </url>`).join('\n')}
 </urlset>

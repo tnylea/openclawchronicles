@@ -89,6 +89,7 @@ function imageMimeType(url) {
   const extension = (url.split('.').pop() || '').toLowerCase();
   if (extension === 'jpg' || extension === 'jpeg') return 'image/jpeg';
   if (extension === 'webp') return 'image/webp';
+  if (extension === 'avif') return 'image/avif';
   if (extension === 'gif') return 'image/gif';
   if (extension === 'svg') return 'image/svg+xml';
   return 'image/png';
@@ -126,6 +127,9 @@ const items = latest.map((post) => {
   const enclosure = post.ogImageUrl
     ? `\n    <enclosure url="${escapeXml(siteUrl + post.ogImageUrl)}" type="${imageMimeType(post.ogImageUrl)}" length="0" />`
     : '';
+  const mediaContent = post.ogImageUrl
+    ? `\n    <media:content url="${escapeXml(siteUrl + post.ogImageUrl)}" medium="image" type="${imageMimeType(post.ogImageUrl)}">\n      <media:title type="plain">${escapeXml(post.title)}</media:title>\n      ${post.excerpt ? `<media:description type="plain">${escapeXml(post.excerpt)}</media:description>` : ''}\n    </media:content>`
+    : '';
   const contentEncoded = `\n    <content:encoded><![CDATA[${markdownToHtml(post.body)}${post.ogImageUrl ? `<p><img src="${absolutizeUrl(post.ogImageUrl)}" alt="${escapeXml(post.title)}" /></p>` : ''}]]></content:encoded>`;
 
   return `  <item>
@@ -136,18 +140,20 @@ const items = latest.map((post) => {
     <author>news@openclawchronicles.com (${escapeXml(post.authorName)})</author>
     <pubDate>${toRfc822(post.date)}</pubDate>
     <atom:updated>${escapeXml(post.modified)}</atom:updated>
-    <guid isPermaLink="true">${escapeXml(link)}</guid>${enclosure}${contentEncoded}
+    <dc:date>${escapeXml(post.modified)}</dc:date>
+    <guid isPermaLink="true">${escapeXml(link)}</guid>${enclosure}${mediaContent}${contentEncoded}
   </item>`;
 }).join('\n');
 
 const rss = `<?xml version="1.0" encoding="UTF-8"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:dc="http://purl.org/dc/elements/1.1/">
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:media="http://search.yahoo.com/mrss/">
   <channel>
     <title>OpenClaw Chronicles</title>
     <link>${siteUrl}</link>
     <description>The #1 source for OpenClaw news, releases, tutorials, and community updates.</description>
     <language>en-us</language>
     <lastBuildDate>${toRfc822(lastBuildDate)}</lastBuildDate>
+    <atom:updated>${escapeXml(lastBuildDate)}</atom:updated>
     <ttl>60</ttl>
     <managingEditor>news@openclawchronicles.com (Cody)</managingEditor>
     <webMaster>news@openclawchronicles.com (Cody)</webMaster>

@@ -225,7 +225,6 @@
     </noscript>
     <link rel="preload" href="/styles.css" as="style" />
     <link rel="stylesheet" href="/styles.css" />
-    <script src="/assets/js/main.js" defer></script>
     <script>
       (function () {
         var t = localStorage.getItem("theme") || "system";
@@ -236,6 +235,30 @@
         ) {
           document.documentElement.classList.add("dark");
         }
+
+        var mainScriptLoaded = false;
+        function loadMainScript() {
+          if (mainScriptLoaded) return;
+          mainScriptLoaded = true;
+          var script = document.createElement("script");
+          script.src = "/assets/js/main.js";
+          script.defer = true;
+          document.head.appendChild(script);
+        }
+
+        var triggerEvents = ["pointerdown", "keydown", "touchstart", "mouseover"];
+        var listenerOptions = { once: true, passive: true };
+        triggerEvents.forEach(function (eventName) {
+          window.addEventListener(eventName, loadMainScript, listenerOptions);
+        });
+
+        window.addEventListener("load", function () {
+          if ("requestIdleCallback" in window) {
+            requestIdleCallback(loadMainScript, { timeout: 1800 });
+          } else {
+            setTimeout(loadMainScript, 1200);
+          }
+        }, { once: true });
       })();
     </script>
   </head>
