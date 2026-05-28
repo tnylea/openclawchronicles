@@ -1251,8 +1251,9 @@ function injectArticlePagination(html, canonicalUrl) {
 function decorateActiveNavigation(html, canonicalUrl) {
   const navTargets = ['/', '/posts/', '/releases/', '/security/', '/guides/', '/migrations/', '/memory/', '/local-models/', '/site-map/', '/about/', '/feed.xml', '/feed.json'];
 
-  let currentPath = canonicalUrl.replace(siteUrl, '/');
+  let currentPath = canonicalUrl.replace(siteUrl, '');
   if (!currentPath.startsWith('/')) currentPath = `/${currentPath}`;
+  if (currentPath === '') currentPath = '/';
 
   let activePath = currentPath;
   if (/^\/posts\/[^/]+\/$/.test(currentPath)) {
@@ -1436,7 +1437,7 @@ function injectArticleMetaSummary(html, canonicalUrl) {
 
   const summaryMarkup = `
             <div id="story-meta-summary" class="mt-5 flex flex-wrap items-center gap-2.5" aria-label="Story details">
-                <a href="${sectionInfo.href.replace(siteUrl, '/')}" class="border-border text-ink-strong hover:text-red-accent rounded-full border px-3 py-1.5 font-sans text-xs font-medium">Filed under ${sectionInfo.label}</a>
+                <a href="${sectionInfo.href.replace(siteUrl, '') || '/'}" class="border-border text-ink-strong hover:text-red-accent rounded-full border px-3 py-1.5 font-sans text-xs font-medium">Filed under ${sectionInfo.label}</a>
                 <span class="border-border text-ink-muted rounded-full border px-3 py-1.5 font-sans text-xs">${readTime} min read</span>
                 ${updatedLabel ? `<span class="border-border text-ink-muted rounded-full border px-3 py-1.5 font-sans text-xs">Updated ${updatedLabel}</span>` : ''}
             </div>`;
