@@ -118,13 +118,13 @@ function bestModernImageSource(src) {
 function injectImagePreload(html) {
   if (html.includes('data-seo-preload="hero-image"')) return html;
 
-  const heroMatch = html.match(/<img\b[^>]*\bsrc="([^"]+)"([^>]*)\bfetchpriority="high"[^>]*>/i)
-    || html.match(/<img\b[^>]*\bsrc="([^"]+)"([^>]*)\bloading="eager"[^>]*>/i);
+  const heroMatch = html.match(/(<img\b[^>]*\bsrc="([^"]+)"[^>]*\bfetchpriority="high"[^>]*>)/i)
+    || html.match(/(<img\b[^>]*\bsrc="([^"]+)"[^>]*\bloading="eager"[^>]*>)/i);
 
   if (!heroMatch) return html;
 
-  const heroSrc = heroMatch[1];
-  const heroAttrs = heroMatch[2] || '';
+  const heroTag = heroMatch[1];
+  const heroSrc = heroMatch[2];
   let preloadSrc = heroSrc;
   let preloadType = '';
   let imageSrcset = '';
@@ -137,7 +137,7 @@ function injectImagePreload(html) {
     if (bestModernSource.srcset) imageSrcset = ` imagesrcset="${bestModernSource.srcset}"`;
   }
 
-  const sizesMatch = heroAttrs.match(/\ssizes="([^"]+)"/i);
+  const sizesMatch = heroTag.match(/\ssizes="([^"]+)"/i);
   if (sizesMatch) imageSizes = ` imagesizes="${sizesMatch[1]}"`;
 
   const preloadTag = `    <link rel="preload" as="image" href="${preloadSrc}"${preloadType}${imageSrcset}${imageSizes} data-seo-preload="hero-image" />`;
@@ -1526,6 +1526,9 @@ function wrapImagesWithPicture(html) {
     if (/\.webp(?:$|\?)/i.test(src)) return full;
     if (/cody\.jpg|icon-|favicon|apple-touch-icon/i.test(src)) return full;
 
+    const sizesMatch = attrs.match(/\ssizes="([^"]+)"/i);
+    const sizesAttr = sizesMatch ? ` sizes="${sizesMatch[1]}"` : '';
+
     const sources = [
       { extension: 'avif', type: 'image/avif' },
       { extension: 'webp', type: 'image/webp' },
@@ -1536,7 +1539,7 @@ function wrapImagesWithPicture(html) {
 
       const srcset = buildResponsiveModernSrcset(src, format.extension);
       const srcsetAttr = srcset ? ` srcset="${srcset}"` : ` srcset="${modernSrc}"`;
-      return `<source${srcsetAttr} type="${format.type}">`;
+      return `<source${srcsetAttr}${sizesAttr} type="${format.type}">`;
     }).filter(Boolean);
 
     if (!sources.length) return full;
