@@ -6,6 +6,7 @@ const siteUrl = 'https://openclawchronicles.com';
 const ignorePrefixes = ['mailto:', 'tel:', 'javascript:', 'data:', '#'];
 const checked = new Set();
 const errors = [];
+const anchorCache = new Map();
 
 function walk(dir) {
   const entries = fs.readdirSync(dir, { withFileTypes: true });
@@ -36,8 +37,27 @@ function shouldSkip(target) {
   return !target || ignorePrefixes.some((prefix) => target.startsWith(prefix)) || /^https?:\/\//i.test(target) || /^\/posts\/\$\{slug\}\/?$/.test(target);
 }
 
+function collectAnchors(filePath) {
+  if (anchorCache.has(filePath)) return anchorCache.get(filePath);
+
+  const html = fs.readFileSync(filePath, 'utf8');
+  const anchors = new Set();
+  for (const match of html.matchAll(/\sid="([^"]+)"/g)) {
+    anchors.add(match[1]);
+  }
+  anchorCache.set(filePath, anchors);
+  return anchors;
+}
+
 for (const file of walk(siteDir)) {
   const html = fs.readFileSync(file, 'utf8');
+
+  const unresolvedTokens = html.match(/\\{(?:post|frontmatter|page)[^}]*\}/g);
+  if (unresolvedTokens?.length) {
+    errors.push(`${path.relative(siteDir, file)} -> unresolved template token(s): ${[...new Set(unresolvedTokens)].join(', ')}`);
+    continue;
+  }
+
   const matches = [...html.matchAll(/(?:href|src)="([^"]+)"/g)];
 
   for (const match of matches) {
@@ -49,6 +69,15 @@ for (const file of walk(siteDir)) {
     const resolved = target.startsWith('/') ? normalizePageTarget(target) : path.resolve(path.dirname(file), target.split('#')[0].split('?')[0]);
     if (!fs.existsSync(resolved)) {
       errors.push(`${path.relative(siteDir, file)} -> ${target}`);
+      continue;
+    }
+
+    const fragment = target.split('#')[1];
+    if (fragment && resolved.endsWith('.html')) {
+      const anchors = collectAnchors(resolved);
+      if (!anchors.has(fragment)) {
+        errors.push(`${path.relative(siteDir, file)} -> ${target} (missing fragment)`);
+      }
     }
   }
 }

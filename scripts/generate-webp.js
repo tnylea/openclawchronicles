@@ -25,6 +25,8 @@ const outputFormats = [
     include: () => true,
   },
 ];
+const cacheDir = path.join(root, '.cache');
+const cacheFile = path.join(cacheDir, 'image-build-manifest.json');
 const skipPatterns = [
   /favicon/i,
   /icon-/i,
@@ -76,6 +78,27 @@ function expectedOutputs(file) {
   return outputs;
 }
 
+function ensureDir(dir) {
+  fs.mkdirSync(dir, { recursive: true });
+}
+
+function loadManifest() {
+  try {
+    return JSON.parse(fs.readFileSync(cacheFile, 'utf8'));
+  } catch {
+    return {};
+  }
+}
+
+function saveManifest(manifest) {
+  ensureDir(cacheDir);
+  fs.writeFileSync(cacheFile, JSON.stringify(manifest, null, 2));
+}
+
+function sourceFingerprint(file, stat) {
+  return `${stat.size}:${Math.round(stat.mtimeMs)}`;
+}
+
 function cleanupOrphanedDerivatives(rootDir, sourceFiles) {
   const expected = new Set();
   for (const file of sourceFiles) {
@@ -111,6 +134,8 @@ async function main() {
   let converted = 0;
   let skipped = 0;
   let removed = 0;
+  const manifest = loadManifest();
+  const nextManifest = {};
 
   for (const imageRoot of imageRoots) {
     if (!fs.existsSync(imageRoot)) continue;
@@ -124,6 +149,18 @@ async function main() {
 
     for (const file of sourceFiles) {
       const sourceStat = fs.statSync(file);
+      const fingerprint = sourceFingerprint(file, sourceStat);
+      const cachedEntry = manifest[file];
+      const expected = expectedOutputs(file);
+      const allOutputsFresh = expected.every((output) => fs.existsSync(output) && fs.statSync(output).mtimeMs >= sourceStat.mtimeMs);
+      const canReuseManifest = cachedEntry && cachedEntry.fingerprint === fingerprint && allOutputsFresh;
+
+      if (canReuseManifest) {
+        nextManifest[file] = cachedEntry;
+        skipped += expected.length;
+        continue;
+      }
+
       const metadata = needsResponsiveVariants(file) ? await imageMetadata(file) : null;
       const sourceWidth = metadata?.width || null;
 
@@ -162,8 +199,16 @@ async function main() {
           }
         }
       }
+
+      nextManifest[file] = {
+        fingerprint,
+        outputs: expected,
+        width: sourceWidth,
+      };
     }
   }
+
+  saveManifest(nextManifest);
 
   console.log(`Generated responsive image assets, converted ${converted}, skipped ${skipped}, removed ${removed}`);
 }
