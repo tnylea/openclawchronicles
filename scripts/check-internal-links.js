@@ -55,7 +55,6 @@ for (const file of walk(siteDir)) {
   const unresolvedTokens = html.match(/\\{(?:post|frontmatter|page)[^}]*\}/g);
   if (unresolvedTokens?.length) {
     errors.push(`${path.relative(siteDir, file)} -> unresolved template token(s): ${[...new Set(unresolvedTokens)].join(', ')}`);
-    continue;
   }
 
   const matches = [...html.matchAll(/(?:href|src)="([^"]+)"/g)];

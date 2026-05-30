@@ -89,8 +89,11 @@ const postFiles = fs.readdirSync(POSTS_DIR)
   .sort((a, b) => (b.date || '').localeCompare(a.date || ''));
 
 const latestPostDate = postFiles[0]?.date?.split('T')[0];
-const latestPostModified = postFiles[0]?.modified || latestPostDate;
-const latestSectionDate = (section) => postFiles.find((post) => post.section === section)?.modified || postFiles.find((post) => post.section === section)?.date?.split('T')[0] || latestPostDate;
+const latestPostModified = mostRecentDate(...postFiles.map((post) => post.modified || post.date?.split('T')[0])) || latestPostDate;
+const latestSectionDate = (section) => {
+  const sectionPosts = postFiles.filter((post) => post.section === section);
+  return mostRecentDate(...sectionPosts.map((post) => post.modified || post.date?.split('T')[0])) || latestPostModified;
+};
 
 // Homepage
 urls.push({

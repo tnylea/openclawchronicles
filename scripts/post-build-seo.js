@@ -178,6 +178,39 @@ function updateCanonicalAndUrls(html, canonicalUrl) {
   return html;
 }
 
+function resolveResidualTemplateTokens(html, canonicalUrl) {
+  const postMatch = canonicalUrl.match(/\/posts\/([^/]+)\/$/);
+  const post = postMatch ? postBySlug.get(postMatch[1]) : null;
+  const titleMatch = html.match(/<title>([^<]*)<\/title>/i);
+  const descriptionMatch = html.match(/<meta name="description" content="([^"]*)"\s*\/?>/i);
+  const ogImageMatch = html.match(/<meta property="og:image" content="([^"]*)"\s*\/?>/i);
+
+  const replacements = new Map([
+    ['{frontmatter.url}', canonicalUrl],
+    ['{pageUrl}', canonicalUrl],
+    ['{frontmatter.dateModified}', post?.modified || ''],
+    ['{frontmatter.date}', post?.date || ''],
+    ['{frontmatter.authorName}', post?.authorName || 'Cody'],
+    ['{frontmatter.title}', post?.title || titleMatch?.[1] || 'OpenClaw Chronicles'],
+    ['{frontmatter.excerpt}', post?.excerpt || descriptionMatch?.[1] || ''],
+    ['{frontmatter.ogImageUrl}', post?.ogImageUrl || ''],
+    ['{pageDescription}', descriptionMatch?.[1] || ''],
+    ['{pageOgDescription}', descriptionMatch?.[1] || ''],
+    ['{pageSchemaDescription}', descriptionMatch?.[1] || ''],
+    ['{pageOgTitle}', titleMatch?.[1] || 'OpenClaw Chronicles'],
+    ['{pageSchemaName}', titleMatch?.[1] || 'OpenClaw Chronicles'],
+    ['{pageImage}', ogImageMatch?.[1] || `${siteUrl}/assets/images/about-banner.jpg`],
+    ['{pageImageAlt}', titleMatch?.[1] || 'OpenClaw Chronicles'],
+  ]);
+
+  for (const [token, value] of replacements.entries()) {
+    if (!value) continue;
+    html = html.split(token).join(value);
+  }
+
+  return html;
+}
+
 function updatePaginatedArchiveLinks(html, canonicalUrl, pageNumber) {
   const prev = pageNumber > 1 ? `${siteUrl}/posts/${pageNumber - 1 === 1 ? '' : `${pageNumber - 1}/`}` : null;
   const next = fs.existsSync(path.join(siteDir, 'posts', String(pageNumber + 1), 'index.html')) ? `${siteUrl}/posts/${pageNumber + 1}/` : null;
@@ -1639,6 +1672,7 @@ for (const file of walk(siteDir)) {
   html = optimizeDeferredSections(html);
   html = wrapImagesWithPicture(html);
   html = optimizeImages(html);
+  html = resolveResidualTemplateTokens(html, canonicalUrl);
   fs.writeFileSync(file, html);
 }
 
