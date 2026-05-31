@@ -51,10 +51,36 @@
             </div>
         </div>
 
-        <!-- Article Content -->
-        <article class="article-content mx-auto max-w-3xl px-4 py-12 sm:px-6 lg:px-8">
-            {content}
-        </article>
+        <!-- Article Content + Sidebar -->
+        <div class="mx-auto max-w-6xl px-4 py-12 sm:px-6 lg:px-8">
+            <div class="flex gap-10 lg:items-start">
+                <!-- Main article -->
+                <article class="article-content min-w-0 flex-1">
+                    {content}
+                </article>
+
+                <!-- Square ad sidebar (desktop only) -->
+                <aside class="hidden lg:block shrink-0 w-[300px]">
+                    <div class="sticky top-24">
+                        <a href="https://hatchery.so?utm_source=openclawchronicles.com&utm_medium=house_ad&utm_campaign=cross_promotion"
+                           target="_blank"
+                           rel="noopener"
+                           aria-label="Hatchery — No bot yet? Start here."
+                           class="block overflow-hidden rounded-[min(0.4vw,6px)]">
+                            <img
+                                src="/assets/images/ad-square.png"
+                                alt="Hatchery — No bot yet? Start here. Hatch your first OpenClaw agent in under 2 minutes."
+                                width="300"
+                                height="300"
+                                loading="lazy"
+                                decoding="async"
+                                class="w-full h-auto" />
+                        </a>
+                        <p class="mt-1.5 text-center font-mono text-[0.5rem] tracking-wider uppercase text-ink-faint">Sponsor</p>
+                    </div>
+                </aside>
+            </div>
+        </div>
 
         <nav class="defer-render mx-auto max-w-3xl px-4 pb-8 sm:px-6 lg:px-8" aria-labelledby="story-nav-heading">
             <div class="border-border-strong border-t pt-8">
