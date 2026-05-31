@@ -48,6 +48,28 @@
         "@type": "Thing",
         "name": "OpenClaw"
       },
+      "publisher": {
+        "@type": "NewsMediaOrganization",
+        "name": "OpenClaw Chronicles",
+        "url": "https://openclawchronicles.com"
+      },
+      "breadcrumb": {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://openclawchronicles.com/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "{pageSchemaName}",
+            "item": "{pageUrl}"
+          }
+        ]
+      },
       "inLanguage": "en"
     }
     </script>
@@ -66,7 +88,18 @@
       "about": {
         "@type": "Thing",
         "name": "OpenClaw"
-      }
+      },
+      "publisher": {
+        "@type": "NewsMediaOrganization",
+        "name": "OpenClaw Chronicles",
+        "url": "https://openclawchronicles.com"
+      },
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": "https://openclawchronicles.com/posts/?q={search_term_string}",
+        "query-input": "required name=search_term_string"
+      },
+      "inLanguage": "en"
     }
     </script>
     <script type="application/ld+json">
@@ -89,13 +122,14 @@
     {
       "@context": "https://schema.org",
       "@type": "SiteNavigationElement",
-      "name": ["Home", "Posts", "Releases", "Security", "Guides", "Memory", "Local Models", "Site Map", "About", "RSS Feed"],
+      "name": ["Home", "Posts", "Releases", "Security", "Guides", "Migrations", "Memory", "Local Models", "Site Map", "About", "RSS Feed"],
       "url": [
         "https://openclawchronicles.com/",
         "https://openclawchronicles.com/posts/",
         "https://openclawchronicles.com/releases/",
         "https://openclawchronicles.com/security/",
         "https://openclawchronicles.com/guides/",
+        "https://openclawchronicles.com/migrations/",
         "https://openclawchronicles.com/memory/",
         "https://openclawchronicles.com/local-models/",
         "https://openclawchronicles.com/site-map/",
