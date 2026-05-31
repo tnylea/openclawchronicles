@@ -33,6 +33,7 @@ const skipPatterns = [
   /apple-touch-icon/i,
   /authors\//i,
   /cover\.jpg$/i,
+  /ad-/i,
 ];
 
 function walk(dir) {
