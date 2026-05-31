@@ -43,7 +43,7 @@ As of Sunday night, the thread sits at **336 points and 386 comments** — with 
 
 Also surfacing on HN today: [OpenClawdex](https://github.com/alekseyrozh/openclawdex) — an open-source, MIT-licensed macOS desktop application that lets you orchestrate Claude Code and OpenAI Codex agents from a single native UI. The [Show HN post](https://news.ycombinator.com/item?id=47823501) earned early discussion and highlights a trend of third-party tooling building specifically around the OpenClaw ecosystem.
 
-OpenClawdex is covered in more detail in [our dedicated post](#), but the short version: it uses your existing CLI auth (no API keys, no OAuth), runs agents in parallel threads, and has the kind of native macOS polish — vibrancy sidebar, hidden title bar, traffic lights — that most cross-platform tools skip.
+OpenClawdex is covered in more detail in [our dedicated post](/posts/openclaw-openclawdex-macos-coding-agent-ui/), but the short version: it uses your existing CLI auth (no API keys, no OAuth), runs agents in parallel threads, and has the kind of native macOS polish — vibrancy sidebar, hidden title bar, traffic lights — that most cross-platform tools skip.
 
 ---
 
