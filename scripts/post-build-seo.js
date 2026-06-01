@@ -1257,8 +1257,14 @@ function injectArticlePagination(html, canonicalUrl) {
 
   const canonicalTag = `<link rel="canonical" href="${canonicalUrl}" />`;
   let linkTags = canonicalTag;
-  if (newerPost) linkTags += `\n    <link rel="prev" href="${siteUrl}${newerPost.url}" />`;
-  if (olderPost) linkTags += `\n    <link rel="next" href="${siteUrl}${olderPost.url}" />`;
+  if (newerPost) {
+    linkTags += `\n    <link rel="prev" href="${siteUrl}${newerPost.url}" />`;
+    linkTags += `\n    <link rel="prefetch" href="${siteUrl}${newerPost.url}" as="document" />`;
+  }
+  if (olderPost) {
+    linkTags += `\n    <link rel="next" href="${siteUrl}${olderPost.url}" />`;
+    linkTags += `\n    <link rel="prefetch" href="${siteUrl}${olderPost.url}" as="document" />`;
+  }
   html = html.replace(canonicalTag, linkTags);
 
   const paginationRegex = /<div id="story-pagination" class="mt-6 grid gap-4 sm:grid-cols-2">[\s\S]*?<\/div>/i;
@@ -1681,7 +1687,7 @@ for (const file of walk(siteDir)) {
     if (fs.existsSync(nextPage)) {
       html = html.replace(
         `<link rel="canonical" href="${canonicalUrl}" />`,
-        `<link rel="canonical" href="${canonicalUrl}" />\n    <link rel="next" href="${siteUrl}/posts/2/" />`
+        `<link rel="canonical" href="${canonicalUrl}" />\n    <link rel="next" href="${siteUrl}/posts/2/" />\n    <link rel="prefetch" href="${siteUrl}/posts/2/" as="document" />`
       );
     }
   }

@@ -197,11 +197,27 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
     <link rel="dns-prefetch" href="https://fonts.gstatic.com" />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Manufacturing+Consent&text=OpenClawChronicles&family=JetBrains+Mono:wght@400;600&family=Newsreader:ital,wght@0,400;1,400&family=Playfair+Display:wght@600&display=swap"
-      rel="stylesheet"
-      media="print"
-      onload="this.media='all'" />
+    <script>
+      (function () {
+        var fontHref = 'https://fonts.googleapis.com/css2?family=Manufacturing+Consent&text=OpenClawChronicles&family=JetBrains+Mono:wght@400;600&family=Newsreader:ital,wght@0,400;1,400&family=Playfair+Display:wght@600&display=swap';
+        if (navigator.connection && navigator.connection.saveData) return;
+        function loadFonts() {
+          if (document.querySelector('link[data-fonts="site-fonts"]')) return;
+          var link = document.createElement('link');
+          link.rel = 'stylesheet';
+          link.href = fontHref;
+          link.media = 'print';
+          link.dataset.fonts = 'site-fonts';
+          link.onload = function () { link.media = 'all'; };
+          document.head.appendChild(link);
+        }
+        if ('requestIdleCallback' in window) {
+          requestIdleCallback(loadFonts, { timeout: 1500 });
+        } else {
+          window.addEventListener('load', function () { setTimeout(loadFonts, 300); }, { once: true });
+        }
+      })();
+    </script>
     <noscript>
       <link
         href="https://fonts.googleapis.com/css2?family=Manufacturing+Consent&text=OpenClawChronicles&family=JetBrains+Mono:wght@400;600&family=Newsreader:ital,wght@0,400;1,400&family=Playfair+Display:wght@600&display=swap"

@@ -18,10 +18,15 @@
         <!-- Article Header -->
         <div class="mx-auto max-w-4xl px-4 pt-8 sm:px-6 lg:px-8">
             <span class="text-red-accent font-mono text-[0.625rem] font-semibold tracking-wider uppercase">Article</span>
-            <h1 class="font-display text-ink mt-3 text-4xl font-semibold tracking-tight text-balance sm:text-5xl lg:text-6xl">
+            <h1 id="story-title" class="font-display text-ink mt-3 text-4xl font-semibold tracking-tight text-balance sm:text-5xl lg:text-6xl">
                 {frontmatter.title}
             </h1>
             <p class="font-body text-ink-muted mt-4 text-lg italic">{frontmatter.excerpt}</p>
+            <div class="mt-5 flex flex-wrap items-center gap-2.5" aria-label="Story metadata">
+                <a href="/posts/" class="border-border text-ink-strong hover:text-red-accent rounded-full border px-3 py-1.5 font-sans text-xs font-medium">OpenClaw archive</a>
+                <a href="/about/#editorial-standards" class="border-border text-ink-strong hover:text-red-accent rounded-full border px-3 py-1.5 font-sans text-xs font-medium">Editorial standards</a>
+                <a href="/feed.xml" class="border-border text-ink-strong hover:text-red-accent rounded-full border px-3 py-1.5 font-sans text-xs font-medium">RSS feed</a>
+            </div>
 
             <!-- Author & Date -->
             <div class="border-border mt-8 flex items-center gap-4 border-t pt-6">
@@ -55,7 +60,7 @@
         <div class="mx-auto max-w-6xl px-4 py-12 sm:px-6 lg:px-8">
             <div class="flex gap-10 lg:items-start">
                 <!-- Main article -->
-                <article class="article-content min-w-0 flex-1">
+                <article class="article-content min-w-0 flex-1" aria-labelledby="story-title">
                     {content}
                 </article>
 
