@@ -12,7 +12,7 @@
             <div class="flex justify-center">
                 <a href="https://hatchery.so?utm_source=openclawchronicles.com&utm_medium=house_ad&utm_campaign=cross_promotion"
                    target="_blank"
-                   rel="noopener"
+                   rel="noopener noreferrer sponsored"
                    aria-label="Hatchery — Choose your OpenClaw co-worker"
                    class="block w-full max-w-5xl overflow-hidden rounded-[min(0.4vw,6px)]">
                     <img
@@ -20,9 +20,11 @@
                         alt="Hatchery — Choose your OpenClaw co-worker. Launch your server, then pick the bot that fits your vibe."
                         width="1200"
                         height="300"
-                        loading="eager"
+                        sizes="(min-width: 1280px) 1200px, 100vw"
+                        loading="lazy"
+                        fetchpriority="low"
                         decoding="async"
-                        class="w-full h-auto" />
+                        class="h-auto w-full" />
                 </a>
             </div>
         </div>
@@ -50,6 +52,7 @@
                                                 loading="eager"
                                                 fetchpriority="high"
                                                 decoding="async"
+                                                data-seo-hero
                                                 class="outline-img-outline aspect-16/10 w-full object-cover outline-1 -outline-offset-1" />
                                         </div>
                                         <figcaption class="mt-2 flex items-baseline gap-2">

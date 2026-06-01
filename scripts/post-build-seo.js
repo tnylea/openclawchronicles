@@ -118,8 +118,11 @@ function bestModernImageSource(src) {
 function injectImagePreload(html) {
   if (html.includes('data-seo-preload="hero-image"')) return html;
 
-  const heroMatch = html.match(/(<img\b[^>]*\bsrc="([^"]+)"[^>]*\bfetchpriority="high"[^>]*>)/i)
+  const heroMatch = html.match(/(<img\b[^>]*\bsrc="([^"]+)"[^>]*\bdata-seo-hero\b[^>]*>)/i)
+    || html.match(/(<img\b[^>]*\bsrc="([^"]+)"[^>]*\bfetchpriority="high"[^>]*>)/i)
     || html.match(/(<img\b[^>]*\bsrc="([^"]+)"[^>]*\bloading="eager"[^>]*>)/i);
+
+  if (heroMatch && /ad-leaderboard/i.test(heroMatch[2])) return html;
 
   if (!heroMatch) return html;
 
@@ -1452,6 +1455,29 @@ function optimizeDeferredSections(html) {
   });
 }
 
+function hardenExternalLinks(html) {
+  return html.replace(/<a\b([^>]*?)href="(https?:\/\/[^">]+)"([^>]*)>/gi, (full, before, href, after) => {
+    let attrs = `${before}href="${href}"${after}`;
+
+    if (/\btarget="_blank"/i.test(attrs) && !/\brel=/i.test(attrs)) {
+      attrs += ' rel="noopener noreferrer"';
+    }
+
+    if (/\btarget="_blank"/i.test(attrs) && /\brel="([^"]*)"/i.test(attrs)) {
+      attrs = attrs.replace(/\brel="([^"]*)"/i, (match, relValue) => {
+        const parts = relValue.split(/\s+/).filter(Boolean);
+        for (const token of ['noopener', 'noreferrer']) {
+          if (!parts.includes(token)) parts.push(token);
+        }
+        if (/hatchery\.so/i.test(href) && !parts.includes('sponsored')) parts.push('sponsored');
+        return `rel="${parts.join(' ')}"`;
+      });
+    }
+
+    return `<a${attrs}>`;
+  });
+}
+
 function injectArticleMetaSummary(html, canonicalUrl) {
   const match = canonicalUrl.match(/\/posts\/([^/]+)\/$/);
   if (!match || html.includes('story-meta-summary')) return html;
@@ -1590,7 +1616,9 @@ function optimizeImages(html) {
     const src = srcMatch ? srcMatch[1] : '';
     const isAuthorAvatar = /cody\.jpg|rounded-full/.test(attrs);
     const isSiteIcon = /icon-|favicon|apple-touch-icon/.test(attrs);
-    const isLikelyHero = !seenContentImage && !isAuthorAvatar && !isSiteIcon;
+    const isAdImage = /ad-leaderboard/i.test(src) || /house_ad/i.test(full);
+    const isExplicitHero = /\bdata-seo-hero\b/i.test(attrs);
+    const isLikelyHero = isExplicitHero || (!seenContentImage && !isAuthorAvatar && !isSiteIcon && !isAdImage);
 
     updated = updated.replace(/\sdecoding="[^"]*"/gi, '');
     updated = updated.replace(/\sloading="[^"]*"/gi, '');
@@ -1618,6 +1646,11 @@ function optimizeImages(html) {
       updated += ' loading="eager" fetchpriority="high"';
     } else {
       updated += ' loading="lazy" fetchpriority="low"';
+    }
+
+    if (isAdImage) {
+      updated = updated.replace(/\sloading="[^"]*"/i, ' loading="lazy"');
+      updated = updated.replace(/\sfetchpriority="[^"]*"/i, ' fetchpriority="low"');
     }
 
     return `<img${updated}${closingSlash || ''}>`;
@@ -1670,6 +1703,7 @@ for (const file of walk(siteDir)) {
   html = decorateActiveNavigation(html, canonicalUrl);
   html = normalizeInternalPostLinks(html);
   html = optimizeDeferredSections(html);
+  html = hardenExternalLinks(html);
   html = wrapImagesWithPicture(html);
   html = optimizeImages(html);
   html = resolveResidualTemplateTokens(html, canonicalUrl);

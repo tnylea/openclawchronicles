@@ -274,13 +274,14 @@
           document.head.appendChild(script);
         }
 
-        var triggerEvents = ["pointerdown", "keydown", "touchstart", "mouseover"];
+        var triggerEvents = ["pointerdown", "keydown", "touchstart", "focusin"];
         var listenerOptions = { once: true, passive: true };
         triggerEvents.forEach(function (eventName) {
           window.addEventListener(eventName, loadMainScript, listenerOptions);
         });
 
         window.addEventListener("load", function () {
+          if (navigator.connection && navigator.connection.saveData) return;
           if ("requestIdleCallback" in window) {
             requestIdleCallback(loadMainScript, { timeout: 1800 });
           } else {
