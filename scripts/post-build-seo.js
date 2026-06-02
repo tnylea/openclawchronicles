@@ -419,6 +419,31 @@ function buildWebsiteSearchAction() {
   };
 }
 
+function buildSiteMapItemList(html) {
+  const main = html.match(/<main id="main-content">([\s\S]*?)<include src="newsletter\.html"><\/include>/i)?.[1] || html;
+  const links = [...main.matchAll(/<a href="(\/[^"?#]+\/?|https:\/\/openclawchronicles\.com\/[^"?#]+\/)"[^>]*>([\s\S]*?)<\/a>/gi)]
+    .map((match) => ({
+      href: match[1].startsWith('http') ? match[1] : `${siteUrl}${match[1]}`,
+      label: cleanTextForSchema(match[2]),
+    }))
+    .filter((item) => item.label && !/^home$/i.test(item.label));
+
+  const deduped = [];
+  const seen = new Set();
+  for (const item of links) {
+    if (seen.has(item.href)) continue;
+    seen.add(item.href);
+    deduped.push(item);
+  }
+
+  return deduped.slice(0, 24).map((item, index) => ({
+    '@type': 'ListItem',
+    position: index + 1,
+    url: item.href,
+    name: item.label,
+  }));
+}
+
 function matchesHubTopic(post, label) {
   const haystack = `${post.title} ${post.excerpt} ${post.content}`.toLowerCase();
 
@@ -529,6 +554,41 @@ function buildHowToSchema(post, html) {
         url: siteUrl,
       },
     }, null, 4)}\n    </script>`;
+}
+
+function fixSiteMapMetadata(html, canonicalUrl) {
+  if (canonicalUrl !== `${siteUrl}/site-map/`) return html;
+
+  const title = 'OpenClaw Chronicles Site Map and Start Here Guide';
+  const description = 'Use the OpenClaw Chronicles site map to browse release coverage, security reporting, guides, feeds, and evergreen OpenClaw resources.';
+  const ogImage = `${siteUrl}/assets/images/about-banner.jpg`;
+  const latestModified = latestModifiedForPosts(allPosts);
+  const siteMapItems = buildSiteMapItemList(html);
+  const faqSchema = buildFaqSchema(extractFaqEntries(html, 'site-map-faq-heading'));
+
+  html = stripArticleOnlyMeta(html);
+  html = html.replace(/<title>[^<]*<\/title>/i, `<title>${title}</title>`);
+  html = html.replace(/<meta name="description" content="[^"]*"\s*\/?>/i, `<meta name="description" content="${description}" />`);
+  html = html.replace(/<meta property="og:type" content="[^"]*"\s*\/?>/i, '<meta property="og:type" content="website" />');
+  html = html.replace(/<meta property="og:title" content="[^"]*"\s*\/?>/i, `<meta property="og:title" content="${title}" />`);
+  html = html.replace(/<meta property="og:description" content="[^"]*"\s*\/?>/i, `<meta property="og:description" content="${description}" />`);
+  html = html.replace(/<meta property="og:image" content="[^"]*"\s*\/?>/i, `<meta property="og:image" content="${ogImage}" />`);
+  html = html.replace(/<meta property="og:image:secure_url" content="[^"]*"\s*\/?>/i, `<meta property="og:image:secure_url" content="${ogImage}" />`);
+  html = html.replace(/<meta property="og:image:alt" content="[^"]*"\s*\/?>/i, '<meta property="og:image:alt" content="OpenClaw Chronicles site map" />');
+  html = html.replace(/<meta name="twitter:title" content="[^"]*"\s*\/?>/i, `<meta name="twitter:title" content="${title}" />`);
+  html = html.replace(/<meta name="twitter:description" content="[^"]*"\s*\/?>/i, `<meta name="twitter:description" content="${description}" />`);
+  html = html.replace(/<meta name="twitter:image" content="[^"]*"\s*\/?>/i, `<meta name="twitter:image" content="${ogImage}" />`);
+  html = html.replace(/<meta name="twitter:image:alt" content="[^"]*"\s*\/?>/i, '<meta name="twitter:image:alt" content="OpenClaw Chronicles site map" />');
+  if (latestModified) {
+    html = injectOrReplace(html, /<meta property="og:updated_time" content="[^"]*"\s*\/?>/i, `<meta property="og:updated_time" content="${latestModified}" />`);
+  }
+
+  html = html.replace(
+    /<!-- JSON-LD WebSite Schema -->[\s\S]*?<!-- Google Analytics -->/i,
+    `<!-- JSON-LD WebSite Schema -->\n    <script type="application/ld+json">\n    {\n      "@context": "https://schema.org",\n      "@type": "CollectionPage",\n      "name": ${JSON.stringify(title)},\n      "url": ${JSON.stringify(canonicalUrl)},\n      "description": ${JSON.stringify(description)},\n      "dateModified": ${JSON.stringify(latestModified)},\n      "isPartOf": {\n        "@type": "WebSite",\n        "name": "OpenClaw Chronicles",\n        "url": ${JSON.stringify(siteUrl)}\n      },\n      "mainEntity": {\n        "@type": "ItemList",\n        "numberOfItems": ${siteMapItems.length},\n        "itemListOrder": "https://schema.org/ItemListOrderAscending",\n        "itemListElement": ${JSON.stringify(siteMapItems, null, 8)}\n      }\n    }\n    </script>\n    <script type="application/ld+json">\n    {\n      "@context": "https://schema.org",\n      "@type": "BreadcrumbList",\n      "itemListElement": [\n        {\n          "@type": "ListItem",\n          "position": 1,\n          "name": "Home",\n          "item": ${JSON.stringify(`${siteUrl}/`)}\n        },\n        {\n          "@type": "ListItem",\n          "position": 2,\n          "name": "Site Map",\n          "item": ${JSON.stringify(canonicalUrl)}\n        }\n      ]\n    }\n    </script>${faqSchema}\n    <!-- Google Analytics -->`
+  );
+
+  return html;
 }
 
 function fixTopicHubMetadata(html, canonicalUrl) {
@@ -1259,11 +1319,9 @@ function injectArticlePagination(html, canonicalUrl) {
   let linkTags = canonicalTag;
   if (newerPost) {
     linkTags += `\n    <link rel="prev" href="${siteUrl}${newerPost.url}" />`;
-    linkTags += `\n    <link rel="prefetch" href="${siteUrl}${newerPost.url}" as="document" />`;
   }
   if (olderPost) {
     linkTags += `\n    <link rel="next" href="${siteUrl}${olderPost.url}" />`;
-    linkTags += `\n    <link rel="prefetch" href="${siteUrl}${olderPost.url}" as="document" />`;
   }
   html = html.replace(canonicalTag, linkTags);
 
@@ -1672,6 +1730,7 @@ for (const file of walk(siteDir)) {
   html = fixHomepageMetadata(html, canonicalUrl);
   html = fixAboutPageMetadata(html, canonicalUrl);
   html = fixPostsArchiveMetadata(html, canonicalUrl);
+  html = fixSiteMapMetadata(html, canonicalUrl);
   html = fixTopicHubMetadata(html, canonicalUrl);
   html = injectImagePreload(html);
 
@@ -1687,7 +1746,7 @@ for (const file of walk(siteDir)) {
     if (fs.existsSync(nextPage)) {
       html = html.replace(
         `<link rel="canonical" href="${canonicalUrl}" />`,
-        `<link rel="canonical" href="${canonicalUrl}" />\n    <link rel="next" href="${siteUrl}/posts/2/" />\n    <link rel="prefetch" href="${siteUrl}/posts/2/" as="document" />`
+        `<link rel="canonical" href="${canonicalUrl}" />\n    <link rel="next" href="${siteUrl}/posts/2/" />`
       );
     }
   }
