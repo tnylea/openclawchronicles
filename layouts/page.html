@@ -193,16 +193,30 @@
     <link rel="icon" href="/icon.svg" type="image/svg+xml">
     <link rel="apple-touch-icon" href="/apple-touch-icon.png">
     <link rel="manifest" href="/manifest.webmanifest">
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
-    <link rel="dns-prefetch" href="https://fonts.gstatic.com" />
     <script>
       (function () {
         var fontHref = 'https://fonts.googleapis.com/css2?family=Manufacturing+Consent&text=OpenClawChronicles&family=JetBrains+Mono:wght@400;600&family=Newsreader:ital,wght@0,400;1,400&family=Playfair+Display:wght@600&display=optional';
         if (navigator.connection && navigator.connection.saveData) return;
+        function ensureFontConnections() {
+          if (!document.querySelector('link[data-font-preconnect="google-fonts"]')) {
+            var preconnect = document.createElement('link');
+            preconnect.rel = 'preconnect';
+            preconnect.href = 'https://fonts.googleapis.com';
+            preconnect.dataset.fontPreconnect = 'google-fonts';
+            document.head.appendChild(preconnect);
+          }
+          if (!document.querySelector('link[data-font-preconnect="google-fonts-static"]')) {
+            var staticPreconnect = document.createElement('link');
+            staticPreconnect.rel = 'preconnect';
+            staticPreconnect.href = 'https://fonts.gstatic.com';
+            staticPreconnect.crossOrigin = 'anonymous';
+            staticPreconnect.dataset.fontPreconnect = 'google-fonts-static';
+            document.head.appendChild(staticPreconnect);
+          }
+        }
         function loadFonts() {
           if (document.querySelector('link[data-fonts="site-fonts"]')) return;
+          ensureFontConnections();
           var link = document.createElement('link');
           link.rel = 'stylesheet';
           link.href = fontHref;
@@ -211,6 +225,11 @@
           link.onload = function () { link.media = 'all'; };
           document.head.appendChild(link);
         }
+        var fontTriggerEvents = ['pointerdown', 'keydown', 'touchstart'];
+        var listenerOptions = { once: true, passive: true };
+        fontTriggerEvents.forEach(function (eventName) {
+          window.addEventListener(eventName, loadFonts, listenerOptions);
+        });
         if ('requestIdleCallback' in window) {
           requestIdleCallback(loadFonts, { timeout: 1500 });
         } else {
@@ -219,6 +238,8 @@
       })();
     </script>
     <noscript>
+      <link rel="preconnect" href="https://fonts.googleapis.com" />
+      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
       <link
         href="https://fonts.googleapis.com/css2?family=Manufacturing+Consent&text=OpenClawChronicles&family=JetBrains+Mono:wght@400;600&family=Newsreader:ital,wght@0,400;1,400&family=Playfair+Display:wght@600&display=optional"
         rel="stylesheet" />

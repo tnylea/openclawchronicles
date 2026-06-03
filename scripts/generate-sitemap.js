@@ -26,6 +26,33 @@ const staticPageConfigs = [
   { slug: 'local-models', changefreq: 'weekly', priority: '0.7', section: 'guides', image: '/assets/images/about-banner.jpg', imageTitle: 'OpenClaw local models', imageCaption: 'Local model workflows and on-device OpenClaw setup coverage.' },
 ];
 
+const discoveryResourceConfigs = [
+  {
+    loc: `${BASE_URL}/feed.xml`,
+    changefreq: 'hourly',
+    priority: '0.4',
+    image: absoluteAssetUrl('/icon-512.png'),
+    imageTitle: 'OpenClaw Chronicles RSS feed',
+    imageCaption: 'Subscribe to OpenClaw Chronicles via RSS.',
+  },
+  {
+    loc: `${BASE_URL}/feed.json`,
+    changefreq: 'hourly',
+    priority: '0.3',
+    image: absoluteAssetUrl('/icon-512.png'),
+    imageTitle: 'OpenClaw Chronicles JSON feed',
+    imageCaption: 'Machine-readable JSON feed for OpenClaw Chronicles updates.',
+  },
+  {
+    loc: `${BASE_URL}/opensearch.xml`,
+    changefreq: 'weekly',
+    priority: '0.3',
+    image: absoluteAssetUrl('/icon-512.png'),
+    imageTitle: 'OpenClaw Chronicles OpenSearch description',
+    imageCaption: 'OpenSearch resource for searching OpenClaw Chronicles from compatible browsers and tools.',
+  },
+];
+
 // Parse the first `key: value` frontmatter field from a markdown string
 function getFrontmatterField(content, key) {
   const match = content.match(new RegExp(`^${key}:\\s*['"]?([^'"\\n]+)['"]?`, 'm'));
@@ -127,6 +154,18 @@ for (const page of staticPageConfigs) {
     image: absoluteAssetUrl(page.image),
     imageTitle: page.imageTitle,
     imageCaption: page.imageCaption,
+  });
+}
+
+for (const resource of discoveryResourceConfigs) {
+  urls.push({
+    loc: resource.loc,
+    lastmod: latestPostModified,
+    changefreq: resource.changefreq,
+    priority: resource.priority,
+    image: resource.image,
+    imageTitle: resource.imageTitle,
+    imageCaption: resource.imageCaption,
   });
 }
 
