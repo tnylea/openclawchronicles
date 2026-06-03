@@ -29,6 +29,7 @@ const staticPageConfigs = [
 const discoveryResourceConfigs = [
   {
     loc: `${BASE_URL}/feed.xml`,
+    filePath: path.join(SITE_DIR, 'feed.xml'),
     changefreq: 'hourly',
     priority: '0.4',
     image: absoluteAssetUrl('/icon-512.png'),
@@ -37,6 +38,7 @@ const discoveryResourceConfigs = [
   },
   {
     loc: `${BASE_URL}/feed.json`,
+    filePath: path.join(SITE_DIR, 'feed.json'),
     changefreq: 'hourly',
     priority: '0.3',
     image: absoluteAssetUrl('/icon-512.png'),
@@ -45,11 +47,21 @@ const discoveryResourceConfigs = [
   },
   {
     loc: `${BASE_URL}/opensearch.xml`,
+    filePath: path.join(SITE_DIR, 'opensearch.xml'),
     changefreq: 'weekly',
     priority: '0.3',
     image: absoluteAssetUrl('/icon-512.png'),
     imageTitle: 'OpenClaw Chronicles OpenSearch description',
     imageCaption: 'OpenSearch resource for searching OpenClaw Chronicles from compatible browsers and tools.',
+  },
+  {
+    loc: `${BASE_URL}/robots.txt`,
+    filePath: path.join(SITE_DIR, 'robots.txt'),
+    changefreq: 'weekly',
+    priority: '0.2',
+    image: absoluteAssetUrl('/icon-512.png'),
+    imageTitle: 'OpenClaw Chronicles robots.txt',
+    imageCaption: 'Crawler directives and sitemap discovery hints for OpenClaw Chronicles.',
   },
 ];
 
@@ -160,7 +172,7 @@ for (const page of staticPageConfigs) {
 for (const resource of discoveryResourceConfigs) {
   urls.push({
     loc: resource.loc,
-    lastmod: latestPostModified,
+    lastmod: fileDateOrFallback(resource.filePath, latestPostModified),
     changefreq: resource.changefreq,
     priority: resource.priority,
     image: resource.image,

@@ -108,6 +108,13 @@ for (const file of files) {
 
   if (image) {
     item.image = `${siteUrl}${image.startsWith('/') ? image : `/${image}`}`;
+    item.attachments = [
+      {
+        url: item.image,
+        mime_type: image.endsWith('.avif') ? 'image/avif' : image.endsWith('.webp') ? 'image/webp' : image.endsWith('.png') ? 'image/png' : image.endsWith('.gif') ? 'image/gif' : 'image/jpeg',
+        title: `${item.title} cover image`,
+      },
+    ];
   }
 
   item.tags = inferTags(item);
@@ -133,6 +140,13 @@ const feed = {
   ],
   language: 'en-US',
   banner_image: `${siteUrl}/assets/images/about-banner.jpg`,
+  hubs: [
+    {
+      type: 'alternate',
+      url: `${siteUrl}/feed.xml`,
+      mime_type: 'application/rss+xml',
+    },
+  ],
   items: items.slice(0, 50),
 };
 

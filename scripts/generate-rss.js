@@ -127,6 +127,9 @@ const items = latest.map((post) => {
   const enclosure = post.ogImageUrl
     ? `\n    <enclosure url="${escapeXml(siteUrl + post.ogImageUrl)}" type="${imageMimeType(post.ogImageUrl)}" length="0" />`
     : '';
+  const mediaThumbnail = post.ogImageUrl
+    ? `\n    <media:thumbnail url="${escapeXml(siteUrl + post.ogImageUrl)}" />`
+    : '';
   const mediaContent = post.ogImageUrl
     ? `\n    <media:content url="${escapeXml(siteUrl + post.ogImageUrl)}" medium="image" type="${imageMimeType(post.ogImageUrl)}">\n      <media:title type="plain">${escapeXml(post.title)}</media:title>\n      ${post.excerpt ? `<media:description type="plain">${escapeXml(post.excerpt)}</media:description>` : ''}\n    </media:content>`
     : '';
@@ -141,7 +144,7 @@ const items = latest.map((post) => {
     <pubDate>${toRfc822(post.date)}</pubDate>
     <atom:updated>${escapeXml(post.modified)}</atom:updated>
     <dc:date>${escapeXml(post.modified)}</dc:date>
-    <guid isPermaLink="true">${escapeXml(link)}</guid>${enclosure}${mediaContent}${contentEncoded}
+    <guid isPermaLink="true">${escapeXml(link)}</guid>${enclosure}${mediaThumbnail}${mediaContent}${contentEncoded}
   </item>`;
 }).join('\n');
 
@@ -164,6 +167,7 @@ const rss = `<?xml version="1.0" encoding="UTF-8"?>
       <link>${siteUrl}</link>
     </image>
     <atom:link href="${siteUrl}/feed.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="${siteUrl}/feed.json" rel="alternate" type="application/feed+json" />
     <atom:link href="${siteUrl}/" rel="alternate" type="text/html" />
 ${items.replace(/<author>news@openclawchronicles\.com \(([^<]+)\)<\/author>/g, '<author>news@openclawchronicles.com ($1)</author>\n    <dc:creator>$1</dc:creator>')}
   </channel>
