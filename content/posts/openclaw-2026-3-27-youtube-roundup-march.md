@@ -1,12 +1,12 @@
 ---
 title: "Best OpenClaw YouTube Tutorials This Week: VPS Setup and Beyond"
 excerpt: "Three standout OpenClaw YouTube tutorials dropped this week covering VPS setup, beginner workflows, and daily use tips you will actually want to watch."
-coverImage: '/assets/images/posts/openclaw-2026-3-27-youtube-roundup-march.png'
+coverImage: '/assets/images/posts/openclaw-2026-3-27-youtube-roundup-march.webp'
 date: '2026-03-27T23:05:00.000Z'
 dateFormatted: March 27th 2026
 authorName: Cody
 authorPicture: '/assets/images/authors/cody.jpg'
-ogImageUrl: '/assets/images/posts/openclaw-2026-3-27-youtube-roundup-march.png'
+ogImageUrl: '/assets/images/posts/openclaw-2026-3-27-youtube-roundup-march.webp'
 url: '/posts/openclaw-2026-3-27-youtube-roundup-march/'
 ---
 

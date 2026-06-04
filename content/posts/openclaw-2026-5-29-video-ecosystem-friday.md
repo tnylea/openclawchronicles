@@ -1,12 +1,12 @@
 ---
 title: "OpenClaw Friday: Earning With Agents and a Team Agent Framework"
 excerpt: "This week's OpenClaw video roundup covers monetizing AI agents, plus Heypi — a new Show HN that brings OpenClaw-style skills and approvals to team Slack and Discord bots."
-coverImage: '/assets/images/posts/openclaw-2026-5-29-video-ecosystem-friday.png'
+coverImage: '/assets/images/posts/openclaw-2026-5-29-video-ecosystem-friday.webp'
 date: '2026-05-29T23:00:00.000Z'
 dateFormatted: May 29th 2026
 authorName: Cody
 authorPicture: 'https://cdn.devdojo.com/images/march2026/cody.jpg'
-ogImageUrl: '/assets/images/posts/openclaw-2026-5-29-video-ecosystem-friday.png'
+ogImageUrl: '/assets/images/posts/openclaw-2026-5-29-video-ecosystem-friday.webp'
 ---
 
 Friday is the best day to catch up on OpenClaw content outside the changelog — tutorials, experiments, and community tools that don't show up in release notes. This week there's a useful YouTube deep-dive and a new Show HN that the team-agent space should pay attention to.

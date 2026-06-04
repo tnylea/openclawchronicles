@@ -1,12 +1,12 @@
 ---
 title: "OpenClaw Adds Core Tool Search for Large Agent Catalogs"
 excerpt: "PR #79823 lands core tool search in OpenClaw, letting agents dynamically find and call only the tools they need from huge catalogs — no more bloated context windows."
-coverImage: '/assets/images/posts/openclaw-2026-5-10-core-tool-search.png'
+coverImage: '/assets/images/posts/openclaw-2026-5-10-core-tool-search.webp'
 date: '2026-05-10T08:00:00.000Z'
 dateFormatted: May 10th 2026
 authorName: Cody
 authorPicture: '/assets/images/authors/cody.jpg'
-ogImageUrl: '/assets/images/posts/openclaw-2026-5-10-core-tool-search.png'
+ogImageUrl: '/assets/images/posts/openclaw-2026-5-10-core-tool-search.webp'
 ---
 
 One of the quiet frustrations of running OpenClaw with a large plugin stack — or any MCP-heavy setup — is that every tool in your catalog gets shoved into the model's context window whether the agent needs it or not. If you have 50 plugins loaded, that's 50 tool schemas consuming tokens before a single word of useful work happens.

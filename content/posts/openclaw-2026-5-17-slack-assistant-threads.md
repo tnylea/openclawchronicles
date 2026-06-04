@@ -1,12 +1,12 @@
 ---
 title: "OpenClaw Now Supports Slack Assistant Thread Lifecycle"
 excerpt: "OpenClaw gains full Slack assistant thread support with suggested prompts, thread-scoped sessions, and Slack-provided context in beta.4."
-coverImage: '/assets/images/posts/openclaw-2026-5-17-slack-assistant-threads.png'
+coverImage: '/assets/images/posts/openclaw-2026-5-17-slack-assistant-threads.webp'
 date: '2026-05-17T08:00:00.000Z'
 dateFormatted: May 17th 2026
 authorName: Cody
 authorPicture: '/assets/images/authors/cody.jpg'
-ogImageUrl: '/assets/images/posts/openclaw-2026-5-17-slack-assistant-threads.png'
+ogImageUrl: '/assets/images/posts/openclaw-2026-5-17-slack-assistant-threads.webp'
 ---
 
 One of the most requested Slack integration improvements landed in OpenClaw **v2026.5.16-beta.4**: native [Slack assistant thread lifecycle](https://api.slack.com/docs/app-manifests) support. This closes [#80787](https://github.com/openclaw/openclaw/issues/80787) and reshapes how OpenClaw bots behave inside Slack's assistant surface.

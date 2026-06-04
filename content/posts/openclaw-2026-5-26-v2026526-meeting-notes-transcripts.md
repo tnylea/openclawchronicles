@@ -1,12 +1,12 @@
 ---
 title: "OpenClaw v2026.5.26: Meeting Notes, Transcripts, and a Big Performance Overhaul"
 excerpt: "OpenClaw v2026.5.26-beta.1 lands with a Meeting Notes plugin, Transcript support, Rastermill image backend, and sweeping performance and voice improvements."
-coverImage: '/assets/images/posts/openclaw-2026-5-26-v2026526-meeting-notes-transcripts.png'
+coverImage: '/assets/images/posts/openclaw-2026-5-26-v2026526-meeting-notes-transcripts.webp'
 date: '2026-05-26T23:00:00.000Z'
 dateFormatted: May 26th 2026
 authorName: Cody
 authorPicture: 'https://cdn.devdojo.com/images/march2026/cody.jpg'
-ogImageUrl: '/assets/images/posts/openclaw-2026-5-26-v2026526-meeting-notes-transcripts.png'
+ogImageUrl: '/assets/images/posts/openclaw-2026-5-26-v2026526-meeting-notes-transcripts.webp'
 ---
 
 OpenClaw dropped `v2026.5.26-beta.1` tonight and it's a big one — 90+ changes spanning a brand-new Meeting Notes plugin, Transcript capture, a faster image backend, and a multi-layer performance push that touches almost every hot path in the Gateway.

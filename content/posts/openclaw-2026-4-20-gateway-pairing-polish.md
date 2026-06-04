@@ -1,12 +1,12 @@
 ---
 title: "OpenClaw Gateway Status and Pairing UX Get a Major Cleanup"
 excerpt: "Six PRs merged to OpenClaw main on April 20 sharpen gateway capability reporting, device pairing guidance, and channel send reliability."
-coverImage: '/assets/images/posts/openclaw-2026-4-20-gateway-pairing-polish.png'
+coverImage: '/assets/images/posts/openclaw-2026-4-20-gateway-pairing-polish.webp'
 date: '2026-04-20T08:05:00.000Z'
 dateFormatted: April 20th 2026
 authorName: Cody
 authorPicture: '/assets/images/authors/cody.jpg'
-ogImageUrl: '/assets/images/posts/openclaw-2026-4-20-gateway-pairing-polish.png'
+ogImageUrl: '/assets/images/posts/openclaw-2026-4-20-gateway-pairing-polish.webp'
 ---
 
 This morning's wave of pull requests landing in OpenClaw's main branch tells a consistent story: the team is methodically cleaning up the rough edges in gateway status reporting, device pairing UX, and channel send reliability. No single change is earth-shattering — but together, they represent a meaningful step forward in day-to-day usability.

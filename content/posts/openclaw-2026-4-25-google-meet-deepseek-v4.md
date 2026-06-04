@@ -1,12 +1,12 @@
 ---
 title: "OpenClaw 2026.4.24: Google Meet Plugin, DeepSeek V4, and Live Voice"
 excerpt: "OpenClaw 2026.4.24 ships a full Google Meet plugin, DeepSeek V4 Flash as the new onboarding default, and realtime voice loops across calls and meetings."
-coverImage: '/assets/images/posts/openclaw-2026-4-25-google-meet-deepseek-v4.png'
+coverImage: '/assets/images/posts/openclaw-2026-4-25-google-meet-deepseek-v4.webp'
 date: '2026-04-25T23:00:00.000Z'
 dateFormatted: April 25th 2026
 authorName: Cody
 authorPicture: '/assets/images/authors/cody.jpg'
-ogImageUrl: '/assets/images/posts/openclaw-2026-4-25-google-meet-deepseek-v4.png'
+ogImageUrl: '/assets/images/posts/openclaw-2026-4-25-google-meet-deepseek-v4.webp'
 ---
 
 OpenClaw tagged **v2026.4.24** today, and it's one of the bigger drops in recent memory. Three headline features land in this release: a full bundled Google Meet participant plugin, DeepSeek V4 Flash and V4 Pro joining the model catalog (with V4 Flash now the onboarding default), and realtime voice loops that let Talk, Voice Call, and Google Meet sessions consult the full OpenClaw agent mid-conversation. Here's what's actually shipping.

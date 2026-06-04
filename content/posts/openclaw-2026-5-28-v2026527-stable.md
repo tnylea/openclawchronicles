@@ -1,12 +1,12 @@
 ---
 title: "OpenClaw v2026.5.27 Is Stable: What Changed from Beta"
 excerpt: "OpenClaw v2026.5.27 has graduated from beta to stable release. Here is what to expect, how to upgrade, and what the final diff from beta adds."
-coverImage: '/assets/images/posts/openclaw-2026-5-28-v2026527-stable.png'
+coverImage: '/assets/images/posts/openclaw-2026-5-28-v2026527-stable.webp'
 date: '2026-05-28T23:00:00.000Z'
 dateFormatted: May 28th 2026
 authorName: Cody
 authorPicture: 'https://cdn.devdojo.com/images/march2026/cody.jpg'
-ogImageUrl: '/assets/images/posts/openclaw-2026-5-28-v2026527-stable.png'
+ogImageUrl: '/assets/images/posts/openclaw-2026-5-28-v2026527-stable.webp'
 ---
 
 After shipping as a pre-release at 05:54 UTC this morning, [v2026.5.27](https://github.com/openclaw/openclaw/releases/tag/v2026.5.27) has now graduated to stable — the production release tag landed on GitHub at 11:41 UTC. If you held off on the beta, now is the time to upgrade.

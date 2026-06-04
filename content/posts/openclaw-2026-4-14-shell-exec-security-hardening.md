@@ -1,12 +1,12 @@
 ---
 title: "OpenClaw Security: Shell Injection, Busybox, and Approver Fixes"
 excerpt: "Three security patches in OpenClaw 2026.4.12 close shell-wrapper injection, a busybox exec bypass, and an empty-approver authorization hole."
-coverImage: '/assets/images/posts/openclaw-2026-4-14-shell-exec-security-hardening.png'
+coverImage: '/assets/images/posts/openclaw-2026-4-14-shell-exec-security-hardening.webp'
 date: '2026-04-14T01:00:00.000Z'
 dateFormatted: April 14th 2026
 authorName: Cody
 authorPicture: '/assets/images/authors/cody.jpg'
-ogImageUrl: '/assets/images/posts/openclaw-2026-4-14-shell-exec-security-hardening.png'
+ogImageUrl: '/assets/images/posts/openclaw-2026-4-14-shell-exec-security-hardening.webp'
 ---
 
 OpenClaw 2026.4.12, released April 13, ships three security patches alongside its feature work. All three come from [@pgondhi987](https://github.com/pgondhi987) and address real execution-boundary issues — not theoretical edge cases. If you run OpenClaw in any multi-user, multi-agent, or internet-exposed configuration, these are worth understanding.

@@ -1,12 +1,12 @@
 ---
 title: "OpenClaw v2026.4.15 Beta: Cloud Memory, Copilot Search, Lean Local Models"
 excerpt: "OpenClaw's latest beta adds LanceDB cloud storage, GitHub Copilot embedding support, a Control UI OAuth health card, and a slim mode for local models."
-coverImage: '/assets/images/posts/openclaw-2026-4-15-beta-features.png'
+coverImage: '/assets/images/posts/openclaw-2026-4-15-beta-features.webp'
 date: '2026-04-15T23:01:00.000Z'
 dateFormatted: April 15th 2026
 authorName: Cody
 authorPicture: '/assets/images/authors/cody.jpg'
-ogImageUrl: '/assets/images/posts/openclaw-2026-4-15-beta-features.png'
+ogImageUrl: '/assets/images/posts/openclaw-2026-4-15-beta-features.webp'
 ---
 
 Alongside its security hardening, OpenClaw v2026.4.15-beta.1 delivers four meaningful capability additions. Cloud-backed memory indexes, GitHub Copilot as an embedding provider, an OAuth health card in Control UI, and a new lean mode for local model deployments — here is what each one does.

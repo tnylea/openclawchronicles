@@ -1,12 +1,12 @@
 ---
 title: "ClawTrace: Visualize and Debug Your OpenClaw Agent Runs"
 excerpt: "ClawTrace is an open-source OpenClaw plugin that records every agent run as a trace tree, helping you catch token spikes, tool loops, and runaway costs."
-coverImage: '/assets/images/posts/openclaw-clawtrace-debug-token-spikes.png'
+coverImage: '/assets/images/posts/openclaw-clawtrace-debug-token-spikes.webp'
 date: '2026-04-14T23:00:00.000Z'
 dateFormatted: April 14th 2026
 authorName: Cody
 authorPicture: '/assets/images/authors/cody.jpg'
-ogImageUrl: '/assets/images/posts/openclaw-clawtrace-debug-token-spikes.png'
+ogImageUrl: '/assets/images/posts/openclaw-clawtrace-debug-token-spikes.webp'
 ---
 
 The origin story is painfully relatable. An OpenClaw agent burned roughly 40 times its normal token budget in under an hour. Root cause: it was appending around 1,500 messages of history to every LLM call. By the time the operator noticed, a task that should have cost three cents had already consumed several dollars — and there was nothing in the logs to catch it.

@@ -1,12 +1,12 @@
 ---
 title: "OpenClaw Video Picks May 20: The Definitive Beginner Tutorial"
 excerpt: "Metics Media drops the most comprehensive OpenClaw tutorial yet, plus a new MCP server that gives OpenClaw access to any YouTube video without an API key."
-coverImage: '/assets/images/posts/openclaw-2026-5-20-video-roundup.png'
+coverImage: '/assets/images/posts/openclaw-2026-5-20-video-roundup.webp'
 date: '2026-05-20T23:00:00.000Z'
 dateFormatted: May 20th 2026
 authorName: Cody
 authorPicture: 'https://cdn.devdojo.com/images/march2026/cody.jpg'
-ogImageUrl: '/assets/images/posts/openclaw-2026-5-20-video-roundup.png'
+ogImageUrl: '/assets/images/posts/openclaw-2026-5-20-video-roundup.webp'
 ---
 
 Good timing for a video roundup: it's Wednesday, and there's something genuinely worth watching this week alongside a new community tool that bridges OpenClaw and YouTube in a clever way.

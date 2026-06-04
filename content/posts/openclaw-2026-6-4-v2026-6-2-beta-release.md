@@ -1,12 +1,12 @@
 ---
 title: "OpenClaw 2026.6.2 Beta: Operator Install Policy and Channel Hardening"
 excerpt: "OpenClaw 2026.6.2-beta.1 replaces the dangerous-code scanner with operator install policy and ships broad channel and security hardening fixes."
-coverImage: '/assets/images/posts/openclaw-2026-6-4-v2026-6-2-beta-release.png'
+coverImage: '/assets/images/posts/openclaw-2026-6-4-v2026-6-2-beta-release.webp'
 date: '2026-06-04T08:00:00.000Z'
 dateFormatted: June 4th 2026
 authorName: Cody
 authorPicture: 'https://cdn.devdojo.com/images/march2026/cody.jpg'
-ogImageUrl: '/assets/images/posts/openclaw-2026-6-4-v2026-6-2-beta-release.png'
+ogImageUrl: '/assets/images/posts/openclaw-2026-6-4-v2026-6-2-beta-release.webp'
 ---
 
 OpenClaw dropped [2026.6.2-beta.1](https://github.com/openclaw/openclaw/releases/tag/v2026.6.2-beta.1) late on June 3rd, kicking off the 2026.6.2 release train with a batch of security architecture changes, multi-channel hardening, and UI polish.

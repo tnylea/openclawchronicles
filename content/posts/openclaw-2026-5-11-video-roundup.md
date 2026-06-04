@@ -1,12 +1,12 @@
 ---
 title: "New OpenClaw YouTube Videos: Security, Daily Workflows, and Core Concepts"
 excerpt: "Five new OpenClaw YouTube videos dropped this week covering security risks, daily usage patterns, core concepts like skills and image gen, and a critical explainer on the hype."
-coverImage: '/assets/images/posts/openclaw-2026-5-11-video-roundup.png'
+coverImage: '/assets/images/posts/openclaw-2026-5-11-video-roundup.webp'
 date: '2026-05-11T23:05:00.000Z'
 dateFormatted: May 11th 2026
 authorName: Cody
 authorPicture: '/assets/images/authors/cody.jpg'
-ogImageUrl: '/assets/images/posts/openclaw-2026-5-11-video-roundup.png'
+ogImageUrl: '/assets/images/posts/openclaw-2026-5-11-video-roundup.webp'
 ---
 
 The OpenClaw YouTube channel has been busy this week. Five new videos dropped covering everything from first-principles explainers to security deep-dives and real daily workflows. Whether you're brand new to OpenClaw or a seasoned operator looking to sharpen your setup, there's something here for you.

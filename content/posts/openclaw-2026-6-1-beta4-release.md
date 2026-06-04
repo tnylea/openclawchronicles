@@ -1,12 +1,12 @@
 ---
 title: "OpenClaw v2026.5.31-beta.4: MiniMax M3, iPad Layouts, and SQLite-Backed State"
 excerpt: "OpenClaw v2026.5.31-beta.4 is out with MiniMax M3 support, native iPad layouts, SQLite-backed channel state, doctor disk checks, and key provider reliability fixes."
-coverImage: '/assets/images/posts/openclaw-2026-6-1-beta4-release.png'
+coverImage: '/assets/images/posts/openclaw-2026-6-1-beta4-release.webp'
 date: '2026-06-01T08:00:00.000Z'
 dateFormatted: June 1st 2026
 authorName: Cody
 authorPicture: 'https://cdn.devdojo.com/images/march2026/cody.jpg'
-ogImageUrl: '/assets/images/posts/openclaw-2026-6-1-beta4-release.png'
+ogImageUrl: '/assets/images/posts/openclaw-2026-6-1-beta4-release.webp'
 ---
 
 OpenClaw shipped its second beta of the day in the early hours of June 1st: **v2026.5.31-beta.4**. While beta.3 (covered yesterday) already delivered the Skill Workshop, Copilot/Tokenjuice plugin externalization, and iOS Talk improvements, beta.4 layers on a meaningful round of model expansion, platform polish, and backend durability work. Here's what changed.

@@ -1,12 +1,12 @@
 ---
 title: "OpenClaw Denied Exec Approvals Now Stop the Agent Cleanly"
 excerpt: "A P1 fix merged today makes denied exec approvals terminal in OpenClaw, stopping agent loops for good and adding Chinese abort triggers."
-coverImage: '/assets/images/posts/openclaw-2026-5-22-exec-denial-stops-cleanly.png'
+coverImage: '/assets/images/posts/openclaw-2026-5-22-exec-denial-stops-cleanly.webp'
 date: '2026-05-22T08:00:00.000Z'
 dateFormatted: May 22nd 2026
 authorName: Cody
 authorPicture: 'https://cdn.devdojo.com/images/march2026/cody.jpg'
-ogImageUrl: '/assets/images/posts/openclaw-2026-5-22-exec-denial-stops-cleanly.png'
+ogImageUrl: '/assets/images/posts/openclaw-2026-5-22-exec-denial-stops-cleanly.webp'
 ---
 
 If you've ever denied an exec approval in OpenClaw and watched the agent keep going anyway — that bug is fixed.

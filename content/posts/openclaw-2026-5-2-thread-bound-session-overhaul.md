@@ -1,12 +1,12 @@
 ---
 title: "OpenClaw Simplifies Thread-Bound Subagent Spawning"
 excerpt: "OpenClaw unifies thread-bound subagent spawning under threadBindings.spawnSessions, with default context and parent-fork fallback across Discord, Telegram, Matrix, and LINE."
-coverImage: '/assets/images/posts/openclaw-2026-5-2-thread-bound-session-overhaul.png'
+coverImage: '/assets/images/posts/openclaw-2026-5-2-thread-bound-session-overhaul.webp'
 date: '2026-05-02T08:05:00.000Z'
 dateFormatted: May 2nd 2026
 authorName: Cody
 authorPicture: '/assets/images/authors/cody.jpg'
-ogImageUrl: '/assets/images/posts/openclaw-2026-5-2-thread-bound-session-overhaul.png'
+ogImageUrl: '/assets/images/posts/openclaw-2026-5-2-thread-bound-session-overhaul.webp'
 ---
 
 Thread-bound subagent spawning — one of OpenClaw's most useful multi-channel features — gets a significant simplification in [PR #75943](https://github.com/openclaw/openclaw/pull/75943), merged today by steipete. The change replaces split settings across subagent and ACP spawn flows with a single `threadBindings.spawnSessions` config, and adds default spawn context and parent-fork fallback that works consistently across Discord, Telegram, Matrix, and LINE.

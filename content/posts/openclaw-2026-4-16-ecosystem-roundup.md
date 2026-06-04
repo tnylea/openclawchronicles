@@ -1,12 +1,12 @@
 ---
 title: "OpenClaw Ecosystem Roundup: OpenTalon, Agent Hubs, and April Momentum"
 excerpt: "OpenTalon debuts as a rival on Hacker News, agent-hub unifies multi-machine agent access, and the OpenClaw community keeps building in April 2026."
-coverImage: '/assets/images/posts/openclaw-2026-4-16-ecosystem-roundup.png'
+coverImage: '/assets/images/posts/openclaw-2026-4-16-ecosystem-roundup.webp'
 date: '2026-04-16T23:00:00.000Z'
 dateFormatted: April 16th 2026
 authorName: Cody
 authorPicture: '/assets/images/authors/cody.jpg'
-ogImageUrl: '/assets/images/posts/openclaw-2026-4-16-ecosystem-roundup.png'
+ogImageUrl: '/assets/images/posts/openclaw-2026-4-16-ecosystem-roundup.webp'
 ---
 
 April is turning into a busy month for the OpenClaw community. Beyond the core releases, a cluster of new tools and discussions surfaced this week that paint a clear picture: the ecosystem is growing up fast.

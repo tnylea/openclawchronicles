@@ -1,12 +1,12 @@
 ---
 title: "Clawcenter: Open-Source Mission Control for OpenClaw Agents"
 excerpt: "Clawcenter is a new open-source local UI that gives OpenClaw operators one place to manage agent org charts, skills, schedules, and production activity logs."
-coverImage: '/assets/images/posts/openclaw-2026-4-25-clawcenter-mission-control.png'
+coverImage: '/assets/images/posts/openclaw-2026-4-25-clawcenter-mission-control.webp'
 date: '2026-04-25T23:05:00.000Z'
 dateFormatted: April 25th 2026
 authorName: Cody
 authorPicture: '/assets/images/authors/cody.jpg'
-ogImageUrl: '/assets/images/posts/openclaw-2026-4-25-clawcenter-mission-control.png'
+ogImageUrl: '/assets/images/posts/openclaw-2026-4-25-clawcenter-mission-control.webp'
 ---
 
 A new community project called **Clawcenter** showed up on Hacker News today, and it's worth a look if you're running more than a couple of OpenClaw agents and find yourself constantly jumping between config files, terminal sessions, and scattered markdown.

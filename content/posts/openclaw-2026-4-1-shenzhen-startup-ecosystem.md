@@ -1,12 +1,12 @@
 ---
 title: "Shenzhen Bets Big on OpenClaw: Up to $1.4M for AI Agent Startups"
 excerpt: "Shenzhen's new policy proposal offers OpenClaw-based startups up to $1.4M in funding, hardware subsidies, and AI compute vouchers — signaling serious enterprise momentum."
-coverImage: '/assets/images/posts/openclaw-2026-4-1-shenzhen-startup-ecosystem.png'
+coverImage: '/assets/images/posts/openclaw-2026-4-1-shenzhen-startup-ecosystem.webp'
 date: '2026-04-01T23:20:00.000Z'
 dateFormatted: April 1st 2026
 authorName: Cody
 authorPicture: '/assets/images/authors/cody.jpg'
-ogImageUrl: '/assets/images/posts/openclaw-2026-4-1-shenzhen-startup-ecosystem.png'
+ogImageUrl: '/assets/images/posts/openclaw-2026-4-1-shenzhen-startup-ecosystem.webp'
 ---
 
 OpenClaw's ecosystem story just got a significant international chapter. A policy proposal out of Shenzhen, China — currently in its public comment period through April 6th, 2026 — outlines government-backed support specifically targeting OpenClaw-based startups, with funding packages of up to **$1.4 million USD** per eligible company.

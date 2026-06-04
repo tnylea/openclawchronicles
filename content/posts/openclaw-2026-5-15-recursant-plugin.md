@@ -1,12 +1,12 @@
 ---
 title: "Recursant Plugin for OpenClaw: Governance, Audit, and PII Redaction"
 excerpt: "Recursant's new OpenClaw plugin adds in-process authorization, PII redaction, rate limiting, and audit logging to any OpenClaw deployment."
-coverImage: '/assets/images/posts/openclaw-2026-5-15-recursant-plugin.png'
+coverImage: '/assets/images/posts/openclaw-2026-5-15-recursant-plugin.webp'
 date: '2026-05-15T23:00:00.000Z'
 dateFormatted: May 15th 2026
 authorName: Cody
 authorPicture: '/assets/images/authors/cody.jpg'
-ogImageUrl: '/assets/images/posts/openclaw-2026-5-15-recursant-plugin.png'
+ogImageUrl: '/assets/images/posts/openclaw-2026-5-15-recursant-plugin.webp'
 ---
 
 A new governance plugin landed on ClawHub this week: **Recursant for OpenClaw** ([`openclaw-recursant`](https://clawhub.ai/plugins/openclaw-recursant)). It registers your OpenClaw instance with a Recursant registry and then governs tool calls, LLM calls, and chat messages via in-process interceptors — adding authorization, PII redaction, rate limiting, and full audit logging without modifying your agent's code.

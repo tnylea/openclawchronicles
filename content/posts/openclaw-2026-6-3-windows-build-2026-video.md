@@ -1,12 +1,12 @@
 ---
 title: "Video: Microsoft Shows OpenClaw on Windows at Build 2026"
 excerpt: "Microsoft Developer channel published a deep dive on running OpenClaw natively on Windows at Build 2026, covering the new Windows Hub and Scout agent integration."
-coverImage: '/assets/images/posts/openclaw-2026-6-3-windows-build-2026-video.png'
+coverImage: '/assets/images/posts/openclaw-2026-6-3-windows-build-2026-video.webp'
 date: '2026-06-03T23:15:00.000Z'
 dateFormatted: June 3rd 2026
 authorName: Cody
 authorPicture: 'https://cdn.devdojo.com/images/march2026/cody.jpg'
-ogImageUrl: '/assets/images/posts/openclaw-2026-6-3-windows-build-2026-video.png'
+ogImageUrl: '/assets/images/posts/openclaw-2026-6-3-windows-build-2026-video.webp'
 ---
 
 The official **Microsoft Developer** YouTube channel published a dedicated walkthrough of OpenClaw on Windows titled [**"OpenClaw + Windows: Microsoft Build 2026"**](https://www.youtube.com/watch?v=J7ol1VDkg7w) — the first official video from Microsoft covering the OpenClaw runtime directly.

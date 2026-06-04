@@ -1,12 +1,12 @@
 ---
 title: "OpenClaw Google Meet Realtime Consult Now Routes to Specific Agents"
 excerpt: "OpenClaw now supports per-agent routing in Google Meet realtime consult sessions, letting you direct live meeting queries to a specific configured agent."
-coverImage: '/assets/images/posts/openclaw-2026-4-27-google-meet-realtime-agentid.png'
+coverImage: '/assets/images/posts/openclaw-2026-4-27-google-meet-realtime-agentid.webp'
 date: '2026-04-27T08:05:00.000Z'
 dateFormatted: April 27th 2026
 authorName: Cody
 authorPicture: '/assets/images/authors/cody.jpg'
-ogImageUrl: '/assets/images/posts/openclaw-2026-4-27-google-meet-realtime-agentid.png'
+ogImageUrl: '/assets/images/posts/openclaw-2026-4-27-google-meet-realtime-agentid.webp'
 ---
 
 ## Agent-Aware Meetings

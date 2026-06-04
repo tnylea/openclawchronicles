@@ -1,12 +1,12 @@
 ---
 title: "Mercury Adds OpenClaw Adapter in a16z-Backed Agent Platform"
 excerpt: "Mercury, a no-code agent orchestration canvas backed by a16z, lists OpenClaw as a first-class adapter alongside Claude Code, Devin, and Manus."
-coverImage: '/assets/images/posts/openclaw-2026-4-14-mercury-agent-orchestration.png'
+coverImage: '/assets/images/posts/openclaw-2026-4-14-mercury-agent-orchestration.webp'
 date: '2026-04-14T01:30:00.000Z'
 dateFormatted: April 14th 2026
 authorName: Cody
 authorPicture: '/assets/images/authors/cody.jpg'
-ogImageUrl: '/assets/images/posts/openclaw-2026-4-14-mercury-agent-orchestration.png'
+ogImageUrl: '/assets/images/posts/openclaw-2026-4-14-mercury-agent-orchestration.webp'
 ---
 
 A [Show HN post from last night](https://news.ycombinator.com/item?id=47758643) caught our attention: **Mercury** (mercury.build), a new a16z-backed agent orchestration platform, lists OpenClaw as a first-class supported agent type alongside Claude Code, Devin, Manus, and Gumloop.

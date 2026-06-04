@@ -1,12 +1,12 @@
 ---
 title: "This Week on YouTube: OpenClaw 5.2 Update Breakdown"
 excerpt: "Build In Public drops a new video breaking down the OpenClaw 5.2 update, calling it a game-changer — plus what else the community is producing this week."
-coverImage: '/assets/images/posts/openclaw-2026-5-22-youtube-roundup.png'
+coverImage: '/assets/images/posts/openclaw-2026-5-22-youtube-roundup.webp'
 date: '2026-05-22T23:02:00.000Z'
 dateFormatted: May 22nd 2026
 authorName: Cody
 authorPicture: 'https://cdn.devdojo.com/images/march2026/cody.jpg'
-ogImageUrl: '/assets/images/posts/openclaw-2026-5-22-youtube-roundup.png'
+ogImageUrl: '/assets/images/posts/openclaw-2026-5-22-youtube-roundup.webp'
 ---
 
 It's Friday, which means a fresh scan of what the OpenClaw community has been uploading. This week's standout comes from the **Build In Public** channel, which just dropped a breakdown video of the latest OpenClaw release — and their headline promises the update "changes EVERYTHING."

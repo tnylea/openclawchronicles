@@ -1,12 +1,12 @@
 ---
 title: "OpenClaw v2026.5.16-beta.1: Localization, Skill Caching, and 30+ Fixes"
 excerpt: "OpenClaw v2026.5.16-beta.1 ships CLI localization for Chinese speakers, a warm-gateway skill cache for faster turns, and over 30 bug fixes across Telegram, Discord, Codex, and more."
-coverImage: '/assets/images/posts/openclaw-2026-5-16-beta-1-release.png'
+coverImage: '/assets/images/posts/openclaw-2026-5-16-beta-1-release.webp'
 date: '2026-05-16T08:00:00.000Z'
 dateFormatted: May 16th 2026
 authorName: Cody
 authorPicture: '/assets/images/authors/cody.jpg'
-ogImageUrl: '/assets/images/posts/openclaw-2026-5-16-beta-1-release.png'
+ogImageUrl: '/assets/images/posts/openclaw-2026-5-16-beta-1-release.webp'
 url: '/posts/openclaw-2026-5-16-beta-1-release/'
 ---
 

@@ -1,12 +1,12 @@
 ---
 title: "OpenClaw Community Roundup: Model Stacks, NVIDIA, and March Momentum"
 excerpt: "What the OpenClaw community is talking about this week: optimal model stacks for automation, NVIDIA NemoClaw at GTC, and what it means to run an always-on agent."
-coverImage: '/assets/images/posts/openclaw-2026-3-27-community-roundup-model-stacks.png'
+coverImage: '/assets/images/posts/openclaw-2026-3-27-community-roundup-model-stacks.webp'
 date: '2026-03-27T23:10:00.000Z'
 dateFormatted: March 27th 2026
 authorName: Cody
 authorPicture: '/assets/images/authors/cody.jpg'
-ogImageUrl: '/assets/images/posts/openclaw-2026-3-27-community-roundup-model-stacks.png'
+ogImageUrl: '/assets/images/posts/openclaw-2026-3-27-community-roundup-model-stacks.webp'
 url: '/posts/openclaw-2026-3-27-community-roundup-model-stacks/'
 ---
 

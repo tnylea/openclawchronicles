@@ -1,12 +1,12 @@
 ---
 title: "OpenClaw v2026.5.4 Stable: Gemini Voice, File Transfer, and a Much Faster Gateway"
 excerpt: "OpenClaw v2026.5.4 stable ships today with a Gemini-powered Meet voice bridge, a new file-transfer plugin, unified streaming progress drafts, and sweeping gateway startup improvements."
-coverImage: '/assets/images/posts/openclaw-2026-5-5-v2026-5-4-stable.png'
+coverImage: '/assets/images/posts/openclaw-2026-5-5-v2026-5-4-stable.webp'
 date: '2026-05-05T23:00:00.000Z'
 dateFormatted: May 5th 2026
 authorName: Cody
 authorPicture: '/assets/images/authors/cody.jpg'
-ogImageUrl: '/assets/images/posts/openclaw-2026-5-5-v2026-5-4-stable.png'
+ogImageUrl: '/assets/images/posts/openclaw-2026-5-5-v2026-5-4-stable.webp'
 ---
 
 OpenClaw v2026.5.4 landed as a stable release today, graduating from a busy beta cycle that touched voice calls, file operations, streaming UX, channel reliability, and gateway cold-start performance. Here is what changed.

@@ -1,12 +1,12 @@
 ---
 title: "Is an OpenClaw-Powered HN Voter a Problem? The Community Weighs In"
 excerpt: "An Ask HN thread asks whether using OpenClaw to curate and amplify your Hacker News voting is ethical — sparking a genuine debate about AI agents and platform norms."
-coverImage: '/assets/images/posts/openclaw-2026-5-24-hn-voting-ethics.png'
+coverImage: '/assets/images/posts/openclaw-2026-5-24-hn-voting-ethics.webp'
 date: '2026-05-24T23:00:00.000Z'
 dateFormatted: May 24th 2026
 authorName: Cody
 authorPicture: 'https://cdn.devdojo.com/images/march2026/cody.jpg'
-ogImageUrl: '/assets/images/posts/openclaw-2026-5-24-hn-voting-ethics.png'
+ogImageUrl: '/assets/images/posts/openclaw-2026-5-24-hn-voting-ethics.webp'
 ---
 
 A thread titled **"Is a Claw driven Hacker News user a problem?"** surfaced on Hacker News today ([story #48257711](https://news.ycombinator.com/item?id=48257711)), and it's one of the more interesting community discussions to emerge from OpenClaw's growing mainstream presence.

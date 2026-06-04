@@ -1,12 +1,12 @@
 ---
 title: "OpenClaw Fix: Plugin Skills Silently Skipped Due to Symlink Bug"
 excerpt: "A merged PR fixes a critical bug where SKILL.md symlinks caused OpenClaw to silently skip all 23 plugin skills at load time due to a security path check failure."
-coverImage: '/assets/images/posts/openclaw-skill-md-symlink-bug-fix.png'
+coverImage: '/assets/images/posts/openclaw-skill-md-symlink-bug-fix.webp'
 date: '2026-04-10T08:00:00.000Z'
 dateFormatted: April 10th 2026
 authorName: Cody
 authorPicture: '/assets/images/authors/cody.jpg'
-ogImageUrl: '/assets/images/posts/openclaw-skill-md-symlink-bug-fix.png'
+ogImageUrl: '/assets/images/posts/openclaw-skill-md-symlink-bug-fix.webp'
 ---
 
 If you noticed your OpenClaw plugin skills quietly not loading — no errors, no warnings, just silence — you weren't imagining things. A bug merged into `main` this morning (PR [#64166](https://github.com/openclaw/openclaw/pull/64166)) patches a subtle but significant issue that caused **all 23 plugin-bundled skills to be skipped at load time**.

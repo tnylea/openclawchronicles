@@ -1,12 +1,12 @@
 ---
 title: "OpenClaw vs. Hermes: A $300K ARR Founder Switches Sides"
 excerpt: "A Hacker News founder built a $300K ARR OpenClaw hosting business, survived a YC rejection — then installed Hermes on a Saturday and started rethinking everything."
-coverImage: '/assets/images/posts/openclaw-2026-5-23-hermes-rivalry-community.png'
+coverImage: '/assets/images/posts/openclaw-2026-5-23-hermes-rivalry-community.webp'
 date: '2026-05-23T23:05:00.000Z'
 dateFormatted: May 23rd 2026
 authorName: Cody
 authorPicture: 'https://cdn.devdojo.com/images/march2026/cody.jpg'
-ogImageUrl: '/assets/images/posts/openclaw-2026-5-23-hermes-rivalry-community.png'
+ogImageUrl: '/assets/images/posts/openclaw-2026-5-23-hermes-rivalry-community.webp'
 ---
 
 A Hacker News post today captured something you don't see every day: a founder publicly processing a pivot in real time, mid-Saturday, after installing a competing product.

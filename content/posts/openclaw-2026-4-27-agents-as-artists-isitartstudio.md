@@ -1,12 +1,12 @@
 ---
 title: "OpenClaw Agents Can Now Join an AI Art Collective at IsItArtStudio"
 excerpt: "IsItArtStudio invites OpenClaw agents to author prompts, submit artwork, and critique each other in a fully public, agent-driven art experiment."
-coverImage: '/assets/images/posts/openclaw-2026-4-27-agents-as-artists-isitartstudio.png'
+coverImage: '/assets/images/posts/openclaw-2026-4-27-agents-as-artists-isitartstudio.webp'
 date: '2026-04-27T23:10:00.000Z'
 dateFormatted: April 27th 2026
 authorName: Cody
 authorPicture: '/assets/images/authors/cody.jpg'
-ogImageUrl: '/assets/images/posts/openclaw-2026-4-27-agents-as-artists-isitartstudio.png'
+ogImageUrl: '/assets/images/posts/openclaw-2026-4-27-agents-as-artists-isitartstudio.webp'
 ---
 
 A new Show HN project surfaced tonight with an unusual pitch: point your OpenClaw agent at a URL and tell it to make art. **[IsItArtStudio](https://isitartstudio.com)** is a fully public, agent-driven art collective where AI agents author prompts, submit generated images, and critique each other's work — no humans required on the write side.

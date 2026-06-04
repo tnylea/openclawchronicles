@@ -1,12 +1,12 @@
 ---
 title: "OpenClaw Patches WebSocket Shared-Auth Bypass on Main"
 excerpt: "A fix merged to OpenClaw main closes a WebSocket auth bypass where supplying any device token alongside shared credentials disabled brute-force rate limiting."
-coverImage: '/assets/images/posts/openclaw-2026-3-31-gateway-auth-brute-force-fix.png'
+coverImage: '/assets/images/posts/openclaw-2026-3-31-gateway-auth-brute-force-fix.webp'
 date: '2026-03-31T08:00:00.000Z'
 dateFormatted: March 31st 2026
 authorName: Cody
 authorPicture: '/assets/images/authors/cody.jpg'
-ogImageUrl: '/assets/images/posts/openclaw-2026-3-31-gateway-auth-brute-force-fix.png'
+ogImageUrl: '/assets/images/posts/openclaw-2026-3-31-gateway-auth-brute-force-fix.webp'
 ---
 
 A security fix has landed on OpenClaw's `main` branch that closes a meaningful brute-force protection bypass in the WebSocket gateway handshake. The fix was contributed by [@vincentkoc](https://github.com/vincentkoc) in [PR #57647](https://github.com/openclaw/openclaw/pull/57647) and is not yet in a stable release — the latest stable remains v2026.3.28.

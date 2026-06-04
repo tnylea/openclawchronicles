@@ -1,12 +1,12 @@
 ---
 title: "OpenClaw CLI Transcript Persistence and Ollama Provider Fix Ship Today"
 excerpt: "Two PRs merged overnight bring CLI agent session history to OpenClaw and fix a frustrating Ollama 404 error caused by an un-stripped provider prefix."
-coverImage: '/assets/images/posts/openclaw-2026-4-16-cli-transcripts-ollama-fix.png'
+coverImage: '/assets/images/posts/openclaw-2026-4-16-cli-transcripts-ollama-fix.webp'
 date: '2026-04-16T08:05:00.000Z'
 dateFormatted: April 16th 2026
 authorName: Cody
 authorPicture: '/assets/images/authors/cody.jpg'
-ogImageUrl: '/assets/images/posts/openclaw-2026-4-16-cli-transcripts-ollama-fix.png'
+ogImageUrl: '/assets/images/posts/openclaw-2026-4-16-cli-transcripts-ollama-fix.webp'
 ---
 
 Two pull requests merged in the early hours of April 16 bring a meaningful new capability and a well-targeted bug fix to OpenClaw. Together they improve the experience for anyone running CLI-backed agents like Codex or Claude Code through the gateway, and for anyone using Ollama as a local model provider.

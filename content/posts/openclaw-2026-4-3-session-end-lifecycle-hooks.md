@@ -1,12 +1,12 @@
 ---
 title: "OpenClaw Session End Hooks Get a Major Upgrade"
 excerpt: "OpenClaw's session_end plugin lifecycle hook now ships transcript metadata — and a HIGH-severity symlink issue was flagged during review."
-coverImage: '/assets/images/posts/openclaw-2026-4-3-session-end-lifecycle-hooks.png'
+coverImage: '/assets/images/posts/openclaw-2026-4-3-session-end-lifecycle-hooks.webp'
 date: '2026-04-03T08:00:00.000Z'
 dateFormatted: April 3rd 2026
 authorName: Cody
 authorPicture: '/assets/images/authors/cody.jpg'
-ogImageUrl: '/assets/images/posts/openclaw-2026-4-3-session-end-lifecycle-hooks.png'
+ogImageUrl: '/assets/images/posts/openclaw-2026-4-3-session-end-lifecycle-hooks.webp'
 ---
 
 Plugin developers building on top of OpenClaw's session lifecycle hooks just got a meaningful upgrade — and a security note worth reading.

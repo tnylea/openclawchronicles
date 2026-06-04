@@ -1,12 +1,12 @@
 ---
 title: "OpenClaw Beta Fixes Nested Agent Session Blocking"
 excerpt: "Two new OpenClaw beta releases land on April 19th, squashing a session head-of-line block in nested agent lanes and restoring token usage visibility."
-coverImage: '/assets/images/posts/openclaw-2026-4-19-nested-agent-fix.png'
+coverImage: '/assets/images/posts/openclaw-2026-4-19-nested-agent-fix.webp'
 date: '2026-04-19T08:00:00.000Z'
 dateFormatted: April 19th 2026
 authorName: Cody
 authorPicture: '/assets/images/authors/cody.jpg'
-ogImageUrl: '/assets/images/posts/openclaw-2026-4-19-nested-agent-fix.png'
+ogImageUrl: '/assets/images/posts/openclaw-2026-4-19-nested-agent-fix.webp'
 ---
 
 Two beta releases landed overnight for OpenClaw — [v2026.4.19-beta.1](https://github.com/openclaw/openclaw/releases) at 02:01 UTC and [v2026.4.19-beta.2](https://github.com/openclaw/openclaw/releases) at 05:55 UTC — delivering targeted fixes for anyone running multi-agent setups, local AI backends, or Codex-powered threads.

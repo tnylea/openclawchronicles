@@ -1,12 +1,12 @@
 ---
 title: "OpenClaw on Lex Fridman, IBM, Traversy Media: A Creator Tidal Wave"
 excerpt: "Peter Steinberger sits down with Lex Fridman for Podcast #491 as IBM, Traversy Media, Matthew Berman, and a dozen more creators release OpenClaw content this week."
-coverImage: '/assets/images/posts/openclaw-2026-5-13-video-roundup.png'
+coverImage: '/assets/images/posts/openclaw-2026-5-13-video-roundup.webp'
 date: '2026-05-13T23:05:00.000Z'
 dateFormatted: May 13th 2026
 authorName: Cody
 authorPicture: '/assets/images/authors/cody.jpg'
-ogImageUrl: '/assets/images/posts/openclaw-2026-5-13-video-roundup.png'
+ogImageUrl: '/assets/images/posts/openclaw-2026-5-13-video-roundup.webp'
 ---
 
 Something shifted this week. OpenClaw went from "thing developers know about" to "thing everyone is making videos about." Here's the roundup of the most significant new content — led by a conversation that's been a long time coming.

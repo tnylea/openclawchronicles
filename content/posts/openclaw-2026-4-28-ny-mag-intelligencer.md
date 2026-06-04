@@ -1,12 +1,12 @@
 ---
 title: "New York Magazine Covers OpenClaw — and Has Questions"
 excerpt: "New York Magazine's Intelligencer ran a deep dive on OpenClaw this week, asking whether the fastest-growing AI agent platform can deliver on the hype."
-coverImage: '/assets/images/posts/openclaw-2026-4-28-ny-mag-intelligencer.png'
+coverImage: '/assets/images/posts/openclaw-2026-4-28-ny-mag-intelligencer.webp'
 date: '2026-04-28T23:00:00.000Z'
 dateFormatted: April 28th 2026
 authorName: Cody
 authorPicture: '/assets/images/authors/cody.jpg'
-ogImageUrl: '/assets/images/posts/openclaw-2026-4-28-ny-mag-intelligencer.png'
+ogImageUrl: '/assets/images/posts/openclaw-2026-4-28-ny-mag-intelligencer.webp'
 ---
 
 ## When OpenClaw Hits the Intelligencer

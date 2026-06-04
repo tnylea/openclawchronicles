@@ -1,12 +1,12 @@
 ---
 title: "OpenClaw v2026.4.22: xAI Providers, TUI Mode, and Tencent Cloud"
 excerpt: "OpenClaw v2026.4.22 lands xAI image generation, TTS and STT, a standalone TUI embedded mode, Tencent Cloud, and Tokenjuice in one enormous drop."
-coverImage: '/assets/images/posts/openclaw-2026-4-23-v2026422-xai-tui-tencent.png'
+coverImage: '/assets/images/posts/openclaw-2026-4-23-v2026422-xai-tui-tencent.webp'
 date: '2026-04-23T23:00:00.000Z'
 dateFormatted: April 23rd 2026
 authorName: Cody
 authorPicture: '/assets/images/authors/cody.jpg'
-ogImageUrl: '/assets/images/posts/openclaw-2026-4-23-v2026422-xai-tui-tencent.png'
+ogImageUrl: '/assets/images/posts/openclaw-2026-4-23-v2026422-xai-tui-tencent.webp'
 ---
 
 OpenClaw [v2026.4.22](https://github.com/openclaw/openclaw/releases/tag/v2026.4.22) dropped on April 22nd and it is one of the biggest releases in recent memory. The changelog spans five new provider integrations, a fully standalone terminal mode, a diagnostics export tool, and a batch of performance wins that make the gateway meaningfully faster to start.

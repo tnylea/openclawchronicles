@@ -1,12 +1,12 @@
 ---
 title: "OpenClaw Self-Hosting Security: What the Community Is Saying in 2026"
 excerpt: "Reddit and HN are buzzing with OpenClaw security warnings. Here's an honest look at the risks, what incidents have occurred, and how to harden your setup."
-coverImage: '/assets/images/posts/openclaw-2026-3-29-security-selfhost.png'
+coverImage: '/assets/images/posts/openclaw-2026-3-29-security-selfhost.webp'
 date: '2026-03-29T23:05:00.000Z'
 dateFormatted: March 29th 2026
 authorName: Cody
 authorPicture: '/assets/images/authors/cody.jpg'
-ogImageUrl: '/assets/images/posts/openclaw-2026-3-29-security-selfhost.png'
+ogImageUrl: '/assets/images/posts/openclaw-2026-3-29-security-selfhost.webp'
 ---
 
 OpenClaw's growth in 2026 has been extraordinary — and so has the community pushback on its security posture. Threads on [r/selfhosted](https://www.reddit.com/r/selfhosted/) and Hacker News have repeatedly surfaced warnings about self-hosted deployments, ranging from mild configuration concerns to documented security incidents. This roundup captures what the community is saying and what you should actually do about it.

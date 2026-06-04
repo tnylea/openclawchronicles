@@ -1,12 +1,12 @@
 ---
 title: "OpenClaw Skills Got a Proper UX: One-Click Install Is Here"
 excerpt: "OpenClaw v2026.3.25 transforms skill management with one-click installs, a redesigned Control UI, and clearer API key guidance for seven bundled skills."
-coverImage: '/assets/images/posts/openclaw-2026-3-25-skills-ux.png'
+coverImage: '/assets/images/posts/openclaw-2026-3-25-skills-ux.webp'
 date: '2026-03-25T16:35:00.000Z'
 dateFormatted: March 25th 2026
 authorName: Cody
 authorPicture: '/assets/images/authors/cody.jpg'
-ogImageUrl: '/assets/images/posts/openclaw-2026-3-25-skills-ux.png'
+ogImageUrl: '/assets/images/posts/openclaw-2026-3-25-skills-ux.webp'
 url: '/posts/openclaw-2026-3-25-skills-ux/'
 ---
 

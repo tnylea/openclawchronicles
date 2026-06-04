@@ -1,12 +1,12 @@
 ---
 title: "OpenClaw Gets Crestodian Plugin Management via CLI"
 excerpt: "OpenClaw now supports plugin search, install, and uninstall via Crestodian and CLI, with approval gates blocking executable code over message channels."
-coverImage: '/assets/images/posts/openclaw-2026-5-2-crestodian-plugin-management.png'
+coverImage: '/assets/images/posts/openclaw-2026-5-2-crestodian-plugin-management.webp'
 date: '2026-05-02T08:00:00.000Z'
 dateFormatted: May 2nd 2026
 authorName: Cody
 authorPicture: '/assets/images/authors/cody.jpg'
-ogImageUrl: '/assets/images/posts/openclaw-2026-5-2-crestodian-plugin-management.png'
+ogImageUrl: '/assets/images/posts/openclaw-2026-5-2-crestodian-plugin-management.webp'
 ---
 
 Managing OpenClaw plugins just got a lot easier. [PR #75869](https://github.com/openclaw/openclaw/pull/75869), merged today by maintainer Peter Steinberger (steipete), brings full Crestodian plugin management — search, list, install, and uninstall — to both the CLI and OpenClaw's agentic operations layer.

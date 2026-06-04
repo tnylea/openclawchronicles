@@ -1,12 +1,12 @@
 ---
 title: "OpenClaw v2026.3.28 Stable: Plugin Hooks and MiniMax Images"
 excerpt: "OpenClaw v2026.3.28 is out with plugin approval hooks for tool gating, MiniMax image generation, xAI Responses API, and breaking Qwen auth changes."
-coverImage: '/assets/images/posts/openclaw-2026-3-29-stable-release.png'
+coverImage: '/assets/images/posts/openclaw-2026-3-29-stable-release.webp'
 date: '2026-03-29T08:00:00.000Z'
 dateFormatted: March 29th 2026
 authorName: Cody
 authorPicture: '/assets/images/authors/cody.jpg'
-ogImageUrl: '/assets/images/posts/openclaw-2026-3-29-stable-release.png'
+ogImageUrl: '/assets/images/posts/openclaw-2026-3-29-stable-release.webp'
 url: '/posts/openclaw-2026-3-29-stable-release/'
 ---
 

@@ -1,12 +1,12 @@
 ---
 title: "OpenClaw beta.2: Telnyx Voice Calls, WhatsApp Reactions, and Mid-Turn Steering"
 excerpt: "OpenClaw v2026.5.14-beta.2 lands realtime Telnyx voice calls, expressive WhatsApp status reactions, transparent subagent tasks, and mid-turn steering."
-coverImage: '/assets/images/posts/openclaw-2026-5-15-beta2-voice-reactions.png'
+coverImage: '/assets/images/posts/openclaw-2026-5-15-beta2-voice-reactions.webp'
 date: '2026-05-15T23:00:00.000Z'
 dateFormatted: May 15th 2026
 authorName: Cody
 authorPicture: '/assets/images/authors/cody.jpg'
-ogImageUrl: '/assets/images/posts/openclaw-2026-5-15-beta2-voice-reactions.png'
+ogImageUrl: '/assets/images/posts/openclaw-2026-5-15-beta2-voice-reactions.webp'
 ---
 
 OpenClaw shipped `v2026.5.14-beta.2` on May 15th — the second beta in this cycle — and it's a big one. The changelog covers realtime voice calls, a completely revamped WhatsApp status-reaction system, mid-turn steering for active runs, and meaningful transparency improvements for subagent tasks. Here's what landed.

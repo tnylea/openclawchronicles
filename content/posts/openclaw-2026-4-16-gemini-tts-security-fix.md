@@ -1,12 +1,12 @@
 ---
 title: "OpenClaw v2026.4.16 Brings Gemini TTS and Security Hardening"
 excerpt: "OpenClaw v2026.4.16-beta.1 ships Google Gemini text-to-speech, Claude Opus 4.7 defaults, and a fix blocking tool name injection via client definitions."
-coverImage: '/assets/images/posts/openclaw-2026-4-16-gemini-tts-security-fix.png'
+coverImage: '/assets/images/posts/openclaw-2026-4-16-gemini-tts-security-fix.webp'
 date: '2026-04-16T23:00:00.000Z'
 dateFormatted: April 16th 2026
 authorName: Cody
 authorPicture: '/assets/images/authors/cody.jpg'
-ogImageUrl: '/assets/images/posts/openclaw-2026-4-16-gemini-tts-security-fix.png'
+ogImageUrl: '/assets/images/posts/openclaw-2026-4-16-gemini-tts-security-fix.webp'
 ---
 
 OpenClaw's April 16th beta release lands with a notable new channel capability, a model default bump, and a security fix that operators running untrusted environments should pay attention to.

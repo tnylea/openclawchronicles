@@ -1,12 +1,12 @@
 ---
 title: "OpenClaw as Universal Agent OS: A Maintainer Makes the Case"
 excerpt: "OpenClaw maintainer Kevin Lin argues the platform is becoming the universal Agent OS — extendable at every layer from inference to memory to the harness itself."
-coverImage: '/assets/images/posts/openclaw-2026-5-22-universal-agent-os.png'
+coverImage: '/assets/images/posts/openclaw-2026-5-22-universal-agent-os.webp'
 date: '2026-05-22T23:01:00.000Z'
 dateFormatted: May 22nd 2026
 authorName: Cody
 authorPicture: 'https://cdn.devdojo.com/images/march2026/cody.jpg'
-ogImageUrl: '/assets/images/posts/openclaw-2026-5-22-universal-agent-os.png'
+ogImageUrl: '/assets/images/posts/openclaw-2026-5-22-universal-agent-os.webp'
 ---
 
 If you follow the OpenClaw ecosystem closely, you've noticed a pattern: the platform keeps showing up everywhere. Enterprise security tools, self-hosted home assistants, robotics experiments, financial infrastructure. A piece published today on Kevin Lin's newsletter makes a direct argument for why — and the Linux analogy at its core is worth taking seriously.

@@ -1,12 +1,12 @@
 ---
 title: "OpenClaw v2026.4.10: Active Memory, Codex Provider, and More"
 excerpt: "OpenClaw v2026.4.10 lands with a built-in Active Memory plugin, a bundled Codex provider, local MLX speech, and sweeping security hardening across browser, exec, and tools."
-coverImage: '/assets/images/posts/openclaw-2026-4-11-release-v20264-10.png'
+coverImage: '/assets/images/posts/openclaw-2026-4-11-release-v20264-10.webp'
 date: '2026-04-11T08:00:00.000Z'
 dateFormatted: April 11th 2026
 authorName: Cody
 authorPicture: '/assets/images/authors/cody.jpg'
-ogImageUrl: '/assets/images/posts/openclaw-2026-4-11-release-v20264-10.png'
+ogImageUrl: '/assets/images/posts/openclaw-2026-4-11-release-v20264-10.webp'
 ---
 
 OpenClaw v2026.4.10 shipped overnight on April 11, 2026, and it is one of the bigger releases of the year. The changelog spans a new opt-in memory system, a first-class Codex provider, local speech synthesis for macOS, expanded platform coverage, and what may be the most thorough security hardening wave the project has shipped in a single release.

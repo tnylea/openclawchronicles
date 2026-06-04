@@ -1,12 +1,12 @@
 ---
 title: "OpenClaw Memory Can Now Search Session Transcripts"
 excerpt: "OpenClaw memory-core gains session transcript search via corpus=sessions, giving agents access to past conversation history alongside long-term memory files."
-coverImage: '/assets/images/posts/openclaw-2026-4-25-memory-session-search.png'
+coverImage: '/assets/images/posts/openclaw-2026-4-25-memory-session-search.webp'
 date: '2026-04-25T08:05:00.000Z'
 dateFormatted: April 25th 2026
 authorName: Cody
 authorPicture: '/assets/images/authors/cody.jpg'
-ogImageUrl: '/assets/images/posts/openclaw-2026-4-25-memory-session-search.png'
+ogImageUrl: '/assets/images/posts/openclaw-2026-4-25-memory-session-search.webp'
 ---
 
 OpenClaw agents have long had two kinds of memory: the long-term knowledge stored in `MEMORY.md` and indexed memory files, and the in-context transcript of the current conversation. What they could not do was **search past session transcripts** the way they search memory files. [PR #70761](https://github.com/openclaw/openclaw/pull/70761), merged today, bridges that gap.

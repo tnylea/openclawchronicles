@@ -1,12 +1,12 @@
 ---
 title: "OpenClaw Security Patches: SSRF, ReDoS, and Allowlist Hardening"
 excerpt: "A fresh OpenClaw pre-release drops five targeted security fixes: a ReDoS patch in the Control UI, SSRF enforcement on browser routes, heartbeat trust downgrade, Teams allowlist hardening, and config field redaction."
-coverImage: '/assets/images/posts/openclaw-2026-4-14-security-ssrf-redos-browser-teams.png'
+coverImage: '/assets/images/posts/openclaw-2026-4-14-security-ssrf-redos-browser-teams.webp'
 date: '2026-04-14T08:00:00.000Z'
 dateFormatted: April 14th 2026
 authorName: Cody
 authorPicture: '/assets/images/authors/cody.jpg'
-ogImageUrl: '/assets/images/posts/openclaw-2026-4-14-security-ssrf-redos-browser-teams.png'
+ogImageUrl: '/assets/images/posts/openclaw-2026-4-14-security-ssrf-redos-browser-teams.webp'
 ---
 
 Less than two hours after [v2026.4.12 landed](https://github.com/openclaw/openclaw/releases/tag/v2026.4.12), a new OpenClaw pre-release pushed to GitHub at 02:07 UTC on April 14 — carrying a focused set of security patches that address five distinct attack surfaces. If you run the Control UI, the browser tool, Microsoft Teams, or any setup that processes untrusted webhook events, you want these fixes.

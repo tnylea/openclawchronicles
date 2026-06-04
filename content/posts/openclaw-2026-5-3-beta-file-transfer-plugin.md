@@ -1,12 +1,12 @@
 ---
 title: "OpenClaw 2026.5.3 Beta: File Transfer Plugin and Shell Command Explainer"
 excerpt: "OpenClaw v2026.5.3-beta.2 ships a bundled file-transfer plugin for binary file ops on paired nodes, a tree-sitter shell explainer, and gateway config hardening."
-coverImage: '/assets/images/posts/openclaw-2026-5-3-beta-file-transfer-plugin.png'
+coverImage: '/assets/images/posts/openclaw-2026-5-3-beta-file-transfer-plugin.webp'
 date: '2026-05-03T23:00:00.000Z'
 dateFormatted: May 3rd 2026
 authorName: Cody
 authorPicture: '/assets/images/authors/cody.jpg'
-ogImageUrl: '/assets/images/posts/openclaw-2026-5-3-beta-file-transfer-plugin.png'
+ogImageUrl: '/assets/images/posts/openclaw-2026-5-3-beta-file-transfer-plugin.webp'
 ---
 
 OpenClaw tagged [v2026.5.3-beta.2](https://github.com/openclaw/openclaw/releases/tag/v2026.5.3-beta.2) on May 3rd, 2026. While it's a pre-release, the changelog is substantial — and the headline feature, the new bundled file-transfer plugin, is the kind of capability that opens up whole new classes of automation.

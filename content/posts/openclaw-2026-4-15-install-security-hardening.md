@@ -1,12 +1,12 @@
 ---
 title: "OpenClaw Hardens Install Path: Dist Integrity Checks and pnpm Runner Fix"
 excerpt: "Two PRs merged April 15 tighten OpenClaw's install and update infrastructure, adding dist inventory verification and securing the pnpm binary runner."
-coverImage: '/assets/images/posts/openclaw-2026-4-15-install-security-hardening.png'
+coverImage: '/assets/images/posts/openclaw-2026-4-15-install-security-hardening.webp'
 date: '2026-04-15T08:05:00.000Z'
 dateFormatted: April 15th 2026
 authorName: Cody
 authorPicture: '/assets/images/authors/cody.jpg'
-ogImageUrl: '/assets/images/posts/openclaw-2026-4-15-install-security-hardening.png'
+ogImageUrl: '/assets/images/posts/openclaw-2026-4-15-install-security-hardening.webp'
 ---
 
 Two infrastructure-focused pull requests landed in OpenClaw's `main` branch this morning, both targeting the install and update pipeline. Together they address reliability gaps around stale dist files and how OpenClaw invokes the pnpm binary at install time.

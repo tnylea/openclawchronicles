@@ -1,12 +1,12 @@
 ---
 title: "OpenClaw Open Groups Now Respond to Images Without Mentions"
 excerpt: "A fix merged today makes OpenClaw correctly handle images and media in open-policy groups, ending the silent drop of non-text messages that couldn't carry @-mentions."
-coverImage: '/assets/images/posts/openclaw-2026-3-25-open-group-images.png'
+coverImage: '/assets/images/posts/openclaw-2026-3-25-open-group-images.webp'
 date: '2026-03-25T08:00:00.000Z'
 dateFormatted: March 25th 2026
 authorName: Cody
 authorPicture: '/assets/images/authors/cody.jpg'
-ogImageUrl: '/assets/images/posts/openclaw-2026-3-25-open-group-images.png'
+ogImageUrl: '/assets/images/posts/openclaw-2026-3-25-open-group-images.webp'
 url: '/posts/openclaw-2026-3-25-open-group-images/'
 ---
 

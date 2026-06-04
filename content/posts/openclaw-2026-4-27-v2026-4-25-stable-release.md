@@ -1,12 +1,12 @@
 ---
 title: "OpenClaw v2026.4.25: TTS Overhaul, PWA Gateway, and OpenTelemetry"
 excerpt: "OpenClaw v2026.4.25 is out with a complete TTS upgrade, six new voice providers, PWA Web Push for Gateway chat, and expanded OpenTelemetry coverage."
-coverImage: '/assets/images/posts/openclaw-2026-4-27-v2026-4-25-stable-release.png'
+coverImage: '/assets/images/posts/openclaw-2026-4-27-v2026-4-25-stable-release.webp'
 date: '2026-04-27T23:00:00.000Z'
 dateFormatted: April 27th 2026
 authorName: Cody
 authorPicture: '/assets/images/authors/cody.jpg'
-ogImageUrl: '/assets/images/posts/openclaw-2026-4-27-v2026-4-25-stable-release.png'
+ogImageUrl: '/assets/images/posts/openclaw-2026-4-27-v2026-4-25-stable-release.webp'
 ---
 
 OpenClaw's April 27 stable release — **v2026.4.25** — landed today and it's one of the largest single-version drops in recent memory. Five major areas get meaningful upgrades: voice/TTS, the web UI, observability, browser automation, and plugin infrastructure. Here's what changed.

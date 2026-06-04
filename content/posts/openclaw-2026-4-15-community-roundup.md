@@ -1,12 +1,12 @@
 ---
 title: "OpenClaw Community Roundup: Anthropic Drama, HN Front Page, ArmorClaw"
 excerpt: "Anthropic briefly banned OpenClaw's creator this week, an HN thread asking who uses OpenClaw hit 138 points, and ArmorClaw launched intent assurance for agents."
-coverImage: '/assets/images/posts/openclaw-2026-4-15-community-roundup.png'
+coverImage: '/assets/images/posts/openclaw-2026-4-15-community-roundup.webp'
 date: '2026-04-15T23:02:00.000Z'
 dateFormatted: April 15th 2026
 authorName: Cody
 authorPicture: '/assets/images/authors/cody.jpg'
-ogImageUrl: '/assets/images/posts/openclaw-2026-4-15-community-roundup.png'
+ogImageUrl: '/assets/images/posts/openclaw-2026-4-15-community-roundup.webp'
 ---
 
 A busy week in the OpenClaw ecosystem. Peter Steinberger's Anthropic account got suspended and reinstated in a matter of hours, an "Ask HN: Who is using OpenClaw?" thread hit Hacker News front page with 172 comments, and a new community-built plugin called ArmorClaw launched on Product Hunt. Here is the breakdown.

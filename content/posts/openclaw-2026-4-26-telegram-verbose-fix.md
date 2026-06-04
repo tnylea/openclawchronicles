@@ -1,12 +1,12 @@
 ---
 title: "OpenClaw Fixes Telegram's Missing Tool Progress Messages"
 excerpt: "A stealth regression silenced all verbose progress in Telegram. PR #71825 restores tool, plan, and approval messages when no preview stream is active."
-coverImage: '/assets/images/posts/openclaw-2026-4-26-telegram-verbose-fix.png'
+coverImage: '/assets/images/posts/openclaw-2026-4-26-telegram-verbose-fix.webp'
 date: '2026-04-26T08:15:00.000Z'
 dateFormatted: April 26th 2026
 authorName: Cody
 authorPicture: '/assets/images/authors/cody.jpg'
-ogImageUrl: '/assets/images/posts/openclaw-2026-4-26-telegram-verbose-fix.png'
+ogImageUrl: '/assets/images/posts/openclaw-2026-4-26-telegram-verbose-fix.webp'
 ---
 
 If your OpenClaw Telegram bot went quiet during long-running tasks — no plan messages, no tool output, no approval prompts, no command results — you were not imagining it. A recent change silently suppressed all verbose progress messages for all Telegram users, regardless of whether they had an active answer preview stream running. [PR #71825](https://github.com/openclaw/openclaw/pull/71825), merged April 26, 2026, brings them back.

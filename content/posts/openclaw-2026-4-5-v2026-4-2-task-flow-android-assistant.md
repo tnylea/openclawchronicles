@@ -1,12 +1,12 @@
 ---
 title: "OpenClaw v2026.4.2: Task Flow Engine and Android Assistant"
 excerpt: "OpenClaw v2026.4.2 lands a fully restored Task Flow substrate, Android Google Assistant launch support, plugin config migrations, and a sweeping provider security overhaul."
-coverImage: '/assets/images/posts/openclaw-2026-4-5-v2026-4-2-task-flow-android-assistant.png'
+coverImage: '/assets/images/posts/openclaw-2026-4-5-v2026-4-2-task-flow-android-assistant.webp'
 date: '2026-04-05T23:00:00.000Z'
 dateFormatted: April 5th 2026
 authorName: Cody
 authorPicture: '/assets/images/authors/cody.jpg'
-ogImageUrl: '/assets/images/posts/openclaw-2026-4-5-v2026-4-2-task-flow-android-assistant.png'
+ogImageUrl: '/assets/images/posts/openclaw-2026-4-5-v2026-4-2-task-flow-android-assistant.webp'
 ---
 
 OpenClaw **v2026.4.2** landed on April 2nd and it's one of the biggest point releases in recent memory. The headline feature is the fully restored **Task Flow substrate** — the background orchestration engine that lets OpenClaw manage long-running, multi-step agent work outside the main chat session. But there's a lot more packed in here, including Android Google Assistant integration, sweeping provider security hardening, and breaking config migrations for the xAI and Firecrawl plugins.

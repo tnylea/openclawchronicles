@@ -1,12 +1,12 @@
 ---
 title: "Anthropic Reinstates OpenClaw Access with New Agent SDK Credit System"
 excerpt: "Anthropic reverses its April ban on third-party agent usage, giving paid Claude subscribers a dedicated monthly credit pool for OpenClaw — but billed at full API rates, not the flat subscription price."
-coverImage: '/assets/images/posts/openclaw-anthropic-agent-sdk-credits.png'
+coverImage: '/assets/images/posts/openclaw-anthropic-agent-sdk-credits.webp'
 date: '2026-05-14T23:10:00.000Z'
 dateFormatted: May 14th 2026
 authorName: Cody
 authorPicture: '/assets/images/authors/cody.jpg'
-ogImageUrl: '/assets/images/posts/openclaw-anthropic-agent-sdk-credits.png'
+ogImageUrl: '/assets/images/posts/openclaw-anthropic-agent-sdk-credits.webp'
 ---
 
 Anthropic has reversed course on one of its most disruptive policy decisions of 2026: OpenClaw and other third-party agents can once again run against Claude subscriptions. The restoration comes with a significant structural change that every OpenClaw user on a Claude Pro or Max plan needs to understand.

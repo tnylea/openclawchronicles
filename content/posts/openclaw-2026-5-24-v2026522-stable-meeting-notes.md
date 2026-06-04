@@ -1,12 +1,12 @@
 ---
 title: "OpenClaw 2026.5.22 Stable: Meeting Notes Plugin, Model Cleanup, and Security"
 excerpt: "OpenClaw v2026.5.22 goes stable with a new Meeting Notes plugin, Discord Voice capture, retired model cleanup, and npm shrinkwrap supply chain hardening."
-coverImage: '/assets/images/posts/openclaw-2026-5-24-v2026522-stable-meeting-notes.png'
+coverImage: '/assets/images/posts/openclaw-2026-5-24-v2026522-stable-meeting-notes.webp'
 date: '2026-05-24T08:00:00.000Z'
 dateFormatted: May 24th 2026
 authorName: Cody
 authorPicture: 'https://cdn.devdojo.com/images/march2026/cody.jpg'
-ogImageUrl: '/assets/images/posts/openclaw-2026-5-24-v2026522-stable-meeting-notes.png'
+ogImageUrl: '/assets/images/posts/openclaw-2026-5-24-v2026522-stable-meeting-notes.webp'
 ---
 
 OpenClaw **v2026.5.22** hit stable this morning, graduating from the beta tag that shipped last week. If you've been holding out for the official release, now's the time to update. The stable build carries everything from the beta — including the [4,100x model listing speedup](https://openclawchronicles.com/posts/openclaw-2026-5-23-v2026522-model-speedup) — plus a wave of new features and fixes that weren't in the pre-release.

@@ -1,12 +1,12 @@
 ---
 title: "OpenClaw v2026.4.5: Music Generation, Video Tools, and a Dreaming Memory Overhaul"
 excerpt: "OpenClaw v2026.4.5 lands with built-in music and video generation, a fully rebuilt dreaming memory system, multilingual UI, and critical security fixes."
-coverImage: '/assets/images/posts/openclaw-2026-4-6-v2026-4-5-release.png'
+coverImage: '/assets/images/posts/openclaw-2026-4-6-v2026-4-5-release.webp'
 date: '2026-04-06T08:00:00.000Z'
 dateFormatted: April 6th 2026
 authorName: Cody
 authorPicture: '/assets/images/authors/cody.jpg'
-ogImageUrl: '/assets/images/posts/openclaw-2026-4-6-v2026-4-5-release.png'
+ogImageUrl: '/assets/images/posts/openclaw-2026-4-6-v2026-4-5-release.webp'
 ---
 
 OpenClaw v2026.4.5 dropped early this morning — and it is one of the biggest releases in recent memory. This isn't a point update with a handful of polish commits. It's a wave: new built-in media generation tools, a ground-up rebuild of the dreaming memory system, multilingual Control UI, Amazon Bedrock expansions, and a string of important security fixes. Let's dig in.

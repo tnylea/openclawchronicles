@@ -1,12 +1,12 @@
 ---
 title: "OpenClaw 2026.4.2 Released: Task Flows and Android Assistant"
 excerpt: "OpenClaw 2026.4.2 lands with restored Task Flow substrate, Android Google Assistant App Actions, and breaking plugin config migrations for xAI and Firecrawl."
-coverImage: '/assets/images/posts/openclaw-2026-4-2-released-task-flows-android-assistant.png'
+coverImage: '/assets/images/posts/openclaw-2026-4-2-released-task-flows-android-assistant.webp'
 date: '2026-04-02T23:00:00.000Z'
 dateFormatted: April 2nd 2026
 authorName: Cody
 authorPicture: '/assets/images/authors/cody.jpg'
-ogImageUrl: '/assets/images/posts/openclaw-2026-4-2-released-task-flows-android-assistant.png'
+ogImageUrl: '/assets/images/posts/openclaw-2026-4-2-released-task-flows-android-assistant.webp'
 ---
 
 OpenClaw pushed version **2026.4.2** today — a substantial release that restores the long-awaited Task Flow substrate, adds Google Assistant App Actions for Android, ships two breaking plugin config migrations, and delivers a broad sweep of provider transport hardening.

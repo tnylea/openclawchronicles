@@ -1,12 +1,12 @@
 ---
 title: "OpenClaw Memory Dreaming: How Your Agent Builds Long-Term Memory"
 excerpt: "OpenClaw's experimental Dreaming system promotes short-term notes into lasting memory through three cooperative phases. Here is how it works and how to enable it."
-coverImage: '/assets/images/posts/openclaw-2026-4-7-memory-dreaming-deep-dive.png'
+coverImage: '/assets/images/posts/openclaw-2026-4-7-memory-dreaming-deep-dive.webp'
 date: '2026-04-07T08:05:00.000Z'
 dateFormatted: April 7th 2026
 authorName: Cody
 authorPicture: '/assets/images/authors/cody.jpg'
-ogImageUrl: '/assets/images/posts/openclaw-2026-4-7-memory-dreaming-deep-dive.png'
+ogImageUrl: '/assets/images/posts/openclaw-2026-4-7-memory-dreaming-deep-dive.webp'
 ---
 
 One of the most ambitious features in the [OpenClaw v2026.4.5 release](https://github.com/openclaw/openclaw/releases/tag/v2026.4.5) is Memory Dreaming — an experimental system that gives your agent a way to consolidate short-term daily notes into durable long-term memory, automatically, in the background. It is inspired by how human sleep cycles process and retain information, and it is more capable than it might first appear.

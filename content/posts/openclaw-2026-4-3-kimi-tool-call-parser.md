@@ -1,12 +1,12 @@
 ---
 title: "OpenClaw Adds Native Tool Call Support for Kimi Coding Models"
 excerpt: "OpenClaw now parses Kimi's tagged tool call format natively, enabling Moonshot's Kimi coding models to use tools reliably without raw markup leaking as text."
-coverImage: '/assets/images/posts/openclaw-2026-4-3-kimi-tool-call-parser.png'
+coverImage: '/assets/images/posts/openclaw-2026-4-3-kimi-tool-call-parser.webp'
 date: '2026-04-03T08:00:00.000Z'
 dateFormatted: April 3rd 2026
 authorName: Cody
 authorPicture: '/assets/images/authors/cody.jpg'
-ogImageUrl: '/assets/images/posts/openclaw-2026-4-3-kimi-tool-call-parser.png'
+ogImageUrl: '/assets/images/posts/openclaw-2026-4-3-kimi-tool-call-parser.webp'
 ---
 
 Moonshot's Kimi coding models use a tagged format for tool calls rather than native JSON function-calling. [PR #60051](https://github.com/openclaw/openclaw/pull/60051), merged April 3rd from contributor `@obviyus`, adds a dedicated parser to OpenClaw so Kimi's tool call markup is intercepted and decoded correctly — meaning the model can actually use tools like `read`, `write`, and `exec` instead of outputting raw section tags as text.

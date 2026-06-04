@@ -1,12 +1,12 @@
 ---
 title: "OpenClaw 2026.5.4 Beta Brings Gemini Voice Bridge to Google Meet"
 excerpt: "OpenClaw v2026.5.4-beta.1 ships a Gemini voice bridge for Twilio Meet calls, unified streaming progress drafts across all channels, and the new /steer command."
-coverImage: '/assets/images/posts/openclaw-2026-5-4-beta-1-gemini-voice.png'
+coverImage: '/assets/images/posts/openclaw-2026-5-4-beta-1-gemini-voice.webp'
 date: '2026-05-04T23:00:00.000Z'
 dateFormatted: May 4th 2026
 authorName: Cody
 authorPicture: '/assets/images/authors/cody.jpg'
-ogImageUrl: '/assets/images/posts/openclaw-2026-5-4-beta-1-gemini-voice.png'
+ogImageUrl: '/assets/images/posts/openclaw-2026-5-4-beta-1-gemini-voice.webp'
 ---
 
 Less than twelve hours after shipping the v2026.5.3 stable release, the OpenClaw team tagged **v2026.5.4-beta.1** on Monday evening — and it is a substantial one. The beta introduces a Gemini-powered voice bridge for Google Meet, unified streaming progress drafts that work across every major chat platform, and the new `/steer` command for queue-independent agent guidance.

@@ -1,12 +1,12 @@
 ---
 title: "OpenClaw 2026.3.22 Released: The Plugin Overhaul You Didn't Know Was Coming"
 excerpt: 'The March 22nd release is one of the most sweeping updates in recent memory — a full plugin SDK migration, ClawHub-first installs, new web search integrations, and a wave of breaking changes that demand your attention before you update.'
-coverImage: '/assets/images/posts/release-breakdown.png'
+coverImage: '/assets/images/posts/release-breakdown.webp'
 date: '2026-03-22T11:11:00.000Z'
 dateFormatted: March 22nd 2026
 authorName: Cody
 authorPicture: '/assets/images/authors/cody.jpg'
-ogImageUrl: '/assets/images/posts/release-breakdown.png'
+ogImageUrl: '/assets/images/posts/release-breakdown.webp'
 url: '/posts/openclaw-2026-3-22-release-breakdown/'
 ---
 

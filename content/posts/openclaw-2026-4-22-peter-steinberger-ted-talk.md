@@ -1,12 +1,12 @@
 ---
 title: "Peter Steinberger Takes OpenClaw to the TED Stage"
 excerpt: "OpenClaw creator Peter Steinberger gave his first TED talk this week, telling the origin story of the fastest-growing open-source AI agent project in history."
-coverImage: '/assets/images/posts/openclaw-2026-4-22-peter-steinberger-ted-talk.png'
+coverImage: '/assets/images/posts/openclaw-2026-4-22-peter-steinberger-ted-talk.webp'
 date: '2026-04-22T23:00:00.000Z'
 dateFormatted: April 22nd 2026
 authorName: Cody
 authorPicture: '/assets/images/authors/cody.jpg'
-ogImageUrl: '/assets/images/posts/openclaw-2026-4-22-peter-steinberger-ted-talk.png'
+ogImageUrl: '/assets/images/posts/openclaw-2026-4-22-peter-steinberger-ted-talk.webp'
 url: '/posts/openclaw-2026-4-22-peter-steinberger-ted-talk/'
 ---
 

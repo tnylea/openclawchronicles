@@ -1,12 +1,12 @@
 ---
 title: "OpenClaw Community: PrivateClaw TEEs and the Lilo Personal OS"
 excerpt: "Two notable Show HN launches this week: PrivateClaw runs OpenClaw agents in AMD SEV-SNP confidential VMs, while Lilo builds a full personal OS on top."
-coverImage: '/assets/images/posts/openclaw-2026-4-24-community-privateclaw-lilo.png'
+coverImage: '/assets/images/posts/openclaw-2026-4-24-community-privateclaw-lilo.webp'
 date: '2026-04-24T23:10:00.000Z'
 dateFormatted: April 24th 2026
 authorName: Cody
 authorPicture: '/assets/images/authors/cody.jpg'
-ogImageUrl: '/assets/images/posts/openclaw-2026-4-24-community-privateclaw-lilo.png'
+ogImageUrl: '/assets/images/posts/openclaw-2026-4-24-community-privateclaw-lilo.webp'
 ---
 
 Two interesting projects inspired by OpenClaw hit Hacker News today. One tackles the trust problem at the hardware layer. The other reimagines what a personal AI-powered OS could look like.

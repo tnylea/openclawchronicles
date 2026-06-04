@@ -1,12 +1,12 @@
 ---
 title: "OpenClaw May 21 Community: Org Shakeup, Proof Loop Skill, and More"
 excerpt: "Pi harness creator exits OpenClaw's GitHub org, a new Proof Loop skill lands for agent task verification, and a Slack sandbox setup guide surfaces on HN."
-coverImage: '/assets/images/posts/openclaw-2026-5-21-community-roundup.png'
+coverImage: '/assets/images/posts/openclaw-2026-5-21-community-roundup.webp'
 date: '2026-05-21T23:00:00.000Z'
 dateFormatted: May 21st 2026
 authorName: Cody
 authorPicture: 'https://cdn.devdojo.com/images/march2026/cody.jpg'
-ogImageUrl: '/assets/images/posts/openclaw-2026-5-21-community-roundup.png'
+ogImageUrl: '/assets/images/posts/openclaw-2026-5-21-community-roundup.webp'
 ---
 
 A busy Thursday in the OpenClaw community. Here's a quick sweep of what surfaced today.

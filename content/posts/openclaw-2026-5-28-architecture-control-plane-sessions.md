@@ -1,12 +1,12 @@
 ---
 title: "OpenClaw Architecture Explained: Control Plane, Sessions, and Event Loop"
 excerpt: "The Agent Stack publishes a clear breakdown of OpenClaw's event-driven architecture — Gateway, sessions, the lane-aware queue, and why agents feel autonomous without magic."
-coverImage: '/assets/images/posts/openclaw-2026-5-28-architecture-control-plane-sessions.png'
+coverImage: '/assets/images/posts/openclaw-2026-5-28-architecture-control-plane-sessions.webp'
 date: '2026-05-28T23:05:00.000Z'
 dateFormatted: May 28th 2026
 authorName: Cody
 authorPicture: 'https://cdn.devdojo.com/images/march2026/cody.jpg'
-ogImageUrl: '/assets/images/posts/openclaw-2026-5-28-architecture-control-plane-sessions.png'
+ogImageUrl: '/assets/images/posts/openclaw-2026-5-28-architecture-control-plane-sessions.webp'
 ---
 
 A new piece from [The Agent Stack](https://theagentstack.substack.com/p/openclaw-architecture-part-1-control) — posted today and currently sitting at 4 points on [Hacker News](https://news.ycombinator.com/item?id=48311991) — does something that most OpenClaw write-ups skip: it explains *why* the architecture is designed the way it is, not just *what* the parts are. Part 1 covers the control plane, session model, and the event loop that makes an agent feel "alive." It is worth reading in full, but here is a distillation of the key ideas.

@@ -1,12 +1,12 @@
 ---
 title: "OpenClaw v2026.4.9: Critical Security Patches — Upgrade Now"
 excerpt: "OpenClaw v2026.4.9 ships a major security batch covering SSRF bypasses, dotenv injection, exec sanitization, and more. Upgrade immediately."
-coverImage: '/assets/images/posts/openclaw-2026-4-9-security-patches.png'
+coverImage: '/assets/images/posts/openclaw-2026-4-9-security-patches.webp'
 date: '2026-04-09T23:00:00.000Z'
 dateFormatted: April 9th 2026
 authorName: Cody
 authorPicture: '/assets/images/authors/cody.jpg'
-ogImageUrl: '/assets/images/posts/openclaw-2026-4-9-security-patches.png'
+ogImageUrl: '/assets/images/posts/openclaw-2026-4-9-security-patches.webp'
 ---
 
 🔒 **This is a must-upgrade release.** OpenClaw v2026.4.9 lands with one of the largest security batches in recent memory — ten distinct fixes spanning browser SSRF quarantine bypasses, dotenv injection vectors, exec event sanitization, allowlist authorization gaps, and dependency-level vulnerabilities. If you are running any prior version, stop reading and upgrade now. Come back for the details.

@@ -1,12 +1,12 @@
 ---
 title: "OpenClaw Skill Workshop: Agents Can Now Propose Their Own Skills"
 excerpt: "OpenClaw's new Skill Workshop lets agents draft, revise, and submit skill proposals through a guarded lifecycle with human review and rollback safeguards."
-coverImage: '/assets/images/posts/openclaw-2026-5-31-skill-workshop.png'
+coverImage: '/assets/images/posts/openclaw-2026-5-31-skill-workshop.webp'
 date: '2026-05-31T08:00:00.000Z'
 dateFormatted: May 31st 2026
 authorName: Cody
 authorPicture: 'https://cdn.devdojo.com/images/march2026/cody.jpg'
-ogImageUrl: '/assets/images/posts/openclaw-2026-5-31-skill-workshop.png'
+ogImageUrl: '/assets/images/posts/openclaw-2026-5-31-skill-workshop.webp'
 ---
 
 The latest OpenClaw beta — `v2026.5.30-beta.1` — ships a feature that changes the relationship between agents and skills: **Skill Workshop**. For the first time, an agent can draft a skill proposal, revise it in place, and submit it through a formal review queue — all without a human writing a single line of SKILL.md by hand.

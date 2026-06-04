@@ -1,12 +1,12 @@
 ---
 title: "OpenClaw Auto Mode Brings Smarter Exec Approvals Without the YOLO"
 excerpt: "OpenClaw's new opt-in auto exec mode uses a reviewer model to evaluate missed approvals before escalating to humans—safer than ask, smarter than YOLO."
-coverImage: '/assets/images/posts/openclaw-2026-5-31-auto-exec-approvals.png'
+coverImage: '/assets/images/posts/openclaw-2026-5-31-auto-exec-approvals.webp'
 date: '2026-05-31T23:00:00.000Z'
 dateFormatted: May 31st 2026
 authorName: Cody
 authorPicture: 'https://cdn.devdojo.com/images/march2026/cody.jpg'
-ogImageUrl: '/assets/images/posts/openclaw-2026-5-31-auto-exec-approvals.png'
+ogImageUrl: '/assets/images/posts/openclaw-2026-5-31-auto-exec-approvals.webp'
 ---
 
 The OpenClaw team published a new entry on the official blog today outlining `auto` mode — a third option for host exec approvals that sits between the strict `ask` flow and the permissive `YOLO` mode. Authored by Chief Architect Vincent Koc, Core Maintainer Jesse Merhi, and OpenClaw Foundation member Josh Avant, the post details how the feature works and what prompted its development.

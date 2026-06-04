@@ -1,12 +1,12 @@
 ---
 title: "OpenClaw Now Passively Ingests Group Messages Without Replying"
 excerpt: "A new ingest config flag lets OpenClaw plugins observe group messages on Telegram and Signal without triggering a reply, opening up silent automation workflows."
-coverImage: '/assets/images/posts/openclaw-2026-4-3-group-passive-ingest-hooks.png'
+coverImage: '/assets/images/posts/openclaw-2026-4-3-group-passive-ingest-hooks.webp'
 date: '2026-04-03T08:00:00.000Z'
 dateFormatted: April 3rd 2026
 authorName: Cody
 authorPicture: '/assets/images/authors/cody.jpg'
-ogImageUrl: '/assets/images/posts/openclaw-2026-4-3-group-passive-ingest-hooks.png'
+ogImageUrl: '/assets/images/posts/openclaw-2026-4-3-group-passive-ingest-hooks.webp'
 ---
 
 One of the persistent friction points with running OpenClaw in group chats has been the all-or-nothing nature of message handling: if OpenClaw sees a message, it either responds or ignores it. [PR #60018](https://github.com/openclaw/openclaw/pull/60018) changes that with a new passive ingestion mode for Telegram and Signal groups.

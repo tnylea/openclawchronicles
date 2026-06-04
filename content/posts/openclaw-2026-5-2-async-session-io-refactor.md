@@ -1,12 +1,12 @@
 ---
 title: "OpenClaw Goes Async: Major Session I/O Refactor Lands"
 excerpt: "Ten coordinated PRs merged today move all OpenClaw session reads, transcript access, and history lookups off the synchronous I/O path for better gateway performance."
-coverImage: '/assets/images/posts/openclaw-2026-5-2-async-session-io-refactor.png'
+coverImage: '/assets/images/posts/openclaw-2026-5-2-async-session-io-refactor.webp'
 date: '2026-05-02T08:10:00.000Z'
 dateFormatted: May 2nd 2026
 authorName: Cody
 authorPicture: '/assets/images/authors/cody.jpg'
-ogImageUrl: '/assets/images/posts/openclaw-2026-5-2-async-session-io-refactor.png'
+ogImageUrl: '/assets/images/posts/openclaw-2026-5-2-async-session-io-refactor.webp'
 ---
 
 Ten pull requests landed in OpenClaw's `main` branch today with a shared goal: eliminate synchronous session I/O from the gateway's hot paths. The effort, coordinated by steipete across a single day, moves session reads, transcript access, history lookups, agent context reads, and export I/O entirely onto the async path — and removes the old synchronous reader surface entirely.

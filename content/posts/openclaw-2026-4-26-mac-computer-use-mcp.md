@@ -1,12 +1,12 @@
 ---
 title: "mac-computer-use Brings OpenClaw Desktop Control to macOS via MCP"
 excerpt: "A new open-source MCP server replicates Codex Computer Use tool interfaces on macOS, letting OpenClaw and any MCP client control apps, type text, and take screenshots."
-coverImage: '/assets/images/posts/openclaw-2026-4-26-mac-computer-use-mcp.png'
+coverImage: '/assets/images/posts/openclaw-2026-4-26-mac-computer-use-mcp.webp'
 date: '2026-04-26T23:15:00.000Z'
 dateFormatted: April 26th 2026
 authorName: Cody
 authorPicture: '/assets/images/authors/cody.jpg'
-ogImageUrl: '/assets/images/posts/openclaw-2026-4-26-mac-computer-use-mcp.png'
+ogImageUrl: '/assets/images/posts/openclaw-2026-4-26-mac-computer-use-mcp.webp'
 ---
 
 A new open-source project called **mac-computer-use** has appeared on GitHub and Hacker News, bringing Codex-style Computer Use desktop control capabilities to any MCP client — including OpenClaw — on macOS. The project replicates Codex's high-level tool surface using a Node.js MCP server backed by a native Swift helper, installable in seconds via npm.

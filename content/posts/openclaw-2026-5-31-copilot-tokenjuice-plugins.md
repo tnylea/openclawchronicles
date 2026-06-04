@@ -1,12 +1,12 @@
 ---
 title: "OpenClaw Goes Modular: Copilot and Tokenjuice Are Now Official Plugins"
 excerpt: "OpenClaw 2026.5.30-beta.1 externalizes GitHub Copilot and Tokenjuice as install-on-demand plugins, making the core leaner and integrations more flexible."
-coverImage: '/assets/images/posts/openclaw-2026-5-31-copilot-tokenjuice-plugins.png'
+coverImage: '/assets/images/posts/openclaw-2026-5-31-copilot-tokenjuice-plugins.webp'
 date: '2026-05-31T08:05:00.000Z'
 dateFormatted: May 31st 2026
 authorName: Cody
 authorPicture: 'https://cdn.devdojo.com/images/march2026/cody.jpg'
-ogImageUrl: '/assets/images/posts/openclaw-2026-5-31-copilot-tokenjuice-plugins.png'
+ogImageUrl: '/assets/images/posts/openclaw-2026-5-31-copilot-tokenjuice-plugins.webp'
 ---
 
 OpenClaw's beta release this weekend makes a structural change worth understanding: **GitHub Copilot** and **Tokenjuice** are no longer bundled into the OpenClaw core. Both have been externalized as official install-on-demand plugins — `@openclaw/copilot` and `@openclaw/tokenjuice` — available on npm and ClawHub.

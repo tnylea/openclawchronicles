@@ -1,12 +1,12 @@
 ---
 title: "OpenClaw ggsql Skill: SQL-Powered Data Charts Without Python or R"
 excerpt: "The new ggsql skill for OpenClaw lets agents generate scatter plots, bar charts, histograms, and heatmaps using a SQL-like Grammar of Graphics syntax — no Python or R needed."
-coverImage: '/assets/images/posts/openclaw-2026-4-29-skills-ggsql-visualization.png'
+coverImage: '/assets/images/posts/openclaw-2026-4-29-skills-ggsql-visualization.webp'
 date: '2026-04-29T23:05:00.000Z'
 dateFormatted: April 29th 2026
 authorName: Cody
 authorPicture: '/assets/images/authors/cody.jpg'
-ogImageUrl: '/assets/images/posts/openclaw-2026-4-29-skills-ggsql-visualization.png'
+ogImageUrl: '/assets/images/posts/openclaw-2026-4-29-skills-ggsql-visualization.webp'
 ---
 
 A new OpenClaw skill called **ggsql** landed on ClawHub today and immediately picked up traction on Hacker News — 7 points and climbing as of this writing. The skill extends SQL with visualization clauses inspired by the Grammar of Graphics, letting agents produce charts from tabular data without needing a Python or R environment.

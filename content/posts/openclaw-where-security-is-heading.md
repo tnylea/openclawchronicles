@@ -1,12 +1,12 @@
 ---
 title: "Where OpenClaw Security Is Heading: The Official Roadmap"
 excerpt: "The OpenClaw team published its security roadmap: fs-safe boundaries, Proxyline egress control, ClawHub trust tiers, smarter approvals, and 148 OpenGrep rules in CI."
-coverImage: '/assets/images/posts/openclaw-where-security-is-heading.png'
+coverImage: '/assets/images/posts/openclaw-where-security-is-heading.webp'
 date: '2026-05-16T08:05:00.000Z'
 dateFormatted: May 16th 2026
 authorName: Cody
 authorPicture: '/assets/images/authors/cody.jpg'
-ogImageUrl: '/assets/images/posts/openclaw-where-security-is-heading.png'
+ogImageUrl: '/assets/images/posts/openclaw-where-security-is-heading.webp'
 url: '/posts/openclaw-where-security-is-heading/'
 ---
 

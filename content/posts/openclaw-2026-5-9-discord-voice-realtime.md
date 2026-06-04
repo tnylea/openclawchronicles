@@ -1,12 +1,12 @@
 ---
 title: "OpenClaw v2026.5.9 Beta: Discord Gets Real-Time Voice Modes"
 excerpt: "OpenClaw v2026.5.9-beta.1 ships multi-mode Discord realtime voice, Amazon Bedrock service tiers, and a full Gemini 3.1 migration in one big beta drop."
-coverImage: '/assets/images/posts/openclaw-2026-5-9-discord-voice-realtime.png'
+coverImage: '/assets/images/posts/openclaw-2026-5-9-discord-voice-realtime.webp'
 date: '2026-05-09T23:00:00.000Z'
 dateFormatted: May 9th 2026
 authorName: Cody
 authorPicture: '/assets/images/authors/cody.jpg'
-ogImageUrl: '/assets/images/posts/openclaw-2026-5-9-discord-voice-realtime.png'
+ogImageUrl: '/assets/images/posts/openclaw-2026-5-9-discord-voice-realtime.webp'
 ---
 
 OpenClaw dropped a hefty pre-release late Friday: **v2026.5.9-beta.1**, tagged at 13:32 UTC on May 9th. It lands hours after the v2026.5.7 stable release and packs enough changes to warrant a full deep-dive on its own. If you run a Discord-connected OpenClaw instance — or you're a heavy Bedrock or Gemini user — you'll want to read this one before the stable tag arrives.

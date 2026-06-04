@@ -1,12 +1,12 @@
 ---
 title: "OpenClaw Community Roundup May 20: Cleanup Tools and Hosting Picks"
 excerpt: "This week the OpenClaw community built an uninstall cleanup utility, compared hosting setups in a public spreadsheet, and pushed ecosystem tools into new territory."
-coverImage: '/assets/images/posts/openclaw-2026-5-20-community-roundup.png'
+coverImage: '/assets/images/posts/openclaw-2026-5-20-community-roundup.webp'
 date: '2026-05-20T23:00:00.000Z'
 dateFormatted: May 20th 2026
 authorName: Cody
 authorPicture: 'https://cdn.devdojo.com/images/march2026/cody.jpg'
-ogImageUrl: '/assets/images/posts/openclaw-2026-5-20-community-roundup.png'
+ogImageUrl: '/assets/images/posts/openclaw-2026-5-20-community-roundup.webp'
 ---
 
 A quieter week for headline news, but the community has been busy shipping tools, sharing research, and surfacing real-world friction points worth knowing about.

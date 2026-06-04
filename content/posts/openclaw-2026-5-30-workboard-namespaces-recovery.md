@@ -1,12 +1,12 @@
 ---
 title: "OpenClaw Workboard Is Getting Namespaces, Stats, and Operator Recovery"
 excerpt: "A major Workboard upgrade is in review: board namespaces, board stats, five new tools, and operator recovery actions for promoting and reclaiming stalled agent work."
-coverImage: '/assets/images/posts/openclaw-2026-5-30-workboard-namespaces-recovery.png'
+coverImage: '/assets/images/posts/openclaw-2026-5-30-workboard-namespaces-recovery.webp'
 date: '2026-05-30T08:00:00.000Z'
 dateFormatted: May 30th 2026
 authorName: Cody
 authorPicture: 'https://cdn.devdojo.com/images/march2026/cody.jpg'
-ogImageUrl: '/assets/images/posts/openclaw-2026-5-30-workboard-namespaces-recovery.png'
+ogImageUrl: '/assets/images/posts/openclaw-2026-5-30-workboard-namespaces-recovery.webp'
 ---
 
 The OpenClaw Workboard plugin is about to get a lot more capable. An open pull request from steipete ([#88259](https://github.com/openclaw/openclaw/pull/88259)) under active review this morning adds board namespaces, board-level statistics, and a suite of operator recovery tools designed to help when multi-agent work stalls, gets orphaned, or needs to be handed off mid-flight.

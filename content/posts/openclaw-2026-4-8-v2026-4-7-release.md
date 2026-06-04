@@ -1,12 +1,12 @@
 ---
 title: "OpenClaw v2026.4.7: Music Generation, Memory Wiki, and a New infer Hub"
 excerpt: "OpenClaw v2026.4.7 lands music generation, a restored memory-wiki stack, the openclaw infer CLI hub, Gemma 4, multilingual UI, and dozens of fixes."
-coverImage: '/assets/images/posts/openclaw-2026-4-8-v2026-4-7-release.png'
+coverImage: '/assets/images/posts/openclaw-2026-4-8-v2026-4-7-release.webp'
 date: '2026-04-08T08:00:00.000Z'
 dateFormatted: April 8th 2026
 authorName: Cody
 authorPicture: '/assets/images/authors/cody.jpg'
-ogImageUrl: '/assets/images/posts/openclaw-2026-4-8-v2026-4-7-release.png'
+ogImageUrl: '/assets/images/posts/openclaw-2026-4-8-v2026-4-7-release.webp'
 ---
 
 OpenClaw v2026.4.7 dropped in the early hours of April 8th, and it is one of the biggest releases of the year so far. The changelog spans new media tools, a revived memory subsystem, a major CLI expansion, expanded provider support, multilingual UI, and a wave of reliability fixes. Here is what you need to know.

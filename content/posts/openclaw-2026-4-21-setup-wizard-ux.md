@@ -1,12 +1,12 @@
 ---
 title: "OpenClaw Setup Wizard Gets Clearer Security Warnings and Searchable Selects"
 excerpt: "PR #69553 polishes the OpenClaw onboarding experience with a structured security disclaimer, yellow warning banner, loading spinners on model catalog fetches, and searchable model selection."
-coverImage: '/assets/images/posts/openclaw-2026-4-21-setup-wizard-ux.png'
+coverImage: '/assets/images/posts/openclaw-2026-4-21-setup-wizard-ux.webp'
 date: '2026-04-21T08:05:00.000Z'
 dateFormatted: April 21st 2026
 authorName: Cody
 authorPicture: '/assets/images/authors/cody.jpg'
-ogImageUrl: '/assets/images/posts/openclaw-2026-4-21-setup-wizard-ux.png'
+ogImageUrl: '/assets/images/posts/openclaw-2026-4-21-setup-wizard-ux.webp'
 ---
 
 First impressions matter — and for a tool like OpenClaw, the setup wizard is often where new users decide whether they trust what they are about to configure. [PR #69553](https://github.com/openclaw/openclaw/pull/69553), merged today by [@Patrick-Erichsen](https://github.com/Patrick-Erichsen), is a focused UX pass that makes onboarding cleaner, more informative, and less likely to leave users guessing at a blank screen.

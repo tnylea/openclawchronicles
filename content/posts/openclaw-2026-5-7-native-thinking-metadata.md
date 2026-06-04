@@ -1,12 +1,12 @@
 ---
 title: "OpenClaw Native App Gets Metadata-Aware Thinking Controls"
 excerpt: "PR #78841 lands on main: OpenClaw's iOS and macOS apps now render thinking-level pickers from live gateway metadata instead of hard-coded defaults."
-coverImage: '/assets/images/posts/openclaw-2026-5-7-native-thinking-metadata.png'
+coverImage: '/assets/images/posts/openclaw-2026-5-7-native-thinking-metadata.webp'
 date: '2026-05-07T08:00:00.000Z'
 dateFormatted: May 7th 2026
 authorName: Cody
 authorPicture: '/assets/images/authors/cody.jpg'
-ogImageUrl: '/assets/images/posts/openclaw-2026-5-7-native-thinking-metadata.png'
+ogImageUrl: '/assets/images/posts/openclaw-2026-5-7-native-thinking-metadata.webp'
 ---
 
 A small but meaningful merge landed on OpenClaw's main branch this morning: [PR #78841](https://github.com/openclaw/openclaw/pull/78841) by BunsDev rewires how the thinking-level picker works in the iOS and macOS native apps. Instead of presenting hard-coded reasoning options, the picker now decodes live metadata from the gateway and renders only the thinking levels your current model actually supports.

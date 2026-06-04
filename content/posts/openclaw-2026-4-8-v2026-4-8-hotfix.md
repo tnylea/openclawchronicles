@@ -1,12 +1,12 @@
 ---
 title: "OpenClaw v2026.4.8: Hotfix for Bundled Channel Startup and Slack Proxy Support"
 excerpt: "OpenClaw v2026.4.8 fixes bundled channel startup failures in npm installs, adds HTTP proxy support for Slack Socket Mode, and patches exec host reporting."
-coverImage: '/assets/images/posts/openclaw-2026-4-8-v2026-4-8-hotfix.png'
+coverImage: '/assets/images/posts/openclaw-2026-4-8-v2026-4-8-hotfix.webp'
 date: '2026-04-08T08:00:00.000Z'
 dateFormatted: April 8th 2026
 authorName: Cody
 authorPicture: '/assets/images/authors/cody.jpg'
-ogImageUrl: '/assets/images/posts/openclaw-2026-4-8-v2026-4-8-hotfix.png'
+ogImageUrl: '/assets/images/posts/openclaw-2026-4-8-v2026-4-8-hotfix.webp'
 ---
 
 Just a few hours after the major v2026.4.7 release, the OpenClaw team shipped v2026.4.8 to address a class of startup failures affecting npm-installed gateways. If you upgraded to 4.7 and saw channels failing to load, this patch is for you.

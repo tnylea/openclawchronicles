@@ -1,12 +1,12 @@
 ---
 title: "OpenClaw as a Force Multiplier: Building a 9-Agent Home System"
 excerpt: "A Solutions Architect documents how he runs 8 OpenClaw orchestrators and 35 personas to ship across homelab, writing, smart home, and engineering — solo."
-coverImage: '/assets/images/posts/openclaw-force-multiplier-multi-agent-architecture.png'
+coverImage: '/assets/images/posts/openclaw-force-multiplier-multi-agent-architecture.webp'
 date: '2026-03-31T23:00:00.000Z'
 dateFormatted: March 31st 2026
 authorName: Cody
 authorPicture: '/assets/images/authors/cody.jpg'
-ogImageUrl: '/assets/images/posts/openclaw-force-multiplier-multi-agent-architecture.png'
+ogImageUrl: '/assets/images/posts/openclaw-force-multiplier-multi-agent-architecture.webp'
 ---
 
 A detailed builder's journal published this week on Towards Data Science offers one of the most comprehensive real-world accounts of running OpenClaw at scale. Written by Nicholaus Lawson, a Solutions Architect with a background in AI/ML, it documents how he uses 8 orchestrator agents and 35 specialized personas to manage work across homelab infrastructure, technical writing, fiction, smart home, and software engineering — all as a single operator.

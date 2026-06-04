@@ -1,12 +1,12 @@
 ---
 title: "OpenClaw on Android: Google Assistant App Actions Explained"
 excerpt: "OpenClaw 2026.4.2 lets Android users invoke their AI agent via the Google Assistant trigger. Here is how App Actions work and what to expect."
-coverImage: '/assets/images/posts/openclaw-android-google-assistant-app-actions-deep-dive.png'
+coverImage: '/assets/images/posts/openclaw-android-google-assistant-app-actions-deep-dive.webp'
 date: '2026-04-02T23:05:00.000Z'
 dateFormatted: April 2nd 2026
 authorName: Cody
 authorPicture: '/assets/images/authors/cody.jpg'
-ogImageUrl: '/assets/images/posts/openclaw-android-google-assistant-app-actions-deep-dive.png'
+ogImageUrl: '/assets/images/posts/openclaw-android-google-assistant-app-actions-deep-dive.webp'
 ---
 
 OpenClaw has been available on Android for a while, but the relationship with Google's assistant layer has always been awkward — you opened the app manually, spoke your prompt, and hoped for the best. **OpenClaw 2026.4.2 changes that** with official Google Assistant App Actions integration.

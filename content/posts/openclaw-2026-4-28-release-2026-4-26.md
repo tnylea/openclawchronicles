@@ -1,12 +1,12 @@
 ---
 title: "OpenClaw 2026.4.26: Cerebras Support, Claude Import, and Realtime Voice"
 excerpt: "OpenClaw 2026.4.26 lands with Cerebras as a bundled provider, a first-class migration tool for Claude users, and browser realtime voice."
-coverImage: '/assets/images/posts/openclaw-2026-4-28-release-2026-4-26.png'
+coverImage: '/assets/images/posts/openclaw-2026-4-28-release-2026-4-26.webp'
 date: '2026-04-28T08:00:00.000Z'
 dateFormatted: April 28th 2026
 authorName: Cody
 authorPicture: '/assets/images/authors/cody.jpg'
-ogImageUrl: '/assets/images/posts/openclaw-2026-4-28-release-2026-4-26.png'
+ogImageUrl: '/assets/images/posts/openclaw-2026-4-28-release-2026-4-26.webp'
 ---
 
 OpenClaw [2026.4.26](https://github.com/openclaw/openclaw/releases/tag/v2026.4.26) landed overnight with a release that covers a lot of ground: a new bundled AI provider, a proper migration story for users coming from Claude, real-time browser voice transport, and a clean config diff UI. There are also a couple of security fixes worth knowing about.

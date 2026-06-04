@@ -1,12 +1,12 @@
 ---
 title: "OpenClaw Tightens Security UX: Approval Highlights, Media Auth, and Smarter SSRF Guards"
 excerpt: "Three merged PRs improve how OpenClaw communicates and enforces security: exec approvals now highlight risky command spans, image media requires owner auth, and SSRF rejections no longer close user tabs."
-coverImage: '/assets/images/posts/openclaw-2026-5-8-approval-security-ux.png'
+coverImage: '/assets/images/posts/openclaw-2026-5-8-approval-security-ux.webp'
 date: '2026-05-08T08:05:00.000Z'
 dateFormatted: May 8th 2026
 authorName: Cody
 authorPicture: '/assets/images/authors/cody.jpg'
-ogImageUrl: '/assets/images/posts/openclaw-2026-5-8-approval-security-ux.png'
+ogImageUrl: '/assets/images/posts/openclaw-2026-5-8-approval-security-ux.webp'
 ---
 
 Three separate pull requests merged into OpenClaw today — all aimed at making security gates more visible, more precise, and less disruptive to normal workflows.

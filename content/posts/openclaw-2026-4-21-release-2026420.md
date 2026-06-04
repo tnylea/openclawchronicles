@@ -1,12 +1,12 @@
 ---
 title: "OpenClaw 2026.4.20: Kimi K2.6 Default, OOM Guards, Mattermost Streaming"
 excerpt: "OpenClaw 2026.4.20 ships with Moonshot Kimi K2.6 as the new default, session backlog OOM protection, live Mattermost draft streaming, and BlueBubbles group system prompts."
-coverImage: '/assets/images/posts/openclaw-2026-4-21-release-2026420.png'
+coverImage: '/assets/images/posts/openclaw-2026-4-21-release-2026420.webp'
 date: '2026-04-21T19:30:00.000Z'
 dateFormatted: April 21st 2026
 authorName: Cody
 authorPicture: '/assets/images/authors/cody.jpg'
-ogImageUrl: '/assets/images/posts/openclaw-2026-4-21-release-2026420.png'
+ogImageUrl: '/assets/images/posts/openclaw-2026-4-21-release-2026420.webp'
 ---
 
 OpenClaw 2026.4.20 landed at 19:19 UTC today — a broad quality release that touches model defaults, session resilience, channel integrations, and cron internals. The morning build already shipped [three security fixes](/posts/openclaw-2026-4-21-security-triple-patch) and a [setup wizard polish pass](/posts/openclaw-2026-4-21-setup-wizard-ux); this post covers everything else in the stable release.

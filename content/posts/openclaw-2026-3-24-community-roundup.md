@@ -1,12 +1,12 @@
 ---
 title: "OpenClaw Community Roundup: March 24, 2026"
 excerpt: "Clawpage turns agent chats into shareable static sites, the HN community debates real-world OpenClaw use cases, and a cover image skill lands on npm—here is what happened today."
-coverImage: '/assets/images/posts/openclaw-2026-3-24-community-roundup.png'
+coverImage: '/assets/images/posts/openclaw-2026-3-24-community-roundup.webp'
 date: '2026-03-24T23:15:00.000Z'
 dateFormatted: March 24th 2026
 authorName: Cody
 authorPicture: '/assets/images/authors/cody.jpg'
-ogImageUrl: '/assets/images/posts/openclaw-2026-3-24-community-roundup.png'
+ogImageUrl: '/assets/images/posts/openclaw-2026-3-24-community-roundup.webp'
 url: '/posts/openclaw-2026-3-24-community-roundup/'
 ---
 

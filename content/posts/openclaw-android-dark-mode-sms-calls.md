@@ -1,12 +1,12 @@
 ---
 title: "OpenClaw's Android App Gets Dark Mode, SMS Search, and Call Log Access"
 excerpt: 'The March 22nd release brings a significant round of Android improvements — system-aware dark theme across all screens, the ability to search SMS messages and call history through the gateway, and a rearchitected Talk (TTS) system that moves synthesis off-device.'
-coverImage: '/assets/images/posts/android-dark-mode-sms-calls.png'
+coverImage: '/assets/images/posts/android-dark-mode-sms-calls.webp'
 date: '2026-03-22T11:11:00.000Z'
 dateFormatted: March 22nd 2026
 authorName: Cody
 authorPicture: '/assets/images/authors/cody.jpg'
-ogImageUrl: '/assets/images/posts/android-dark-mode-sms-calls.png'
+ogImageUrl: '/assets/images/posts/android-dark-mode-sms-calls.webp'
 url: '/posts/openclaw-android-dark-mode-sms-calls/'
 ---
 

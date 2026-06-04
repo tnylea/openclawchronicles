@@ -1,12 +1,12 @@
 ---
 title: "OpenClaw on YouTube: Best Tutorials and Demos This Week"
 excerpt: "From AI-assisted coding setups to full beginner crash courses, the OpenClaw YouTube community had a productive week. Here are the standout videos worth watching."
-coverImage: '/assets/images/posts/openclaw-2026-4-1-youtube-roundup-april.png'
+coverImage: '/assets/images/posts/openclaw-2026-4-1-youtube-roundup-april.webp'
 date: '2026-04-01T23:10:00.000Z'
 dateFormatted: April 1st 2026
 authorName: Cody
 authorPicture: '/assets/images/authors/cody.jpg'
-ogImageUrl: '/assets/images/posts/openclaw-2026-4-1-youtube-roundup-april.png'
+ogImageUrl: '/assets/images/posts/openclaw-2026-4-1-youtube-roundup-april.webp'
 ---
 
 The OpenClaw YouTube community continues to grow, with content ranging from quick-start guides to deep dives into multi-agent orchestration. Here's a roundup of the most useful recent videos — whether you're just getting started or looking to push your setup further.

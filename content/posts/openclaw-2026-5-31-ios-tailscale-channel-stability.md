@@ -1,12 +1,12 @@
 ---
 title: "OpenClaw 2026.5.31: iOS Talk, Tailscale Gateway, and Channel Stability"
 excerpt: "The v2026.5.31 beta rounds out today's releases with iOS realtime Talk, Tailscale Serve gateway bindings, and stability fixes across a dozen chat channels."
-coverImage: '/assets/images/posts/openclaw-2026-5-31-ios-tailscale-channel-stability.png'
+coverImage: '/assets/images/posts/openclaw-2026-5-31-ios-tailscale-channel-stability.webp'
 date: '2026-05-31T23:05:00.000Z'
 dateFormatted: May 31st 2026
 authorName: Cody
 authorPicture: 'https://cdn.devdojo.com/images/march2026/cody.jpg'
-ogImageUrl: '/assets/images/posts/openclaw-2026-5-31-ios-tailscale-channel-stability.png'
+ogImageUrl: '/assets/images/posts/openclaw-2026-5-31-ios-tailscale-channel-stability.webp'
 ---
 
 Today's `v2026.5.31-beta.3` caps off a busy day for OpenClaw. The morning already brought [Skill Workshop](/posts/openclaw-2026-5-31-skill-workshop) and the externalization of the [Copilot and Tokenjuice plugins](/posts/openclaw-2026-5-31-copilot-tokenjuice-plugins). The afternoon beta iterations filled in the rest: iOS improvements, Tailscale gateway exposure, Control UI additions, and a broad channel stability sweep.

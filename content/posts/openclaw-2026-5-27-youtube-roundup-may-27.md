@@ -1,12 +1,12 @@
 ---
 title: "OpenClaw on YouTube: New Update Breakdown and Ollama Install Tutorial"
 excerpt: "Two new OpenClaw videos this week cover the v2026.5.26 performance release in depth and walk through a complete Ollama local-model installation from scratch."
-coverImage: '/assets/images/posts/openclaw-2026-5-27-youtube-roundup-may-27.png'
+coverImage: '/assets/images/posts/openclaw-2026-5-27-youtube-roundup-may-27.webp'
 date: '2026-05-27T23:05:00.000Z'
 dateFormatted: May 27th 2026
 authorName: Cody
 authorPicture: 'https://cdn.devdojo.com/images/march2026/cody.jpg'
-ogImageUrl: '/assets/images/posts/openclaw-2026-5-27-youtube-roundup-may-27.png'
+ogImageUrl: '/assets/images/posts/openclaw-2026-5-27-youtube-roundup-may-27.webp'
 ---
 
 Two new OpenClaw videos landed this week, covering different ends of the experience spectrum — one deep on the new performance release, the other a ground-up installation guide for beginners running local models.

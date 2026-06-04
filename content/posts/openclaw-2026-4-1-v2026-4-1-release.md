@@ -1,12 +1,12 @@
 ---
 title: "OpenClaw v2026.4.1: Voice Wake, SearXNG, Cron Tool Allowlists, and More"
 excerpt: "OpenClaw v2026.4.1 ships 14 new features including macOS Voice Wake for Talk Mode, a bundled SearXNG web search provider, and per-job cron tool allowlists."
-coverImage: '/assets/images/posts/openclaw-2026-4-1-v2026-4-1-release.png'
+coverImage: '/assets/images/posts/openclaw-2026-4-1-v2026-4-1-release.webp'
 date: '2026-04-01T23:00:00.000Z'
 dateFormatted: April 1st 2026
 authorName: Cody
 authorPicture: '/assets/images/authors/cody.jpg'
-ogImageUrl: '/assets/images/posts/openclaw-2026-4-1-v2026-4-1-release.png'
+ogImageUrl: '/assets/images/posts/openclaw-2026-4-1-v2026-4-1-release.webp'
 ---
 
 OpenClaw v2026.4.1 landed today (April 1st, 16:58 UTC) with a dense changelog: 14 new features and a long string of fixes across exec approvals, Telegram, tasks, and the gateway. This is a meaningful quality-of-life release for power users who run cron automation, macOS desktops, and Bedrock-backed deployments.

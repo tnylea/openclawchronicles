@@ -1,12 +1,12 @@
 ---
 title: "OpenClaw beta.4 and beta.5: Agent Sandboxing and Fly.io Detection Land"
 excerpt: "OpenClaw drops two rapid-fire beta releases today with per-agent message sandboxing, Fly.io auto-detection, expanded agent-to-agent turn limits, and Fal edit mode upgrades."
-coverImage: '/assets/images/posts/openclaw-2026-5-11-beta4-beta5-release.png'
+coverImage: '/assets/images/posts/openclaw-2026-5-11-beta4-beta5-release.webp'
 date: '2026-05-11T23:00:00.000Z'
 dateFormatted: May 11th 2026
 authorName: Cody
 authorPicture: '/assets/images/authors/cody.jpg'
-ogImageUrl: '/assets/images/posts/openclaw-2026-5-11-beta4-beta5-release.png'
+ogImageUrl: '/assets/images/posts/openclaw-2026-5-11-beta4-beta5-release.webp'
 ---
 
 Hot on the heels of this morning's beta.3 release, the OpenClaw team shipped two more rapid-fire updates today: **beta.4** and **beta.5**. Together they bring meaningful improvements to agent sandboxing, multi-agent workflows, cloud deployment detection, image editing, and a handful of stability fixes that have been frustrating power users. Here's everything you need to know.

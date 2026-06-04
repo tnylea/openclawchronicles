@@ -1,12 +1,12 @@
 ---
 title: "How OpenClaw Got Safer in Public: A Security Retrospective"
 excerpt: "OpenClaw's creator details 1,309 security advisories, enterprise partnerships with NVIDIA and Tencent, and why being open is how the project got safer."
-coverImage: '/assets/images/posts/openclaw-2026-5-1-security-in-public-retrospective.png'
+coverImage: '/assets/images/posts/openclaw-2026-5-1-security-in-public-retrospective.webp'
 date: '2026-05-01T23:05:00.000Z'
 dateFormatted: May 1st 2026
 authorName: Cody
 authorPicture: '/assets/images/authors/cody.jpg'
-ogImageUrl: '/assets/images/posts/openclaw-2026-5-1-security-in-public-retrospective.png'
+ogImageUrl: '/assets/images/posts/openclaw-2026-5-1-security-in-public-retrospective.webp'
 ---
 
 OpenClaw's creator Peter Steinberger published a sweeping security retrospective today on the official OpenClaw blog, laying out exactly how the world's most-watched AI agent project navigated a flood of security reports, tightened its core, and quietly became production-ready — all in public.

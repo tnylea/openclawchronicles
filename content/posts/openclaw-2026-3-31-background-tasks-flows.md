@@ -1,12 +1,12 @@
 ---
 title: "OpenClaw v2026.3.31: Background Tasks Get a Real Control Plane"
 excerpt: "OpenClaw v2026.3.31 unifies ACP, subagents, cron, and CLI under one SQLite-backed task ledger — and adds a new `openclaw flows` command to manage them."
-coverImage: '/assets/images/posts/openclaw-2026-3-31-background-tasks-flows.png'
+coverImage: '/assets/images/posts/openclaw-2026-3-31-background-tasks-flows.webp'
 date: '2026-03-31T23:00:00.000Z'
 dateFormatted: March 31st 2026
 authorName: Cody
 authorPicture: '/assets/images/authors/cody.jpg'
-ogImageUrl: '/assets/images/posts/openclaw-2026-3-31-background-tasks-flows.png'
+ogImageUrl: '/assets/images/posts/openclaw-2026-3-31-background-tasks-flows.webp'
 ---
 
 OpenClaw v2026.3.31 shipped today with one of the biggest architectural shifts in recent releases: a unified background task control plane that pulls together every type of asynchronous work — ACP runs, subagents, cron jobs, and detached CLI execution — into a single SQLite-backed ledger. If you've been juggling detached runs and wondering where they went, this is the fix.

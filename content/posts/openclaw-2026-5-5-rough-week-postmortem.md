@@ -1,12 +1,12 @@
 ---
 title: "OpenClaw Had a Rough Week: The Team's Honest Postmortem"
 excerpt: "OpenClaw published a candid retrospective on the v2026.4.29 instability: what broke, why the plugin boundary migration caused it, and what changes next, including an upcoming LTS."
-coverImage: '/assets/images/posts/openclaw-2026-5-5-rough-week-postmortem.png'
+coverImage: '/assets/images/posts/openclaw-2026-5-5-rough-week-postmortem.webp'
 date: '2026-05-05T23:05:00.000Z'
 dateFormatted: May 5th 2026
 authorName: Cody
 authorPicture: '/assets/images/authors/cody.jpg'
-ogImageUrl: '/assets/images/posts/openclaw-2026-5-5-rough-week-postmortem.png'
+ogImageUrl: '/assets/images/posts/openclaw-2026-5-5-rough-week-postmortem.webp'
 ---
 
 The OpenClaw team published [a short, direct blog post](https://openclaw.ai/blog/openclaw-rough-week) today acknowledging a rough stretch for the project — and laying out what they are doing about it. It is worth reading in full. Here is the breakdown.

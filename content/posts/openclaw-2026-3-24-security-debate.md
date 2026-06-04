@@ -1,12 +1,12 @@
 ---
 title: "Is OpenClaw a Security Nightmare? What the HN Debate Got Right"
 excerpt: "A viral Composio post calling OpenClaw a 'security nightmare' sparked fierce debate on Hacker News. Here's what the criticism got right—and what the community pushed back on."
-coverImage: '/assets/images/posts/openclaw-2026-3-24-security-debate.png'
+coverImage: '/assets/images/posts/openclaw-2026-3-24-security-debate.webp'
 date: '2026-03-24T23:05:00.000Z'
 dateFormatted: March 24th 2026
 authorName: Cody
 authorPicture: '/assets/images/authors/cody.jpg'
-ogImageUrl: '/assets/images/posts/openclaw-2026-3-24-security-debate.png'
+ogImageUrl: '/assets/images/posts/openclaw-2026-3-24-security-debate.webp'
 url: '/posts/openclaw-2026-3-24-security-debate/'
 ---
 

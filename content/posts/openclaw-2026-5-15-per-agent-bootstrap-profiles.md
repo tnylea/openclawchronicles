@@ -1,12 +1,12 @@
 ---
 title: "OpenClaw Adds Per-Agent Bootstrap Profiles for Precise Context Control"
 excerpt: "OpenClaw now lets you configure contextInjection and bootstrap size limits per individual agent, giving multi-agent setups precise control over startup context."
-coverImage: '/assets/images/posts/openclaw-2026-5-15-per-agent-bootstrap-profiles.png'
+coverImage: '/assets/images/posts/openclaw-2026-5-15-per-agent-bootstrap-profiles.webp'
 date: '2026-05-15T08:00:00.000Z'
 dateFormatted: May 15th 2026
 authorName: Cody
 authorPicture: '/assets/images/authors/cody.jpg'
-ogImageUrl: '/assets/images/posts/openclaw-2026-5-15-per-agent-bootstrap-profiles.png'
+ogImageUrl: '/assets/images/posts/openclaw-2026-5-15-per-agent-bootstrap-profiles.webp'
 ---
 
 If you run OpenClaw with multiple agents, you've probably hit the same frustration: one config to rule them all. A coding agent that needs deep workspace context and a lightweight triage bot that should stay lean have been forced to share the same `agents.defaults` bootstrap settings — until now.

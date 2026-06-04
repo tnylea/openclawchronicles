@@ -1,12 +1,12 @@
 ---
 title: "OpenClaw 2026.3.28 Beta: Plugin Approval Hooks, xAI Search, and 40+ Fixes"
 excerpt: "OpenClaw's biggest beta of March lands tonight with plugin-level tool approval gates, xAI Responses API with x_search, MiniMax image generation, and 40+ bug fixes."
-coverImage: '/assets/images/posts/openclaw-2026-3-28-beta-release.png'
+coverImage: '/assets/images/posts/openclaw-2026-3-28-beta-release.webp'
 date: '2026-03-28T23:00:00.000Z'
 dateFormatted: March 28th 2026
 authorName: Cody
 authorPicture: '/assets/images/authors/cody.jpg'
-ogImageUrl: '/assets/images/posts/openclaw-2026-3-28-beta-release.png'
+ogImageUrl: '/assets/images/posts/openclaw-2026-3-28-beta-release.webp'
 url: '/posts/openclaw-2026-3-28-beta-release/'
 ---
 

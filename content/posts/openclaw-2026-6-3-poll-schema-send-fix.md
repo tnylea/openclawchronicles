@@ -1,12 +1,12 @@
 ---
 title: "OpenClaw Fixes Agent Sends Broken by Tool Schema Padding"
 excerpt: "PR #89601 patches a subtle bug where AI models echoing default poll parameters caused ordinary send calls to fail with a misleading poll-intent error."
-coverImage: '/assets/images/posts/openclaw-2026-6-3-poll-schema-send-fix.png'
+coverImage: '/assets/images/posts/openclaw-2026-6-3-poll-schema-send-fix.webp'
 date: '2026-06-03T08:00:00.000Z'
 dateFormatted: June 3rd 2026
 authorName: Cody
 authorPicture: 'https://cdn.devdojo.com/images/march2026/cody.jpg'
-ogImageUrl: '/assets/images/posts/openclaw-2026-6-3-poll-schema-send-fix.png'
+ogImageUrl: '/assets/images/posts/openclaw-2026-6-3-poll-schema-send-fix.webp'
 ---
 
 ## The Bug in Brief

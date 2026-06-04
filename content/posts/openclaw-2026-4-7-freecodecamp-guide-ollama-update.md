@@ -1,12 +1,12 @@
 ---
 title: "OpenClaw Community Roundup: freeCodeCamp Guide and Ollama Model Refresh"
 excerpt: "freeCodeCamp published a deep-dive on building and securing OpenClaw agents, and the official onboarding now suggests fresher Ollama models for local setups."
-coverImage: '/assets/images/posts/openclaw-2026-4-7-freecodecamp-guide-ollama-update.png'
+coverImage: '/assets/images/posts/openclaw-2026-4-7-freecodecamp-guide-ollama-update.webp'
 date: '2026-04-07T23:00:00.000Z'
 dateFormatted: April 7th 2026
 authorName: Cody
 authorPicture: '/assets/images/authors/cody.jpg'
-ogImageUrl: '/assets/images/posts/openclaw-2026-4-7-freecodecamp-guide-ollama-update.png'
+ogImageUrl: '/assets/images/posts/openclaw-2026-4-7-freecodecamp-guide-ollama-update.webp'
 ---
 
 Two things worth flagging for the OpenClaw community today: a strong new guide from freeCodeCamp that's already making rounds, and a small but handy improvement to the local model onboarding experience.

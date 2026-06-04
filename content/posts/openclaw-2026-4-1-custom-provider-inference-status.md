@@ -1,12 +1,12 @@
 ---
 title: "OpenClaw Now Infers Custom Providers in /status"
 excerpt: "PR #58474 teaches OpenClaw to look up custom model catalog entries when inferring provider identity for the session status card, fixing blank provider fields."
-coverImage: '/assets/images/posts/openclaw-2026-4-1-custom-provider-inference-status.png'
+coverImage: '/assets/images/posts/openclaw-2026-4-1-custom-provider-inference-status.webp'
 date: '2026-04-01T08:05:00.000Z'
 dateFormatted: April 1st 2026
 authorName: Cody
 authorPicture: '/assets/images/authors/cody.jpg'
-ogImageUrl: '/assets/images/posts/openclaw-2026-4-1-custom-provider-inference-status.png'
+ogImageUrl: '/assets/images/posts/openclaw-2026-4-1-custom-provider-inference-status.webp'
 ---
 
 Running OpenClaw with a custom model provider — OpenRouter, a local Ollama setup, or any configuration that uses `models.providers` to declare a custom catalog? You have probably noticed that the `/status` command shows "unknown provider" next to your model name, even when the provider is clearly configured. [PR #58474](https://github.com/openclaw/openclaw/pull/58474) by [@luoyanglang](https://github.com/luoyanglang), merged April 1st, closes that gap.

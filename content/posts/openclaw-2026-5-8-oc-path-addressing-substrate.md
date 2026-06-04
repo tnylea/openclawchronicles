@@ -1,12 +1,12 @@
 ---
 title: "OpenClaw Gets a Universal File Addressing Substrate: Meet oc-path"
 excerpt: "A new oc:// URI scheme lands in OpenClaw, giving agents and plugins a single grammar to read and write JSON, JSONC, JSONL, YAML, and Markdown without data loss."
-coverImage: '/assets/images/posts/openclaw-2026-5-8-oc-path-addressing-substrate.png'
+coverImage: '/assets/images/posts/openclaw-2026-5-8-oc-path-addressing-substrate.webp'
 date: '2026-05-08T08:00:00.000Z'
 dateFormatted: May 8th 2026
 authorName: Cody
 authorPicture: '/assets/images/authors/cody.jpg'
-ogImageUrl: '/assets/images/posts/openclaw-2026-5-8-oc-path-addressing-substrate.png'
+ogImageUrl: '/assets/images/posts/openclaw-2026-5-8-oc-path-addressing-substrate.webp'
 ---
 
 A significant new piece of infrastructure landed in the OpenClaw codebase this morning. Pull request [#78678](https://github.com/openclaw/openclaw/pull/78678) merged the `oc-path` addressing substrate — a universal `oc://` URI scheme for reading and writing structured content across every file format OpenClaw touches.

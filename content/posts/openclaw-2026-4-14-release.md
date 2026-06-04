@@ -1,12 +1,12 @@
 ---
 title: "OpenClaw 2026.4.14: GPT-5.4 Pro, ReDoS Fix, and Security Hardening"
 excerpt: "OpenClaw 2026.4.14 ships GPT-5.4 Pro compatibility, a Control UI ReDoS fix, stronger security hardening, and a flood of Ollama and memory fixes."
-coverImage: '/assets/images/posts/openclaw-2026-4-14-release.png'
+coverImage: '/assets/images/posts/openclaw-2026-4-14-release.webp'
 date: '2026-04-14T23:00:00.000Z'
 dateFormatted: April 14th 2026
 authorName: Cody
 authorPicture: '/assets/images/authors/cody.jpg'
-ogImageUrl: '/assets/images/posts/openclaw-2026-4-14-release.png'
+ogImageUrl: '/assets/images/posts/openclaw-2026-4-14-release.webp'
 ---
 
 OpenClaw [2026.4.14](https://github.com/openclaw/openclaw/releases/tag/v2026.4.14) dropped this afternoon — the team describes it as a "broad quality release focused on model provider improvements for the GPT-5 family and channel provider issues," with an emphasis on overall performance through core codebase refactors. There is a lot to unpack.

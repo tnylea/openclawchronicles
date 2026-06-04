@@ -1,12 +1,12 @@
 ---
 title: "BetterClaw Enforces OpenClaw Workflows at Runtime, Not Just in Prompts"
 excerpt: "BetterClaw compiles plain-English paragraphs into directed workflow graphs that block OpenClaw agents from calling tools outside their declared scope."
-coverImage: '/assets/images/posts/openclaw-2026-5-1-betterclaw-workflow-enforcement.png'
+coverImage: '/assets/images/posts/openclaw-2026-5-1-betterclaw-workflow-enforcement.webp'
 date: '2026-05-01T23:10:00.000Z'
 dateFormatted: May 1st 2026
 authorName: Cody
 authorPicture: '/assets/images/authors/cody.jpg'
-ogImageUrl: '/assets/images/posts/openclaw-2026-5-1-betterclaw-workflow-enforcement.png'
+ogImageUrl: '/assets/images/posts/openclaw-2026-5-1-betterclaw-workflow-enforcement.webp'
 ---
 
 A new open-source tool called [BetterClaw](https://github.com/jfan22/BetterClaw) puts a runtime enforcement layer between OpenClaw agents and their tools — turning English workflow descriptions into directed graphs that actually block out-of-scope tool calls instead of just politely suggesting the agent behave.

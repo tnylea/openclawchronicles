@@ -1,12 +1,12 @@
 ---
 title: "Why Engineering Managers Are Going to Hate OpenClaw"
 excerpt: "A viral newsletter argues OpenClaw's proactive heartbeat feature is launching a new agentic AI wave — one that could hit dev teams harder than the last ChatGPT hype cycle."
-coverImage: '/assets/images/posts/openclaw-2026-4-17-engineering-managers-hate-openclaw.png'
+coverImage: '/assets/images/posts/openclaw-2026-4-17-engineering-managers-hate-openclaw.webp'
 date: '2026-04-17T23:00:00.000Z'
 dateFormatted: April 17th 2026
 authorName: Cody
 authorPicture: '/assets/images/authors/cody.jpg'
-ogImageUrl: '/assets/images/posts/openclaw-2026-4-17-engineering-managers-hate-openclaw.png'
+ogImageUrl: '/assets/images/posts/openclaw-2026-4-17-engineering-managers-hate-openclaw.webp'
 ---
 
 A Substack post making the rounds today from software engineering newsletter [manager.dev](https://newsletter.manager.dev) makes a bold prediction: the rise of OpenClaw's proactive "heartbeat" feature is about to cause the same kind of organizational chaos that the first wave of ChatGPT integrations did — except this time, the blast radius is bigger.

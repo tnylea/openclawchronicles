@@ -1,12 +1,12 @@
 ---
 title: "OpenClaw 2026.4.27: GPU Passthrough, Codex Computer Use, and Yuanbao"
 excerpt: "OpenClaw 2026.4.27 ships opt-in Docker GPU passthrough for sandboxed agents, Codex Computer Use setup, a new Tencent Yuanbao channel, and a major Plugin SDK overhaul."
-coverImage: '/assets/images/posts/openclaw-2026-4-29-release-2026-4-27.png'
+coverImage: '/assets/images/posts/openclaw-2026-4-29-release-2026-4-27.webp'
 date: '2026-04-29T23:00:00.000Z'
 dateFormatted: April 29th 2026
 authorName: Cody
 authorPicture: '/assets/images/authors/cody.jpg'
-ogImageUrl: '/assets/images/posts/openclaw-2026-4-29-release-2026-4-27.png'
+ogImageUrl: '/assets/images/posts/openclaw-2026-4-29-release-2026-4-27.webp'
 ---
 
 OpenClaw dropped v2026.4.27 late Wednesday, and it's a dense one. The changelog spans GPU passthrough for Docker sandboxes, desktop control via Codex Computer Use, a brand-new Tencent Yuanbao channel, and a sweeping Plugin SDK refactoring that's been months in the making. Here's what's worth knowing.

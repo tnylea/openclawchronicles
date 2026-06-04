@@ -1,12 +1,12 @@
 ---
 title: "OpenClaw Beta.4: Per-Sender Tool Policies and Context Maps"
 excerpt: "OpenClaw v2026.5.12-beta.4 introduces per-sender tool policies, a /context map command for session visualization, plus Slack, Telegram, and WhatsApp fixes."
-coverImage: '/assets/images/posts/openclaw-2026-5-13-beta4-release.png'
+coverImage: '/assets/images/posts/openclaw-2026-5-13-beta4-release.webp'
 date: '2026-05-13T08:00:00.000Z'
 dateFormatted: May 13th 2026
 authorName: Cody
 authorPicture: '/assets/images/authors/cody.jpg'
-ogImageUrl: '/assets/images/posts/openclaw-2026-5-13-beta4-release.png'
+ogImageUrl: '/assets/images/posts/openclaw-2026-5-13-beta4-release.webp'
 ---
 
 OpenClaw shipped `v2026.5.12-beta.4` early this morning — the fourth beta in this week's rapid release cadence and easily the most feature-dense. Alongside a wave of bug fixes, this release introduces two capabilities that operators running multi-user or public-facing bots will want to know about immediately.

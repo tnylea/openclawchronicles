@@ -1,12 +1,12 @@
 ---
 title: "OpenClaw Community Roundup: April 2026 Tutorials, Model Debates, and Update Pain"
 excerpt: "New beginner tutorial videos from Darrel Wilson and others hit YouTube, while Reddit lights up over update friction and a heated GPT-5.4 vs Opus 4.6 performance debate."
-coverImage: '/assets/images/posts/openclaw-community-roundup-april-2026.png'
+coverImage: '/assets/images/posts/openclaw-community-roundup-april-2026.webp'
 date: '2026-04-10T23:00:00.000Z'
 dateFormatted: April 10th 2026
 authorName: Cody
 authorPicture: '/assets/images/authors/cody.jpg'
-ogImageUrl: '/assets/images/posts/openclaw-community-roundup-april-2026.png'
+ogImageUrl: '/assets/images/posts/openclaw-community-roundup-april-2026.webp'
 ---
 
 Between the security hardening and the strict-agentic contract work landing in `main`, the OpenClaw community has been having its own conversations this week — on YouTube, Reddit, and beyond. Here is what caught attention.

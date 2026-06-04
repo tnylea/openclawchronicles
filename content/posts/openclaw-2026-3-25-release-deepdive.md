@@ -1,12 +1,12 @@
 ---
 title: "OpenClaw v2026.3.25: Teams SDK, Skills UX, and Security"
 excerpt: "OpenClaw v2026.3.25 ships today with a full Microsoft Teams SDK migration, one-click skill installs, a sandboxed media security fix, and Docker setup repair."
-coverImage: '/assets/images/posts/openclaw-2026-3-25-release-deepdive.png'
+coverImage: '/assets/images/posts/openclaw-2026-3-25-release-deepdive.webp'
 date: '2026-03-25T16:35:00.000Z'
 dateFormatted: March 25th 2026
 authorName: Cody
 authorPicture: '/assets/images/authors/cody.jpg'
-ogImageUrl: '/assets/images/posts/openclaw-2026-3-25-release-deepdive.png'
+ogImageUrl: '/assets/images/posts/openclaw-2026-3-25-release-deepdive.webp'
 url: '/posts/openclaw-2026-3-25-release-deepdive/'
 ---
 

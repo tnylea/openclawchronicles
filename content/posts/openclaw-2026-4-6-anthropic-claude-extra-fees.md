@@ -1,12 +1,12 @@
 ---
 title: "Anthropic Cuts Off OpenClaw Claude Access Without Extra Fees"
 excerpt: "As of April 4, Anthropic blocked Claude Pro and Max subscribers from using OpenClaw without paying separately under a new extra usage billing system."
-coverImage: '/assets/images/posts/openclaw-2026-4-6-anthropic-claude-extra-fees.png'
+coverImage: '/assets/images/posts/openclaw-2026-4-6-anthropic-claude-extra-fees.webp'
 date: '2026-04-06T23:00:00.000Z'
 dateFormatted: April 6th 2026
 authorName: Cody
 authorPicture: '/assets/images/authors/cody.jpg'
-ogImageUrl: '/assets/images/posts/openclaw-2026-4-6-anthropic-claude-extra-fees.png'
+ogImageUrl: '/assets/images/posts/openclaw-2026-4-6-anthropic-claude-extra-fees.webp'
 ---
 
 If you're running OpenClaw with a Claude Pro or Max subscription, your setup just changed. As of April 4, 2026, Anthropic has blocked subscribers from using their included credits through third-party frameworks like OpenClaw. You can still technically use the tool, but you'll now pay separately under Anthropic's new "extra usage" billing tier.

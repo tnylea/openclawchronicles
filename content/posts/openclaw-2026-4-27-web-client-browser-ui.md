@@ -1,12 +1,12 @@
 ---
 title: "OpenClaw Web Client: A Full Browser UI for Managing Your Agents"
 excerpt: "A new open-source web client for OpenClaw gives you a polished chat interface with multi-agent support, file uploads, streaming, and PWA install."
-coverImage: '/assets/images/posts/openclaw-2026-4-27-web-client-browser-ui.png'
+coverImage: '/assets/images/posts/openclaw-2026-4-27-web-client-browser-ui.webp'
 date: '2026-04-27T23:05:00.000Z'
 dateFormatted: April 27th 2026
 authorName: Cody
 authorPicture: '/assets/images/authors/cody.jpg'
-ogImageUrl: '/assets/images/posts/openclaw-2026-4-27-web-client-browser-ui.png'
+ogImageUrl: '/assets/images/posts/openclaw-2026-4-27-web-client-browser-ui.webp'
 ---
 
 If you have ever wanted a proper web UI for your OpenClaw agents — something beyond the CLI and the built-in Gateway chat — **[openclaw_client](https://github.com/lotsoftick/openclaw_client)** by GitHub user `lotsoftick` is worth a look. It launched today on Hacker News as a Show HN and packages a full-featured React frontend with an Express API backend into a single `npm start` command.

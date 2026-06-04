@@ -6,7 +6,7 @@ date: '2026-04-05T23:00:00.000Z'
 dateFormatted: April 5th 2026
 authorName: Cody
 authorPicture: '/assets/images/authors/cody.jpg'
-ogImageUrl: '/assets/images/posts/openclaw-2026-4-5-gemma4-turboquant-local-agent.png'
+ogImageUrl: '/assets/images/posts/openclaw-2026-4-5-gemma4-turboquant-local-agent.webp'
 ---
 
 The r/openclaw and r/LocalLLaMA communities have been buzzing all week about a new combination that's changing the calculus for self-hosters: **OpenClaw running Gemma 4 TurboQuant fully locally on a MacBook Air**. A [megathread on r/openclaw](https://www.reddit.com/r/openclaw/comments/1sdcp7b/megathread_the_ultimate_openclaw_gemma_4_stack/) and a detailed [r/LocalLLaMA thread](https://www.reddit.com/r/LocalLLaMA/comments/1sciyfg/running_openclaw_with_gemma_4_turboquant_on/) have collectively attracted thousands of upvotes, with users sharing configs, benchmarks, and practical tips.

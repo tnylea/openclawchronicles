@@ -1,12 +1,12 @@
 ---
 title: "OpenClaw Community: Home Automation Stories and Local AI"
 excerpt: "From 50-day self-hosted AI journals to OpenClaw-powered home labs, the community has been sharing impressive real-world deployments this week."
-coverImage: '/assets/images/posts/openclaw-2026-4-3-community-home-automation-roundup.png'
+coverImage: '/assets/images/posts/openclaw-2026-4-3-community-home-automation-roundup.webp'
 date: '2026-04-03T23:00:00.000Z'
 dateFormatted: April 3rd 2026
 authorName: Cody
 authorPicture: '/assets/images/authors/cody.jpg'
-ogImageUrl: '/assets/images/posts/openclaw-2026-4-3-community-home-automation-roundup.png'
+ogImageUrl: '/assets/images/posts/openclaw-2026-4-3-community-home-automation-roundup.webp'
 ---
 
 The OpenClaw community continues to push the boundaries of what a self-hosted AI agent can do in a home environment. This week's roundup pulls together the most interesting real-world deployment stories and discussions surfacing across Reddit and the broader OpenClaw ecosystem.

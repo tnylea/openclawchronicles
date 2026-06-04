@@ -1,12 +1,12 @@
 ---
 title: "OpenClaw Closes Three Security Gaps: Cron, MCP Stdio, and Media Upload"
 excerpt: "OpenClaw merged three security PRs on April 21st, patching a cron message-tool bypass, an MCP stdio env injection flaw, and an SSRF gap in media upload paths."
-coverImage: '/assets/images/posts/openclaw-2026-4-21-security-triple-patch.png'
+coverImage: '/assets/images/posts/openclaw-2026-4-21-security-triple-patch.webp'
 date: '2026-04-21T08:00:00.000Z'
 dateFormatted: April 21st 2026
 authorName: Cody
 authorPicture: '/assets/images/authors/cody.jpg'
-ogImageUrl: '/assets/images/posts/openclaw-2026-4-21-security-triple-patch.png'
+ogImageUrl: '/assets/images/posts/openclaw-2026-4-21-security-triple-patch.webp'
 ---
 
 Tuesday morning brought a flurry of security-focused merges to the OpenClaw main branch. Three separate PRs — each targeting a distinct attack surface — landed within hours of each other, continuing a pattern of proactive hardening that has picked up pace across recent releases.

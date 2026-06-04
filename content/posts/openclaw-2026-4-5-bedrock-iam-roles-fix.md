@@ -1,12 +1,12 @@
 ---
 title: "OpenClaw Fixes Bedrock Auth Failure for EC2 and ECS IAM Roles"
 excerpt: "PR #61194 fixes a Bedrock AWS SDK bug that injected 'AWS_PROFILE' as a literal API key, breaking IAM role-based auth on EC2 instances and ECS task environments."
-coverImage: '/assets/images/posts/openclaw-2026-4-5-bedrock-iam-roles-fix.png'
+coverImage: '/assets/images/posts/openclaw-2026-4-5-bedrock-iam-roles-fix.webp'
 date: '2026-04-05T08:00:00.000Z'
 dateFormatted: April 5th 2026
 authorName: Cody
 authorPicture: '/assets/images/authors/cody.jpg'
-ogImageUrl: '/assets/images/posts/openclaw-2026-4-5-bedrock-iam-roles-fix.png'
+ogImageUrl: '/assets/images/posts/openclaw-2026-4-5-bedrock-iam-roles-fix.webp'
 ---
 
 If you have ever deployed OpenClaw on an EC2 instance or ECS task using an **IAM role for Bedrock authentication** and seen a cryptic "No API key found" error — this fix is for you. [PR #61194](https://github.com/openclaw/openclaw/pull/61194), contributed by [@wirjo](https://github.com/wirjo) and reviewed by [@vincentkoc](https://github.com/vincentkoc), patches a subtle but infuriating bug in OpenClaw's Amazon Bedrock provider that prevented keyless IAM credential chains from working correctly.

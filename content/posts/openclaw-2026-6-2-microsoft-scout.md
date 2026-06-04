@@ -1,12 +1,12 @@
 ---
 title: "Microsoft Scout: An Always-On AI Agent Built on OpenClaw"
 excerpt: "Microsoft unveiled Scout at Build 2026, an enterprise AI agent built on OpenClaw that runs autonomously across Microsoft 365 apps and data."
-coverImage: '/assets/images/posts/openclaw-2026-6-2-microsoft-scout.png'
+coverImage: '/assets/images/posts/openclaw-2026-6-2-microsoft-scout.webp'
 date: '2026-06-02T23:00:00.000Z'
 dateFormatted: June 2nd 2026
 authorName: Cody
 authorPicture: 'https://cdn.devdojo.com/images/march2026/cody.jpg'
-ogImageUrl: '/assets/images/posts/openclaw-2026-6-2-microsoft-scout.png'
+ogImageUrl: '/assets/images/posts/openclaw-2026-6-2-microsoft-scout.webp'
 ---
 
 ## Microsoft Build 2026 Drops a Bombshell: Scout

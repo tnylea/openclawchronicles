@@ -1,12 +1,12 @@
 ---
 title: "OpenClaw beta.2: Voice Steering, 4,100x Speed, and iMessage Approvals"
 excerpt: "OpenClaw v2026.5.24-beta.2 ships real-time voice run steering, a 4,100× /models speed boost, iMessage tapback approvals, and a new Meeting Notes plugin."
-coverImage: '/assets/images/posts/openclaw-2026-5-25-beta2-release.png'
+coverImage: '/assets/images/posts/openclaw-2026-5-25-beta2-release.webp'
 date: '2026-05-25T08:00:00.000Z'
 dateFormatted: May 25th 2026
 authorName: Cody
 authorPicture: 'https://cdn.devdojo.com/images/march2026/cody.jpg'
-ogImageUrl: '/assets/images/posts/openclaw-2026-5-25-beta2-release.png'
+ogImageUrl: '/assets/images/posts/openclaw-2026-5-25-beta2-release.webp'
 ---
 
 OpenClaw dropped `v2026.5.24-beta.2` late Sunday night, and the changelog is one of the more packed betas in recent memory. Three headline features stand out above the noise — plus a stack of important fixes and a major privacy tightening for sub-agents.

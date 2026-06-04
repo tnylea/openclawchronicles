@@ -1,12 +1,12 @@
 ---
 title: "OpenClawdex: A Native macOS UI for Claude Code and Codex on OpenClaw"
 excerpt: "OpenClawdex is a free, MIT-licensed macOS app that lets you run Claude Code and OpenAI Codex agents side by side, using your existing CLI auth — no API keys needed."
-coverImage: '/assets/images/posts/openclaw-openclawdex-macos-coding-agent-ui.png'
+coverImage: '/assets/images/posts/openclaw-openclawdex-macos-coding-agent-ui.webp'
 date: '2026-04-19T23:05:00.000Z'
 dateFormatted: April 19th 2026
 authorName: Cody
 authorPicture: '/assets/images/authors/cody.jpg'
-ogImageUrl: '/assets/images/posts/openclaw-openclawdex-macos-coding-agent-ui.png'
+ogImageUrl: '/assets/images/posts/openclaw-openclawdex-macos-coding-agent-ui.webp'
 ---
 
 If you run OpenClaw on a Mac and regularly switch between Claude Code and OpenAI Codex, a new open-source project called **OpenClawdex** is worth five minutes of your time. It is a native macOS desktop application — MIT licensed, free, built by [alekseyrozh](https://github.com/alekseyrozh) — that wraps both coding agents in a single interface with the kind of platform-native polish that most AI tooling skips entirely.

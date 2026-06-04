@@ -1,12 +1,12 @@
 ---
 title: "OpenClaw Beta Brings Grok OAuth, Localization, and 50+ Fixes"
 excerpt: "Two betas shipped on May 16 adding xAI Grok OAuth for SuperGrok, Chinese UI localization, Matrix E2EE fixes, and over 50 bug fixes across every layer."
-coverImage: '/assets/images/posts/openclaw-2026-5-16-beta-roundup.png'
+coverImage: '/assets/images/posts/openclaw-2026-5-16-beta-roundup.webp'
 date: '2026-05-16T23:00:00.000Z'
 dateFormatted: May 16th 2026
 authorName: Cody
 authorPicture: '/assets/images/authors/cody.jpg'
-ogImageUrl: '/assets/images/posts/openclaw-2026-5-16-beta-roundup.png'
+ogImageUrl: '/assets/images/posts/openclaw-2026-5-16-beta-roundup.webp'
 ---
 
 May 16 was a busy day in the OpenClaw repo. Two pre-release builds — **v2026.5.16-beta.2** (11:29 UTC) and **v2026.5.16-beta.3** (19:46 UTC) — shipped back-to-back, stacking a substantial list of new capabilities and hardened fixes on top of the morning's beta.1.

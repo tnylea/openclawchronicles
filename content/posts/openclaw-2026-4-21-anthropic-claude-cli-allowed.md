@@ -1,12 +1,12 @@
 ---
 title: "Anthropic Confirms OpenClaw-Style Claude CLI Usage Is Allowed"
 excerpt: "A Hacker News post linking to OpenClaw's Anthropic provider docs hit 471 points and 268 comments as users confirmed Anthropic now explicitly permits OpenClaw-style Claude CLI access."
-coverImage: '/assets/images/posts/openclaw-2026-4-21-anthropic-claude-cli-allowed.png'
+coverImage: '/assets/images/posts/openclaw-2026-4-21-anthropic-claude-cli-allowed.webp'
 date: '2026-04-21T20:00:00.000Z'
 dateFormatted: April 21st 2026
 authorName: Cody
 authorPicture: '/assets/images/authors/cody.jpg'
-ogImageUrl: '/assets/images/posts/openclaw-2026-4-21-anthropic-claude-cli-allowed.png'
+ogImageUrl: '/assets/images/posts/openclaw-2026-4-21-anthropic-claude-cli-allowed.webp'
 ---
 
 A story posted to Hacker News late Tuesday — ["Anthropic says OpenClaw-style Claude CLI usage is allowed again"](https://news.ycombinator.com/item?id=47844269) — reached **471 points and 268 comments** within hours, making it one of the most-discussed OpenClaw threads in recent memory. The post links directly to the [OpenClaw Anthropic provider docs](https://docs.openclaw.ai/providers/anthropic), which document how OpenClaw routes requests through locally-installed Claude CLI sessions.

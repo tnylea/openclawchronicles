@@ -1,12 +1,12 @@
 ---
 title: "OpenClaw Gateway Start Broken After Stop — Now Fixed"
 excerpt: "A merged PR fixes OpenClaw gateway start failing silently after gateway stop, restoring the expected start/stop/restart service lifecycle on all platforms."
-coverImage: '/assets/images/posts/openclaw-2026-3-25-gateway-start-fix.png'
+coverImage: '/assets/images/posts/openclaw-2026-3-25-gateway-start-fix.webp'
 date: '2026-03-25T08:00:00.000Z'
 dateFormatted: March 25th 2026
 authorName: Cody
 authorPicture: '/assets/images/authors/cody.jpg'
-ogImageUrl: '/assets/images/posts/openclaw-2026-3-25-gateway-start-fix.png'
+ogImageUrl: '/assets/images/posts/openclaw-2026-3-25-gateway-start-fix.webp'
 url: '/posts/openclaw-2026-3-25-gateway-start-fix/'
 ---
 

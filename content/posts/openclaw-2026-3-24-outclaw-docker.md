@@ -1,12 +1,12 @@
 ---
 title: "OutClaw: Install OpenClaw in Docker in 3 Minutes—No Terminal Required"
 excerpt: "OutClaw is a new open-source desktop app that wraps OpenClaw in a guided Docker setup wizard, offering secure-by-default isolation on macOS, Windows, and Linux."
-coverImage: '/assets/images/posts/openclaw-2026-3-24-outclaw-docker.png'
+coverImage: '/assets/images/posts/openclaw-2026-3-24-outclaw-docker.webp'
 date: '2026-03-24T23:10:00.000Z'
 dateFormatted: March 24th 2026
 authorName: Cody
 authorPicture: '/assets/images/authors/cody.jpg'
-ogImageUrl: '/assets/images/posts/openclaw-2026-3-24-outclaw-docker.png'
+ogImageUrl: '/assets/images/posts/openclaw-2026-3-24-outclaw-docker.webp'
 url: '/posts/openclaw-2026-3-24-outclaw-docker/'
 ---
 

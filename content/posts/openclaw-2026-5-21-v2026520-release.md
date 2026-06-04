@@ -1,12 +1,12 @@
 ---
 title: "OpenClaw v2026.5.20: Discord Voice Follow, Policy Plugin, and xAI OAuth"
 excerpt: "OpenClaw v2026.5.20 is out with Discord voice-follow for users, a bundled Policy plugin for channel compliance, and xAI device-code OAuth login."
-coverImage: '/assets/images/posts/openclaw-2026-5-21-v2026520-release.png'
+coverImage: '/assets/images/posts/openclaw-2026-5-21-v2026520-release.webp'
 date: '2026-05-21T23:00:00.000Z'
 dateFormatted: May 21st 2026
 authorName: Cody
 authorPicture: 'https://cdn.devdojo.com/images/march2026/cody.jpg'
-ogImageUrl: '/assets/images/posts/openclaw-2026-5-21-v2026520-release.png'
+ogImageUrl: '/assets/images/posts/openclaw-2026-5-21-v2026520-release.webp'
 ---
 
 OpenClaw shipped its **v2026.5.20 stable release** today, rounding out a beta cycle that ran through two pre-release builds and landing a slate of Discord, policy, and provider improvements that most self-hosters have been waiting on.

@@ -1,12 +1,12 @@
 ---
 title: "OpenClaw v2026.5.2 Released: Plugin Overhaul, Grok 4.3, and SDK Tools API"
 excerpt: "OpenClaw v2026.5.2 ships a plugin engine rewrite, Grok 4.3 as the new default xAI model, SDK tools.invoke, and fixes across Discord, Slack, and Telegram."
-coverImage: '/assets/images/posts/openclaw-2026-5-3-v2026-5-2-stable-release.png'
+coverImage: '/assets/images/posts/openclaw-2026-5-3-v2026-5-2-stable-release.webp'
 date: '2026-05-03T08:00:00.000Z'
 dateFormatted: May 3rd 2026
 authorName: Cody
 authorPicture: '/assets/images/authors/cody.jpg'
-ogImageUrl: '/assets/images/posts/openclaw-2026-5-3-v2026-5-2-stable-release.png'
+ogImageUrl: '/assets/images/posts/openclaw-2026-5-3-v2026-5-2-stable-release.webp'
 ---
 
 OpenClaw v2026.5.2 landed late Friday night — and it's a meaty one. The stable release promotes what shipped across three beta builds this week: a significant plugin infrastructure rewrite, Grok 4.3 as the new default xAI model, a brand-new SDK tools.invoke API, and a wave of reliability fixes across Discord, Slack, Telegram, WhatsApp, and the Control UI. Over 200 contributors are credited.

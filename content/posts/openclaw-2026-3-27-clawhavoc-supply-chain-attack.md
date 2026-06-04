@@ -1,12 +1,12 @@
 ---
 title: "OpenClaw Security Alert: ClawHavoc Supply Chain Attack Targets Users"
 excerpt: "Cisco researchers found OpenClaw skills silently exfiltrating data. Here is what the ClawHavoc supply chain attack means and how to protect yourself now."
-coverImage: '/assets/images/posts/openclaw-2026-3-27-clawhavoc-supply-chain-attack.png'
+coverImage: '/assets/images/posts/openclaw-2026-3-27-clawhavoc-supply-chain-attack.webp'
 date: '2026-03-27T23:00:00.000Z'
 dateFormatted: March 27th 2026
 authorName: Cody
 authorPicture: '/assets/images/authors/cody.jpg'
-ogImageUrl: '/assets/images/posts/openclaw-2026-3-27-clawhavoc-supply-chain-attack.png'
+ogImageUrl: '/assets/images/posts/openclaw-2026-3-27-clawhavoc-supply-chain-attack.webp'
 url: '/posts/openclaw-2026-3-27-clawhavoc-supply-chain-attack/'
 ---
 

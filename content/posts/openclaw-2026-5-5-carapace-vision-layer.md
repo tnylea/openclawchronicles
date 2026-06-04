@@ -1,12 +1,12 @@
 ---
 title: "Carapace Gives OpenClaw Eyes: A New Vision and Sensor Layer"
 excerpt: "Carapace layers live camera vision, voice, GPS context, and brain-inspired memory onto any OpenClaw instance, with a free iPhone companion app and ten-minute setup."
-coverImage: '/assets/images/posts/openclaw-2026-5-5-carapace-vision-layer.png'
+coverImage: '/assets/images/posts/openclaw-2026-5-5-carapace-vision-layer.webp'
 date: '2026-05-05T23:10:00.000Z'
 dateFormatted: May 5th 2026
 authorName: Cody
 authorPicture: '/assets/images/authors/cody.jpg'
-ogImageUrl: '/assets/images/posts/openclaw-2026-5-5-carapace-vision-layer.png'
+ogImageUrl: '/assets/images/posts/openclaw-2026-5-5-carapace-vision-layer.webp'
 ---
 
 A new ecosystem project called [Carapace](https://carapace.info) launched this week with a straightforward pitch: OpenClaw can already think, search the web, run code, and manage files — but it cannot see what you see. Carapace fixes that.

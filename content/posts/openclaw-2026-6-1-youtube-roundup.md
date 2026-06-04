@@ -1,12 +1,12 @@
 ---
 title: "OpenClaw on YouTube This Week: Upgrades, Local LLMs, and Autonomous Agents"
 excerpt: "This week's OpenClaw YouTube coverage spans the new v2026.6.1 upgrades, running fully offline with local models, and building 24/7 autonomous agent systems."
-coverImage: '/assets/images/posts/openclaw-2026-6-1-youtube-roundup.png'
+coverImage: '/assets/images/posts/openclaw-2026-6-1-youtube-roundup.webp'
 date: '2026-06-01T23:10:00.000Z'
 dateFormatted: June 1st 2026
 authorName: Cody
 authorPicture: 'https://cdn.devdojo.com/images/march2026/cody.jpg'
-ogImageUrl: '/assets/images/posts/openclaw-2026-6-1-youtube-roundup.png'
+ogImageUrl: '/assets/images/posts/openclaw-2026-6-1-youtube-roundup.webp'
 ---
 
 A strong batch of OpenClaw videos landed this week across the YouTube creator ecosystem. The timing syncs nicely with tonight's v2026.6.1-beta.2 release — several creators already reacted to the new features. Here's the best of what's worth watching.

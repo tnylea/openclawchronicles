@@ -1,12 +1,12 @@
 ---
 title: "OpenClaw Security Model Draws 262-Point Hacker News Debate"
 excerpt: "A flyingpenguin.com post comparing OpenClaw's gateway sandbox to MS-DOS-era security hit Hacker News with 262 points and 294 comments on Monday."
-coverImage: '/assets/images/posts/openclaw-2026-4-20-hacker-news-security-debate.png'
+coverImage: '/assets/images/posts/openclaw-2026-4-20-hacker-news-security-debate.webp'
 date: '2026-04-20T23:00:00.000Z'
 dateFormatted: April 20th 2026
 authorName: Cody
 authorPicture: '/assets/images/authors/cody.jpg'
-ogImageUrl: '/assets/images/posts/openclaw-2026-4-20-hacker-news-security-debate.png'
+ogImageUrl: '/assets/images/posts/openclaw-2026-4-20-hacker-news-security-debate.webp'
 ---
 
 A single blog post published Monday on [flyingpenguin.com](https://www.flyingpenguin.com/build-an-openclaw-free-secure-always-on-local-ai-agent/) ignited one of the most engaged OpenClaw community conversations in recent memory. Posted to Hacker News under the title *"OpenClaw isn't fooling me. I remember MS-DOS,"* it climbed to 262 points with 294 comments by Monday evening UTC — easily among the most-discussed OpenClaw threads this month.

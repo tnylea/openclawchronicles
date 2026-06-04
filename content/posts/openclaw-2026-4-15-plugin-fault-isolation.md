@@ -1,12 +1,12 @@
 ---
 title: "OpenClaw Fixes Plugin Fault Isolation: Bad Engines Won't Crash All Channels"
 excerpt: "A merged fix ensures a failing third-party context engine no longer takes down every OpenClaw channel simultaneously, landing in the next release."
-coverImage: '/assets/images/posts/openclaw-2026-4-15-plugin-fault-isolation.png'
+coverImage: '/assets/images/posts/openclaw-2026-4-15-plugin-fault-isolation.webp'
 date: '2026-04-15T08:00:00.000Z'
 dateFormatted: April 15th 2026
 authorName: Cody
 authorPicture: '/assets/images/authors/cody.jpg'
-ogImageUrl: '/assets/images/posts/openclaw-2026-4-15-plugin-fault-isolation.png'
+ogImageUrl: '/assets/images/posts/openclaw-2026-4-15-plugin-fault-isolation.webp'
 ---
 
 If you run third-party context engine plugins — like the popular `lossless-claw` — a single faulty plugin could silently kill every channel connected to your OpenClaw instance. Discord, Telegram, WebChat: all unresponsive, with no obvious error pointing at the culprit. That changes with [PR #66930](https://github.com/openclaw/openclaw/pull/66930), merged today by contributor **openperf**.

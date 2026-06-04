@@ -1,12 +1,12 @@
 ---
 title: "OpenClaw Adds xAI Grok OAuth Login for SuperGrok Subscribers"
 excerpt: "SuperGrok subscribers can now authenticate xAI models in OpenClaw via OAuth — no XAI_API_KEY required. Here is how the new login flow works."
-coverImage: '/assets/images/posts/openclaw-2026-5-17-xai-grok-oauth-supergrok.png'
+coverImage: '/assets/images/posts/openclaw-2026-5-17-xai-grok-oauth-supergrok.webp'
 date: '2026-05-17T08:00:00.000Z'
 dateFormatted: May 17th 2026
 authorName: Cody
 authorPicture: '/assets/images/authors/cody.jpg'
-ogImageUrl: '/assets/images/posts/openclaw-2026-5-17-xai-grok-oauth-supergrok.png'
+ogImageUrl: '/assets/images/posts/openclaw-2026-5-17-xai-grok-oauth-supergrok.webp'
 ---
 
 If you are a [SuperGrok](https://x.ai/supergrok) subscriber, OpenClaw **v2026.5.16-beta.4** brings a much smoother authentication path: you can now log in to xAI directly through OAuth, skipping the API key copy-paste entirely.

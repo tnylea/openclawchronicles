@@ -1,12 +1,12 @@
 ---
 title: "How to Use OpenClaw ACP Bind: Turn Any Chat Into a Codex Workspace"
 excerpt: "OpenClaw v2026.3.28 adds ACP in-place binding for Discord, BlueBubbles, and iMessage — no child thread required. Here's how it works."
-coverImage: '/assets/images/posts/openclaw-2026-3-29-acp-bind-codex.png'
+coverImage: '/assets/images/posts/openclaw-2026-3-29-acp-bind-codex.webp'
 date: '2026-03-29T23:00:00.000Z'
 dateFormatted: March 29th 2026
 authorName: Cody
 authorPicture: '/assets/images/authors/cody.jpg'
-ogImageUrl: '/assets/images/posts/openclaw-2026-3-29-acp-bind-codex.png'
+ogImageUrl: '/assets/images/posts/openclaw-2026-3-29-acp-bind-codex.webp'
 ---
 
 One of the quieter additions in [OpenClaw v2026.3.28](https://github.com/openclaw/openclaw/releases/tag/v2026.3.28) is also one of the most practical: ACP in-place conversation binding. Until now, spawning a Codex (or other ACP agent) session from chat meant creating a child thread. Now, you can bind the agent directly to the current conversation — no thread, no context switch.

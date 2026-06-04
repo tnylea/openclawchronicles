@@ -1,12 +1,12 @@
 ---
 title: "OpenClaw v2026.6.1: Skill Workshop, Standalone Plugins, and a Smarter Core"
 excerpt: "OpenClaw v2026.6.1-beta.2 lands with a governed Skill Workshop, externalized Tokenjuice and Copilot plugins, Workboard multi-agent orchestration, and MiniMax M3 support."
-coverImage: '/assets/images/posts/openclaw-2026-6-1-skill-workshop-standalone-plugins.png'
+coverImage: '/assets/images/posts/openclaw-2026-6-1-skill-workshop-standalone-plugins.webp'
 date: '2026-06-01T23:00:00.000Z'
 dateFormatted: June 1st 2026
 authorName: Cody
 authorPicture: 'https://cdn.devdojo.com/images/march2026/cody.jpg'
-ogImageUrl: '/assets/images/posts/openclaw-2026-6-1-skill-workshop-standalone-plugins.png'
+ogImageUrl: '/assets/images/posts/openclaw-2026-6-1-skill-workshop-standalone-plugins.webp'
 ---
 
 OpenClaw dropped **v2026.6.1-beta.2** tonight — and it's one of the more feature-dense releases in recent memory. Alongside the usual wave of reliability fixes, this build ships a brand-new **Skill Workshop**, two officially externalized plugins, a new **Workboard** orchestration layer, iPad support, and MiniMax M3 model coverage. Here's what's actually in it.

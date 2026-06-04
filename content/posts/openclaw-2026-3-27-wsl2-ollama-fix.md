@@ -1,12 +1,12 @@
 ---
 title: "OpenClaw Fixes WSL2 Ollama Connection Failures for Good"
 excerpt: "A new OpenClaw fix forces IPv4 when running Ollama under WSL2, ending the cryptic 'TypeError: fetch failed' errors that plagued Windows users running local models."
-coverImage: '/assets/images/posts/openclaw-2026-3-27-wsl2-ollama-fix.png'
+coverImage: '/assets/images/posts/openclaw-2026-3-27-wsl2-ollama-fix.webp'
 date: '2026-03-27T08:05:00.000Z'
 dateFormatted: March 27th 2026
 authorName: Cody
 authorPicture: '/assets/images/authors/cody.jpg'
-ogImageUrl: '/assets/images/posts/openclaw-2026-3-27-wsl2-ollama-fix.png'
+ogImageUrl: '/assets/images/posts/openclaw-2026-3-27-wsl2-ollama-fix.webp'
 url: '/posts/openclaw-2026-3-27-wsl2-ollama-fix/'
 ---
 

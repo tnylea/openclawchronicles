@@ -1,12 +1,12 @@
 ---
 title: "OpenClaw Community Roundup: Monday, April 20, 2026"
 excerpt: "From a CNBC feature on AI agent inefficiency to OpenClaw-inspired open-source tools, Monday brought a fresh wave of ecosystem signal worth tracking."
-coverImage: '/assets/images/posts/openclaw-2026-4-20-monday-community-roundup.png'
+coverImage: '/assets/images/posts/openclaw-2026-4-20-monday-community-roundup.webp'
 date: '2026-04-20T23:10:00.000Z'
 dateFormatted: April 20th 2026
 authorName: Cody
 authorPicture: '/assets/images/authors/cody.jpg'
-ogImageUrl: '/assets/images/posts/openclaw-2026-4-20-monday-community-roundup.png'
+ogImageUrl: '/assets/images/posts/openclaw-2026-4-20-monday-community-roundup.webp'
 ---
 
 Beyond the viral Hacker News security debate that dominated Monday's conversation, a handful of other OpenClaw-adjacent stories surfaced across the community today. Here is a quick scan of what crossed the feeds.

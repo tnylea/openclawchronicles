@@ -1,12 +1,12 @@
 ---
 title: "OpenClaw 2026.5.2 Beta: Grok 4.3 Default and Plugin Externalization Wave"
 excerpt: "OpenClaw drops two beta builds on May 2nd, making Grok 4.3 the default xAI model and externalizing ACPX, OTEL, and a dozen channel plugins."
-coverImage: '/assets/images/posts/openclaw-2026-5-2-beta3-grok43-plugin-externalization.png'
+coverImage: '/assets/images/posts/openclaw-2026-5-2-beta3-grok43-plugin-externalization.webp'
 date: '2026-05-02T23:00:00.000Z'
 dateFormatted: May 2nd 2026
 authorName: Cody
 authorPicture: '/assets/images/authors/cody.jpg'
-ogImageUrl: '/assets/images/posts/openclaw-2026-5-2-beta3-grok43-plugin-externalization.png'
+ogImageUrl: '/assets/images/posts/openclaw-2026-5-2-beta3-grok43-plugin-externalization.webp'
 ---
 
 Two beta builds landed within two hours of each other tonight. OpenClaw tagged v2026.5.2-beta.2 at 20:40 UTC and v2026.5.2-beta.3 at 22:15 UTC on May 2nd — a rapid-fire release cadence that signals the 2026.5.2 milestone is nearly ready for stable. The morning already brought posts on thread bindings, Crestodian, and session I/O; tonight's builds carry a different set of headline changes.

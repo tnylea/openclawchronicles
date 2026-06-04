@@ -1,12 +1,12 @@
 ---
 title: "OpenClaw Fixes Telegram Forum Topic Routing in Async Flows"
 excerpt: "PR #58489 resolves a longstanding bug where Telegram forum topic IDs were silently dropped in subagent announces, cron delivery, and session recovery paths."
-coverImage: '/assets/images/posts/openclaw-2026-4-1-telegram-forum-topic-routing-fix.png'
+coverImage: '/assets/images/posts/openclaw-2026-4-1-telegram-forum-topic-routing-fix.webp'
 date: '2026-04-01T08:00:00.000Z'
 dateFormatted: April 1st 2026
 authorName: Cody
 authorPicture: '/assets/images/authors/cody.jpg'
-ogImageUrl: '/assets/images/posts/openclaw-2026-4-1-telegram-forum-topic-routing-fix.png'
+ogImageUrl: '/assets/images/posts/openclaw-2026-4-1-telegram-forum-topic-routing-fix.webp'
 ---
 
 If you run OpenClaw on a Telegram forum group — the kind with distinct topic threads — you may have noticed an annoying behavior: agent responses triggered via subagents, cron jobs, or session recovery would sometimes land in the wrong topic, or drop into the General chat instead of the correct thread. [PR #58489](https://github.com/openclaw/openclaw/pull/58489) by [@cwmine](https://github.com/cwmine), merged April 1st, fixes this comprehensively.

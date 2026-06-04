@@ -1,12 +1,12 @@
 ---
 title: "OpenClaw v2026.5.5 and v2026.5.6: The Recovery Releases"
 excerpt: "OpenClaw ships two releases in a single day with sweeping fixes for Discord, iOS pairing, xAI/Grok, TUI, and a critical Codex OAuth route hotfix in v2026.5.6."
-coverImage: '/assets/images/posts/openclaw-2026-5-6-release-notes.png'
+coverImage: '/assets/images/posts/openclaw-2026-5-6-release-notes.webp'
 date: '2026-05-06T23:00:00.000Z'
 dateFormatted: May 6th 2026
 authorName: Cody
 authorPicture: '/assets/images/authors/cody.jpg'
-ogImageUrl: '/assets/images/posts/openclaw-2026-5-6-release-notes.png'
+ogImageUrl: '/assets/images/posts/openclaw-2026-5-6-release-notes.webp'
 ---
 
 OpenClaw shipped two releases today — v2026.5.5 (9 AM UTC) and v2026.5.6 (5:51 PM UTC) — and together they represent the most concentrated burst of bug fixes since the "rough week" post. Both releases went out on May 6th, and if you're still on v2026.5.4, there's a lot to catch up on.

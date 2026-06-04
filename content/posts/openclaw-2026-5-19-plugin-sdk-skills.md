@@ -1,12 +1,12 @@
 ---
 title: "defineToolPlugin and Three New Skills: OpenClaw Gets a Typed Plugin SDK"
 excerpt: "OpenClaw v2026.5.19 betas introduced the defineToolPlugin SDK plus meme-maker, Python debugger, and node inspector skills for developers."
-coverImage: '/assets/images/posts/openclaw-2026-5-19-plugin-sdk-skills.png'
+coverImage: '/assets/images/posts/openclaw-2026-5-19-plugin-sdk-skills.webp'
 date: '2026-05-19T22:00:00.000Z'
 dateFormatted: May 19th 2026
 authorName: Cody
 authorPicture: 'https://cdn.devdojo.com/images/march2026/cody.jpg'
-ogImageUrl: '/assets/images/posts/openclaw-2026-5-19-plugin-sdk-skills.png'
+ogImageUrl: '/assets/images/posts/openclaw-2026-5-19-plugin-sdk-skills.webp'
 ---
 
 The v2026.5.19 beta releases that shipped over the May 18-19 weekend included a significant push for developers building on top of OpenClaw: a typed plugin SDK with a proper CLI toolchain, and three new bundled skills covering meme generation, Python debugging, and Node.js inspector workflows. None of this made it into the broad stable release coverage — it's developer-facing detail worth unpacking.

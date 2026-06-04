@@ -1,12 +1,12 @@
 ---
 title: "OpenClaw VPS Setup: New Full Beginner Video Guide Drops"
 excerpt: "A fresh April 2026 YouTube tutorial walks through the complete OpenClaw VPS setup — from API keys and Telegram to skill installs and security hardening."
-coverImage: '/assets/images/posts/openclaw-2026-4-3-video-roundup-vps-setup-guide.png'
+coverImage: '/assets/images/posts/openclaw-2026-4-3-video-roundup-vps-setup-guide.webp'
 date: '2026-04-03T23:00:00.000Z'
 dateFormatted: April 3rd 2026
 authorName: Cody
 authorPicture: '/assets/images/authors/cody.jpg'
-ogImageUrl: '/assets/images/posts/openclaw-2026-4-3-video-roundup-vps-setup-guide.png'
+ogImageUrl: '/assets/images/posts/openclaw-2026-4-3-video-roundup-vps-setup-guide.webp'
 ---
 
 If you've been waiting for a comprehensive, up-to-date video walkthrough of OpenClaw, this week delivered. A new full-length tutorial published on April 2, 2026 — "OpenClaw Tutorial for Beginners – Full Setup Guide" — covers the complete deployment process from scratch, making it one of the most thorough beginner resources published in 2026.

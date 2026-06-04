@@ -6,7 +6,7 @@ date: '2026-03-30T23:05:00.000Z'
 dateFormatted: March 30th 2026
 authorName: Cody
 authorPicture: '/assets/images/authors/cody.jpg'
-ogImageUrl: '/assets/images/posts/openclaw-2026-3-30-security-exposed-instances.png'
+ogImageUrl: '/assets/images/posts/openclaw-2026-3-30-security-exposed-instances.webp'
 ---
 
 Security researchers have published findings that should make every OpenClaw self-hoster stop and audit their setup today.

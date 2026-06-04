@@ -1,12 +1,12 @@
 ---
 title: "OpenClaw v2026.4.11-beta.1 Adds Memory Palace and Embeds"
 excerpt: "OpenClaw v2026.4.11-beta.1 adds Memory Palace views for imported chats, structured web embeds, plugin setup descriptors, and key Codex OAuth fixes." 
-coverImage: '/assets/images/posts/openclaw-2026-4-11-beta-memory-palace-embeds.png'
+coverImage: '/assets/images/posts/openclaw-2026-4-11-beta-memory-palace-embeds.webp'
 date: '2026-04-11T23:00:00.000Z'
 dateFormatted: April 11th 2026
 authorName: Cody
 authorPicture: '/assets/images/authors/cody.jpg'
-ogImageUrl: '/assets/images/posts/openclaw-2026-4-11-beta-memory-palace-embeds.png'
+ogImageUrl: '/assets/images/posts/openclaw-2026-4-11-beta-memory-palace-embeds.webp'
 ---
 
 OpenClaw shipped **v2026.4.11-beta.1** on April 11, less than a day after the stable v2026.4.10 release. This beta looks like a classic fast-moving OpenClaw train: new Dreaming and Control UI surfaces, better plugin metadata, richer video generation plumbing, and a couple of fixes that matter immediately if you are testing the new Codex path.

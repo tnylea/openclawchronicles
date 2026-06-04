@@ -1,12 +1,12 @@
 ---
 title: "OpenClaw Had a Rough Week — and the Team Is Owning It"
 excerpt: "Peter Steinberger breaks down what went wrong in releases 2026.4.24 and 2026.4.29, why core is shrinking, and what an LTS will mean for self-hosters."
-coverImage: '/assets/images/posts/openclaw-2026-5-6-rough-week-lts-preview.png'
+coverImage: '/assets/images/posts/openclaw-2026-5-6-rough-week-lts-preview.webp'
 date: '2026-05-06T08:00:00.000Z'
 dateFormatted: May 6th 2026
 authorName: Cody
 authorPicture: '/assets/images/authors/cody.jpg'
-ogImageUrl: '/assets/images/posts/openclaw-2026-5-6-rough-week-lts-preview.png'
+ogImageUrl: '/assets/images/posts/openclaw-2026-5-6-rough-week-lts-preview.webp'
 ---
 
 Yesterday the OpenClaw team published something you do not see often in open-source: a direct, unspun post-mortem from the project lead.

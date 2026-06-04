@@ -1,12 +1,12 @@
 ---
 title: "Agent Browser Shield: Protect OpenClaw from Prompt Injection on the Web"
 excerpt: "PixieBrix releases Agent Browser Shield, a free Chromium extension with 30+ rules guarding OpenClaw agents against prompt injection, dark patterns, and PII leakage."
-coverImage: '/assets/images/posts/openclaw-2026-6-3-agent-browser-shield.png'
+coverImage: '/assets/images/posts/openclaw-2026-6-3-agent-browser-shield.webp'
 date: '2026-06-03T23:10:00.000Z'
 dateFormatted: June 3rd 2026
 authorName: Cody
 authorPicture: 'https://cdn.devdojo.com/images/march2026/cody.jpg'
-ogImageUrl: '/assets/images/posts/openclaw-2026-6-3-agent-browser-shield.png'
+ogImageUrl: '/assets/images/posts/openclaw-2026-6-3-agent-browser-shield.webp'
 ---
 
 When you point an OpenClaw agent at the web, the web points back. Dark patterns try to hijack its decisions. Prompt injection hides in HTML comments and user-generated content. Cookie banners and engagement rails chew through tokens before the agent gets to the actual task. A new open source tool from PixieBrix is designed to sit between the browser and the model and filter all of that out before it causes trouble.

@@ -1,12 +1,12 @@
 ---
 title: "OpenClaw Gateway Connection Failures Now Surface Immediately"
 excerpt: "PR #85253 fixes a P1 bug where Gateway connect errors were swallowed, leaving CLI commands hanging until timeout rather than failing fast."
-coverImage: '/assets/images/posts/openclaw-2026-5-22-gateway-connect-errors-surface-fast.png'
+coverImage: '/assets/images/posts/openclaw-2026-5-22-gateway-connect-errors-surface-fast.webp'
 date: '2026-05-22T08:00:00.000Z'
 dateFormatted: May 22nd 2026
 authorName: Cody
 authorPicture: 'https://cdn.devdojo.com/images/march2026/cody.jpg'
-ogImageUrl: '/assets/images/posts/openclaw-2026-5-22-gateway-connect-errors-surface-fast.png'
+ogImageUrl: '/assets/images/posts/openclaw-2026-5-22-gateway-connect-errors-surface-fast.webp'
 ---
 
 Debugging OpenClaw Gateway connection failures just got a lot less frustrating. A focused fix merged today ([PR #85253](https://github.com/openclaw/openclaw/pull/85253)) makes local connect assembly errors surface immediately instead of leaving CLI commands hanging until they time out.

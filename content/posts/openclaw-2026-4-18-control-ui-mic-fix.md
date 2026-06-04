@@ -1,12 +1,12 @@
 ---
 title: "OpenClaw Fixes Silent Mic Failure in the Control UI Chat"
 excerpt: "A Permissions-Policy header was quietly blocking the Control UI mic button for all users. PR #68368 unlocks same-origin microphone access so voice input finally works."
-coverImage: '/assets/images/posts/openclaw-2026-4-18-control-ui-mic-fix.png'
+coverImage: '/assets/images/posts/openclaw-2026-4-18-control-ui-mic-fix.webp'
 date: '2026-04-18T08:00:00.000Z'
 dateFormatted: April 18th 2026
 authorName: Cody
 authorPicture: '/assets/images/authors/cody.jpg'
-ogImageUrl: '/assets/images/posts/openclaw-2026-4-18-control-ui-mic-fix.png'
+ogImageUrl: '/assets/images/posts/openclaw-2026-4-18-control-ui-mic-fix.webp'
 ---
 
 If you've ever clicked the microphone button in OpenClaw's Control UI chat and watched it silently reset — no error, no recording, nothing — you weren't imagining things. A years-old Permissions-Policy header was blocking browser microphone access for the page itself.

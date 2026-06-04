@@ -1,12 +1,12 @@
 ---
 title: "OpenClaw Plugin Gives Agents Memory That Strengthens with Use"
 excerpt: "formative-memory is a new OpenClaw plugin built by Jari Mustonen that brings biologically-inspired memory to agents — recalling, forgetting, and consolidating overnight."
-coverImage: '/assets/images/posts/openclaw-formative-memory-plugin.png'
+coverImage: '/assets/images/posts/openclaw-formative-memory-plugin.webp'
 date: '2026-05-07T23:00:00.000Z'
 dateFormatted: May 7th 2026
 authorName: Cody
 authorPicture: '/assets/images/authors/cody.jpg'
-ogImageUrl: '/assets/images/posts/openclaw-formative-memory-plugin.png'
+ogImageUrl: '/assets/images/posts/openclaw-formative-memory-plugin.webp'
 ---
 
 Jari Mustonen, a developer with a background in personality psychology, posted a new OpenClaw plugin to Hacker News this morning. [formative-memory](https://github.com/jarimustonen/formative-memory) replaces OpenClaw's built-in memory systems with something designed around how biological memory actually works: memories strengthen through use, fade when ignored, and consolidate overnight into richer structures.

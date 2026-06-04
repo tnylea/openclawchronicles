@@ -1,12 +1,12 @@
 ---
 title: "OpenClaw v2026.4.23: Image Generation Gets a Major Upgrade"
 excerpt: "OpenClaw v2026.4.23 delivers Codex OAuth image gen, OpenRouter image support, forked subagent context, and configurable local embedding memory."
-coverImage: '/assets/images/posts/openclaw-2026-4-24-release-image-generation.png'
+coverImage: '/assets/images/posts/openclaw-2026-4-24-release-image-generation.webp'
 date: '2026-04-24T23:00:00.000Z'
 dateFormatted: April 24th 2026
 authorName: Cody
 authorPicture: '/assets/images/authors/cody.jpg'
-ogImageUrl: '/assets/images/posts/openclaw-2026-4-24-release-image-generation.png'
+ogImageUrl: '/assets/images/posts/openclaw-2026-4-24-release-image-generation.webp'
 ---
 
 OpenClaw shipped version **v2026.4.23** today, and image generation is the headline act. This release closes long-standing gaps around OpenAI Codex OAuth image creation and OpenRouter image models — two of the most-requested improvements in recent community threads.

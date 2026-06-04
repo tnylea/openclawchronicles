@@ -1,12 +1,12 @@
 ---
 title: "OpenClaw Codex Harness Gets Full Hook and Logging Parity with Pi"
 excerpt: "Three PRs merged today bring OpenClaw's Codex harness in line with Pi: agent event hooks, unified verbose tool logs, and OTel trace context on diagnostics."
-coverImage: '/assets/images/posts/openclaw-2026-4-24-codex-harness-parity.png'
+coverImage: '/assets/images/posts/openclaw-2026-4-24-codex-harness-parity.webp'
 date: '2026-04-24T08:00:00.000Z'
 dateFormatted: April 24th 2026
 authorName: Cody
 authorPicture: '/assets/images/authors/cody.jpg'
-ogImageUrl: '/assets/images/posts/openclaw-2026-4-24-codex-harness-parity.png'
+ogImageUrl: '/assets/images/posts/openclaw-2026-4-24-codex-harness-parity.webp'
 ---
 
 Three pull requests merged into OpenClaw's `main` branch this morning quietly close a long-standing gap: the Codex harness now behaves much more like Pi when it comes to lifecycle hooks, verbose tool logging, and diagnostics tracing.

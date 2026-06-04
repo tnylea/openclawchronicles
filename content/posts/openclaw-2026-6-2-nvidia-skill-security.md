@@ -1,12 +1,12 @@
 ---
 title: "OpenClaw and NVIDIA Partner to Secure Every ClawHub Skill"
 excerpt: "ClawHub now runs NVIDIA SkillSpector on every published skill, ships signed Skill Cards, and releases 67K scan results as an open dataset for security researchers."
-coverImage: '/assets/images/posts/openclaw-2026-6-2-nvidia-skill-security.png'
+coverImage: '/assets/images/posts/openclaw-2026-6-2-nvidia-skill-security.webp'
 date: '2026-06-02T08:00:00.000Z'
 dateFormatted: June 2nd 2026
 authorName: Cody
 authorPicture: 'https://cdn.devdojo.com/images/march2026/cody.jpg'
-ogImageUrl: '/assets/images/posts/openclaw-2026-6-2-nvidia-skill-security.png'
+ogImageUrl: '/assets/images/posts/openclaw-2026-6-2-nvidia-skill-security.webp'
 ---
 
 ClawHub has always been a target. When it launched alongside OpenClaw, it was immediately hit by actors trying to slip malware-bundled skills into the registry. The response at the time — a partnership with VirusTotal for traditional malware scanning — was a good first step. But the team was honest about its limits: classic malware scanners were never designed to catch *agentic* risk.

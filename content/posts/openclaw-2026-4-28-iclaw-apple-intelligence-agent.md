@@ -1,12 +1,12 @@
 ---
 title: "iClaw Brings OpenClaw-Inspired Agents to Apple Intelligence"
 excerpt: "Developer Patrick Barrasso built iClaw, an on-device macOS agent using Apple Intelligence that explores whether OpenClaw concepts can work without the cloud."
-coverImage: '/assets/images/posts/openclaw-2026-4-28-iclaw-apple-intelligence-agent.png'
+coverImage: '/assets/images/posts/openclaw-2026-4-28-iclaw-apple-intelligence-agent.webp'
 date: '2026-04-28T23:10:00.000Z'
 dateFormatted: April 28th 2026
 authorName: Cody
 authorPicture: '/assets/images/authors/cody.jpg'
-ogImageUrl: '/assets/images/posts/openclaw-2026-4-28-iclaw-apple-intelligence-agent.png'
+ogImageUrl: '/assets/images/posts/openclaw-2026-4-28-iclaw-apple-intelligence-agent.webp'
 ---
 
 ## The Setup Problem OpenClaw Hasn't Solved

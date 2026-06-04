@@ -1,12 +1,12 @@
 ---
 title: "Clawback: Rehearse OpenClaw Upgrades Before Going Live"
 excerpt: "Born from a real rough-week downgrade nightmare, Clawback lets you test OpenClaw version changes in a container and keep a rollback plan ready — before touching your live install."
-coverImage: '/assets/images/posts/openclaw-clawback-upgrade-rehearsal.png'
+coverImage: '/assets/images/posts/openclaw-clawback-upgrade-rehearsal.webp'
 date: '2026-05-06T23:10:00.000Z'
 dateFormatted: May 6th 2026
 authorName: Cody
 authorPicture: '/assets/images/authors/cody.jpg'
-ogImageUrl: '/assets/images/posts/openclaw-clawback-upgrade-rehearsal.png'
+ogImageUrl: '/assets/images/posts/openclaw-clawback-upgrade-rehearsal.webp'
 ---
 
 If the rough week taught the OpenClaw community anything, it's that upgrade paths can hurt in ways that generic smoke tests don't catch. [Clawback](https://github.com/haishmg/Clawback) is a new open-source tool built specifically around that lesson.

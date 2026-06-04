@@ -1,12 +1,12 @@
 ---
 title: "Two New OpenClaw Skills: Python Debugger and Meme Maker"
 excerpt: "OpenClaw beta.6 bundles a Python debugging skill with pdb and debugpy support, plus a meme-maker skill with SVG rendering and Know Your Meme provenance."
-coverImage: '/assets/images/posts/openclaw-2026-5-18-new-skills-python-debug-meme-maker.png'
+coverImage: '/assets/images/posts/openclaw-2026-5-18-new-skills-python-debug-meme-maker.webp'
 date: '2026-05-18T08:10:00.000Z'
 dateFormatted: May 18th 2026
 authorName: Cody
 authorPicture: 'https://cdn.devdojo.com/images/march2026/cody.jpg'
-ogImageUrl: '/assets/images/posts/openclaw-2026-5-18-new-skills-python-debug-meme-maker.png'
+ogImageUrl: '/assets/images/posts/openclaw-2026-5-18-new-skills-python-debug-meme-maker.webp'
 ---
 
 [OpenClaw v2026.5.16-beta.6](https://github.com/openclaw/openclaw/releases/tag/v2026.5.16-beta.6) bundles two new skills that expand what your agent can do out of the box. One is a fully-featured Python debugging integration. The other is a meme-maker that can render locally and look up provenance on Know Your Meme. Together they're a small but telling window into where the bundled skill library is growing.

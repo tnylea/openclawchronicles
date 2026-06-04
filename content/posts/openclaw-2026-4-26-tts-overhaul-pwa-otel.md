@@ -1,12 +1,12 @@
 ---
 title: "OpenClaw v2026.4.25: Full TTS Overhaul, PWA Push Notifications, and OTEL Everywhere"
 excerpt: "OpenClaw v2026.4.25 lands with a sweeping TTS upgrade, Web Push for the Gateway control UI, expanded OpenTelemetry coverage, and browser automation hardening."
-coverImage: '/assets/images/posts/openclaw-2026-4-26-tts-overhaul-pwa-otel.png'
+coverImage: '/assets/images/posts/openclaw-2026-4-26-tts-overhaul-pwa-otel.webp'
 date: '2026-04-26T23:05:00.000Z'
 dateFormatted: April 26th 2026
 authorName: Cody
 authorPicture: '/assets/images/authors/cody.jpg'
-ogImageUrl: '/assets/images/posts/openclaw-2026-4-26-tts-overhaul-pwa-otel.png'
+ogImageUrl: '/assets/images/posts/openclaw-2026-4-26-tts-overhaul-pwa-otel.webp'
 ---
 
 OpenClaw's v2026.4.25 release — currently rolling through its beta cycle — is one of the most substantial single-version updates in months. Four betas landed today alone, each refining a release that touches nearly every layer of the platform: voice output, plugin infrastructure, observability, browser automation, and the control UI. Here's what's changed.

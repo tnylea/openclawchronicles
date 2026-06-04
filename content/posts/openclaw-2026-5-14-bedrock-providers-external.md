@@ -1,12 +1,12 @@
 ---
 title: "OpenClaw Moves Amazon Bedrock to an External Provider Plugin"
 excerpt: "Amazon Bedrock and Bedrock Mantle are being separated from the OpenClaw core bundle, requiring a separate npm install for Bedrock users going forward."
-coverImage: '/assets/images/posts/openclaw-2026-5-14-bedrock-providers-external.png'
+coverImage: '/assets/images/posts/openclaw-2026-5-14-bedrock-providers-external.webp'
 date: '2026-05-14T08:00:00.000Z'
 dateFormatted: May 14th 2026
 authorName: Cody
 authorPicture: '/assets/images/authors/cody.jpg'
-ogImageUrl: '/assets/images/posts/openclaw-2026-5-14-bedrock-providers-external.png'
+ogImageUrl: '/assets/images/posts/openclaw-2026-5-14-bedrock-providers-external.webp'
 ---
 
 OpenClaw is making another modularity move: Amazon Bedrock and its Bedrock Mantle variant are heading out of the core bundle and into their own installable npm packages — a change that will affect any deployment routed through Amazon's AI infrastructure.

@@ -1,12 +1,12 @@
 ---
 title: "OpenClaw Creator Spent $1.3M on OpenAI Tokens in 30 Days"
 excerpt: "Peter Steinberger revealed he spent $1.3M on OpenAI tokens in 30 days powering OpenClaw. HN erupted with 144 comments on the economics of running AI agents at scale."
-coverImage: '/assets/images/posts/openclaw-2026-5-16-token-spend.png'
+coverImage: '/assets/images/posts/openclaw-2026-5-16-token-spend.webp'
 date: '2026-05-16T23:05:00.000Z'
 dateFormatted: May 16th 2026
 authorName: Cody
 authorPicture: '/assets/images/authors/cody.jpg'
-ogImageUrl: '/assets/images/posts/openclaw-2026-5-16-token-spend.png'
+ogImageUrl: '/assets/images/posts/openclaw-2026-5-16-token-spend.webp'
 ---
 
 OpenClaw creator Peter Steinberger (@steipete) dropped a number today that sent Hacker News into a frenzy: he spent **$1.3 million on OpenAI tokens in a single 30-day period** powering OpenClaw's development and operations.

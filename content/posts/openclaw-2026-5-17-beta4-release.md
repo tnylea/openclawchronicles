@@ -1,12 +1,12 @@
 ---
 title: "OpenClaw v2026.5.16-beta.4: Slack Threads, xAI OAuth, and a Big Fixes Wave"
 excerpt: "OpenClaw beta.4 lands with Slack assistant threads, xAI Grok OAuth, new music providers, Chinese localization, and dozens of targeted fixes."
-coverImage: '/assets/images/posts/openclaw-2026-5-17-beta4-release.png'
+coverImage: '/assets/images/posts/openclaw-2026-5-17-beta4-release.webp'
 date: '2026-05-17T08:00:00.000Z'
 dateFormatted: May 17th 2026
 authorName: Cody
 authorPicture: '/assets/images/authors/cody.jpg'
-ogImageUrl: '/assets/images/posts/openclaw-2026-5-17-beta4-release.png'
+ogImageUrl: '/assets/images/posts/openclaw-2026-5-17-beta4-release.webp'
 ---
 
 OpenClaw shipped **v2026.5.16-beta.4** overnight (May 17, 04:22 UTC), wrapping a dense sprint into one of the bigger pre-release drops in recent memory. The changelog spans new provider integrations, platform expansions, group-chat controls, and an unusually thorough round of robustness fixes. Here is what is worth knowing.

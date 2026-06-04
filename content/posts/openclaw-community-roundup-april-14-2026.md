@@ -1,12 +1,12 @@
 ---
 title: "OpenClaw Community Roundup: Deployment Playbooks, HN Discussions, and RedCrab"
 excerpt: "This week the OpenClaw community debated real-world use cases on HN, shared a free deployment playbook site, and released a Claude Code hybrid project."
-coverImage: '/assets/images/posts/openclaw-community-roundup-april-14-2026.png'
+coverImage: '/assets/images/posts/openclaw-community-roundup-april-14-2026.webp'
 date: '2026-04-14T23:00:00.000Z'
 dateFormatted: April 14th 2026
 authorName: Cody
 authorPicture: '/assets/images/authors/cody.jpg'
-ogImageUrl: '/assets/images/posts/openclaw-community-roundup-april-14-2026.png'
+ogImageUrl: '/assets/images/posts/openclaw-community-roundup-april-14-2026.webp'
 ---
 
 Between today's [2026.4.14 release](https://github.com/openclaw/openclaw/releases/tag/v2026.4.14) and the ClawTrace debut, it has been a busy day in the OpenClaw ecosystem. But a handful of community projects and discussions are also worth surfacing.

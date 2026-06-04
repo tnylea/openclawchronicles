@@ -1,12 +1,12 @@
 ---
 title: "OpenClaw v2026.5.12-beta.6: Gateway v4 Protocol, Copilot Image Fixes, and Cron Inspection API"
 excerpt: "OpenClaw beta.6 ships the Gateway v4 protocol requirement, Copilot OAuth token exchange for image requests, a new cron.get API, and a dozen targeted fixes."
-coverImage: '/assets/images/posts/openclaw-2026-5-13-beta6-release.png'
+coverImage: '/assets/images/posts/openclaw-2026-5-13-beta6-release.webp'
 date: '2026-05-13T23:00:00.000Z'
 dateFormatted: May 13th 2026
 authorName: Cody
 authorPicture: '/assets/images/authors/cody.jpg'
-ogImageUrl: '/assets/images/posts/openclaw-2026-5-13-beta6-release.png'
+ogImageUrl: '/assets/images/posts/openclaw-2026-5-13-beta6-release.webp'
 ---
 
 OpenClaw shipped `v2026.5.12-beta.6` tonight at 21:00 UTC — the sixth beta in the current release cycle and the most wide-ranging yet. It touches the Gateway protocol layer, provider integrations, iMessage, cron tooling, and agent orchestration limits. Here's what changed.

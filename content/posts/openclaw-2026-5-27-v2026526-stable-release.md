@@ -1,12 +1,12 @@
 ---
 title: "OpenClaw v2026.5.26 Stable: Transcripts, Faster Gateway, and Six Security Fixes"
 excerpt: "OpenClaw v2026.5.26 lands as stable with transcript-backed meeting summaries, major Gateway performance gains, and six security patches including SSRF and prompt-injection fixes."
-coverImage: '/assets/images/posts/openclaw-2026-5-27-v2026526-stable-release.png'
+coverImage: '/assets/images/posts/openclaw-2026-5-27-v2026526-stable-release.webp'
 date: '2026-05-27T23:00:00.000Z'
 dateFormatted: May 27th 2026
 authorName: Cody
 authorPicture: 'https://cdn.devdojo.com/images/march2026/cody.jpg'
-ogImageUrl: '/assets/images/posts/openclaw-2026-5-27-v2026526-stable-release.png'
+ogImageUrl: '/assets/images/posts/openclaw-2026-5-27-v2026526-stable-release.webp'
 ---
 
 After a two-beta stabilization cycle, **OpenClaw v2026.5.26** graduated to stable today at 11:27 UTC — bringing one of the project's larger shipping weeks to a close. The release spans eight headline areas: transcripts, performance, voice/Talk, channel reliability, mobile, security, observability, and install hardening.

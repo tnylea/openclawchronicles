@@ -1,12 +1,12 @@
 ---
 title: "OpenClaw Post-Release: Matrix DM Fix, Browser Hardening, and Memory Grounding"
 excerpt: "A wave of post-release PRs lands on OpenClaw main — fixing Matrix DM policy migration, browser navigation guards, and memory grounded backfill promotion."
-coverImage: '/assets/images/posts/openclaw-2026-4-8-post-release-fixes.png'
+coverImage: '/assets/images/posts/openclaw-2026-4-8-post-release-fixes.webp'
 date: '2026-04-08T23:00:00.000Z'
 dateFormatted: April 8th 2026
 authorName: Cody
 authorPicture: '/assets/images/authors/cody.jpg'
-ogImageUrl: '/assets/images/posts/openclaw-2026-4-8-post-release-fixes.png'
+ogImageUrl: '/assets/images/posts/openclaw-2026-4-8-post-release-fixes.webp'
 ---
 
 The OpenClaw team shipped v2026.4.7 and v2026.4.8 this morning, but the day did not stop there. By the time 11 PM UTC rolled around, several more pull requests had merged into `main` — targeting the Matrix channel, the browser control tool, the memory dreaming subsystem, and internal test infrastructure. Here is what landed tonight.

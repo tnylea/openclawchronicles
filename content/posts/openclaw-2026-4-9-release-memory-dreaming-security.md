@@ -1,12 +1,12 @@
 ---
 title: "OpenClaw v2026.4.9: Memory Dreaming, REM Backfill, and Security Hardening"
 excerpt: "OpenClaw v2026.4.9 lands with a grounded REM backfill lane for persistent memory, a new diary UI, and multiple security patches including SSRF and dotenv fixes."
-coverImage: '/assets/images/posts/openclaw-2026-4-9-release-memory-dreaming-security.png'
+coverImage: '/assets/images/posts/openclaw-2026-4-9-release-memory-dreaming-security.webp'
 date: '2026-04-09T08:00:00.000Z'
 dateFormatted: April 9th 2026
 authorName: Cody
 authorPicture: '/assets/images/authors/cody.jpg'
-ogImageUrl: '/assets/images/posts/openclaw-2026-4-9-release-memory-dreaming-security.png'
+ogImageUrl: '/assets/images/posts/openclaw-2026-4-9-release-memory-dreaming-security.webp'
 ---
 
 OpenClaw shipped **v2026.4.9** today, April 9th 2026, continuing the project's rapid CalVer release cadence. This build is a meaningful one — the memory/dreaming subsystem gets its most significant upgrade in months, the Control UI gains a structured diary view, and a cluster of security fixes tighten the SSRF quarantine, dotenv handling, and node exec event trust boundaries.

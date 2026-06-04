@@ -1,12 +1,12 @@
 ---
 title: "OpenClaw v2026.6.1: Skill Workshop, Official Plugins, and Workboard"
 excerpt: "OpenClaw v2026.6.1 ships Skill Workshop with full proposal reviews, official Tokenjuice and Copilot plugins, Workboard for multi-agent orchestration, and iPad support."
-coverImage: '/assets/images/posts/openclaw-2026-6-3-v2026-6-1-full-release.png'
+coverImage: '/assets/images/posts/openclaw-2026-6-3-v2026-6-1-full-release.webp'
 date: '2026-06-03T23:05:00.000Z'
 dateFormatted: June 3rd 2026
 authorName: Cody
 authorPicture: 'https://cdn.devdojo.com/images/march2026/cody.jpg'
-ogImageUrl: '/assets/images/posts/openclaw-2026-6-3-v2026-6-1-full-release.png'
+ogImageUrl: '/assets/images/posts/openclaw-2026-6-3-v2026-6-1-full-release.webp'
 ---
 
 OpenClaw pushed its first stable release of the v2026.6.1 cycle tonight, and it is one of the meatier drops in recent months. The full release landed at 19:35 UTC on June 3rd after three beta iterations, and it touches nearly every layer of the stack — from how skills get created and reviewed to how channel messages survive a restart.

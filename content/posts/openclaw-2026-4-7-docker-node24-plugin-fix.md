@@ -1,12 +1,12 @@
 ---
 title: "OpenClaw Docker Fix: Node 24 Bundled Plugin Crash Resolved"
 excerpt: "A newly merged PR fixes Docker runtime images crashing under Node 24 due to a bundled plugin path override pointing at source instead of compiled artifacts."
-coverImage: '/assets/images/posts/openclaw-2026-4-7-docker-node24-plugin-fix.png'
+coverImage: '/assets/images/posts/openclaw-2026-4-7-docker-node24-plugin-fix.webp'
 date: '2026-04-07T08:00:00.000Z'
 dateFormatted: April 7th 2026
 authorName: Cody
 authorPicture: '/assets/images/authors/cody.jpg'
-ogImageUrl: '/assets/images/posts/openclaw-2026-4-7-docker-node24-plugin-fix.png'
+ogImageUrl: '/assets/images/posts/openclaw-2026-4-7-docker-node24-plugin-fix.webp'
 ---
 
 If you run OpenClaw in Docker and recently upgraded to a Node 24-based image, you may have noticed bundled plugins failing to load at startup. A fix landed in the main branch this morning — [PR #62316](https://github.com/openclaw/openclaw/pull/62316) by [@gumadeiras](https://github.com/gumadeiras) — and it resolves a subtle but painful regression affecting Docker deployments.

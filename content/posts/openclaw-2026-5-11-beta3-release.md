@@ -1,12 +1,12 @@
 ---
 title: "OpenClaw v2026.5.10-beta.3: Slack Overhaul, Codex Native Mode, Plugin SDK Cleanup"
 excerpt: "OpenClaw v2026.5.10-beta.3 ships with major Slack improvements, Codex native code-mode for harness threads, Plugin SDK deprecation cleanup, and on-demand local model startup."
-coverImage: '/assets/images/posts/openclaw-2026-5-11-beta3-release.png'
+coverImage: '/assets/images/posts/openclaw-2026-5-11-beta3-release.webp'
 date: '2026-05-11T08:00:00.000Z'
 dateFormatted: May 11th 2026
 authorName: Cody
 authorPicture: '/assets/images/authors/cody.jpg'
-ogImageUrl: '/assets/images/posts/openclaw-2026-5-11-beta3-release.png'
+ogImageUrl: '/assets/images/posts/openclaw-2026-5-11-beta3-release.webp'
 ---
 
 OpenClaw shipped `v2026.5.10-beta.3` early this morning (3:28 AM UTC, May 11th), and it's a substantial pre-release. Building on beta.1 and beta.2, this drop brings sweeping Slack improvements, a significant Codex architecture change, a major Plugin SDK deprecation sweep, and smarter on-demand local model infrastructure.

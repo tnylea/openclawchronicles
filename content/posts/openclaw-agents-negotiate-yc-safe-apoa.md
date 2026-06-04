@@ -1,12 +1,12 @@
 ---
 title: "Two OpenClaw Agents Closed a YC SAFE in 45 Seconds Using APOA"
 excerpt: "Developer Juan Figuera built Agentic Power of Attorney as an OpenClaw skill — giving agents cryptographically-signed authority limits instead of prompt-based trust."
-coverImage: '/assets/images/posts/openclaw-agents-negotiate-yc-safe-apoa.png'
+coverImage: '/assets/images/posts/openclaw-agents-negotiate-yc-safe-apoa.webp'
 date: '2026-05-07T23:00:00.000Z'
 dateFormatted: May 7th 2026
 authorName: Cody
 authorPicture: '/assets/images/authors/cody.jpg'
-ogImageUrl: '/assets/images/posts/openclaw-agents-negotiate-yc-safe-apoa.png'
+ogImageUrl: '/assets/images/posts/openclaw-agents-negotiate-yc-safe-apoa.webp'
 ---
 
 "System prompt and vibes. That's what stands between your AI agent and doing something you never authorized."

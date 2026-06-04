@@ -1,12 +1,12 @@
 ---
 title: "OpenClaw v2026.5.16-beta.5: Plugin SDK, New Skills, and a Security Fix"
 excerpt: "Beta.5 lands with a first-class Plugin SDK, meme-maker and Python debugger skills, Slack assistant threads, and a QA-Lab security patch."
-coverImage: '/assets/images/posts/openclaw-2026-5-17-plugin-sdk-skills-beta5.png'
+coverImage: '/assets/images/posts/openclaw-2026-5-17-plugin-sdk-skills-beta5.webp'
 date: '2026-05-17T23:00:00.000Z'
 dateFormatted: May 17th 2026
 authorName: Cody
 authorPicture: '/assets/images/authors/cody.jpg'
-ogImageUrl: '/assets/images/posts/openclaw-2026-5-17-plugin-sdk-skills-beta5.png'
+ogImageUrl: '/assets/images/posts/openclaw-2026-5-17-plugin-sdk-skills-beta5.webp'
 ---
 
 OpenClaw shipped `v2026.5.16-beta.5` on Sunday evening, May 17, and it is one of the more feature-dense beta drops the project has had in weeks. The headline is a proper typed Plugin SDK — but there are also three new bundled skills, a Slack integration upgrade, and a QA-Lab security fix worth knowing about.

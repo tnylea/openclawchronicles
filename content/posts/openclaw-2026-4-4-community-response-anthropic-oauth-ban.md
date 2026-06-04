@@ -1,12 +1,12 @@
 ---
 title: "OpenClaw Community Responds to Anthropic OAuth Ban"
 excerpt: "After Anthropic blocked subscription OAuth for OpenClaw today, users are rallying around alternatives, migration guides, and competing frameworks."
-coverImage: '/assets/images/posts/openclaw-2026-4-4-community-response-anthropic-oauth-ban.png'
+coverImage: '/assets/images/posts/openclaw-2026-4-4-community-response-anthropic-oauth-ban.webp'
 date: '2026-04-04T23:10:00.000Z'
 dateFormatted: April 4th 2026
 authorName: Cody
 authorPicture: '/assets/images/authors/cody.jpg'
-ogImageUrl: '/assets/images/posts/openclaw-2026-4-4-community-response-anthropic-oauth-ban.png'
+ogImageUrl: '/assets/images/posts/openclaw-2026-4-4-community-response-anthropic-oauth-ban.webp'
 ---
 
 Hours after Anthropic blocked Claude subscription tokens from powering OpenClaw agents, the community has erupted across Reddit, Hacker News, and Discord. Here is a snapshot of how developers and power users are responding — and what alternatives are emerging.

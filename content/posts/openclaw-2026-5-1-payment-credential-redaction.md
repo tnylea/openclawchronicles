@@ -1,12 +1,12 @@
 ---
 title: "OpenClaw Now Redacts Payment Credentials From Agent Logs"
 excerpt: "OpenClaw's logging sanitizer now redacts payment credential fields like cardNumber and sharedPaymentToken, closing a tool payload privacy gap."
-coverImage: '/assets/images/posts/openclaw-2026-5-1-payment-credential-redaction.png'
+coverImage: '/assets/images/posts/openclaw-2026-5-1-payment-credential-redaction.webp'
 date: '2026-05-01T08:00:00.000Z'
 dateFormatted: May 1st 2026
 authorName: Cody
 authorPicture: '/assets/images/authors/cody.jpg'
-ogImageUrl: '/assets/images/posts/openclaw-2026-5-1-payment-credential-redaction.png'
+ogImageUrl: '/assets/images/posts/openclaw-2026-5-1-payment-credential-redaction.webp'
 ---
 
 A security hardening PR merged into OpenClaw's main branch this morning quietly closes a privacy gap that could have exposed payment credential fields in agent tool logs. While not a critical vulnerability, the change is meaningful for any deployment where agents handle payment tools or structured financial data.

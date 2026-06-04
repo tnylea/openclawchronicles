@@ -1,12 +1,12 @@
 ---
 title: "Anthropic Drops OpenClaw from Claude Subscriptions Starting Today"
 excerpt: "Anthropic announced Claude subscriptions will no longer cover OpenClaw usage as of April 4, 2026, pushing users to a separate pay-as-you-go API plan."
-coverImage: '/assets/images/posts/openclaw-2026-4-4-anthropic-claude-drops-openclaw-support.png'
+coverImage: '/assets/images/posts/openclaw-2026-4-4-anthropic-claude-drops-openclaw-support.webp'
 date: '2026-04-04T08:00:00.000Z'
 dateFormatted: April 4th 2026
 authorName: Cody
 authorPicture: '/assets/images/authors/cody.jpg'
-ogImageUrl: '/assets/images/posts/openclaw-2026-4-4-anthropic-claude-drops-openclaw-support.png'
+ogImageUrl: '/assets/images/posts/openclaw-2026-4-4-anthropic-claude-drops-openclaw-support.webp'
 ---
 
 In a move that caught many users off guard, Anthropic has announced that Claude subscriptions will no longer support usage through third-party tools like OpenClaw, effective **today, April 4, 2026 at 12 PM Pacific Time**. Users who want to continue using Claude as their OpenClaw provider will need to switch to a pay-as-you-go API plan.

@@ -1,12 +1,12 @@
 ---
 title: "SmolVM: Run OpenClaw Pi Agents in Parallel microVM Sandboxes"
 excerpt: "SmolVM is an open-source microVM abstraction for coding agents that lets you run parallel Pi agents in isolated sandboxes — lighter than Docker."
-coverImage: '/assets/images/posts/openclaw-smolvm-microvm-agent-sandboxes.png'
+coverImage: '/assets/images/posts/openclaw-smolvm-microvm-agent-sandboxes.webp'
 date: '2026-05-04T14:00:00.000Z'
 dateFormatted: May 4th 2026
 authorName: Cody
 authorPicture: '/assets/images/authors/cody.jpg'
-ogImageUrl: '/assets/images/posts/openclaw-smolvm-microvm-agent-sandboxes.png'
+ogImageUrl: '/assets/images/posts/openclaw-smolvm-microvm-agent-sandboxes.webp'
 ---
 
 A project called [SmolVM](https://github.com/CelestoAI/SmolVM/) surfaced on Hacker News yesterday with a straightforward pitch: give coding agents and OpenClaw proper microVM isolation without the weight of Docker. Built by [@theaniketmaurya](https://github.com/theaniketmaurya) at [CelestoAI](https://celesto.ai), it's already picking up interest from people running parallel agent workflows.

@@ -1,12 +1,12 @@
 ---
 title: "OpenClaw's Browser and Dependency Security Gets a Major Overhaul"
 excerpt: "Eleven security-focused PRs merged on April 10th lock down SSRF escapes, tighten browser navigation guards, pin axios against CVE-2025-27152, and add a plugin dependency denylist."
-coverImage: '/assets/images/posts/openclaw-browser-security-hardening-april-2026.png'
+coverImage: '/assets/images/posts/openclaw-browser-security-hardening-april-2026.webp'
 date: '2026-04-10T23:00:00.000Z'
 dateFormatted: April 10th 2026
 authorName: Cody
 authorPicture: '/assets/images/authors/cody.jpg'
-ogImageUrl: '/assets/images/posts/openclaw-browser-security-hardening-april-2026.png'
+ogImageUrl: '/assets/images/posts/openclaw-browser-security-hardening-april-2026.webp'
 ---
 
 If you follow the OpenClaw `main` branch, April 10th, 2026 was a significant day for security. A wave of hardening PRs landed in a single push, touching browser navigation guards, SSRF quarantine logic, sender-scoped media policy, and the plugin dependency install surface. Here is what changed and why it matters for self-hosters.

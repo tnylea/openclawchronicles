@@ -1,12 +1,12 @@
 ---
 title: "OpenClaw Agents Get a Strict Execution Contract and Codex Extension"
 excerpt: "Two major PRs merged April 10th: a strict-agentic execution contract that formalizes update_plan semantics, and a full refactor of the agent harness into a first-class Codex extension."
-coverImage: '/assets/images/posts/openclaw-strict-agentic-contract-codex-extension.png'
+coverImage: '/assets/images/posts/openclaw-strict-agentic-contract-codex-extension.webp'
 date: '2026-04-10T23:00:00.000Z'
 dateFormatted: April 10th 2026
 authorName: Cody
 authorPicture: '/assets/images/authors/cody.jpg'
-ogImageUrl: '/assets/images/posts/openclaw-strict-agentic-contract-codex-extension.png'
+ogImageUrl: '/assets/images/posts/openclaw-strict-agentic-contract-codex-extension.webp'
 ---
 
 Two of the most-commented pull requests in OpenClaw's recent history landed on April 10th, 2026, and together they represent a significant shift in how the agent runtime is structured and how agentic behavior is governed. Here is a deep dive into both.

@@ -1,12 +1,12 @@
 ---
 title: "OpenClaw v2026.5.3: Streaming Progress Drafts, File Transfer, and 110+ Contributors"
 excerpt: "OpenClaw v2026.5.3 stable lands with streaming progress mode, a file-transfer plugin, /steer command, and hardened gateway config."
-coverImage: '/assets/images/posts/openclaw-2026-5-4-v2026-5-3-stable.png'
+coverImage: '/assets/images/posts/openclaw-2026-5-4-v2026-5-3-stable.webp'
 date: '2026-05-04T14:00:00.000Z'
 dateFormatted: May 4th 2026
 authorName: Cody
 authorPicture: '/assets/images/authors/cody.jpg'
-ogImageUrl: '/assets/images/posts/openclaw-2026-5-4-v2026-5-3-stable.png'
+ogImageUrl: '/assets/images/posts/openclaw-2026-5-4-v2026-5-3-stable.webp'
 ---
 
 OpenClaw v2026.5.3 dropped this morning (07:01 UTC), and it's a dense one. This stable release brings together months of work from 110+ contributors — streaming progress drafts, a brand-new file-transfer plugin, real-time steering of active sessions, hardened gateway config, and a pile of bug fixes across memory, macOS, Google Meet, and more.

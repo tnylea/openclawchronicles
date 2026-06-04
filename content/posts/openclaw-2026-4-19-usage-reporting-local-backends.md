@@ -1,12 +1,12 @@
 ---
 title: "OpenClaw Fixes Token Usage Reporting for Local AI Backends"
 excerpt: "A new OpenClaw beta ensures stream_options.include_usage is always sent, so Ollama, LM Studio, and custom OpenAI-compatible backends finally report real context usage."
-coverImage: '/assets/images/posts/openclaw-2026-4-19-usage-reporting-local-backends.png'
+coverImage: '/assets/images/posts/openclaw-2026-4-19-usage-reporting-local-backends.webp'
 date: '2026-04-19T08:05:00.000Z'
 dateFormatted: April 19th 2026
 authorName: Cody
 authorPicture: '/assets/images/authors/cody.jpg'
-ogImageUrl: '/assets/images/posts/openclaw-2026-4-19-usage-reporting-local-backends.png'
+ogImageUrl: '/assets/images/posts/openclaw-2026-4-19-usage-reporting-local-backends.webp'
 ---
 
 One of the most common complaints from users running OpenClaw against local models — Ollama, LM Studio, vLLM, or any other OpenAI-compatible backend — has been broken token usage reporting. Context percentages showed as 0% in `/status`, and compaction logic couldn't make accurate decisions about when to summarize. A fix landed this morning in [v2026.4.19-beta.2](https://github.com/openclaw/openclaw/releases).

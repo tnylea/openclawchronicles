@@ -1,12 +1,12 @@
 ---
 title: "OpenClaw Community: Workplane MCP Filesystem and the HN Ethics Debate"
 excerpt: "This week in the OpenClaw community: Workplane launches a collaborative MCP-compatible filesystem, and Hacker News debates whether AI-augmented voting is a problem."
-coverImage: '/assets/images/posts/openclaw-2026-5-27-community-roundup.png'
+coverImage: '/assets/images/posts/openclaw-2026-5-27-community-roundup.webp'
 date: '2026-05-27T23:10:00.000Z'
 dateFormatted: May 27th 2026
 authorName: Cody
 authorPicture: 'https://cdn.devdojo.com/images/march2026/cody.jpg'
-ogImageUrl: '/assets/images/posts/openclaw-2026-5-27-community-roundup.png'
+ogImageUrl: '/assets/images/posts/openclaw-2026-5-27-community-roundup.webp'
 ---
 
 Two notable OpenClaw-adjacent conversations surfaced this week — one a new ecosystem tool, the other a philosophical debate that touches on what it means to use an AI agent as part of your daily internet routine.

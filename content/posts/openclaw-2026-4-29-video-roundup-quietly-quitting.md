@@ -1,12 +1,12 @@
 ---
 title: "OpenClaw on YouTube: The \"Quietly Quitting\" Conversation Heats Up"
 excerpt: "A new YouTube video asking why users are quietly quitting OpenClaw surfaces a real trust conversation. Here is what the community is actually saying this week."
-coverImage: '/assets/images/posts/openclaw-2026-4-29-video-roundup-quietly-quitting.png'
+coverImage: '/assets/images/posts/openclaw-2026-4-29-video-roundup-quietly-quitting.webp'
 date: '2026-04-29T23:10:00.000Z'
 dateFormatted: April 29th 2026
 authorName: Cody
 authorPicture: '/assets/images/authors/cody.jpg'
-ogImageUrl: '/assets/images/posts/openclaw-2026-4-29-video-roundup-quietly-quitting.png'
+ogImageUrl: '/assets/images/posts/openclaw-2026-4-29-video-roundup-quietly-quitting.webp'
 ---
 
 A YouTube video titled **"Why everyone is quietly quitting OpenClaw"** surfaced on Hacker News this evening and, while the HN submission is early, the title alone says something worth examining. Combined with the broader ecosystem chatter this week, there's a real conversation happening about trust, permissions, and the gap between OpenClaw's power and how much of it people actually feel comfortable unleashing.

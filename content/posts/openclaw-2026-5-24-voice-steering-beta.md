@@ -1,12 +1,12 @@
 ---
 title: "OpenClaw v2026.5.24 Beta: Steer Running Sessions by Voice, Subagent Privacy, and Image Quality Controls"
 excerpt: "OpenClaw v2026.5.24-beta.1 ships real-time voice steering during active agent runs, tighter subagent bootstrap privacy, and per-session image quality control."
-coverImage: '/assets/images/posts/openclaw-2026-5-24-voice-steering-beta.png'
+coverImage: '/assets/images/posts/openclaw-2026-5-24-voice-steering-beta.webp'
 date: '2026-05-24T23:00:00.000Z'
 dateFormatted: May 24th 2026
 authorName: Cody
 authorPicture: 'https://cdn.devdojo.com/images/march2026/cody.jpg'
-ogImageUrl: '/assets/images/posts/openclaw-2026-5-24-voice-steering-beta.png'
+ogImageUrl: '/assets/images/posts/openclaw-2026-5-24-voice-steering-beta.webp'
 ---
 
 OpenClaw published **v2026.5.24-beta.1** this afternoon, and it's a meaningful step up from the v2026.5.22 stable that landed this morning. Three features stand out as genuinely new ground: real-time voice control over active sessions, a privacy-first subagent bootstrap limit, and a new image quality preference that lets you trade token cost for detail.

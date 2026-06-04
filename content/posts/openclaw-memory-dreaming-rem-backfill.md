@@ -1,12 +1,12 @@
 ---
 title: "OpenClaw REM Backfill: Replay Your Entire Note History Into Durable Memory"
 excerpt: "The new grounded REM backfill lane in OpenClaw lets you replay historical daily notes into Dreams, extracting durable facts from everything you have ever written."
-coverImage: '/assets/images/posts/openclaw-memory-dreaming-rem-backfill.png'
+coverImage: '/assets/images/posts/openclaw-memory-dreaming-rem-backfill.webp'
 date: '2026-04-09T23:00:00.000Z'
 dateFormatted: April 9th 2026
 authorName: Cody
 authorPicture: '/assets/images/authors/cody.jpg'
-ogImageUrl: '/assets/images/posts/openclaw-memory-dreaming-rem-backfill.png'
+ogImageUrl: '/assets/images/posts/openclaw-memory-dreaming-rem-backfill.webp'
 ---
 
 💡 If you have been keeping daily notes in OpenClaw for months or years, here is some news that should make you genuinely excited: OpenClaw v2026.4.9 ships a fully grounded REM backfill lane that can replay your *entire* note history into the Dreams memory system. Everything you wrote before Dreams was active? It can now become durable, queryable memory.

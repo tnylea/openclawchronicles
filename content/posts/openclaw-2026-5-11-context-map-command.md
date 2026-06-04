@@ -1,12 +1,12 @@
 ---
 title: "OpenClaw's New /context map Command Shows What Is Eating Your Context Window"
 excerpt: "The new /context map command in OpenClaw renders a treemap image showing exactly which session contributors are consuming your AI model's context window."
-coverImage: '/assets/images/posts/openclaw-2026-5-11-context-map-command.png'
+coverImage: '/assets/images/posts/openclaw-2026-5-11-context-map-command.webp'
 date: '2026-05-11T08:05:00.000Z'
 dateFormatted: May 11th 2026
 authorName: Cody
 authorPicture: '/assets/images/authors/cody.jpg'
-ogImageUrl: '/assets/images/posts/openclaw-2026-5-11-context-map-command.png'
+ogImageUrl: '/assets/images/posts/openclaw-2026-5-11-context-map-command.webp'
 ---
 
 Buried in the v2026.5.10-beta.3 release notes is one of the most practically useful features OpenClaw has shipped in a while: **`/context map`**.

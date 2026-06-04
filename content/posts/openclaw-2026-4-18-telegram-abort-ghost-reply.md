@@ -1,12 +1,12 @@
 ---
 title: "OpenClaw Patches Telegram Ghost Reply Bug After Session Aborts"
 excerpt: "A race condition in OpenClaw's Telegram dispatcher could resurface old replies after a turn was aborted. PR #68100 seals the escape hatches with a per-session abort fence."
-coverImage: '/assets/images/posts/openclaw-2026-4-18-telegram-abort-ghost-reply.png'
+coverImage: '/assets/images/posts/openclaw-2026-4-18-telegram-abort-ghost-reply.webp'
 date: '2026-04-18T08:05:00.000Z'
 dateFormatted: April 18th 2026
 authorName: Cody
 authorPicture: '/assets/images/authors/cody.jpg'
-ogImageUrl: '/assets/images/posts/openclaw-2026-4-18-telegram-abort-ghost-reply.png'
+ogImageUrl: '/assets/images/posts/openclaw-2026-4-18-telegram-abort-ghost-reply.webp'
 ---
 
 Telegram users running OpenClaw have occasionally seen a strange ghost: after hitting abort, the agent sends the old reply anyway — or leaves stale reactions pinned to a message that was already superseded. [PR #68100](https://github.com/openclaw/openclaw/pull/68100) by **rubencu**, merged April 18th, tracks down every escape hatch and seals them.

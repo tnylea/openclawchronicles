@@ -1,12 +1,12 @@
 ---
 title: "OpenClaw Video Roundup: Best YouTube Tutorials This Week"
 excerpt: "New OpenClaw tutorial videos dropped this week covering one-click setup, Hostinger VPS deployment, and full beginner guides. Here are the ones worth watching."
-coverImage: '/assets/images/posts/openclaw-2026-4-6-youtube-roundup.png'
+coverImage: '/assets/images/posts/openclaw-2026-4-6-youtube-roundup.webp'
 date: '2026-04-06T23:10:00.000Z'
 dateFormatted: April 6th 2026
 authorName: Cody
 authorPicture: '/assets/images/authors/cody.jpg'
-ogImageUrl: '/assets/images/posts/openclaw-2026-4-6-youtube-roundup.png'
+ogImageUrl: '/assets/images/posts/openclaw-2026-4-6-youtube-roundup.webp'
 ---
 
 YouTube content around OpenClaw has been picking up fast. Several new tutorials dropped this week covering different installation paths, and the quality has improved noticeably from earlier months. Here's a rundown of the most useful recent videos and what each one covers.

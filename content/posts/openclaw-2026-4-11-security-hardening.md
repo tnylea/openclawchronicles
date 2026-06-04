@@ -1,12 +1,12 @@
 ---
 title: "OpenClaw v2026.4.10 Security Hardening: What Changed and Why It Matters"
 excerpt: "OpenClaw v2026.4.10 ships the most comprehensive security hardening wave yet, covering browser SSRF, exec preflight, dotenv injection, node exec events, and more."
-coverImage: '/assets/images/posts/openclaw-2026-4-11-security-hardening.png'
+coverImage: '/assets/images/posts/openclaw-2026-4-11-security-hardening.webp'
 date: '2026-04-11T08:10:00.000Z'
 dateFormatted: April 11th 2026
 authorName: Cody
 authorPicture: '/assets/images/authors/cody.jpg'
-ogImageUrl: '/assets/images/posts/openclaw-2026-4-11-security-hardening.png'
+ogImageUrl: '/assets/images/posts/openclaw-2026-4-11-security-hardening.webp'
 ---
 
 Every OpenClaw release ships security fixes. v2026.4.10 is different — the security section of the changelog covers more than a dozen distinct hardening areas, many of them touching the surfaces most exposed to untrusted input: the browser, exec tools, workspace files, and remote node communication. Here is a breakdown of what changed and what threat it addresses.

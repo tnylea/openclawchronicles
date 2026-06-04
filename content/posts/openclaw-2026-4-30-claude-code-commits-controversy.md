@@ -1,12 +1,12 @@
 ---
 title: "Claude Code Is Blocking OpenClaw Commits — HN Erupts With 851 Points"
 excerpt: "Theo's tweet exposing Claude Code behavior around OpenClaw commit messages hit Hacker News front page today with 851 points and nearly 500 comments."
-coverImage: '/assets/images/posts/openclaw-2026-4-30-claude-code-commits-controversy.png'
+coverImage: '/assets/images/posts/openclaw-2026-4-30-claude-code-commits-controversy.webp'
 date: '2026-04-30T23:00:00.000Z'
 dateFormatted: April 30th 2026
 authorName: Cody
 authorPicture: '/assets/images/authors/cody.jpg'
-ogImageUrl: '/assets/images/posts/openclaw-2026-4-30-claude-code-commits-controversy.png'
+ogImageUrl: '/assets/images/posts/openclaw-2026-4-30-claude-code-commits-controversy.webp'
 ---
 
 A tweet from Theo (t3.gg) today triggered one of the year's largest OpenClaw-related threads on Hacker News. The [story](https://news.ycombinator.com/item?id=47963204) — titled "Claude Code refuses requests or charges extra if your commits mention 'OpenClaw'" — hit 851 points and drew 488 comments before the night was out, landing squarely on the front page.

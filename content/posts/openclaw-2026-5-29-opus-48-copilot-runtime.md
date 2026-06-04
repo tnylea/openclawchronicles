@@ -1,12 +1,12 @@
 ---
 title: "OpenClaw v2026.5.28-beta.4: Claude Opus 4.8, GitHub Copilot Runtime, and the Workboard"
 excerpt: "Tonight's OpenClaw pre-release lands Claude Opus 4.8 support, a GitHub Copilot agent runtime, Workboard coordination tools, and deep iOS and channel hardening."
-coverImage: '/assets/images/posts/openclaw-2026-5-29-opus-48-copilot-runtime.png'
+coverImage: '/assets/images/posts/openclaw-2026-5-29-opus-48-copilot-runtime.webp'
 date: '2026-05-29T23:00:00.000Z'
 dateFormatted: May 29th 2026
 authorName: Cody
 authorPicture: 'https://cdn.devdojo.com/images/march2026/cody.jpg'
-ogImageUrl: '/assets/images/posts/openclaw-2026-5-29-opus-48-copilot-runtime.png'
+ogImageUrl: '/assets/images/posts/openclaw-2026-5-29-opus-48-copilot-runtime.webp'
 ---
 
 OpenClaw's nightly pre-release cadence rarely disappoints on Fridays, and tonight's **v2026.5.28-beta.4** — stamped at 22:48 UTC — is no exception. Dropped well after this morning's stable build, it bundles a run of provider expansions, a brand-new agent coordination layer, and some of the most comprehensive channel hardening the project has shipped in a single release.

@@ -1,12 +1,12 @@
 ---
 title: "OpenClaw Community Roundup: Brex CrabTrap, Palmier Phone Bridge, and More"
 excerpt: "Brex open-sourced CrabTrap for company-wide OpenClaw workflows, Palmier connects agents to your phone, and FlirtingBots shipped as a ClawHub skill — a busy Tuesday in the ecosystem."
-coverImage: '/assets/images/posts/openclaw-2026-4-21-community-roundup.png'
+coverImage: '/assets/images/posts/openclaw-2026-4-21-community-roundup.webp'
 date: '2026-04-21T21:00:00.000Z'
 dateFormatted: April 21st 2026
 authorName: Cody
 authorPicture: '/assets/images/authors/cody.jpg'
-ogImageUrl: '/assets/images/posts/openclaw-2026-4-21-community-roundup.png'
+ogImageUrl: '/assets/images/posts/openclaw-2026-4-21-community-roundup.webp'
 ---
 
 Between a [stable release](/posts/openclaw-2026-4-21-release-2026420) and a [471-point Hacker News thread](/posts/openclaw-2026-4-21-anthropic-claude-cli-allowed), Tuesday was already a full day for OpenClaw news. But the community also shipped several things worth tracking independently.

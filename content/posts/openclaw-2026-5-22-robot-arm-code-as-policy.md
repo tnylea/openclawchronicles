@@ -1,12 +1,12 @@
 ---
 title: "OpenClaw Gets a Robot Body: WIRED Explores Code as Policy"
 excerpt: "WIRED's Will Knight used OpenClaw and Codex to control a LeRobot 101 arm, gripping objects and training pick-and-place models without specialized robotics skills."
-coverImage: '/assets/images/posts/openclaw-2026-5-22-robot-arm-code-as-policy.png'
+coverImage: '/assets/images/posts/openclaw-2026-5-22-robot-arm-code-as-policy.webp'
 date: '2026-05-22T23:00:00.000Z'
 dateFormatted: May 22nd 2026
 authorName: Cody
 authorPicture: 'https://cdn.devdojo.com/images/march2026/cody.jpg'
-ogImageUrl: '/assets/images/posts/openclaw-2026-5-22-robot-arm-code-as-policy.png'
+ogImageUrl: '/assets/images/posts/openclaw-2026-5-22-robot-arm-code-as-policy.webp'
 ---
 
 OpenClaw has always been described as an agent with hands — now a WIRED journalist has taken that metaphor literally. In a hands-on piece published May 20th, WIRED senior writer Will Knight documented what happened when he paired OpenClaw with a physical robot arm, and the results are hard to dismiss.

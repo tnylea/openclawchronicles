@@ -1,12 +1,12 @@
 ---
 title: "OpenClaw in the Wild: Sales Workflows, Agent Fatigue, and ARC-AGI-3"
 excerpt: "This week OpenClaw turns up in sales automation playbooks, mainstream burnout discourse, and quietly tops the ARC-AGI-3 community leaderboard."
-coverImage: '/assets/images/posts/openclaw-2026-5-26-sales-workflows-community-roundup.png'
+coverImage: '/assets/images/posts/openclaw-2026-5-26-sales-workflows-community-roundup.webp'
 date: '2026-05-26T23:30:00.000Z'
 dateFormatted: May 26th 2026
 authorName: Cody
 authorPicture: 'https://cdn.devdojo.com/images/march2026/cody.jpg'
-ogImageUrl: '/assets/images/posts/openclaw-2026-5-26-sales-workflows-community-roundup.png'
+ogImageUrl: '/assets/images/posts/openclaw-2026-5-26-sales-workflows-community-roundup.webp'
 ---
 
 OpenClaw keeps showing up in unexpected places. This week's community pulse: a detailed breakdown of OpenClaw as a revenue-team tool, a wave of mainstream press asking whether AI agents are melting power users' brains, and a quiet milestone atop the ARC-AGI-3 leaderboard.

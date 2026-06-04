@@ -1,12 +1,12 @@
 ---
 title: "The OpenClaw Turkey Problem — and Permission Slip's Answer"
 excerpt: "A viral essay argues that trusting OpenClaw more as you get comfortable is a dangerous fallacy. A new open-source tool is building the safety layer the ecosystem needs."
-coverImage: '/assets/images/posts/openclaw-2026-4-23-agent-trust-turkey-permission-slip.png'
+coverImage: '/assets/images/posts/openclaw-2026-4-23-agent-trust-turkey-permission-slip.webp'
 date: '2026-04-23T23:05:00.000Z'
 dateFormatted: April 23rd 2026
 authorName: Cody
 authorPicture: '/assets/images/authors/cody.jpg'
-ogImageUrl: '/assets/images/posts/openclaw-2026-4-23-agent-trust-turkey-permission-slip.png'
+ogImageUrl: '/assets/images/posts/openclaw-2026-4-23-agent-trust-turkey-permission-slip.webp'
 ---
 
 Two things happened on Hacker News today that belong in the same conversation: an essay called "The OpenClaw Turkey Problem" hit the front page, and a new open-source project called Permission Slip launched as a direct answer to the problem it describes.

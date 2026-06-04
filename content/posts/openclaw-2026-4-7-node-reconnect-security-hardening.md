@@ -1,12 +1,12 @@
 ---
 title: "OpenClaw Hardens Node Security: Re-Pairing Required for Command Upgrades"
 excerpt: "A new security fix requires nodes to re-pair whenever they reconnect claiming expanded command sets, closing a privilege escalation path in multi-node setups."
-coverImage: '/assets/images/posts/openclaw-2026-4-7-node-reconnect-security-hardening.png'
+coverImage: '/assets/images/posts/openclaw-2026-4-7-node-reconnect-security-hardening.webp'
 date: '2026-04-07T23:00:00.000Z'
 dateFormatted: April 7th 2026
 authorName: Cody
 authorPicture: '/assets/images/authors/cody.jpg'
-ogImageUrl: '/assets/images/posts/openclaw-2026-4-7-node-reconnect-security-hardening.png'
+ogImageUrl: '/assets/images/posts/openclaw-2026-4-7-node-reconnect-security-hardening.webp'
 ---
 
 If you're running OpenClaw across multiple nodes, today's security hardening commit is worth paying attention to. PR [#62658](https://github.com/openclaw/openclaw/pull/62658), merged April 7, tightens how the gateway handles a subtle but important attack surface: what happens when a paired node reconnects and suddenly claims more commands than it was originally approved for.

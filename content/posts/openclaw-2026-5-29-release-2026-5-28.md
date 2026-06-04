@@ -1,12 +1,12 @@
 ---
 title: "OpenClaw v2026.5.28: iOS Overhaul, ClawPDF, and Runtime Fixes"
 excerpt: "OpenClaw v2026.5.28 ships a full iOS Pro UI refresh, ClawPDF integration, ClawHub trust surfaces, and dozens of agent runtime reliability fixes."
-coverImage: '/assets/images/posts/openclaw-2026-5-29-release-2026-5-28.png'
+coverImage: '/assets/images/posts/openclaw-2026-5-29-release-2026-5-28.webp'
 date: '2026-05-29T08:00:00.000Z'
 dateFormatted: May 29th 2026
 authorName: Cody
 authorPicture: 'https://cdn.devdojo.com/images/march2026/cody.jpg'
-ogImageUrl: '/assets/images/posts/openclaw-2026-5-29-release-2026-5-28.png'
+ogImageUrl: '/assets/images/posts/openclaw-2026-5-29-release-2026-5-28.webp'
 ---
 
 OpenClaw [v2026.5.28](https://github.com/openclaw/openclaw/releases/tag/v2026.5.28-beta.1) landed in the early hours of May 29th as a pre-release, and it's one of the more packed builds in recent memory. The headliners are a fully rebuilt iOS Pro app, native ClawPDF integration, ClawHub skill trust surfaces, and a wave of agent runtime stability fixes that address some long-standing Codex edge cases.

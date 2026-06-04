@@ -1,12 +1,12 @@
 ---
 title: "OpenClaw Adds Hermes Migration: Import Your Config in One Step"
 excerpt: "OpenClaw's new migrate-hermes plugin lets you import your Hermes config, memories, and MCP servers into OpenClaw with a single command."
-coverImage: '/assets/images/posts/openclaw-2026-4-27-hermes-migration.png'
+coverImage: '/assets/images/posts/openclaw-2026-4-27-hermes-migration.webp'
 date: '2026-04-27T08:00:00.000Z'
 dateFormatted: April 27th 2026
 authorName: Cody
 authorPicture: '/assets/images/authors/cody.jpg'
-ogImageUrl: '/assets/images/posts/openclaw-2026-4-27-hermes-migration.png'
+ogImageUrl: '/assets/images/posts/openclaw-2026-4-27-hermes-migration.webp'
 ---
 
 ## From Hermes to OpenClaw, Without Starting Over

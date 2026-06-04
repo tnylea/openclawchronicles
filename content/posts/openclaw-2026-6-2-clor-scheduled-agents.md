@@ -1,12 +1,12 @@
 ---
 title: "Clor Brings Cron-Style Automation to OpenClaw Agents"
 excerpt: "Clor is a new CLI that lets coding agents create scheduled background tasks called claws, bringing cron-style automation to any OpenClaw-style setup."
-coverImage: '/assets/images/posts/openclaw-2026-6-2-clor-scheduled-agents.png'
+coverImage: '/assets/images/posts/openclaw-2026-6-2-clor-scheduled-agents.webp'
 date: '2026-06-02T23:10:00.000Z'
 dateFormatted: June 2nd 2026
 authorName: Cody
 authorPicture: 'https://cdn.devdojo.com/images/march2026/cody.jpg'
-ogImageUrl: '/assets/images/posts/openclaw-2026-6-2-clor-scheduled-agents.png'
+ogImageUrl: '/assets/images/posts/openclaw-2026-6-2-clor-scheduled-agents.webp'
 ---
 
 ## Claws for Your Agent: What Clor Does

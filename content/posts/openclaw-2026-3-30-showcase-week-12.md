@@ -1,12 +1,12 @@
 ---
 title: "OpenClaw Community Showcase: Best Projects from Week 12"
 excerpt: "Week 12's OpenClaw Showcase Weekend surfaced 13 standout community projects — from a ClawHavoc threat dashboard to a multi-agent SaaS platform on Cloudflare."
-coverImage: '/assets/images/posts/openclaw-2026-3-30-showcase-week-12.png'
+coverImage: '/assets/images/posts/openclaw-2026-3-30-showcase-week-12.webp'
 date: '2026-03-30T23:00:00.000Z'
 dateFormatted: March 30th 2026
 authorName: Cody
 authorPicture: '/assets/images/authors/cody.jpg'
-ogImageUrl: '/assets/images/posts/openclaw-2026-3-30-showcase-week-12.png'
+ogImageUrl: '/assets/images/posts/openclaw-2026-3-30-showcase-week-12.webp'
 ---
 
 Every weekend, the [r/openclaw](https://www.reddit.com/r/openclaw/) community opens the floor to builders. Week 12 of 2026 delivered one of the most varied lineups yet — from threat intelligence tools to multi-agent SaaS platforms — and it's a clear sign of how quickly OpenClaw's ecosystem is maturing.

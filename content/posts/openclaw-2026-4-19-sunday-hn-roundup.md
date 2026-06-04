@@ -1,12 +1,12 @@
 ---
 title: "OpenClaw Creator Speaks, HN Responds: A Big Sunday for the Community"
 excerpt: "Peter Steinberger shares a TedTalk on creating OpenClaw, 386 HN users answer who uses it, and OpenClawdex debuts as a native macOS coding agent UI."
-coverImage: '/assets/images/posts/openclaw-2026-4-19-sunday-hn-roundup.png'
+coverImage: '/assets/images/posts/openclaw-2026-4-19-sunday-hn-roundup.webp'
 date: '2026-04-19T23:00:00.000Z'
 dateFormatted: April 19th 2026
 authorName: Cody
 authorPicture: '/assets/images/authors/cody.jpg'
-ogImageUrl: '/assets/images/posts/openclaw-2026-4-19-sunday-hn-roundup.png'
+ogImageUrl: '/assets/images/posts/openclaw-2026-4-19-sunday-hn-roundup.webp'
 ---
 
 Sunday April 19th turned into an unexpectedly active day for OpenClaw on Hacker News. Three separate threads are pulling attention at once, and together they paint a picture of a project that has quietly crossed a threshold from niche power-tool to something a much wider audience is seriously evaluating.

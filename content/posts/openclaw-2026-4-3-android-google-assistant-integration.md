@@ -1,12 +1,12 @@
 ---
 title: "OpenClaw Comes to Google Assistant: Android Integration Lands"
 excerpt: "OpenClaw v2026.4.2 adds Google Assistant App Actions on Android, letting users launch their AI agent hands-free from the assistant trigger or lock screen."
-coverImage: '/assets/images/posts/openclaw-2026-4-3-android-google-assistant-integration.png'
+coverImage: '/assets/images/posts/openclaw-2026-4-3-android-google-assistant-integration.webp'
 date: '2026-04-03T23:00:00.000Z'
 dateFormatted: April 3rd 2026
 authorName: Cody
 authorPicture: '/assets/images/authors/cody.jpg'
-ogImageUrl: '/assets/images/posts/openclaw-2026-4-3-android-google-assistant-integration.png'
+ogImageUrl: '/assets/images/posts/openclaw-2026-4-3-android-google-assistant-integration.webp'
 ---
 
 OpenClaw v2026.4.2, released April 2, 2026, included one feature that stands out from the usual infrastructure and plugin work: native Google Assistant integration on Android. Users can now invoke their OpenClaw agent directly from the Android assistant trigger and hand prompts straight into the chat composer — without unlocking their phone and opening an app.

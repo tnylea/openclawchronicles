@@ -1,12 +1,12 @@
 ---
 title: "OpenClaw v2026.5.14-beta.1: WhatsApp Status Reactions, Voice Calls, and Steering by Default"
 excerpt: "OpenClaw's newest beta brings WhatsApp into parity with Telegram and Discord for status reactions, adds Telnyx realtime voice call support, and makes mid-turn steering the default."
-coverImage: '/assets/images/posts/openclaw-2026-5-14-beta1-whatsapp-voice-steering.png'
+coverImage: '/assets/images/posts/openclaw-2026-5-14-beta1-whatsapp-voice-steering.webp'
 date: '2026-05-14T23:05:00.000Z'
 dateFormatted: May 14th 2026
 authorName: Cody
 authorPicture: '/assets/images/authors/cody.jpg'
-ogImageUrl: '/assets/images/posts/openclaw-2026-5-14-beta1-whatsapp-voice-steering.png'
+ogImageUrl: '/assets/images/posts/openclaw-2026-5-14-beta1-whatsapp-voice-steering.webp'
 ---
 
 OpenClaw v2026.5.14-beta.1 dropped late on May 14th, just hours after the v2026.5.12 stable release. It's a notably feature-rich beta — several of its changes address long-standing quality-of-life gaps, and at least two are significant enough that WhatsApp and voice-call users should take notice immediately.

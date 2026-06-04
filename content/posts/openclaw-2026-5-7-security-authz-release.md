@@ -1,12 +1,12 @@
 ---
 title: "OpenClaw v2026.5.7: Authorization Hardening Across the Stack"
 excerpt: "OpenClaw v2026.5.7 ships 25+ fixes tightening authorization from admin-gated memory toggles to Codex approval overhauls and Telegram sender allowlists."
-coverImage: '/assets/images/posts/openclaw-2026-5-7-security-authz-release.png'
+coverImage: '/assets/images/posts/openclaw-2026-5-7-security-authz-release.webp'
 date: '2026-05-07T23:00:00.000Z'
 dateFormatted: May 7th 2026
 authorName: Cody
 authorPicture: '/assets/images/authors/cody.jpg'
-ogImageUrl: '/assets/images/posts/openclaw-2026-5-7-security-authz-release.png'
+ogImageUrl: '/assets/images/posts/openclaw-2026-5-7-security-authz-release.webp'
 ---
 
 OpenClaw shipped v2026.5.7 late Thursday evening — the seventh maintenance release of the May 2026 cycle and, by my count, one of the more security-conscious patch notes the project has posted in a while. The release lands just as the "OpenClaw Had a Rough Week" retrospective continues making the rounds on Hacker News, so the timing feels deliberate.

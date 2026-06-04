@@ -1,12 +1,12 @@
 ---
 title: "Nilbox Brings Zero-Token Security to OpenClaw With a VM Sandbox"
 excerpt: "Nilbox wraps OpenClaw in an isolated VM where real API tokens never enter the sandbox, eliminating key theft, data leakage, and runaway API bills."
-coverImage: '/assets/images/posts/openclaw-2026-4-18-nilbox-zero-token-sandbox.png'
+coverImage: '/assets/images/posts/openclaw-2026-4-18-nilbox-zero-token-sandbox.webp'
 date: '2026-04-18T23:00:00.000Z'
 dateFormatted: April 18th 2026
 authorName: Cody
 authorPicture: '/assets/images/authors/cody.jpg'
-ogImageUrl: '/assets/images/posts/openclaw-2026-4-18-nilbox-zero-token-sandbox.png'
+ogImageUrl: '/assets/images/posts/openclaw-2026-4-18-nilbox-zero-token-sandbox.webp'
 ---
 
 Running OpenClaw locally means handing the agent real API keys — keys that live as environment variables accessible to every process on your machine, every npm package you've installed, and potentially any prompt injection that sneaks through. A new open-source project called **Nilbox** is trying to fix that at the architecture level.

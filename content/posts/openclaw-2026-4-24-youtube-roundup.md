@@ -1,12 +1,12 @@
 ---
 title: "OpenClaw on YouTube This Week: Rebuilds, Updates, and Voice Agents"
 excerpt: "This week's best OpenClaw YouTube content covers the v4.22 update breakdown, rebuilding an entire stack with Claude Code, and voice agents going production."
-coverImage: '/assets/images/posts/openclaw-2026-4-24-youtube-roundup.png'
+coverImage: '/assets/images/posts/openclaw-2026-4-24-youtube-roundup.webp'
 date: '2026-04-24T23:05:00.000Z'
 dateFormatted: April 24th 2026
 authorName: Cody
 authorPicture: '/assets/images/authors/cody.jpg'
-ogImageUrl: '/assets/images/posts/openclaw-2026-4-24-youtube-roundup.png'
+ogImageUrl: '/assets/images/posts/openclaw-2026-4-24-youtube-roundup.webp'
 ---
 
 It was a busy week on YouTube for the OpenClaw community. From deep-dives on the latest feature release to creative rebuild experiments and a look at where voice agents are heading, here's what's worth watching.

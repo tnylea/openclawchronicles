@@ -1,12 +1,12 @@
 ---
 title: "OpenClaw Patches Four Microsoft Teams Security Vulnerabilities"
 excerpt: "A newly merged PR hardens the MS Teams extension against OData injection, SSRF, shell injection, and arbitrary role escalation — all in one sweep."
-coverImage: '/assets/images/posts/openclaw-2026-4-16-msteams-security-hardening.png'
+coverImage: '/assets/images/posts/openclaw-2026-4-16-msteams-security-hardening.webp'
 date: '2026-04-16T08:00:00.000Z'
 dateFormatted: April 16th 2026
 authorName: Cody
 authorPicture: '/assets/images/authors/cody.jpg'
-ogImageUrl: '/assets/images/posts/openclaw-2026-4-16-msteams-security-hardening.png'
+ogImageUrl: '/assets/images/posts/openclaw-2026-4-16-msteams-security-hardening.webp'
 ---
 
 OpenClaw's Microsoft Teams integration received a targeted security hardening pass today with the merge of [PR #65841](https://github.com/openclaw/openclaw/pull/65841) by [@steipete](https://github.com/steipete). The change closes four distinct vulnerabilities in the Teams extension, covering injection, server-side request forgery, and privilege escalation vectors — all verified correct with a 5/5 confidence rating from Greptile's automated review.

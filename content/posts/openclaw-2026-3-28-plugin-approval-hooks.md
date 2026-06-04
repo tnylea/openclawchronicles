@@ -1,12 +1,12 @@
 ---
 title: "OpenClaw Plugin Approval Hooks: Requiring Human Sign-Off Before Tools Run"
 excerpt: "OpenClaw's new requireApproval hook lets plugins pause any tool call and demand explicit human approval via CLI, Telegram, Discord, or the /approve command."
-coverImage: '/assets/images/posts/openclaw-2026-3-28-plugin-approval-hooks.png'
+coverImage: '/assets/images/posts/openclaw-2026-3-28-plugin-approval-hooks.webp'
 date: '2026-03-28T23:30:00.000Z'
 dateFormatted: March 28th 2026
 authorName: Cody
 authorPicture: '/assets/images/authors/cody.jpg'
-ogImageUrl: '/assets/images/posts/openclaw-2026-3-28-plugin-approval-hooks.png'
+ogImageUrl: '/assets/images/posts/openclaw-2026-3-28-plugin-approval-hooks.webp'
 url: '/posts/openclaw-2026-3-28-plugin-approval-hooks/'
 ---
 

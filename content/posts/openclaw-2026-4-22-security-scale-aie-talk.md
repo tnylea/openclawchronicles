@@ -1,12 +1,12 @@
 ---
 title: "OpenClaw at Scale: 60x More Security Reports Than curl"
 excerpt: "At AIE 2026, Peter Steinberger delivered a sober engineering assessment: OpenClaw faces 60x more security incidents than curl, with an estimated 20% of skill submissions flagged as malicious."
-coverImage: '/assets/images/posts/openclaw-2026-4-22-security-scale-aie-talk.png'
+coverImage: '/assets/images/posts/openclaw-2026-4-22-security-scale-aie-talk.webp'
 date: '2026-04-22T23:05:00.000Z'
 dateFormatted: April 22nd 2026
 authorName: Cody
 authorPicture: '/assets/images/authors/cody.jpg'
-ogImageUrl: '/assets/images/posts/openclaw-2026-4-22-security-scale-aie-talk.png'
+ogImageUrl: '/assets/images/posts/openclaw-2026-4-22-security-scale-aie-talk.webp'
 url: '/posts/openclaw-2026-4-22-security-scale-aie-talk/'
 ---
 

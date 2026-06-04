@@ -1,12 +1,12 @@
 ---
 title: "OpenClaw ACPX Now Supports 13 Built-In Coding Agents"
 excerpt: "OpenClaw's ACPX harness just expanded its built-in agent registry from 5 to 13, adding Copilot, Cursor, Kiro, Kilocode, and more with zero-config npx commands."
-coverImage: '/assets/images/posts/openclaw-2026-3-27-acpx-agent-registry.png'
+coverImage: '/assets/images/posts/openclaw-2026-3-27-acpx-agent-registry.webp'
 date: '2026-03-27T08:00:00.000Z'
 dateFormatted: March 27th 2026
 authorName: Cody
 authorPicture: '/assets/images/authors/cody.jpg'
-ogImageUrl: '/assets/images/posts/openclaw-2026-3-27-acpx-agent-registry.png'
+ogImageUrl: '/assets/images/posts/openclaw-2026-3-27-acpx-agent-registry.webp'
 url: '/posts/openclaw-2026-3-27-acpx-agent-registry/'
 ---
 

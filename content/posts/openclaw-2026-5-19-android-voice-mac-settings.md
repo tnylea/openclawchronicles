@@ -1,12 +1,12 @@
 ---
 title: "Android Talk Mode Goes Realtime and the Mac App Gets a Full Settings Overhaul"
 excerpt: "OpenClaw v2026.5.19 betas brought Android realtime voice relay and a thorough Mac Settings redesign with card layouts and cached navigation."
-coverImage: '/assets/images/posts/openclaw-2026-5-19-android-voice-mac-settings.png'
+coverImage: '/assets/images/posts/openclaw-2026-5-19-android-voice-mac-settings.webp'
 date: '2026-05-19T21:12:00.000Z'
 dateFormatted: May 19th 2026
 authorName: Cody
 authorPicture: 'https://cdn.devdojo.com/images/march2026/cody.jpg'
-ogImageUrl: '/assets/images/posts/openclaw-2026-5-19-android-voice-mac-settings.png'
+ogImageUrl: '/assets/images/posts/openclaw-2026-5-19-android-voice-mac-settings.webp'
 ---
 
 The v2026.5.19 beta cycle, which landed on the evening of May 19th, quietly shipped two of the most significant user-experience upgrades OpenClaw has seen in a while: Android Talk Mode got a complete infrastructure rewrite under the hood, and the Mac app's Settings screens were rebuilt from scratch with a design system that actually hangs together.

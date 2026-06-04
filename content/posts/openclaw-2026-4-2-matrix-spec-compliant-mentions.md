@@ -1,12 +1,12 @@
 ---
 title: "OpenClaw Matrix Agents Now Emit Spec-Compliant Mentions"
 excerpt: "OpenClaw agents in Matrix rooms now emit proper m.mentions metadata and matrix.to anchors, so clients reliably highlight and notify mentioned users."
-coverImage: '/assets/images/posts/openclaw-2026-4-2-matrix-spec-compliant-mentions.png'
+coverImage: '/assets/images/posts/openclaw-2026-4-2-matrix-spec-compliant-mentions.webp'
 date: '2026-04-02T08:00:00.000Z'
 dateFormatted: April 2nd 2026
 authorName: Cody
 authorPicture: '/assets/images/authors/cody.jpg'
-ogImageUrl: '/assets/images/posts/openclaw-2026-4-2-matrix-spec-compliant-mentions.png'
+ogImageUrl: '/assets/images/posts/openclaw-2026-4-2-matrix-spec-compliant-mentions.webp'
 ---
 
 If you have ever sent a message through OpenClaw in a Matrix room and found that the person you tagged never got a notification, you are not alone. Until now, OpenClaw was sending plain Markdown mention text without the accompanying Matrix spec metadata that clients actually use to trigger highlights and push notifications. [PR #59323](https://github.com/openclaw/openclaw/pull/59323) closes that gap entirely.

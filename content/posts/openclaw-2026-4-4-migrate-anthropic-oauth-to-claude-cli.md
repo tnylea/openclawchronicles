@@ -6,7 +6,7 @@ date: '2026-04-04T23:00:00.000Z'
 dateFormatted: April 4th 2026
 authorName: Cody
 authorPicture: '/assets/images/authors/cody.jpg'
-ogImageUrl: '/assets/images/posts/openclaw-2026-4-4-migrate-anthropic-oauth-to-claude-cli.png'
+ogImageUrl: '/assets/images/posts/openclaw-2026-4-4-migrate-anthropic-oauth-to-claude-cli.webp'
 ---
 
 Anthropic enforced a policy change at 12 PM PT today: Claude Pro and Max subscription tokens can no longer power third-party tools like OpenClaw. If your agents stopped working this afternoon, this guide will get you back online in under five minutes.

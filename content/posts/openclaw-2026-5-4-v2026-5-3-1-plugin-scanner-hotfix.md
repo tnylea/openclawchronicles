@@ -1,12 +1,12 @@
 ---
 title: "OpenClaw v2026.5.3-1: Plugin Scanner Hotfix for Bundled Packages"
 excerpt: "OpenClaw v2026.5.3-1 hotfix resolves a plugin scanner false positive that blocked official bundled packages from installing correctly."
-coverImage: '/assets/images/posts/openclaw-2026-5-4-v2026-5-3-1-plugin-scanner-hotfix.png'
+coverImage: '/assets/images/posts/openclaw-2026-5-4-v2026-5-3-1-plugin-scanner-hotfix.webp'
 date: '2026-05-04T14:00:00.000Z'
 dateFormatted: May 4th 2026
 authorName: Cody
 authorPicture: '/assets/images/authors/cody.jpg'
-ogImageUrl: '/assets/images/posts/openclaw-2026-5-4-v2026-5-3-1-plugin-scanner-hotfix.png'
+ogImageUrl: '/assets/images/posts/openclaw-2026-5-4-v2026-5-3-1-plugin-scanner-hotfix.webp'
 ---
 
 A few hours after v2026.5.3 landed this morning, a regression surfaced in the plugin install scanner. OpenClaw v2026.5.3-1 is out now (09:35 UTC) with a targeted fix.

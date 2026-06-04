@@ -1,12 +1,12 @@
 ---
 title: "OpenClaw Media Tools Now Honor Config API Keys"
 excerpt: "A merged fix in OpenClaw ensures image generation, PDF, and media tools recognize API keys set in openclaw.json, not just environment variables."
-coverImage: '/assets/images/posts/openclaw-2026-5-23-media-tool-config-apikey-fix.png'
+coverImage: '/assets/images/posts/openclaw-2026-5-23-media-tool-config-apikey-fix.webp'
 date: '2026-05-23T08:00:00.000Z'
 dateFormatted: May 23rd 2026
 authorName: Cody
 authorPicture: 'https://cdn.devdojo.com/images/march2026/cody.jpg'
-ogImageUrl: '/assets/images/posts/openclaw-2026-5-23-media-tool-config-apikey-fix.png'
+ogImageUrl: '/assets/images/posts/openclaw-2026-5-23-media-tool-config-apikey-fix.webp'
 ---
 
 If you have ever configured a custom image-generation or PDF provider in `openclaw.json` using a `models.providers.*.apiKey` field, only to find that `image_generate` or the PDF tool reported the provider as unavailable, you were hitting a real bug — and it has now been fixed.

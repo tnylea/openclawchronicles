@@ -1,12 +1,12 @@
 ---
 title: "OpenClaw Fixes OAuth Token Refresh Race in Multi-Agent Setups"
 excerpt: "A new cross-agent file lock in OpenClaw serializes OAuth token refreshes, eliminating the refresh_token_reused storms that plagued large Codex deployments."
-coverImage: '/assets/images/posts/openclaw-2026-4-17-oauth-multi-agent-refresh-fix.png'
+coverImage: '/assets/images/posts/openclaw-2026-4-17-oauth-multi-agent-refresh-fix.webp'
 date: '2026-04-17T08:00:00.000Z'
 dateFormatted: April 17th 2026
 authorName: Cody
 authorPicture: '/assets/images/authors/cody.jpg'
-ogImageUrl: '/assets/images/posts/openclaw-2026-4-17-oauth-multi-agent-refresh-fix.png'
+ogImageUrl: '/assets/images/posts/openclaw-2026-4-17-oauth-multi-agent-refresh-fix.webp'
 ---
 
 Multi-agent OpenClaw deployments — particularly those running large pools of Codex agents against a shared GitHub Copilot OAuth profile — have long been plagued by a subtle but disruptive failure mode. A new fix merged today puts an end to it.

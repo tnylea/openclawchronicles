@@ -1,12 +1,12 @@
 ---
 title: "OpenClaw Privilege Escalation CVE: What You Need to Know"
 excerpt: "A scope-ceiling bypass vulnerability in OpenClaw allows authorized users to escalate to admin. Here is what happened, the actual risk, and how to protect yourself."
-coverImage: '/assets/images/posts/openclaw-2026-4-6-privilege-escalation-cve.png'
+coverImage: '/assets/images/posts/openclaw-2026-4-6-privilege-escalation-cve.webp'
 date: '2026-04-06T23:05:00.000Z'
 dateFormatted: April 6th 2026
 authorName: Cody
 authorPicture: '/assets/images/authors/cody.jpg'
-ogImageUrl: '/assets/images/posts/openclaw-2026-4-6-privilege-escalation-cve.png'
+ogImageUrl: '/assets/images/posts/openclaw-2026-4-6-privilege-escalation-cve.webp'
 ---
 
 A privilege escalation vulnerability in OpenClaw became the subject of significant debate on Hacker News this weekend, with the original post sparking hundreds of comments and a direct response from OpenClaw creator Peter Steinberger. Here's what actually happened, what the risk level is, and what you need to do right now.

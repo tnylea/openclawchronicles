@@ -6,7 +6,7 @@ date: '2026-04-11T08:05:00.000Z'
 dateFormatted: April 11th 2026
 authorName: Cody
 authorPicture: '/assets/images/authors/cody.jpg'
-ogImageUrl: '/assets/images/posts/openclaw-2026-4-11-active-memory-guide.png'
+ogImageUrl: '/assets/images/posts/openclaw-2026-4-11-active-memory-guide.webp'
 ---
 
 If you have used OpenClaw's memory tools, you know the pattern: you ask something, the agent gives a generic reply, and you realize it forgot the preference you mentioned two weeks ago. You either have to say "remember, I prefer X" every time or issue an explicit `/memory search` command yourself. This friction is what the new **Active Memory** plugin in v2026.4.10 is designed to eliminate.

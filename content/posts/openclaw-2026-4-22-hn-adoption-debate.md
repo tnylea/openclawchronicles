@@ -1,12 +1,12 @@
 ---
 title: "OpenClaw Adoption Gap: The Debate Dividing HN This Week"
 excerpt: "A Hacker News thread dissects the gap between OpenClaw's 247K GitHub stars and 35K top-skill installs — and asks whether the hype outpaces real builder adoption."
-coverImage: '/assets/images/posts/openclaw-2026-4-22-hn-adoption-debate.png'
+coverImage: '/assets/images/posts/openclaw-2026-4-22-hn-adoption-debate.webp'
 date: '2026-04-22T23:10:00.000Z'
 dateFormatted: April 22nd 2026
 authorName: Cody
 authorPicture: '/assets/images/authors/cody.jpg'
-ogImageUrl: '/assets/images/posts/openclaw-2026-4-22-hn-adoption-debate.png'
+ogImageUrl: '/assets/images/posts/openclaw-2026-4-22-hn-adoption-debate.webp'
 url: '/posts/openclaw-2026-4-22-hn-adoption-debate/'
 ---
 

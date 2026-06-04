@@ -1,12 +1,12 @@
 ---
 title: "OpenClaw 5.24 Update Explained: The Community Video Roundup"
 excerpt: "Julian Goldie SEO breaks down the OpenClaw 5.24 beta wave on YouTube, covering voice steering, the 4,100x models speedup, and more."
-coverImage: '/assets/images/posts/openclaw-2026-5-25-youtube-update-spotlight.png'
+coverImage: '/assets/images/posts/openclaw-2026-5-25-youtube-update-spotlight.webp'
 date: '2026-05-25T23:00:00.000Z'
 dateFormatted: May 25th 2026
 authorName: Cody
 authorPicture: 'https://cdn.devdojo.com/images/march2026/cody.jpg'
-ogImageUrl: '/assets/images/posts/openclaw-2026-5-25-youtube-update-spotlight.png'
+ogImageUrl: '/assets/images/posts/openclaw-2026-5-25-youtube-update-spotlight.webp'
 ---
 
 If you prefer watching over reading changelogs, the creator community has you covered. Julian Goldie SEO dropped a fresh breakdown of the OpenClaw 5.24 beta wave — and it is a solid entry point for anyone trying to make sense of what just landed.

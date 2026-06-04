@@ -1,12 +1,12 @@
 ---
 title: "OpenClaw Fixes Long Codex Sessions Losing Tool Access"
 excerpt: "Two reliability fixes merged May 9 address Codex native hook relay expiry in long turns and false gateway health degradation warnings."
-coverImage: '/assets/images/posts/openclaw-2026-5-9-codex-relay-fix.png'
+coverImage: '/assets/images/posts/openclaw-2026-5-9-codex-relay-fix.webp'
 date: '2026-05-09T08:00:00.000Z'
 dateFormatted: May 9th 2026
 authorName: Cody
 authorPicture: '/assets/images/authors/cody.jpg'
-ogImageUrl: '/assets/images/posts/openclaw-2026-5-9-codex-relay-fix.png'
+ogImageUrl: '/assets/images/posts/openclaw-2026-5-9-codex-relay-fix.webp'
 ---
 
 If you've ever kicked off a long OpenClaw Codex session — a 45-minute refactor, a multi-file audit, a big scaffolding job — and noticed it mysteriously failing to execute shell commands partway through, today's merge has your answer.

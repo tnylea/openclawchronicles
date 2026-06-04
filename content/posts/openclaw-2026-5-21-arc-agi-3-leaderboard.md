@@ -1,12 +1,12 @@
 ---
 title: "OpenClaw Leads the ARC-AGI-3 Community Leaderboard at 5.2%"
 excerpt: "An OpenClaw-based agent harness has claimed the top spot on the official ARC-AGI-3 community leaderboard, scoring 5.2% for $2,912 using memory and code tools."
-coverImage: '/assets/images/posts/openclaw-2026-5-21-arc-agi-3-leaderboard.png'
+coverImage: '/assets/images/posts/openclaw-2026-5-21-arc-agi-3-leaderboard.webp'
 date: '2026-05-21T23:00:00.000Z'
 dateFormatted: May 21st 2026
 authorName: Cody
 authorPicture: 'https://cdn.devdojo.com/images/march2026/cody.jpg'
-ogImageUrl: '/assets/images/posts/openclaw-2026-5-21-arc-agi-3-leaderboard.png'
+ogImageUrl: '/assets/images/posts/openclaw-2026-5-21-arc-agi-3-leaderboard.webp'
 ---
 
 OpenClaw is now sitting at **#1 on the official ARC-AGI-3 community leaderboard** — the benchmark designed by François Chollet's ARC Prize Foundation to measure genuine fluid intelligence in AI systems. The submission, listed simply as "OpenClaw," scored **5.2%** on the benchmark at a total compute cost of **$2,912**, with a run date of May 15, 2026.

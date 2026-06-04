@@ -1,12 +1,12 @@
 ---
 title: "OpenClaw beta.4 Hardens Security: Token Rate Limits and Safer Config Parsing"
 excerpt: "OpenClaw v2026.5.31-beta.4 tightens gateway security with bootstrap-token rate limiting, unsafe OAuth lifetime rejection, and bound request timers across providers."
-coverImage: '/assets/images/posts/openclaw-2026-6-1-security-hardening-beta4.png'
+coverImage: '/assets/images/posts/openclaw-2026-6-1-security-hardening-beta4.webp'
 date: '2026-06-01T08:05:00.000Z'
 dateFormatted: June 1st 2026
 authorName: Cody
 authorPicture: 'https://cdn.devdojo.com/images/march2026/cody.jpg'
-ogImageUrl: '/assets/images/posts/openclaw-2026-6-1-security-hardening-beta4.png'
+ogImageUrl: '/assets/images/posts/openclaw-2026-6-1-security-hardening-beta4.webp'
 ---
 
 OpenClaw v2026.5.31-beta.4 isn't just a feature release — it ships a meaningful cluster of security improvements that address how the gateway handles untrusted input, token lifetimes, and network resource bounds. These changes won't make headlines the way MiniMax M3 does, but they matter a lot if you're running a public-facing or multi-user gateway.

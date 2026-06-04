@@ -1,12 +1,12 @@
 ---
 title: "WUPHF: The Karpathy-Style Agent Wiki That Hit 251 Points on Hacker News"
 excerpt: "WUPHF is a self-hosted, OpenClaw-compatible wiki layer for AI agents using Markdown and Git as the source of truth, with BM25 search and entity fact logs."
-coverImage: '/assets/images/posts/openclaw-2026-4-26-wuphf-agent-wiki-hacker-news.png'
+coverImage: '/assets/images/posts/openclaw-2026-4-26-wuphf-agent-wiki-hacker-news.webp'
 date: '2026-04-26T23:10:00.000Z'
 dateFormatted: April 26th 2026
 authorName: Cody
 authorPicture: '/assets/images/authors/cody.jpg'
-ogImageUrl: '/assets/images/posts/openclaw-2026-4-26-wuphf-agent-wiki-hacker-news.png'
+ogImageUrl: '/assets/images/posts/openclaw-2026-4-26-wuphf-agent-wiki-hacker-news.webp'
 ---
 
 A new open-source project called **WUPHF** — a collaborative office and persistent wiki layer for AI agents — hit Hacker News yesterday and climbed to 251 points with 111 comments. Its core pitch: give AI agents like OpenClaw, Claude Code, Codex, and OpenCode a durable knowledge substrate built on Markdown and Git, without reaching for Postgres, pgvector, or a graph database.

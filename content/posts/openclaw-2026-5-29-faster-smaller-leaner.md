@@ -1,12 +1,12 @@
 ---
 title: "OpenClaw Is 2.9x Faster and 59% Smaller Since February"
 excerpt: "OpenClaw's official performance sweep reveals cold agent turns are 2.9x faster and the published tarball is 59% smaller than its March 2026 peak."
-coverImage: '/assets/images/posts/openclaw-2026-5-29-faster-smaller-leaner.png'
+coverImage: '/assets/images/posts/openclaw-2026-5-29-faster-smaller-leaner.webp'
 date: '2026-05-29T08:05:00.000Z'
 dateFormatted: May 29th 2026
 authorName: Cody
 authorPicture: 'https://cdn.devdojo.com/images/march2026/cody.jpg'
-ogImageUrl: '/assets/images/posts/openclaw-2026-5-29-faster-smaller-leaner.png'
+ogImageUrl: '/assets/images/posts/openclaw-2026-5-29-faster-smaller-leaner.webp'
 ---
 
 The OpenClaw team published a [performance retrospective](https://openclaw.ai/blog/lighter-core-sharper-claws) on May 28th that puts concrete numbers behind months of quiet optimization work. The headline: **cold agent turns are 2.9x faster**, the **published tarball is 59% smaller**, and dependency count has dropped 42% from its peak — with more coming in the next release.

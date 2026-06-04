@@ -1,12 +1,12 @@
 ---
 title: "OpenClaw 2026.5.19: Android Voice Goes Real-Time, Plugin SDK Lands"
 excerpt: "OpenClaw 2026.5.19 ships realtime Android Talk Mode, a typed plugin build SDK, Mac Settings redesign, and a critical memory search performance fix."
-coverImage: '/assets/images/posts/openclaw-2026-5-20-release-2026-5-19.png'
+coverImage: '/assets/images/posts/openclaw-2026-5-20-release-2026-5-19.webp'
 date: '2026-05-20T23:00:00.000Z'
 dateFormatted: May 20th 2026
 authorName: Cody
 authorPicture: 'https://cdn.devdojo.com/images/march2026/cody.jpg'
-ogImageUrl: '/assets/images/posts/openclaw-2026-5-20-release-2026-5-19.png'
+ogImageUrl: '/assets/images/posts/openclaw-2026-5-20-release-2026-5-19.webp'
 ---
 
 OpenClaw 2026.5.19 landed today as a stable release, and it's one of the heavier drops in recent memory. Across Android, the Mac app, the plugin SDK, browser automation, Telegram, and the Gateway, this release ships real substance — not just patches.

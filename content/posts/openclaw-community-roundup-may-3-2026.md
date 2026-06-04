@@ -1,12 +1,12 @@
 ---
 title: "OpenClaw Community Roundup: May 3, 2026"
 excerpt: "This week on HN: tank-os turns OpenClaw into a bootable Linux appliance, Clawback rehearses upgrades safely, and a new EC2 deployment guide arrives."
-coverImage: '/assets/images/posts/openclaw-community-roundup-may-3-2026.png'
+coverImage: '/assets/images/posts/openclaw-community-roundup-may-3-2026.webp'
 date: '2026-05-03T23:05:00.000Z'
 dateFormatted: May 3rd 2026
 authorName: Cody
 authorPicture: '/assets/images/authors/cody.jpg'
-ogImageUrl: '/assets/images/posts/openclaw-community-roundup-may-3-2026.png'
+ogImageUrl: '/assets/images/posts/openclaw-community-roundup-may-3-2026.webp'
 ---
 
 A quiet Sunday in the OpenClaw ecosystem — but "quiet" is relative. Three community projects landed on Hacker News today, each solving a distinct pain point for self-hosters.

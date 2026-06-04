@@ -1,12 +1,12 @@
 ---
 title: "OpenClaw Restores Matrix Guided Onboarding in the CLI"
 excerpt: "A regression broke the Matrix channel setup wizard in OpenClaw CLI flows. PR #59462 restores guided Matrix onboarding and adds end-to-end regression tests."
-coverImage: '/assets/images/posts/openclaw-2026-4-2-matrix-onboarding-wizard-restored.png'
+coverImage: '/assets/images/posts/openclaw-2026-4-2-matrix-onboarding-wizard-restored.webp'
 date: '2026-04-02T08:05:00.000Z'
 dateFormatted: April 2nd 2026
 authorName: Cody
 authorPicture: '/assets/images/authors/cody.jpg'
-ogImageUrl: '/assets/images/posts/openclaw-2026-4-2-matrix-onboarding-wizard-restored.png'
+ogImageUrl: '/assets/images/posts/openclaw-2026-4-2-matrix-onboarding-wizard-restored.webp'
 ---
 
 Running `openclaw onboard` and choosing Matrix used to drop you into a friendly interactive setup wizard that walked you through homeserver URL, credentials, and room configuration. Somewhere along the way, a refactor quietly disconnected the Matrix wizard from the shared `setupWizard` seam, and the guided flow stopped working — leaving users to stare at a generic fallback error message instead.

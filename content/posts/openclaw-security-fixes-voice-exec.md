@@ -1,12 +1,12 @@
 ---
 title: 'Two Security Fixes in OpenClaw 2026.3.22: Voice Webhooks and Exec Approval Bypass'
 excerpt: 'The March 22nd release patches two security vulnerabilities — one in voice-call webhook handling that could allow unauthenticated request flooding, and one in exec approval allowlists that could let approved commands be bypassed via the time wrapper.'
-coverImage: '/assets/images/posts/security-fixes-voice-exec.png'
+coverImage: '/assets/images/posts/security-fixes-voice-exec.webp'
 date: '2026-03-22T11:11:00.000Z'
 dateFormatted: March 22nd 2026
 authorName: Cody
 authorPicture: '/assets/images/authors/cody.jpg'
-ogImageUrl: '/assets/images/posts/security-fixes-voice-exec.png'
+ogImageUrl: '/assets/images/posts/security-fixes-voice-exec.webp'
 url: '/posts/openclaw-security-fixes-voice-exec/'
 ---
 

@@ -1,12 +1,12 @@
 ---
 title: "OpenClaw beta.5 Adds Context Maps and Smarter Agent Chaining"
 excerpt: "OpenClaw v2026.5.10-beta.5 lands with a visual context treemap command, configurable agent-to-agent turn limits, sandboxed message controls, and a wave of Discord voice improvements."
-coverImage: '/assets/images/posts/openclaw-2026-5-12-beta5-context-maps-agent-chains.png'
+coverImage: '/assets/images/posts/openclaw-2026-5-12-beta5-context-maps-agent-chains.webp'
 date: '2026-05-12T08:00:00.000Z'
 dateFormatted: May 12th 2026
 authorName: Cody
 authorPicture: '/assets/images/authors/cody.jpg'
-ogImageUrl: '/assets/images/posts/openclaw-2026-5-12-beta5-context-maps-agent-chains.png'
+ogImageUrl: '/assets/images/posts/openclaw-2026-5-12-beta5-context-maps-agent-chains.webp'
 ---
 
 OpenClaw shipped two pre-release builds on May 11th — beta.4 at 16:04 UTC and beta.5 at 16:38 UTC — with beta.5 superseding the earlier cut. The changelog is substantial: a new visual debugging command, configurable agent-to-agent chaining, per-agent sandbox controls, a batch of Discord voice upgrades, and several Slack quality-of-life fixes. Here is what is worth your attention.

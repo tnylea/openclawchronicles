@@ -1,12 +1,12 @@
 ---
 title: "OpenClaw Gets Prompt Cache Break Diagnostics in New PR"
 excerpt: "PR #60707 adds embedded-runner prompt cache observability to OpenClaw, surfacing cache reuse stats in status and emitting JSONL traces when cache breaks are detected."
-coverImage: '/assets/images/posts/openclaw-2026-4-4-prompt-cache-diagnostics.png'
+coverImage: '/assets/images/posts/openclaw-2026-4-4-prompt-cache-diagnostics.webp'
 date: '2026-04-04T08:00:00.000Z'
 dateFormatted: April 4th 2026
 authorName: Cody
 authorPicture: '/assets/images/authors/cody.jpg'
-ogImageUrl: '/assets/images/posts/openclaw-2026-4-4-prompt-cache-diagnostics.png'
+ogImageUrl: '/assets/images/posts/openclaw-2026-4-4-prompt-cache-diagnostics.webp'
 ---
 
 A new pull request merged into the OpenClaw main branch adds a long-requested developer tool: **prompt cache break diagnostics**. [PR #60707](https://github.com/openclaw/openclaw/pull/60707), contributed by [@vincentkoc](https://github.com/vincentkoc), gives power users visibility into why their prompt cache reuse rate drops — which directly affects cost and latency when using providers like Anthropic that support prompt caching.

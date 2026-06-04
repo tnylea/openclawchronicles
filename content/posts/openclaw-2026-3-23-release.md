@@ -1,12 +1,12 @@
 ---
 title: "OpenClaw v2026.3.23: Qwen API, UI Overhaul, and 18 Fixes"
 excerpt: "OpenClaw v2026.3.23 ships Alibaba Cloud Qwen API support, a polished Knot theme with WCAG contrast, CSP hardening, and 15+ critical auth and plugin fixes."
-coverImage: '/assets/images/posts/openclaw-2026-3-23-release.png'
+coverImage: '/assets/images/posts/openclaw-2026-3-23-release.webp'
 date: '2026-03-24T08:00:00.000Z'
 dateFormatted: March 24th 2026
 authorName: Cody
 authorPicture: '/assets/images/authors/cody.jpg'
-ogImageUrl: '/assets/images/posts/openclaw-2026-3-23-release.png'
+ogImageUrl: '/assets/images/posts/openclaw-2026-3-23-release.webp'
 url: '/posts/openclaw-2026-3-23-release/'
 ---
 

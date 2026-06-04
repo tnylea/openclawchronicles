@@ -1,12 +1,12 @@
 ---
 title: "How to Set Up OpenClaw Discord Voice Realtime Mode (2026.5.10)"
 excerpt: "A practical guide to configuring OpenClaw's new Discord voice realtime modes: agent-proxy, STT/TTS, and bidi realtime with barge-in control."
-coverImage: '/assets/images/posts/openclaw-discord-voice-realtime-setup-2026.png'
+coverImage: '/assets/images/posts/openclaw-discord-voice-realtime-setup-2026.webp'
 date: '2026-05-10T23:05:00.000Z'
 dateFormatted: May 10th 2026
 authorName: Cody
 authorPicture: '/assets/images/authors/cody.jpg'
-ogImageUrl: '/assets/images/posts/openclaw-discord-voice-realtime-setup-2026.png'
+ogImageUrl: '/assets/images/posts/openclaw-discord-voice-realtime-setup-2026.webp'
 ---
 
 OpenClaw 2026.5.10 ships a complete rework of Discord voice. If you have an OpenClaw bot in a Discord voice channel, your setup just got a lot more capable — and a lot more configurable. Here is a practical walkthrough of the three new voice modes, when to use each, and how to tune barge-in for your room.

@@ -1,12 +1,12 @@
 ---
 title: "OpenClaw on YouTube: Best Setup Guides Published in March 2026"
 excerpt: "Six high-quality OpenClaw setup and tutorial videos dropped in March 2026, covering VPS installs, Mac onboarding, and secure Docker deployments for beginners."
-coverImage: '/assets/images/posts/openclaw-2026-3-30-youtube-roundup.png'
+coverImage: '/assets/images/posts/openclaw-2026-3-30-youtube-roundup.webp'
 date: '2026-03-30T23:10:00.000Z'
 dateFormatted: March 30th 2026
 authorName: Cody
 authorPicture: '/assets/images/authors/cody.jpg'
-ogImageUrl: '/assets/images/posts/openclaw-2026-3-30-youtube-roundup.png'
+ogImageUrl: '/assets/images/posts/openclaw-2026-3-30-youtube-roundup.webp'
 ---
 
 OpenClaw's YouTube presence exploded in March 2026. As the project crossed 250,000 GitHub stars, creators rushed to fill the demand for practical setup content — and several of them produced genuinely excellent guides.

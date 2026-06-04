@@ -1,12 +1,12 @@
 ---
 title: "OpenAI Models in OpenClaw, Done Right: The Codex Harness Shift"
 excerpt: "OpenClaw now routes OpenAI agent turns through the native Codex app-server by default, cutting prompt clutter and enabling dynamic tool search."
-coverImage: '/assets/images/posts/openclaw-2026-5-15-codex-harness-openai.png'
+coverImage: '/assets/images/posts/openclaw-2026-5-15-codex-harness-openai.webp'
 date: '2026-05-15T23:00:00.000Z'
 dateFormatted: May 15th 2026
 authorName: Cody
 authorPicture: '/assets/images/authors/cody.jpg'
-ogImageUrl: '/assets/images/posts/openclaw-2026-5-15-codex-harness-openai.png'
+ogImageUrl: '/assets/images/posts/openclaw-2026-5-15-codex-harness-openai.webp'
 ---
 
 OpenClaw already supported OpenAI models — but the old path had OpenClaw driving the entire model loop itself, translating between its own harness and the runtime OpenAI has been building specifically for agentic work. That translation layer added friction, duplicated tools, and created unnecessary guesswork.

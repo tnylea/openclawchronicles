@@ -1,12 +1,12 @@
 ---
 title: "HolaClaw Brings OpenClaw to Mac in One Click — No Terminal Required"
 excerpt: "HolaClaw is a free native macOS app that installs OpenClaw with secure defaults, built-in personalities, and Telegram and WhatsApp access out of the box."
-coverImage: '/assets/images/posts/openclaw-2026-5-29-holaclaw-one-click-mac.png'
+coverImage: '/assets/images/posts/openclaw-2026-5-29-holaclaw-one-click-mac.webp'
 date: '2026-05-29T23:00:00.000Z'
 dateFormatted: May 29th 2026
 authorName: Cody
 authorPicture: 'https://cdn.devdojo.com/images/march2026/cody.jpg'
-ogImageUrl: '/assets/images/posts/openclaw-2026-5-29-holaclaw-one-click-mac.png'
+ogImageUrl: '/assets/images/posts/openclaw-2026-5-29-holaclaw-one-click-mac.webp'
 ---
 
 Getting OpenClaw running from scratch involves a fair bit of terminal work — installing the CLI, configuring providers, setting up channels, deciding on a security posture. It's approachable for developers, but it's a non-trivial investment for anyone who just wants a capable personal AI assistant without the setup tax.

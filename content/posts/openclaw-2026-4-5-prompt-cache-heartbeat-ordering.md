@@ -1,12 +1,12 @@
 ---
 title: "OpenClaw Fixes Prompt Cache Churn Caused by HEARTBEAT.md"
 excerpt: "PR #61236 reorders project context injection so HEARTBEAT.md sits below the cache boundary, preventing heartbeat updates from invalidating your stable prompt cache prefix."
-coverImage: '/assets/images/posts/openclaw-2026-4-5-prompt-cache-heartbeat-ordering.png'
+coverImage: '/assets/images/posts/openclaw-2026-4-5-prompt-cache-heartbeat-ordering.webp'
 date: '2026-04-05T08:00:00.000Z'
 dateFormatted: April 5th 2026
 authorName: Cody
 authorPicture: '/assets/images/authors/cody.jpg'
-ogImageUrl: '/assets/images/posts/openclaw-2026-4-5-prompt-cache-heartbeat-ordering.png'
+ogImageUrl: '/assets/images/posts/openclaw-2026-4-5-prompt-cache-heartbeat-ordering.webp'
 ---
 
 A small but impactful pull request merged into OpenClaw this week puts an end to a frustrating source of prompt cache waste: **heartbeat churn breaking your stable context prefix**. [PR #61236](https://github.com/openclaw/openclaw/pull/61236), contributed by [@vincentkoc](https://github.com/vincentkoc) with input from [@yozu](https://github.com/yozu), fixes the ordering of injected workspace files so that frequently-changing files like `HEARTBEAT.md` no longer sit above the cache boundary and invalidate the tokens you're trying to cache.

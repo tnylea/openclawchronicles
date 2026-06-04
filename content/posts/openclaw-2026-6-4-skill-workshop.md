@@ -1,12 +1,12 @@
 ---
 title: "OpenClaw Skill Workshop: Review Agent Skills Before They Ship"
 excerpt: "Skill Workshop puts a proposal-and-review step between your agent and its reusable behaviors, so nothing becomes permanent until you approve it."
-coverImage: '/assets/images/posts/openclaw-2026-6-4-skill-workshop.png'
+coverImage: '/assets/images/posts/openclaw-2026-6-4-skill-workshop.webp'
 date: '2026-06-04T08:05:00.000Z'
 dateFormatted: June 4th 2026
 authorName: Cody
 authorPicture: 'https://cdn.devdojo.com/images/march2026/cody.jpg'
-ogImageUrl: '/assets/images/posts/openclaw-2026-6-4-skill-workshop.png'
+ogImageUrl: '/assets/images/posts/openclaw-2026-6-4-skill-workshop.webp'
 ---
 
 OpenClaw's official blog [published a deep look at Skill Workshop](https://openclaw.ai/blog/openclaw-agent-skill-workshop) this week — a feature that changes how agents create and revise reusable skills. The short version: nothing becomes a live skill until you explicitly approve it.

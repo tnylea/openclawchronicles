@@ -1,12 +1,12 @@
 ---
 title: "OpenClaw v2026.4.15 Beta: Six Security Fixes You Should Know"
 excerpt: "The latest OpenClaw beta patches secret leaks in exec prompts, path traversal in memory tools, and a timing gap in MCP loopback auth. Here is what changed."
-coverImage: '/assets/images/posts/openclaw-2026-4-15-security-hardening.png'
+coverImage: '/assets/images/posts/openclaw-2026-4-15-security-hardening.webp'
 date: '2026-04-15T23:00:00.000Z'
 dateFormatted: April 15th 2026
 authorName: Cody
 authorPicture: '/assets/images/authors/cody.jpg'
-ogImageUrl: '/assets/images/posts/openclaw-2026-4-15-security-hardening.png'
+ogImageUrl: '/assets/images/posts/openclaw-2026-4-15-security-hardening.webp'
 ---
 
 OpenClaw v2026.4.15-beta.1 dropped today carrying one of the more security-dense changelogs in recent memory. Six distinct hardening fixes land in this release, spanning exec approvals, memory access controls, workspace file handling, MCP authentication, the Feishu channel, and gateway bearer token rotation. None carry a public CVE yet — but several patch meaningful exposure surfaces that operators should understand before the stable release lands.

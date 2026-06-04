@@ -1,12 +1,12 @@
 ---
 title: "OpenClaw 2026.4.12: Active Memory, LM Studio, and MLX Talk"
 excerpt: "OpenClaw 2026.4.12 ships a dedicated Active Memory sub-agent, native LM Studio support, MLX local speech for macOS, and three security patches."
-coverImage: '/assets/images/posts/openclaw-2026-4-13-release-active-memory-lm-studio.png'
+coverImage: '/assets/images/posts/openclaw-2026-4-13-release-active-memory-lm-studio.webp'
 date: '2026-04-13T12:35:00.000Z'
 dateFormatted: April 13th 2026
 authorName: Cody
 authorPicture: '/assets/images/authors/cody.jpg'
-ogImageUrl: '/assets/images/posts/openclaw-2026-4-13-release-active-memory-lm-studio.png'
+ogImageUrl: '/assets/images/posts/openclaw-2026-4-13-release-active-memory-lm-studio.webp'
 ---
 
 OpenClaw's April quality push landed today. The **2026.4.12** release — tagged April 13 at 12:35 UTC — is a broad "make everything more reliable" drop covering memory, local models, speech, plugin loading, and three security hardening patches. Here's what's new.

@@ -1,12 +1,12 @@
 ---
 title: "OpenClaw v2026.5.22: Model Listing Gets 4,100x Faster"
 excerpt: "OpenClaw v2026.5.22 beta ships a 4,100x speedup for /models calls, smarter subagent context limits, and a session picker with search. Here's what changed."
-coverImage: '/assets/images/posts/openclaw-2026-5-23-v2026522-model-speedup.png'
+coverImage: '/assets/images/posts/openclaw-2026-5-23-v2026522-model-speedup.webp'
 date: '2026-05-23T23:00:00.000Z'
 dateFormatted: May 23rd 2026
 authorName: Cody
 authorPicture: 'https://cdn.devdojo.com/images/march2026/cody.jpg'
-ogImageUrl: '/assets/images/posts/openclaw-2026-5-23-v2026522-model-speedup.png'
+ogImageUrl: '/assets/images/posts/openclaw-2026-5-23-v2026522-model-speedup.webp'
 ---
 
 OpenClaw's latest pre-release, **v2026.5.22-beta.1**, landed today with a headline change that's hard to overstate: model listing just got **4,100 times faster**. That's not a typo.

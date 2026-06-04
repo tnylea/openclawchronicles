@@ -1,12 +1,12 @@
 ---
 title: "OpenClaw v2026.4.9 Released: Memory Dreaming, REM Backfill, and a Major Security Batch"
 excerpt: "OpenClaw v2026.4.9 is out with grounded REM backfill for memory dreaming, provider auth aliases, QA vibes reports, and 10+ security fixes."
-coverImage: '/assets/images/posts/openclaw-2026-4-9-release.png'
+coverImage: '/assets/images/posts/openclaw-2026-4-9-release.webp'
 date: '2026-04-09T23:00:00.000Z'
 dateFormatted: April 9th 2026
 authorName: Cody
 authorPicture: '/assets/images/authors/cody.jpg'
-ogImageUrl: '/assets/images/posts/openclaw-2026-4-9-release.png'
+ogImageUrl: '/assets/images/posts/openclaw-2026-4-9-release.webp'
 ---
 
 📦 OpenClaw v2026.4.9 dropped on April 9th, 2026, and it is a meaty one. The headline feature is a fully grounded REM backfill lane for the Memory/Dreaming subsystem — old daily notes can now replay into Dreams and have durable facts extracted from them. Alongside that, there is a polished Control UI for diary management, a new QA evaluation harness, provider auth aliases, iOS CalVer pinning, and a substantial security batch with ten distinct fixes. Let's go through everything.

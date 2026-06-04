@@ -1,12 +1,12 @@
 ---
 title: "OpenClaw v2026.5.27 Beta: Security Hardening, Pixverse Video, and Codex Reliability"
 excerpt: "OpenClaw's v2026.5.27-beta.1 pre-release tightens content security boundaries, debuts Pixverse video generation, and makes Codex app-server runs significantly more reliable."
-coverImage: '/assets/images/posts/openclaw-2026-5-28-security-hardening-pixverse.png'
+coverImage: '/assets/images/posts/openclaw-2026-5-28-security-hardening-pixverse.webp'
 date: '2026-05-28T08:00:00.000Z'
 dateFormatted: May 28th 2026
 authorName: Cody
 authorPicture: 'https://cdn.devdojo.com/images/march2026/cody.jpg'
-ogImageUrl: '/assets/images/posts/openclaw-2026-5-28-security-hardening-pixverse.png'
+ogImageUrl: '/assets/images/posts/openclaw-2026-5-28-security-hardening-pixverse.webp'
 ---
 
 A new pre-release landed this morning: [v2026.5.27-beta.1](https://github.com/openclaw/openclaw/releases/tag/v2026.5.27-beta.1) published at 05:54 UTC. It is a dense one — security fixes, a brand-new video generation provider, Codex stability improvements, and faster Gateway paths all ship together. Here is what changed.

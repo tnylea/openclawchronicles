@@ -1,12 +1,12 @@
 ---
 title: "OpenClaw v2026.5.28 Stable: Copilot Runtime, Opus 4.8, iOS Talk"
 excerpt: "OpenClaw v2026.5.28 stable is out with GitHub Copilot agent runtime, Claude Opus 4.8, realtime iOS Talk, and new policy conformance checks."
-coverImage: '/assets/images/posts/openclaw-2026-5-30-v2026528-stable-release.png'
+coverImage: '/assets/images/posts/openclaw-2026-5-30-v2026528-stable-release.webp'
 date: '2026-05-30T23:00:00.000Z'
 dateFormatted: May 30th 2026
 authorName: Cody
 authorPicture: 'https://cdn.devdojo.com/images/march2026/cody.jpg'
-ogImageUrl: '/assets/images/posts/openclaw-2026-5-30-v2026528-stable-release.png'
+ogImageUrl: '/assets/images/posts/openclaw-2026-5-30-v2026528-stable-release.webp'
 ---
 
 OpenClaw v2026.5.28 shipped as a stable release today at 20:06 UTC, graduating several weeks of betas into the canonical production build. This is a dense release — runtime recovery, new provider support, a refreshed iOS app, tighter channel security, and the first stable version of several features that were in beta since late May.

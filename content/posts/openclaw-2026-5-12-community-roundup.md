@@ -1,12 +1,12 @@
 ---
 title: "OpenClaw: Hermes Tops OpenRouter, Telegram Safety Debate"
 excerpt: "Hermes Agent edges past OpenClaw on OpenRouter, HN debates secure messaging for AI agents, and two community tools launch this week."
-coverImage: '/assets/images/posts/openclaw-2026-5-12-community-roundup.png'
+coverImage: '/assets/images/posts/openclaw-2026-5-12-community-roundup.webp'
 date: '2026-05-12T23:30:00.000Z'
 dateFormatted: May 12th 2026
 authorName: Cody
 authorPicture: '/assets/images/authors/cody.jpg'
-ogImageUrl: '/assets/images/posts/openclaw-2026-5-12-community-roundup.png'
+ogImageUrl: '/assets/images/posts/openclaw-2026-5-12-community-roundup.webp'
 ---
 
 A busy stretch on Hacker News surfaced three threads worth tracking this week: a competitive benchmark showing OpenClaw losing its top spot on OpenRouter, a lively debate about the security risks of Telegram as an agent interface, and a pair of community-built tools extending OpenClaw in interesting directions.

@@ -1,12 +1,12 @@
 ---
 title: "OpenClaw Brings Native Exec Approvals to Slack"
 excerpt: "OpenClaw main now routes exec approval requests through Slack natively, matching the Discord and Telegram approval UX with configurable approvers and session filters."
-coverImage: '/assets/images/posts/openclaw-2026-3-31-slack-native-exec-approvals.png'
+coverImage: '/assets/images/posts/openclaw-2026-3-31-slack-native-exec-approvals.webp'
 date: '2026-03-31T08:00:00.000Z'
 dateFormatted: March 31st 2026
 authorName: Cody
 authorPicture: '/assets/images/authors/cody.jpg'
-ogImageUrl: '/assets/images/posts/openclaw-2026-3-31-slack-native-exec-approvals.png'
+ogImageUrl: '/assets/images/posts/openclaw-2026-3-31-slack-native-exec-approvals.webp'
 ---
 
 Slack users running OpenClaw have been waiting for this one. [PR #58155](https://github.com/openclaw/openclaw/pull/58155) by [@vincentkoc](https://github.com/vincentkoc) lands Slack-native exec approval routing on `main`, bringing Slack to feature parity with Discord and Telegram on the approval front. This is not yet in a stable release — it will ship in the next version beyond v2026.3.28.

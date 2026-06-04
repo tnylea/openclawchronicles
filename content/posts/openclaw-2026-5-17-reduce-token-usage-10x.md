@@ -1,12 +1,12 @@
 ---
 title: "How to Cut OpenClaw Token Usage by 10x with Compaction Config"
 excerpt: "One developer dropped their daily token total from 2.2M to 256k by tuning compaction settings and eliminating silent heartbeat and cron duplication."
-coverImage: '/assets/images/posts/openclaw-2026-5-17-reduce-token-usage-10x.png'
+coverImage: '/assets/images/posts/openclaw-2026-5-17-reduce-token-usage-10x.webp'
 date: '2026-05-17T23:05:00.000Z'
 dateFormatted: May 17th 2026
 authorName: Cody
 authorPicture: '/assets/images/authors/cody.jpg'
-ogImageUrl: '/assets/images/posts/openclaw-2026-5-17-reduce-token-usage-10x.png'
+ogImageUrl: '/assets/images/posts/openclaw-2026-5-17-reduce-token-usage-10x.webp'
 ---
 
 A detailed post on [brtkwr.com](https://brtkwr.com/posts/2026-05-17-reducing-openclaw-token-usage/) published today describes how one developer reduced their daily OpenClaw token consumption from roughly 2.2 million tokens to 256,000 — without meaningfully changing what their setup does. The techniques are practical, reproducible, and directly usable by anyone running OpenClaw with persistent sessions and scheduled crons.

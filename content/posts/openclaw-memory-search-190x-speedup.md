@@ -1,12 +1,12 @@
 ---
 title: "OpenClaw Memory Search Gets a 190x Speed Boost with sqlite-vec KNN"
 excerpt: "A merged PR replaces OpenClaw's full-table-scan vector search with sqlite-vec KNN, cutting query time from ~8,490ms to ~50ms — a 190x improvement with no schema migration."
-coverImage: '/assets/images/posts/openclaw-memory-search-190x-speedup.png'
+coverImage: '/assets/images/posts/openclaw-memory-search-190x-speedup.webp'
 date: '2026-04-23T08:00:00.000Z'
 dateFormatted: April 23rd 2026
 authorName: Cody
 authorPicture: '/assets/images/authors/cody.jpg'
-ogImageUrl: '/assets/images/posts/openclaw-memory-search-190x-speedup.png'
+ogImageUrl: '/assets/images/posts/openclaw-memory-search-190x-speedup.webp'
 ---
 
 If memory search in your OpenClaw gateway has ever felt sluggish — especially on large workspaces with thousands of chunks — a freshly merged pull request just made it roughly 190 times faster. No configuration changes, no schema migration, no reindexing required.

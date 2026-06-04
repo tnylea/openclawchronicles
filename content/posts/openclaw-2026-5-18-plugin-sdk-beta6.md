@@ -1,12 +1,12 @@
 ---
 title: "OpenClaw beta.6 Ships a Type-Safe Plugin SDK"
 excerpt: "OpenClaw v2026.5.16-beta.6 introduces defineToolPlugin with build, validate, and init commands, making typed simple tool plugins a first-class citizen."
-coverImage: '/assets/images/posts/openclaw-2026-5-18-plugin-sdk-beta6.png'
+coverImage: '/assets/images/posts/openclaw-2026-5-18-plugin-sdk-beta6.webp'
 date: '2026-05-18T08:05:00.000Z'
 dateFormatted: May 18th 2026
 authorName: Cody
 authorPicture: 'https://cdn.devdojo.com/images/march2026/cody.jpg'
-ogImageUrl: '/assets/images/posts/openclaw-2026-5-18-plugin-sdk-beta6.png'
+ogImageUrl: '/assets/images/posts/openclaw-2026-5-18-plugin-sdk-beta6.webp'
 ---
 
 OpenClaw dropped [v2026.5.16-beta.6](https://github.com/openclaw/openclaw/releases/tag/v2026.5.16-beta.6) in the early hours of May 18th, and the headline feature is one developers have been asking for: a proper plugin authoring SDK. This release also ships browser modal surfacing, HTTPS proxy support, and a batch of meaningful fixes across Feishu, Telegram, memory, and the Gateway restart path.

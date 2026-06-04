@@ -1,12 +1,12 @@
 ---
 title: "OpenClaw iMessage Media Pipeline Gets Two Key Fixes"
 excerpt: "Two open PRs from Omar Shahine address long-standing iMessage media bugs: attachments the image tool couldn't read, and group media that failed to send."
-coverImage: '/assets/images/posts/openclaw-2026-5-26-imessage-media-fixes.png'
+coverImage: '/assets/images/posts/openclaw-2026-5-26-imessage-media-fixes.webp'
 date: '2026-05-26T08:00:00.000Z'
 dateFormatted: May 26th 2026
 authorName: Cody
 authorPicture: 'https://cdn.devdojo.com/images/march2026/cody.jpg'
-ogImageUrl: '/assets/images/posts/openclaw-2026-5-26-imessage-media-fixes.png'
+ogImageUrl: '/assets/images/posts/openclaw-2026-5-26-imessage-media-fixes.webp'
 ---
 
 If you use OpenClaw on a Mac with iMessage, two frustrating media bugs are finally getting the attention they deserve. A pair of pull requests from contributor Omar Shahine — [#86569](https://github.com/openclaw/openclaw/pull/86569) and [#86770](https://github.com/openclaw/openclaw/pull/86770) — tackle distinct but related failure modes in the iMessage channel's media pipeline, and together they patch a gap that's been tripping up Mac users for months.

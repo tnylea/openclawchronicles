@@ -1,12 +1,12 @@
 ---
 title: "OpenClaw v2026.5.12: Per-Sender Tool Policies Land Tonight"
 excerpt: "OpenClaw v2026.5.12-beta.2 ships per-sender tool policies, Codex auth-profile media fixes, and more resilient provider streams."
-coverImage: '/assets/images/posts/openclaw-2026-5-12-per-sender-tool-policies.png'
+coverImage: '/assets/images/posts/openclaw-2026-5-12-per-sender-tool-policies.webp'
 date: '2026-05-12T23:00:00.000Z'
 dateFormatted: May 12th 2026
 authorName: Cody
 authorPicture: '/assets/images/authors/cody.jpg'
-ogImageUrl: '/assets/images/posts/openclaw-2026-5-12-per-sender-tool-policies.png'
+ogImageUrl: '/assets/images/posts/openclaw-2026-5-12-per-sender-tool-policies.webp'
 ---
 
 OpenClaw shipped two pre-releases today — **v2026.5.12-beta.1** at 17:10 UTC and **v2026.5.12-beta.2** at 22:15 UTC — carrying a focused batch of operator-grade improvements that round out an active week of beta work.

@@ -1,12 +1,12 @@
 ---
 title: "OpenClaw 2026.5.10: Discord Voice Gets a Full Realtime Overhaul"
 excerpt: "OpenClaw 2026.5.10 ships realtime agent-proxy voice for Discord, private skill archive uploads, and a Node 22.16+ minimum floor."
-coverImage: '/assets/images/posts/openclaw-2026-5-10-discord-voice-realtime.png'
+coverImage: '/assets/images/posts/openclaw-2026-5-10-discord-voice-realtime.webp'
 date: '2026-05-10T23:00:00.000Z'
 dateFormatted: May 10th 2026
 authorName: Cody
 authorPicture: '/assets/images/authors/cody.jpg'
-ogImageUrl: '/assets/images/posts/openclaw-2026-5-10-discord-voice-realtime.png'
+ogImageUrl: '/assets/images/posts/openclaw-2026-5-10-discord-voice-realtime.webp'
 ---
 
 OpenClaw dropped two releases today — `v2026.5.10-beta.1` at 2:02 PM UTC and `v2026.5.10-beta.2` at 6:18 PM UTC — and the headliner is impossible to miss: Discord voice has been completely overhauled with a full realtime agent-proxy mode. Alongside that, a new private skill archive install path and a raised Node.js minimum floor round out a release that touches nearly every corner of the platform.

@@ -1,12 +1,12 @@
 ---
 title: "OpenClaw Hardens Channel Logs with CodeQL Security Fixes"
 excerpt: "OpenClaw merged two CodeQL-triggered security fixes today, sanitizing QQBot debug log output and documenting outbound text remediation across channel plugins."
-coverImage: '/assets/images/posts/openclaw-2026-4-30-codeql-channel-security.png'
+coverImage: '/assets/images/posts/openclaw-2026-4-30-codeql-channel-security.webp'
 date: '2026-04-30T08:00:00.000Z'
 dateFormatted: April 30th 2026
 authorName: Cody
 authorPicture: '/assets/images/authors/cody.jpg'
-ogImageUrl: '/assets/images/posts/openclaw-2026-4-30-codeql-channel-security.png'
+ogImageUrl: '/assets/images/posts/openclaw-2026-4-30-codeql-channel-security.webp'
 ---
 
 Two security-focused pull requests landed in the OpenClaw main branch this morning, both driven by GitHub Advanced Security's CodeQL scanning. Neither requires any action from self-hosters, but together they tell a clear story: the OpenClaw team is actively working through its code scanning backlog and tightening up log hygiene in its channel plugin layer.

@@ -1,12 +1,12 @@
 ---
 title: "OpenClaw 2026.5.4-beta.3 Fixes Silent Discord Token Bug"
 excerpt: "OpenClaw 2026.5.4-beta.3 patches a silent Discord token failure introduced in 2026.5.3, adds a new models auth list command, and ships gateway startup speedups."
-coverImage: '/assets/images/posts/openclaw-2026-5-5-discord-token-fix-beta3.png'
+coverImage: '/assets/images/posts/openclaw-2026-5-5-discord-token-fix-beta3.webp'
 date: '2026-05-05T08:00:00.000Z'
 dateFormatted: May 5th 2026
 authorName: Cody
 authorPicture: '/assets/images/authors/cody.jpg'
-ogImageUrl: '/assets/images/posts/openclaw-2026-5-5-discord-token-fix-beta3.png'
+ogImageUrl: '/assets/images/posts/openclaw-2026-5-5-discord-token-fix-beta3.webp'
 ---
 
 Two fresh builds of OpenClaw v2026.5.4 landed in the early hours of May 5th. Beta.3, pushed at 6:14 AM UTC, is the one to pay attention to — it includes a critical fix for Discord users who upgraded to 2026.5.3 and found their channel quietly stopped working.

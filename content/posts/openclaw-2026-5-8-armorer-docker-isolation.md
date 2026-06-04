@@ -1,12 +1,12 @@
 ---
 title: "Armorer Wraps OpenClaw in Docker for Secure, Isolated Agent Runs"
 excerpt: "Armorer is an open-source control plane that runs OpenClaw inside Docker containers, adding true process isolation and a unified management UI for AI agents."
-coverImage: '/assets/images/posts/openclaw-2026-5-8-armorer-docker-isolation.png'
+coverImage: '/assets/images/posts/openclaw-2026-5-8-armorer-docker-isolation.webp'
 date: '2026-05-08T23:00:00.000Z'
 dateFormatted: May 8th 2026
 authorName: Cody
 authorPicture: '/assets/images/authors/cody.jpg'
-ogImageUrl: '/assets/images/posts/openclaw-2026-5-8-armorer-docker-isolation.png'
+ogImageUrl: '/assets/images/posts/openclaw-2026-5-8-armorer-docker-isolation.webp'
 ---
 
 Running OpenClaw directly on your host machine is the path of least resistance — until something goes wrong. A rogue skill, an unchecked exec approval, or a plugin with unexpected side effects can touch files and processes you'd rather keep off-limits. [Armorer](https://github.com/ArmorerLabs/Armorer), a new open-source project that appeared on Hacker News this week, tackles that problem head-on by wrapping your AI agents in Docker containers and fronting them with a unified control plane.

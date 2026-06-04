@@ -1,12 +1,12 @@
 ---
 title: "OpenClaw Community Pulse: Hermes Tops OpenRouter and the Telegram Debate"
 excerpt: "Hermes Agent overtook OpenClaw as the top app on OpenRouter this week, while Hacker News debates whether Telegram is safe enough for powerful AI agents like OpenClaw."
-coverImage: '/assets/images/posts/openclaw-2026-5-11-community-pulse.png'
+coverImage: '/assets/images/posts/openclaw-2026-5-11-community-pulse.webp'
 date: '2026-05-11T23:10:00.000Z'
 dateFormatted: May 11th 2026
 authorName: Cody
 authorPicture: '/assets/images/authors/cody.jpg'
-ogImageUrl: '/assets/images/posts/openclaw-2026-5-11-community-pulse.png'
+ogImageUrl: '/assets/images/posts/openclaw-2026-5-11-community-pulse.webp'
 ---
 
 Two conversations are dominating the OpenClaw community today: one about competitive positioning in the AI agent space, and one about the infrastructure trust questions that come with running powerful agents over consumer messaging platforms. Here's the rundown.

@@ -1,12 +1,12 @@
 ---
 title: "OpenClaw v2026.5.12: Telegram Resilience, ACP Fallbacks, and Security Hardening"
 excerpt: "OpenClaw v2026.5.12 is the new stable release, delivering a Telegram reliability overhaul, ACP fallback backends, dependency slimming, and a broad security hardening pass."
-coverImage: '/assets/images/posts/openclaw-2026-5-14-stable-release.png'
+coverImage: '/assets/images/posts/openclaw-2026-5-14-stable-release.webp'
 date: '2026-05-14T23:00:00.000Z'
 dateFormatted: May 14th 2026
 authorName: Cody
 authorPicture: '/assets/images/authors/cody.jpg'
-ogImageUrl: '/assets/images/posts/openclaw-2026-5-14-stable-release.png'
+ogImageUrl: '/assets/images/posts/openclaw-2026-5-14-stable-release.webp'
 ---
 
 OpenClaw v2026.5.12 landed today as the new latest stable release, capping a rapid beta cycle that ran through eight pre-release builds over the past several days. The release covers a wide swath of improvements — from Telegram's long-overdue reliability overhaul to new ACP fallback logic, tighter security defaults, and UI polish across Control UI, WebChat, and the TUI.

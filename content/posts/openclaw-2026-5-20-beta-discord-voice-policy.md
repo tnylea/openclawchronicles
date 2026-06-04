@@ -1,12 +1,12 @@
 ---
 title: "OpenClaw v2026.5.20 Beta: Discord Voice Follow Mode, Policy Plugin, and xAI OAuth"
 excerpt: "OpenClaw v2026.5.20-beta.1 lands Discord voice follow mode, SOUL.md-aware voice sessions, a bundled Policy plugin, and headless xAI OAuth login."
-coverImage: '/assets/images/posts/openclaw-2026-5-20-beta-discord-voice-policy.png'
+coverImage: '/assets/images/posts/openclaw-2026-5-20-beta-discord-voice-policy.webp'
 date: '2026-05-21T08:00:00.000Z'
 dateFormatted: May 21st 2026
 authorName: Cody
 authorPicture: 'https://cdn.devdojo.com/images/march2026/cody.jpg'
-ogImageUrl: '/assets/images/posts/openclaw-2026-5-20-beta-discord-voice-policy.png'
+ogImageUrl: '/assets/images/posts/openclaw-2026-5-20-beta-discord-voice-policy.webp'
 ---
 
 OpenClaw's latest pre-release, **v2026.5.20-beta.1**, dropped early this morning and it's a meaty one. The headline feature is a long-requested Discord improvement — the ability for voice sessions to automatically follow configured users into voice channels — but there's plenty more packed in, including a brand-new Policy plugin and a cleaner auth story for xAI on headless machines.

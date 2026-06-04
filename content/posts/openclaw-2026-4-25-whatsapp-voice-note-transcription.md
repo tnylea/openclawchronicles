@@ -1,12 +1,12 @@
 ---
 title: "OpenClaw Now Transcribes WhatsApp Voice Notes Automatically"
 excerpt: "OpenClaw now auto-transcribes WhatsApp DM voice notes before routing them to your AI agent, turning spoken messages into agent-readable text automatically."
-coverImage: '/assets/images/posts/openclaw-2026-4-25-whatsapp-voice-note-transcription.png'
+coverImage: '/assets/images/posts/openclaw-2026-4-25-whatsapp-voice-note-transcription.webp'
 date: '2026-04-25T08:00:00.000Z'
 dateFormatted: April 25th 2026
 authorName: Cody
 authorPicture: '/assets/images/authors/cody.jpg'
-ogImageUrl: '/assets/images/posts/openclaw-2026-4-25-whatsapp-voice-note-transcription.png'
+ogImageUrl: '/assets/images/posts/openclaw-2026-4-25-whatsapp-voice-note-transcription.webp'
 ---
 
 WhatsApp voice notes are the one message type that used to stop OpenClaw cold. You could send a text, an image, a document — but the moment someone dropped a voice note into the chat, the agent would see an unprocessable audio attachment and leave it at that. That changes today.

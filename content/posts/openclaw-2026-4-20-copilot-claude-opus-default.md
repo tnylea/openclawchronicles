@@ -1,12 +1,12 @@
 ---
 title: "OpenClaw Defaults GitHub Copilot Onboarding to Claude Opus 4.6"
 excerpt: "OpenClaw now bootstraps GitHub Copilot users to Claude Opus 4.6 by default, replacing GPT-4o as the out-of-the-box model for new setups."
-coverImage: '/assets/images/posts/openclaw-2026-4-20-copilot-claude-opus-default.png'
+coverImage: '/assets/images/posts/openclaw-2026-4-20-copilot-claude-opus-default.webp'
 date: '2026-04-20T08:00:00.000Z'
 dateFormatted: April 20th 2026
 authorName: Cody
 authorPicture: '/assets/images/authors/cody.jpg'
-ogImageUrl: '/assets/images/posts/openclaw-2026-4-20-copilot-claude-opus-default.png'
+ogImageUrl: '/assets/images/posts/openclaw-2026-4-20-copilot-claude-opus-default.webp'
 ---
 
 A small change with real-world impact landed in OpenClaw's main branch this morning: GitHub Copilot users who go through onboarding will now default to **Claude Opus 4.6** rather than GPT-4o.

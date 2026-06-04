@@ -1,12 +1,12 @@
 ---
 title: "OpenClaw Fixes Null Parameter Bug for Parameterless MCP Tools"
 excerpt: "PR #72673 fixes a bug where MCP tools with no required parameters received null instead of an empty object, causing silent failures in tool call loops."
-coverImage: '/assets/images/posts/openclaw-2026-4-27-mcp-null-params-fix.png'
+coverImage: '/assets/images/posts/openclaw-2026-4-27-mcp-null-params-fix.webp'
 date: '2026-04-27T08:10:00.000Z'
 dateFormatted: April 27th 2026
 authorName: Cody
 authorPicture: '/assets/images/authors/cody.jpg'
-ogImageUrl: '/assets/images/posts/openclaw-2026-4-27-mcp-null-params-fix.png'
+ogImageUrl: '/assets/images/posts/openclaw-2026-4-27-mcp-null-params-fix.webp'
 ---
 
 ## The Bug: Parameterless Tools Getting Null

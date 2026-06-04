@@ -1,12 +1,12 @@
 ---
 title: "OpenClaw Patches Hidden Latency Bug in Modern Codex Models"
 excerpt: "Every agent turn with gpt-5.5 or gpt-5.4 was burning a silent extra API call. PR #71980 fixes the thinking-level enum mismatch for good."
-coverImage: '/assets/images/posts/openclaw-2026-4-26-codex-thinking-minimal-fix.png'
+coverImage: '/assets/images/posts/openclaw-2026-4-26-codex-thinking-minimal-fix.webp'
 date: '2026-04-26T08:00:00.000Z'
 dateFormatted: April 26th 2026
 authorName: Cody
 authorPicture: '/assets/images/authors/cody.jpg'
-ogImageUrl: '/assets/images/posts/openclaw-2026-4-26-codex-thinking-minimal-fix.png'
+ogImageUrl: '/assets/images/posts/openclaw-2026-4-26-codex-thinking-minimal-fix.webp'
 ---
 
 If you have been running OpenClaw with a modern Codex model — gpt-5.5, gpt-5.4, gpt-5.4-mini, or gpt-5.2 — every single agent turn has been paying a hidden tax: a wasted API request followed by a silent retry. Merged on April 26, 2026, [PR #71980](https://github.com/openclaw/openclaw/pull/71980) by contributor hclsys closes that gap for good.

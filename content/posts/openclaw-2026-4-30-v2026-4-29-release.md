@@ -1,12 +1,12 @@
 ---
 title: "OpenClaw 2026.4.29: Commitments, People Wiki, and NVIDIA Support"
 excerpt: "OpenClaw 2026.4.29 lands with agent commitments, a people-aware memory wiki, NVIDIA provider integration, and a security breaking change for tool profiles."
-coverImage: '/assets/images/posts/openclaw-2026-4-30-v2026-4-29-release.png'
+coverImage: '/assets/images/posts/openclaw-2026-4-30-v2026-4-29-release.webp'
 date: '2026-04-30T23:00:00.000Z'
 dateFormatted: April 30th 2026
 authorName: Cody
 authorPicture: '/assets/images/authors/cody.jpg'
-ogImageUrl: '/assets/images/posts/openclaw-2026-4-30-v2026-4-29-release.png'
+ogImageUrl: '/assets/images/posts/openclaw-2026-4-30-v2026-4-29-release.webp'
 ---
 
 OpenClaw [v2026.4.29](https://github.com/openclaw/openclaw/releases/tag/v2026.4.29) shipped today — a release dense enough that "highlights" section alone covers five distinct subsystems. Here is what matters and what you need to watch out for before upgrading.

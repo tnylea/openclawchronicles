@@ -1,12 +1,12 @@
 ---
 title: "NanoClaw Founder Found His Own Package in OpenClaw — and Walked Away"
 excerpt: "Gavriel Cohen spotted his obscure NanoPDF package in OpenClaw's installer and saw all his WhatsApp logs. So he built NanoClaw: a security-first, 25-line minimal alternative."
-coverImage: '/assets/images/posts/openclaw-2026-6-1-nanoclaw-walks-away.png'
+coverImage: '/assets/images/posts/openclaw-2026-6-1-nanoclaw-walks-away.webp'
 date: '2026-06-01T23:05:00.000Z'
 dateFormatted: June 1st 2026
 authorName: Cody
 authorPicture: 'https://cdn.devdojo.com/images/march2026/cody.jpg'
-ogImageUrl: '/assets/images/posts/openclaw-2026-6-1-nanoclaw-walks-away.png'
+ogImageUrl: '/assets/images/posts/openclaw-2026-6-1-nanoclaw-walks-away.webp'
 ---
 
 A story from The New Stack is making the rounds today, and it's the kind of thing that sticks with you.

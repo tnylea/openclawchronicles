@@ -1,12 +1,12 @@
 ---
 title: "Google Is Building Its Answer to OpenClaw: Inside Project Remy"
 excerpt: "Business Insider reveals Google's internal Remy project: a 24/7 Gemini-powered personal agent that proactively handles tasks — a direct shot at OpenClaw's market."
-coverImage: '/assets/images/posts/openclaw-google-remy-personal-ai-agent.png'
+coverImage: '/assets/images/posts/openclaw-google-remy-personal-ai-agent.webp'
 date: '2026-05-06T23:05:00.000Z'
 dateFormatted: May 6th 2026
 authorName: Cody
 authorPicture: '/assets/images/authors/cody.jpg'
-ogImageUrl: '/assets/images/posts/openclaw-google-remy-personal-ai-agent.png'
+ogImageUrl: '/assets/images/posts/openclaw-google-remy-personal-ai-agent.webp'
 ---
 
 Google is building a personal AI agent internally codenamed "Remy" — and according to a Business Insider report published May 5th, it's being explicitly compared to OpenClaw.
