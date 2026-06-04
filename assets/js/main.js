@@ -304,7 +304,6 @@
   function bindNonCriticalEnhancements() {
     if (enhancementsBound) return;
     enhancementsBound = true;
-    bindMobileMenus();
     bindHomeHeader();
     bindMastheadMeta();
     bindCurrentDate();
@@ -321,6 +320,7 @@
 
   document.addEventListener('DOMContentLoaded', function () {
     bindThemeButtons();
+    bindMobileMenus();
     scheduleEnhancements();
   });
 
