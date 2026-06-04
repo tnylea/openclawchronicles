@@ -34,7 +34,11 @@ function normalizePageTarget(targetPath) {
 }
 
 function shouldSkip(target) {
-  return !target || ignorePrefixes.some((prefix) => target.startsWith(prefix)) || /^https?:\/\//i.test(target) || /^\/posts\/\$\{slug\}\/?$/.test(target);
+  return !target
+    || ignorePrefixes.some((prefix) => target.startsWith(prefix))
+    || /^https?:\/\//i.test(target)
+    || /^\/\//.test(target)
+    || /^\/posts\/\$\{slug\}\/?$/.test(target);
 }
 
 function collectAnchors(filePath) {
