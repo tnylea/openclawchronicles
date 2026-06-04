@@ -23,6 +23,8 @@ function postCard(post) {
                                     alt="${post.title}"
                                     width="1200"
                                     height="800"
+                                    loading="lazy"
+                                    decoding="async"
                                     class="outline-img-outline aspect-3/2 w-full object-cover outline-1 -outline-offset-1 transition-transform duration-300 group-hover:scale-105" />
                             </div>
                             <div class="mt-4">
@@ -156,12 +158,63 @@ ${pagination(page)}
         <!-- POSTS_PAGINATION_END -->`;
 }
 
+function archiveTitle(page) {
+  return page === 1
+    ? 'OpenClaw Chronicles · All Posts'
+    : `OpenClaw Chronicles archive page ${page} · Releases, security, guides`;
+}
+
+function archiveDescription(page) {
+  return page === 1
+    ? 'Browse the full OpenClaw Chronicles archive, including release notes, security advisories, migration guides, and ecosystem reporting for OpenClaw.'
+    : `Browse page ${page} of the OpenClaw Chronicles archive for older OpenClaw releases, security coverage, migration guides, and ecosystem reporting.`;
+}
+
+function archiveOgTitle(page) {
+  return page === 1
+    ? 'OpenClaw Chronicles archive, releases, security, and guides'
+    : `OpenClaw Chronicles archive page ${page}, releases, security, and guides`;
+}
+
+function archiveSchemaName(page) {
+  return page === 1 ? 'OpenClaw Chronicles archive' : `OpenClaw Chronicles archive page ${page}`;
+}
+
+function replaceArchiveHead(html, page) {
+  const currentUrl = `https://openclawchronicles.com${pageHref(page)}`;
+  const prevUrl = page > 1 ? `https://openclawchronicles.com${pageHref(page - 1)}` : null;
+  const nextUrl = page < totalPages ? `https://openclawchronicles.com${pageHref(page + 1)}` : null;
+
+  html = html.replace(/<title>[\s\S]*?<\/title>/, `<title>${archiveTitle(page)}</title>`);
+  html = html.replace(/<meta name="description" content="[^"]*"\s*\/>/, `<meta name="description" content="${archiveDescription(page)}" />`);
+  html = html.replace(/<link rel="canonical" href="[^"]*"\s*\/>/, `<link rel="canonical" href="${currentUrl}" />`);
+  html = html.replace(/<link rel="alternate" hreflang="en" href="[^"]*"\s*\/>/, `<link rel="alternate" hreflang="en" href="${currentUrl}" />`);
+  html = html.replace(/<link rel="alternate" hreflang="x-default" href="[^"]*"\s*\/>/, `<link rel="alternate" hreflang="x-default" href="${currentUrl}" />`);
+  html = html.replace(/<meta property="og:title" content="[^"]*"\s*\/>/, `<meta property="og:title" content="${archiveOgTitle(page)}" />`);
+  html = html.replace(/<meta property="og:description" content="[^"]*"\s*\/>/, `<meta property="og:description" content="${archiveDescription(page)}" />`);
+  html = html.replace(/<meta property="og:url" content="[^"]*"\s*\/>/, `<meta property="og:url" content="${currentUrl}" />`);
+  html = html.replace(/<meta name="twitter:title" content="[^"]*"\s*\/>/, `<meta name="twitter:title" content="${archiveOgTitle(page)}" />`);
+  html = html.replace(/<meta name="twitter:description" content="[^"]*"\s*\/>/, `<meta name="twitter:description" content="${archiveDescription(page)}" />`);
+  html = html.replace(/"name": "OpenClaw Chronicles archive"/g, `"name": "${archiveSchemaName(page)}"`);
+  html = html.replace(/"url": "https:\/\/openclawchronicles\.com\/posts\/"/g, `"url": "${currentUrl}"`);
+  html = html.replace(/"description": "Browse the full OpenClaw Chronicles archive, including release notes, security advisories, migration guides, and ecosystem reporting for OpenClaw\."/g, `"description": "${archiveDescription(page)}"`);
+  html = html.replace(/"item": "https:\/\/openclawchronicles\.com\/posts\/"/g, `"item": "${currentUrl}"`);
+  html = html.replace(/<link rel="canonical" href="[^"]*"\s*\/>/, (match) => {
+    const relLinks = [match];
+    if (prevUrl) relLinks.push(`<link rel="prev" href="${prevUrl}" />`);
+    if (nextUrl) relLinks.push(`<link rel="next" href="${nextUrl}" />`);
+    return relLinks.join('\n    ');
+  });
+
+  return html;
+}
+
 function replaceSection(html, page) {
   return html.replace(/<!-- POSTS_PAGINATION_START -->[\s\S]*?<!-- POSTS_PAGINATION_END -->/, buildSection(page));
 }
 
 for (let page = 1; page <= totalPages; page++) {
-  const html = replaceSection(raw, page);
+  const html = replaceArchiveHead(replaceSection(raw, page), page);
   const outDir = page === 1 ? postsDir : path.join(postsDir, String(page));
   fs.mkdirSync(outDir, { recursive: true });
   fs.writeFileSync(path.join(outDir, 'index.html'), html);
