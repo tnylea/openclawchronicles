@@ -294,30 +294,10 @@
           document.documentElement.classList.add("dark");
         }
 
-        var mainScriptLoaded = false;
-        function loadMainScript() {
-          if (mainScriptLoaded) return;
-          mainScriptLoaded = true;
-          var script = document.createElement("script");
-          script.src = "/assets/js/main.js";
-          script.defer = true;
-          document.head.appendChild(script);
-        }
-
-        var triggerEvents = ["pointerdown", "keydown", "touchstart", "focusin"];
-        var listenerOptions = { once: true, passive: true };
-        triggerEvents.forEach(function (eventName) {
-          window.addEventListener(eventName, loadMainScript, listenerOptions);
-        });
-
-        window.addEventListener("load", function () {
-          if (navigator.connection && navigator.connection.saveData) return;
-          if ("requestIdleCallback" in window) {
-            requestIdleCallback(loadMainScript, { timeout: 1800 });
-          } else {
-            setTimeout(loadMainScript, 1200);
-          }
-        }, { once: true });
+        var script = document.createElement("script");
+        script.src = "/assets/js/main.js";
+        script.defer = true;
+        document.head.appendChild(script);
       })();
     </script>
   </head>

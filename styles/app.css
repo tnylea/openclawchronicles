@@ -60,6 +60,7 @@
 @theme {
   --font-display: "Playfair Display", serif;
   --font-logo: "Manufacturing Consent", serif;
+  --font-weight-logo: 400;
   --font-body: "Newsreader", serif;
   --font-sans: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   --font-mono: "JetBrains Mono", monospace;
@@ -138,6 +139,11 @@
     transform: translateX(-1.5rem);
   }
 }
+/* Force font-logo (Manufacturing Consent) to render in black, not its built-in red */
+.font-logo {
+  color: var(--color-ink);
+}
+
 .masthead-enter {
   animation: slide-in-left 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
