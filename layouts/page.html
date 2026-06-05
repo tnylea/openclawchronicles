@@ -10,10 +10,8 @@
     <meta name="author" content="Cody" />
     <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
     <link rel="dns-prefetch" href="https://fonts.gstatic.com" />
-    <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
     <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link rel="preconnect" href="https://www.googletagmanager.com" crossorigin />
     <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)" />
     <meta name="theme-color" content="#0c0c0c" media="(prefers-color-scheme: dark)" />
     <meta name="color-scheme" content="light dark" />
@@ -148,10 +146,22 @@
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
 
+      function ensureAnalyticsConnection() {
+        if (!document.querySelector('link[data-analytics-preconnect="gtm"]')) {
+          var preconnect = document.createElement('link');
+          preconnect.rel = 'preconnect';
+          preconnect.href = 'https://www.googletagmanager.com';
+          preconnect.crossOrigin = 'anonymous';
+          preconnect.dataset.analyticsPreconnect = 'gtm';
+          document.head.appendChild(preconnect);
+        }
+      }
+
       window.__loadAnalytics = function () {
         if (window.__analyticsLoaded) return;
         if (navigator.connection && navigator.connection.saveData) return;
         window.__analyticsLoaded = true;
+        ensureAnalyticsConnection();
         var script = document.createElement('script');
         script.async = true;
         script.src = 'https://www.googletagmanager.com/gtag/js?id=G-7016K8GHP7';

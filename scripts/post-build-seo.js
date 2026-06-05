@@ -1694,6 +1694,7 @@ function optimizeImages(html) {
       if (isAuthorAvatar) updated += ' width="48" height="48"';
       else if (/\/assets\/images\/posts\//.test(src)) updated += ' width="1200" height="630"';
       else if (/about-banner\.(png|jpg|webp)$/i.test(src)) updated += ' width="1200" height="630"';
+      else if (/^https:\/\/img\.youtube\.com\/vi\//i.test(src)) updated += ' width="480" height="360"';
     }
     updated += ' decoding="async"';
 
