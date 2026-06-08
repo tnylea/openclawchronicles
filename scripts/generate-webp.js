@@ -106,10 +106,28 @@ function cleanupOrphanedDerivatives(rootDir, sourceFiles) {
     expectedOutputs(file).forEach((output) => expected.add(path.resolve(output)));
   }
 
+  // Build a set of all known source base names (without extension)
+  // so we can detect if the source PNG/JPG simply doesn't exist (e.g. gitignored)
+  // vs. a truly orphaned derivative whose source was intentionally removed.
+  const knownSourceBases = new Set();
+  for (const file of sourceFiles) {
+    knownSourceBases.add(path.resolve(file).replace(/\.(png|jpe?g)$/i, ''));
+  }
+
   let removed = 0;
   for (const file of walk(rootDir)) {
     if (!/\.(avif|webp)$/i.test(file)) continue;
     if (expected.has(path.resolve(file))) continue;
+
+    // Determine the base name of this derivative (strip -640, -960, -1200 suffixes and extension)
+    const resolved = path.resolve(file);
+    const baseName = resolved
+      .replace(/-(640|960|1200)\.(avif|webp)$/i, '')
+      .replace(/\.(avif|webp)$/i, '');
+
+    // If no source file exists for this base, the PNG may be gitignored — keep the derivative.
+    if (!knownSourceBases.has(baseName)) continue;
+
     fs.unlinkSync(file);
     removed += 1;
   }
