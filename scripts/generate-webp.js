@@ -25,6 +25,7 @@ const outputFormats = [
     include: () => true,
   },
 ];
+const trustExistingOutputs = process.env.GITHUB_PAGES === 'true' || process.env.CI === 'true';
 const cacheDir = path.join(root, '.cache');
 const cacheFile = path.join(cacheDir, 'image-build-manifest.json');
 const skipPatterns = [
@@ -150,6 +151,11 @@ async function imageMetadata(file) {
 }
 
 async function main() {
+  if (trustExistingOutputs) {
+    console.log('Skipping responsive image generation in CI; using committed image assets');
+    return;
+  }
+
   let converted = 0;
   let skipped = 0;
   let removed = 0;
@@ -171,11 +177,17 @@ async function main() {
       const fingerprint = sourceFingerprint(file, sourceStat);
       const cachedEntry = manifest[file];
       const expected = expectedOutputs(file);
-      const allOutputsFresh = expected.every((output) => fs.existsSync(output) && fs.statSync(output).mtimeMs >= sourceStat.mtimeMs);
+      const allExpectedOutputsExist = expected.every((output) => fs.existsSync(output));
+      const allOutputsFresh = allExpectedOutputsExist && expected.every((output) => fs.statSync(output).mtimeMs >= sourceStat.mtimeMs);
+      const canReuseExistingOutputs = trustExistingOutputs && allExpectedOutputsExist;
       const canReuseManifest = cachedEntry && cachedEntry.fingerprint === fingerprint && allOutputsFresh;
 
-      if (canReuseManifest) {
-        nextManifest[file] = cachedEntry;
+      if (canReuseManifest || canReuseExistingOutputs) {
+        nextManifest[file] = cachedEntry || {
+          fingerprint,
+          outputs: expected,
+          width: null,
+        };
         skipped += expected.length;
         continue;
       }
@@ -190,7 +202,7 @@ async function main() {
         }
         const output = file.replace(/\.(png|jpe?g)$/i, `.${format.extension}`);
         const outputExists = fs.existsSync(output);
-        const outputFresh = outputExists && fs.statSync(output).mtimeMs >= sourceStat.mtimeMs;
+        const outputFresh = outputExists && (trustExistingOutputs || fs.statSync(output).mtimeMs >= sourceStat.mtimeMs);
 
         if (outputFresh) {
           skipped += 1;
@@ -207,7 +219,7 @@ async function main() {
             }
 
             const variantOutput = output.replace(new RegExp(`\\.${format.extension}$`, 'i'), `-${width}.${format.extension}`);
-            const variantFresh = fs.existsSync(variantOutput) && fs.statSync(variantOutput).mtimeMs >= sourceStat.mtimeMs;
+            const variantFresh = fs.existsSync(variantOutput) && (trustExistingOutputs || fs.statSync(variantOutput).mtimeMs >= sourceStat.mtimeMs);
             if (variantFresh) {
               skipped += 1;
               continue;
